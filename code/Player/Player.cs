@@ -176,10 +176,14 @@ public class Player : Component
 		if (!WishVelocity.IsNearZeroLength)
 			WishVelocity = WishVelocity.Normal;
 
-		if (Input.Down("Run"))
+		if (Input.Down("Run")){
 			WishVelocity *= 320.0f;
-		else
+			IsRunning = true;
+		}
+		else {
 			WishVelocity *= 110.0f;
+			IsRunning = false;
+		}
 
 		if (WishVelocity.Length > 0.0f)
 		{
