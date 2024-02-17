@@ -134,7 +134,7 @@
     {
       "Id": "61c5b2e5-5bfc-4d9b-b4f6-8ae831d9a2f9",
       "Name": "Bob",
-      "Position": "-53.42764,34.47616,1.50886",
+      "Position": "-64.30951,-5.717861,8.402019",
       "Scale": "0.2,0.2,0.2",
       "Enabled": true,
       "Components": [
@@ -171,21 +171,11 @@
     },
     {
       "Id": "120e5267-334f-4af0-a4ca-08655c252616",
-      "Name": "Network Session",
+      "Name": "CandyFactory",
       "Enabled": true,
       "Components": [
         {
-          "__type": "NetworkSession"
-        }
-      ]
-    },
-    {
-      "Id": "551cd685-ccbc-4dc4-be0a-7473daca9c74",
-      "Name": "Network Manager",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "GameNetworkManager",
+          "__type": "CandyFactory",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
@@ -200,7 +190,7 @@
     {
       "Id": "a8252eb8-cafe-4e2a-bde9-c72279497e05",
       "Name": "Spawn",
-      "Position": "-205.6233,32.35487,13.35265",
+      "Position": "-169.4014,-187.3345,99.86883",
       "Enabled": true
     }
   ],
@@ -227,6 +217,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-17T19:26:30.2775845\u002B01:00",
+  "LastSaved": "2024-02-17T17:19:22.7805274-05:00",
   "__references": []
 }

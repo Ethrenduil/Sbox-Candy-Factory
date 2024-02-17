@@ -17,6 +17,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
 
+	[Property] public GameObject SpawnPoint { get; set; }
 	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
 
 	public static void AddPlayer( int slot, Player player )
@@ -55,7 +56,7 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	void INetworkListener.OnActive( Connection connection )
 	{
-		var player = PlayerPrefab.Clone();
+		var player = PlayerPrefab.Clone(SpawnPoint.Transform.World);
 		var playerSlot = FindFreeSlot();
 
 		if ( playerSlot < 0 )
@@ -64,6 +65,10 @@ public class CandyFactory : Component, Component.INetworkListener
 		}
 
 		var playerComponent = player.Components.Get<Player>();
+
+		var nameTagPanel = player.Components.Get<NameTagPanel>( FindMode.EverythingInSelfAndDescendants);
+		nameTagPanel.Name = connection.DisplayName;
+		
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );
 	}
