@@ -1,0 +1,17 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="progression-bar">
+		<div class="progression-bar-fill" style="width: @ProgressionPercentage"></div>
+	</div>
+</root>
+
+@code
+{
+	public int CurrentProgression{ get; set; } = 0;
+	public int MaxProgression { get; set; }
+
+	private string ProgressionPercentage => $"{(1000 / (double)1000) * 100}%";
+}

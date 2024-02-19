@@ -1,0 +1,23 @@
+ProgressBar
+{
+    position: absolute;
+    top: 1%;
+    left: 20%; /* Centrer la barre (100% - 60%) / 2 = 20% */
+    width: 60%; /* Largeur de la barre */
+
+    .progression-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    }
+    
+    .progression-bar-fill {
+        height: 100%;
+        background-image: url('texture/menu/xp/fill.png');
+        background-size: contain;
+        border-radius: 4px;
+        transition: width .4s ease-in-out;
+    }
+}
