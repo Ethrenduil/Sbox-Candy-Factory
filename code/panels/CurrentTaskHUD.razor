@@ -1,17 +1,36 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using Eryziac.CandyFactory;
 @inherits PanelComponent
 
 <root>
-	<div class="title">Coucou</div>
+	@if(CandyFactory.LocalPlayer?.CurrentTask != null)
+    {
+        <div class="header">
+            <div class="title">@CandyFactory.LocalPlayer?.CurrentTask.Name :</div>
+            <div class="description">@CandyFactory.LocalPlayer?.CurrentTask?.Description</div>
+        </div>
+        <div class="progress">
+            @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed != null)
+            {
+                @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed?.Money > 0)
+                {
+                    <span class="category">Earned:  @("$ " + CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CurrentMoney.ToString("N0").Replace(",", " ")) / @("$ " + CandyFactory.LocalPlayer?.CurrentTask.Needed.Money.ToString("N0").Replace(",", " "))</span>
+                }
+                @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandyCreated != null)
+                {
+                    <span class="category">@CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandyCreated?.Name : @CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandyCreated?.Quantity</span>
+                }
+                @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold != null)
+                {
+                    <span class="category">@CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold?.Name : @CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold?.Current / @CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold?.Quantity</span>
+                }
+            }
+        </div>
+    }
 </root>
 
 @code
 {	
-	public PlayerTask CurrentTask { get; set; }
-	/// <summary>
-	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
-	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( CurrentTask );
 
 }

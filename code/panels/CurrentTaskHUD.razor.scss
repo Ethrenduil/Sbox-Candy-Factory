@@ -1,20 +1,56 @@
 CurrentTaskHUD
 {
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: #444;
-	justify-content: center;
-	align-items: center;
-	font-weight: bold;
-	border-radius: 20px;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    border-radius: 20px;
 
-	.title
-	{
-		font-size: 25px;
-		font-family: Poppins;
-		color: #fff;
-	}
+	.header {
+        background-color: #EF8CFF;
+        flex: 1;
+        border-radius: 16px 16px 0 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+
+        .title {
+            font-size: 25px;
+            font-family: Poppins;
+            align-self: center;
+        }
+        .description {
+            font-size: 15px;
+            font-family: Poppins;
+            align-self: center;
+        }
+    }
+    .progress {
+        width: 100%;
+        background-color: #4444448e;
+        border: 2px solid #EF8CFF;
+        border-top: 0;
+        border-radius: 0 0 16px 16px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        font-size: 15px;
+        font-family: Poppins;
+        color: #fff;
+
+        .category {
+            
+            flex-direction: row;
+        }
+
+      }
 }
