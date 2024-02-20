@@ -58,7 +58,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	{
 		LocalPlayer = player;
 		player.AddMoney(StartingMoney);
-		player.CurrentTask = new PlayerTask("Tutorial", "Welcome in Candy Factory");
+		player.CurrentTask = Scene.GetAllComponents<PlayerTask>().FirstOrDefault();
 	}
 
 	void INetworkListener.OnActive( Connection connection )
@@ -82,5 +82,21 @@ public class CandyFactory : Component, Component.INetworkListener
 		{
 			InitiatePlayer( playerComponent );
 		}
+	}
+
+	public void RefreshTaskHUD()
+	{
+		Scene.GetAllComponents<CurrentTaskHUD>().FirstOrDefault().StateHasChanged();
+	}
+
+	public void RefreshMoneyHUD()
+	{
+		Scene.GetAllComponents<MoneyHUD>().FirstOrDefault().StateHasChanged();
+	}
+
+	public void RefreshAllHUDs()
+	{
+		RefreshTaskHUD();
+		RefreshMoneyHUD();
 	}
 }

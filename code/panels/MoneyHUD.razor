@@ -5,7 +5,7 @@
 
 <root>
 	<div class="title">
-		@("$ " + moneyAmount.ToString("N0").Replace(",", " "))
+		@("$ " + CandyFactory.LocalPlayer.GetMoney().ToString("N0").Replace(",", " "))
 	</div>
 	<img class="image" src="/textures/ui/money_hud/gold.png" alt="money" />
 </root>
@@ -13,17 +13,4 @@
 @code
 {
 
-	private int moneyAmount = 0;
-
-	/// <summary>
-	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
-	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( moneyAmount );
-
-	// OnUpdate is called every frame
-	protected override void OnUpdate()
-	{
-		if (moneyAmount != CandyFactory.LocalPlayer.GetMoney())
-			moneyAmount = CandyFactory.LocalPlayer.GetMoney();
-	}
 }

@@ -180,19 +180,21 @@
       "Id": "5eceedf8-3ef3-4eea-84b0-2a3c8bd77dd8",
       "Name": "HUD",
       "Enabled": true,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        }
+      ],
       "Children": [
         {
           "Id": "3ca33199-640b-4c30-8bc0-30a21fa9dd5b",
           "Name": "Money",
           "Enabled": true,
           "Components": [
-            {
-              "__type": "ScreenPanel",
-              "AutoScreenScale": true,
-              "Opacity": 1,
-              "Scale": 1,
-              "ZIndex": 100
-            },
             {
               "__type": "MoneyHUD"
             }
@@ -204,14 +206,10 @@
           "Enabled": true,
           "Components": [
             {
-              "__type": "ScreenPanel",
-              "AutoScreenScale": true,
-              "Opacity": 1,
-              "Scale": 1,
-              "ZIndex": 100
+              "__type": "CurrentTaskHUD"
             },
             {
-              "__type": "CurrentTaskHUD"
+              "__type": "PlayerTask"
             }
           ]
         }
@@ -241,6 +239,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-20T16:32:27.7592906\u002B01:00",
+  "LastSaved": "2024-02-21T00:36:30.2221923\u002B01:00",
   "__references": []
 }
