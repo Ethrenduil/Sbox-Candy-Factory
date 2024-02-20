@@ -7,12 +7,12 @@ Layer0
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
 	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "texture/bob/chicken_ao.png"
+	TextureAmbientOcclusion "textures/bob/chicken_ao.png"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "texture/bob/chicken_color.png"
+	TextureColor "textures/bob/chicken_color.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -24,7 +24,7 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "texture/bob/chicken_normal.png"
+	TextureNormal "textures/bob/chicken_normal.png"
 
 	//---- Roughness ----
 	g_flRoughnessScaleFactor "1.000"
