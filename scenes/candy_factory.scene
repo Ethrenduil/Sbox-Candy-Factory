@@ -147,6 +147,7 @@
     {
       "Id": "120e5267-334f-4af0-a4ca-08655c252616",
       "Name": "CandyFactory",
+      "Networked": true,
       "Enabled": true,
       "Components": [
         {
@@ -158,7 +159,8 @@
           "SpawnPoint": {
             "_type": "gameobject",
             "go": "a8252eb8-cafe-4e2a-bde9-c72279497e05"
-          }
+          },
+          "StartingMoney": 100
         }
       ]
     },
@@ -175,20 +177,43 @@
       "__Prefab": "prefabs/map.prefab"
     },
     {
-      "Id": "3ca33199-640b-4c30-8bc0-30a21fa9dd5b",
-      "Name": "Screen",
-      "Position": "215.3588,5236.183,4579.171",
+      "Id": "5eceedf8-3ef3-4eea-84b0-2a3c8bd77dd8",
+      "Name": "HUD",
       "Enabled": true,
-      "Components": [
+      "Children": [
         {
-          "__type": "ScreenPanel",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 100
+          "Id": "3ca33199-640b-4c30-8bc0-30a21fa9dd5b",
+          "Name": "Money",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ScreenPanel",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "MoneyHUD"
+            }
+          ]
         },
         {
-          "__type": "MoneyHUD"
+          "Id": "d01a5715-2361-408c-b6ba-befcb239ce3f",
+          "Name": "CurrentTask",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ScreenPanel",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "CurrentTaskHUD"
+            }
+          ]
         }
       ]
     }
@@ -216,6 +241,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-20T13:09:04.4153208\u002B01:00",
+  "LastSaved": "2024-02-20T16:32:27.7592906\u002B01:00",
   "__references": []
 }

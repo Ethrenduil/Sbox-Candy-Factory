@@ -58,6 +58,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	{
 		LocalPlayer = player;
 		player.AddMoney(StartingMoney);
+		player.CurrentTask = new PlayerTask("Tutorial", "Welcome in Candy Factory");
 	}
 
 	void INetworkListener.OnActive( Connection connection )

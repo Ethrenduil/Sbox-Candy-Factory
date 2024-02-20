@@ -19,7 +19,8 @@ public class Player : Component
 	[Sync] public bool IsCrouching { get; set; }
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
-	private int Money = 0;
+	[Sync] private int Money { get; set; }
+	public PlayerTask CurrentTask { get; set; }
 
 
 	protected override void OnEnabled()
