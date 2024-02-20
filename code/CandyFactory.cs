@@ -16,8 +16,8 @@ public class CandyFactory : Component, Component.INetworkListener
 	public static CandyFactory Instance { get; private set; }
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
-
 	[Property] public GameObject SpawnPoint { get; set; }
+	[Property] public int StartingMoney { get; set; } = 100;
 	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
 	public static Player LocalPlayer { get; private set; }
 	public static void AddPlayer( int slot, Player player )
@@ -54,6 +54,12 @@ public class CandyFactory : Component, Component.INetworkListener
 		return -1;
 	}
 
+	private void InitiatePlayer( Player player )
+	{
+		LocalPlayer = player;
+		player.AddMoney(StartingMoney);
+	}
+
 	void INetworkListener.OnActive( Connection connection )
 	{
 		var player = PlayerPrefab.Clone(SpawnPoint.Transform.World);
@@ -68,12 +74,12 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		var nameTagPanel = player.Components.Get<NameTagPanel>( FindMode.EverythingInSelfAndDescendants);
 		nameTagPanel.Name = connection.DisplayName;
-		
+
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );
 		if ( !player.IsProxy )
 		{
-			LocalPlayer = playerComponent;
+			InitiatePlayer( playerComponent );
 		}
 	}
 }
