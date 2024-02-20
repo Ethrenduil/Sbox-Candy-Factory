@@ -19,7 +19,7 @@ public class Player : Component
 	[Sync] public bool IsCrouching { get; set; }
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
-	private int MoneyAmount = 0;
+	private int MoneyAmount = 100;
 
 
 	protected override void OnEnabled()
@@ -45,7 +45,6 @@ public class Player : Component
 		UpdateCameraPosition();
 		UpdateBodyRotation();
 		UpdateCrouch();
-		IsRunning = Input.Down("Run");
 		UpdateAnimation();
 	}
 
@@ -176,6 +175,7 @@ public class Player : Component
 		if (Input.Down("Backward")) WishVelocity += rot.Backward;
 		if (Input.Down("Left")) WishVelocity += rot.Left;
 		if (Input.Down("Right")) WishVelocity += rot.Right;
+		IsRunning = Input.Down("Run");
 
 		WishVelocity = WishVelocity.WithZ(0);
 
@@ -215,16 +215,19 @@ public class Player : Component
 
 	private void UpdateCrouch()
     {
+		if (IsProxy)
+			return;
+
 		var cc = GameObject.Components.Get<CharacterController>();
         if(cc is null) return;
 
-        if(Input.Pressed("Crouch") && !IsCrouching)
+        if(Input.Pressed("Duck") && !IsCrouching)
         {
             IsCrouching = true;
             cc.Height /= 2f;
         }
 
-        if(Input.Released("Crouch") && IsCrouching)
+        if(Input.Released("Duck") && IsCrouching)
         {
             IsCrouching = false;
             cc.Height *= 2f;
