@@ -19,7 +19,7 @@ public class Player : Component
 	[Sync] public bool IsCrouching { get; set; }
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
-	private int MoneyAmount = 100;
+	private int Money = 0;
 
 
 	protected override void OnEnabled()
@@ -262,16 +262,16 @@ public class Player : Component
 
 	public void AddMoney(int amount)
 	{
-		MoneyAmount += amount;
+		Money += amount;
 	}
 
 	public void RemoveMoney(int amount)
 	{
-		MoneyAmount -= amount;
+		Money -= amount;
 	}
 
 	public int GetMoney()
 	{
-		return MoneyAmount;
+		return Money;
 	}
 }

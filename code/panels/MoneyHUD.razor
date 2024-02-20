@@ -4,22 +4,25 @@
 @inherits PanelComponent
 
 <root>
-	<div class="title">@moneyAmount</div>
+	<div class="title">
+		@("$ " + Money.ToString("N0").Replace(",", " "))
+	</div>
+	<img class="image" src="/textures/ui/money_hud/gold.png" alt="money" />
 </root>
 
 @code
 {
 
-	private int moneyAmount = 0;
+	private int Money = 0;
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( moneyAmount );
+	protected override int BuildHash() => System.HashCode.Combine( Money );
 
 	// OnUpdate is called every frame
 	protected override void OnUpdate()
 	{
-		moneyAmount = CandyFactory.LocalPlayer.GetMoney();
+		Money = CandyFactory.LocalPlayer.GetMoney();
 	}
 }

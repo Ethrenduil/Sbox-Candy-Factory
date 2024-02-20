@@ -178,6 +178,7 @@
       "Id": "3ca33199-640b-4c30-8bc0-30a21fa9dd5b",
       "Name": "Screen",
       "Position": "215.3588,5236.183,4579.171",
+      "Enabled": true,
       "Components": [
         {
           "__type": "ScreenPanel",
@@ -215,6 +216,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-20T08:51:10.8289376\u002B01:00",
+  "LastSaved": "2024-02-20T13:09:04.4153208\u002B01:00",
   "__references": []
 }
