@@ -3,6 +3,7 @@ using Sandbox.Citizen;
 using System;
 using System.Drawing;
 using System.Runtime;
+using Eryziac.CandyFactory;
 
 [Category("Player")]
 public class Player : Component
@@ -38,6 +39,16 @@ public class Player : Component
 			EyeAngles = ee;
 			Camera = cam;
 		}
+	}
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		if (IsProxy)
+			return;
+
+		Scene.GetAllComponents<CandyFactory>().FirstOrDefault().InitiatePlayer(this);
 	}
 
 	protected override void OnUpdate()

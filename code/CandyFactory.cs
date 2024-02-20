@@ -54,7 +54,7 @@ public class CandyFactory : Component, Component.INetworkListener
 		return -1;
 	}
 
-	private void InitiatePlayer( Player player )
+	public void InitiatePlayer( Player player )
 	{
 		LocalPlayer = player;
 		player.AddMoney(StartingMoney);
@@ -78,10 +78,6 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );
-		if ( !player.IsProxy )
-		{
-			InitiatePlayer( playerComponent );
-		}
 	}
 
 	public void RefreshTaskHUD()
