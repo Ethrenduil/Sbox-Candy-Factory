@@ -16,6 +16,7 @@ public class Player : Component
 	[Property] public TagSet CameraIgnoreTags { get; set; }
 	[Sync] public Angles EyeAngles { get; set; }
 	[Sync] public bool IsRunning { get; set; }
+	[Sync] public bool IsCrouching { get; set; }
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
 	private int MoneyAmount = 0;
@@ -43,6 +44,8 @@ public class Player : Component
 		UpdateEyeInput();
 		UpdateCameraPosition();
 		UpdateBodyRotation();
+		UpdateCrouch();
+		IsRunning = Input.Down("Run");
 		UpdateAnimation();
 	}
 
@@ -150,6 +153,7 @@ public class Player : Component
 			AnimationHelper.IsGrounded = cc.IsOnGround;
 			AnimationHelper.FootShuffle = rotateDifference;
 			AnimationHelper.WithLook(EyeAngles.Forward, 1, 1, 1.0f);
+			AnimationHelper.DuckLevel = IsCrouching ? 1.0f : 0.0f;
 
 			if (IsRunning)
 			{
@@ -178,7 +182,7 @@ public class Player : Component
 		if (!WishVelocity.IsNearZeroLength)
 			WishVelocity = WishVelocity.Normal;
 
-		if (Input.Down("Run")){
+		if (IsRunning){
 			WishVelocity *= 320.0f;
 			IsRunning = true;
 		}
@@ -208,6 +212,24 @@ public class Player : Component
 
 		fJumps += 1.0f;
 	}
+
+	private void UpdateCrouch()
+    {
+		var cc = GameObject.Components.Get<CharacterController>();
+        if(cc is null) return;
+
+        if(Input.Pressed("Crouch") && !IsCrouching)
+        {
+            IsCrouching = true;
+            cc.Height /= 2f;
+        }
+
+        if(Input.Released("Crouch") && IsCrouching)
+        {
+            IsCrouching = false;
+            cc.Height *= 2f;
+        }
+    }
 
 	private void ApplyGroundMovement(CharacterController cc)
 	{
