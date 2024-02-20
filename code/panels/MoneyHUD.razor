@@ -1,0 +1,25 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Eryziac.CandyFactory;
+@inherits PanelComponent
+
+<root>
+	<div class="title">@moneyAmount</div>
+</root>
+
+@code
+{
+
+	private int moneyAmount = 0;
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( moneyAmount );
+
+	// OnUpdate is called every frame
+	protected override void OnUpdate()
+	{
+		moneyAmount = CandyFactory.LocalPlayer.GetMoney();
+	}
+}

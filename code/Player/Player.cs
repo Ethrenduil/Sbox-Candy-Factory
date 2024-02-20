@@ -18,6 +18,8 @@ public class Player : Component
 	[Sync] public bool IsRunning { get; set; }
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
+	private int MoneyAmount = 0;
+
 
 	protected override void OnEnabled()
 	{
@@ -231,5 +233,20 @@ public class Player : Component
 		{
 			cc.Velocity = cc.Velocity.WithZ(0);
 		}
+	}
+
+	public void AddMoney(int amount)
+	{
+		MoneyAmount += amount;
+	}
+
+	public void RemoveMoney(int amount)
+	{
+		MoneyAmount -= amount;
+	}
+
+	public int GetMoney()
+	{
+		return MoneyAmount;
 	}
 }

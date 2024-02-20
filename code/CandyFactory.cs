@@ -19,7 +19,7 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	[Property] public GameObject SpawnPoint { get; set; }
 	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
-
+	public static Player LocalPlayer { get; private set; }
 	public static void AddPlayer( int slot, Player player )
 	{
 		player.PlayerSlot = slot;
@@ -71,5 +71,9 @@ public class CandyFactory : Component, Component.INetworkListener
 		
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );
+		if ( !player.IsProxy )
+		{
+			LocalPlayer = playerComponent;
+		}
 	}
 }
