@@ -1,0 +1,140 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+@using Sandbox.Network;
+@using Sandbox.Diagnostics;
+@using System;
+@using System.Collections.Generic;
+@using System.Diagnostics
+@using System.Linq;
+@using Sandbox.Services
+@inherits PanelComponent;
+@implements Component.INetworkListener;
+
+@attribute [StyleSheet]
+
+<root>
+	<img src="textures\ui\menu\menuBackground.jpg" class="background" alt=""/>
+	<div class="content">
+		<img src="textures\ui\menu\logo.png" class="logo" alt=""/>
+		@if ( _isContentVisible ) {
+			<a class="btn create">
+				<h1 class="btn-txt" onclick="@CreateRoom">Create a Room</h1>
+			</a>
+			<a class="btn join">
+				<h1 class="btn-txt" onclick="@DisplayJoinRoom">Join a Room</h1>
+			</a>
+			<a class="btn settings">
+				<h1 class="btn-txt" onclick="@DisplaySettings">Settings</h1>
+			</a>
+			<a class="btn quit">
+				<h1 class="btn-txt" onclick="@QuitGame">Quit</h1>
+			</a>
+		} else if ( _isJoinRoomVisible ) {
+			<div class="display-list lobby-list">
+				<div class="header">
+					<div class="title">Server List</div>
+				</div>
+				@if (refreshing) {
+					<div class="status-info">Refreshing..</div>
+				} else if (list.Count == 0) {
+					<div class="status-info">No lobbies were found</div>
+				} else {
+					@foreach (var lobby in list) {
+						<div class="button" onclick=@(() => OpenLobby( lobby ) )>
+							<div class="title">
+								@lobby.Name
+							</div>
+							<div class="meta">
+								<div class="map">
+									@lobby.Map
+								</div>
+								<div class="count">
+									@lobby.Members / 4
+								</div>
+							</div>
+						</div>
+					}
+				}
+			</div>
+			<a class="btn refresh-join">
+				<h1 class="btn-txt refresh" onclick="@RefreshLobbyList">Refresh</h1>
+			</a>
+			<a class="btn back">
+				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
+			</a>
+		} else if ( _isSettingsVisible ) {
+			<div class="display-list settings">
+				<div class="header">
+					<div class="title">Settings</div>
+				</div>
+				<div class="button">
+					<div class="title">
+						Resolution
+					</div>
+					<div class="meta">
+						<div class="resolution">
+							1920x1080
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="btn back">
+				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
+			</a>
+		}
+	</div>
+</root>
+
+@code {
+	private bool _isContentVisible = true;
+	private bool _isJoinRoomVisible = false;
+	private bool _isSettingsVisible = false;
+	bool refreshing;
+	List<LobbyInformation> list = new();
+
+	void DisplayContent()
+	{
+		_isContentVisible = true;
+		_isJoinRoomVisible = false;
+	}
+
+	void DisplayJoinRoom()
+	{
+		_isContentVisible = false;
+		_isJoinRoomVisible = true;
+	}
+
+	void DisplaySettings()
+	{
+		_isContentVisible = false;
+		_isJoinRoomVisible = false;
+		_isSettingsVisible = true;
+	}
+
+	void CreateRoom()
+	{
+		GameManager.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
+	}
+
+	async void RefreshLobbyList()
+	{
+		StateHasChanged();
+		refreshing = true;
+		list = await Networking.QueryLobbies();
+		refreshing = false;
+		StateHasChanged();
+	}
+	
+	void OpenLobby(LobbyInformation lobby)
+	{
+		if (lobby.Members >= 4) return;
+		GameNetworkSystem.Connect(lobby.LobbyId);
+		GameManager.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
+	}
+
+	void QuitGame()
+	{
+		Game.Close();
+	}
+}
