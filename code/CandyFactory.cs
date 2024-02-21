@@ -34,10 +34,6 @@ public class CandyFactory : Component, Component.INetworkListener
 	
 	protected override void OnStart()
 	{
-		if ( !GameNetworkSystem.IsActive )
-		{
-			GameNetworkSystem.CreateLobby();
-		}
 
 		base.OnStart();
 	}

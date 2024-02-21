@@ -115,6 +115,7 @@
 	void CreateRoom()
 	{
 		GameManager.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
+		GameNetworkSystem.CreateLobby();
 	}
 
 	async void RefreshLobbyList()

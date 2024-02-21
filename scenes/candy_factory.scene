@@ -147,7 +147,6 @@
     {
       "Id": "120e5267-334f-4af0-a4ca-08655c252616",
       "Name": "CandyFactory",
-      "Networked": true,
       "Enabled": true,
       "Components": [
         {
@@ -239,6 +238,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-21T00:36:30.2221923\u002B01:00",
+  "LastSaved": "2024-02-21T18:48:51.8982143\u002B01:00",
   "__references": []
 }
