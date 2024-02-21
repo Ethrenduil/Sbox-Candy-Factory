@@ -4,26 +4,26 @@
 @inherits PanelComponent
 
 <root>
-	@if(CandyFactory.LocalPlayer?.CurrentTask != null)
+	@if(LocalPlayer.CurrentTask != null)
     {
         <div class="header">
-            <div class="title">@CandyFactory.LocalPlayer?.CurrentTask.Name :</div>
-            <div class="description">@CandyFactory.LocalPlayer?.CurrentTask?.Description</div>
+            <div class="title">@LocalPlayer.CurrentTask.Name :</div>
+            <div class="description">@LocalPlayer.CurrentTask?.Description</div>
         </div>
         <div class="progress">
-            @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed != null)
+            @if(LocalPlayer.CurrentTask?.Needed != null)
             {
-                @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed?.Money > 0)
+                @if(LocalPlayer.CurrentTask?.Needed?.Money > 0)
                 {
-                    <span class="category">Earned:  @("$ " + CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CurrentMoney.ToString("N0").Replace(",", " ")) / @("$ " + CandyFactory.LocalPlayer?.CurrentTask.Needed.Money.ToString("N0").Replace(",", " "))</span>
+                    <span class="category">Earned:  @("$ " + LocalPlayer.CurrentTask?.Needed?.CurrentMoney.ToString("N0").Replace(",", " ")) / @("$ " + LocalPlayer.CurrentTask.Needed.Money.ToString("N0").Replace(",", " "))</span>
                 }
-                @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandyCreated != null)
+                @if(LocalPlayer.CurrentTask?.Needed?.CandyCreated != null)
                 {
-                    <span class="category">@CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandyCreated?.Name : @CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandyCreated?.Quantity</span>
+                    <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Name : @LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Quantity</span>
                 }
-                @if(CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold != null)
+                @if(LocalPlayer.CurrentTask?.Needed?.CandySold != null)
                 {
-                    <span class="category">@CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold?.Name : @CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold?.Current / @CandyFactory.LocalPlayer?.CurrentTask?.Needed?.CandySold?.Quantity</span>
+                    <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandySold?.Name : @LocalPlayer.CurrentTask?.Needed?.CandySold?.Current / @LocalPlayer.CurrentTask?.Needed?.CandySold?.Quantity</span>
                 }
             }
         </div>
@@ -31,6 +31,12 @@
 </root>
 
 @code
-{	
+{
+	public Player LocalPlayer;
+
+	protected override void OnStart()
+	{
+		LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+	}
 
 }

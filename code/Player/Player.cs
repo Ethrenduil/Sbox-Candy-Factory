@@ -20,7 +20,7 @@ public class Player : Component
 	[Sync] public bool IsCrouching { get; set; }
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
-	[Sync] private int Money { get; set; }
+	[Sync] private int Money { get; set; } = 0;
 	public PlayerTask CurrentTask { get; set; }
 
 
@@ -48,7 +48,7 @@ public class Player : Component
 		if (IsProxy)
 			return;
 
-		Scene.GetAllComponents<CandyFactory>().FirstOrDefault().InitiatePlayer(this);
+		SetupPlayer();
 	}
 
 	protected override void OnUpdate()
@@ -275,15 +275,31 @@ public class Player : Component
 	public void AddMoney(int amount)
 	{
 		Money += amount;
+		Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshMoneyHUD();
 	}
 
 	public void RemoveMoney(int amount)
 	{
 		Money -= amount;
+		Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshMoneyHUD();
 	}
 
 	public int GetMoney()
 	{
 		return Money;
 	}
+
+	public void SetupPlayer()
+    {
+        CurrentTask = Scene.GetAllComponents<PlayerTask>().FirstOrDefault();
+        var candyFactory = Scene.GetAllComponents<CandyFactory>().FirstOrDefault();
+
+        if (candyFactory is not null)
+        {
+            AddMoney(candyFactory.StartingMoney);
+        } else
+        {
+            Log.Error("CandyFactory component not found");
+        }
+    }
 }

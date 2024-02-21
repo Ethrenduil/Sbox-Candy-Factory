@@ -5,12 +5,18 @@
 
 <root>
 	<div class="title">
-		@("$ " + CandyFactory.LocalPlayer.GetMoney().ToString("N0").Replace(",", " "))
+		@("$ " + LocalPlayer.GetMoney().ToString("N0").Replace(",", " "))
 	</div>
 	<img class="image" src="/textures/ui/money_hud/gold.png" alt="money" />
 </root>
 
 @code
 {
+	public Player LocalPlayer;
+
+	protected override void OnStart()
+	{
+		LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+	}
 
 }

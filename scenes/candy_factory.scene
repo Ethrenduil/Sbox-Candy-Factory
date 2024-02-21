@@ -213,6 +213,34 @@
           ]
         }
       ]
+    },
+    {
+      "Id": "65770da1-ee3c-4cf7-906c-fb3b001e7a43",
+      "Name": "Change Task",
+      "Position": "165.1333,-866.5705,55.6918",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ChangeVar"
+        },
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -238,6 +266,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-21T18:48:51.8982143\u002B01:00",
+  "LastSaved": "2024-02-21T19:13:37.5051257\u002B01:00",
   "__references": []
 }

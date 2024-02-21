@@ -19,7 +19,6 @@ public class CandyFactory : Component, Component.INetworkListener
 	[Property] public GameObject SpawnPoint { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
-	public static Player LocalPlayer { get; private set; }
 	public static void AddPlayer( int slot, Player player )
 	{
 		player.PlayerSlot = slot;
@@ -48,13 +47,6 @@ public class CandyFactory : Component, Component.INetworkListener
 		}
 
 		return -1;
-	}
-
-	public void InitiatePlayer( Player player )
-	{
-		LocalPlayer = player;
-		player.AddMoney(StartingMoney);
-		player.CurrentTask = Scene.GetAllComponents<PlayerTask>().FirstOrDefault();
 	}
 
 	void INetworkListener.OnActive( Connection connection )
