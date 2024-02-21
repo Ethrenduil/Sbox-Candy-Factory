@@ -4,7 +4,7 @@
 @inherits PanelComponent
 
 <root>
-	@if(LocalPlayer.CurrentTask != null)
+	@if(LocalPlayer != null && LocalPlayer.CurrentTask != null)
     {
         <div class="header">
             <div class="title">@LocalPlayer.CurrentTask.Name :</div>
@@ -37,6 +37,15 @@
 	protected override void OnStart()
 	{
 		LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+	}
+
+	protected override void OnUpdate()
+	{
+		if (LocalPlayer == null)
+		{
+			LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+			StateHasChanged();
+		}
 	}
 
 }
