@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using Sandbox;
 using Sandbox.Diagnostics;
 using Sandbox.Network;
+using Sandbox.Utility;
 
 namespace Eryziac.CandyFactory;
 
@@ -10,16 +12,17 @@ namespace Eryziac.CandyFactory;
 [Category( "Candy Factory" )]
 public class CandyFactory : Component, Component.INetworkListener
 {
-	public static IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
-	private static List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
+	public  IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
+	private List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
 	
 	public static CandyFactory Instance { get; private set; }
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
 	[Property] public GameObject SpawnPoint { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
-	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
-	public static void AddPlayer( int slot, Player player )
+	public Player GetPlayer( int slot ) => InternalPlayers[slot];
+	public List<Player> GetPlayers() => InternalPlayers;
+	public void AddPlayer( int slot, Player player )
 	{
 		player.PlayerSlot = slot;
 		InternalPlayers[slot] = player;
@@ -61,8 +64,12 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		var playerComponent = player.Components.Get<Player>();
 
+		
 		var nameTagPanel = player.Components.Get<NameTagPanel>( FindMode.EverythingInSelfAndDescendants);
 		nameTagPanel.Name = connection.DisplayName;
+
+		playerComponent.Connection = connection;
+		Log.Info( $"Player {connection.DisplayName} joined, slot {playerSlot}" );
 
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );

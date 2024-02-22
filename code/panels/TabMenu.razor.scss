@@ -1,0 +1,53 @@
+TabMenu {
+    .tabMenu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.733);
+
+        .player-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: auto; // Adjust as necessary
+            scale: 1.3;
+
+            .player-background {
+                width: 100%;
+                height: auto;
+            }
+
+            .player-info {
+                position: absolute;
+                color: rgb(0, 0, 0);
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .player-name {
+                font-size: 40%;
+                font-weight: bold;
+                top: 25%;
+            }
+
+            .player-money {
+                font-size: 30%;
+                top: 50%;
+            }
+
+            .player-ping {
+                font-size: 30%;
+                font-weight: bold;
+                top: 70%;
+            }
+        }
+    }
+    
+    &.hide {
+        opacity: 0;
+    }
+}

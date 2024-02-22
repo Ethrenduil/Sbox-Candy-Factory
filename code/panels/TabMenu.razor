@@ -1,0 +1,85 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Eryziac.CandyFactory;
+@inherits PanelComponent
+
+<root>
+    @if (IsVisible)
+    {
+        <div class="tabMenu">
+            @for (int i = 0; i < playerCount; i++)
+            {
+                <div class="player-container">
+                    <img class="player-background" src="textures/ui/scoreboard/player_@(i + 1).png" />
+                    <div class="player-info player-name">
+                        <p>@players[i].Connection.DisplayName</p>
+                    </div>
+                    <div class="player-info player-money">
+                        <p>💸 @players[i].Money</p>
+                    </div>
+                    <div class="player-info player-ping">
+                        <p>🛜 @players[i].Connection.Ping</p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</root>
+
+@code
+{
+
+    public bool IsVisible { get; set; }
+
+    public CandyFactory candyFactory { get; set; }
+    private List<Player> players;
+    private int playerCount;
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+        IsVisible = false;
+        candyFactory = Scene.GetAllComponents<CandyFactory>().FirstOrDefault();
+        players = candyFactory.GetPlayers();
+
+        StateHasChanged();
+    }
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        UpdateVisibility();
+        UpdatePlayerCount();
+    }
+
+    void UpdateVisibility()
+    {
+        if (Input.Down("Score"))
+        {
+            IsVisible = true;
+            StateHasChanged();
+        } else if (Input.Released("Score"))
+        {
+            IsVisible = false;
+            StateHasChanged();
+        }
+    }
+    
+    void UpdatePlayerCount()
+    {
+        var prev = playerCount;
+        playerCount = 0;
+        foreach (var player in players)
+        {
+            if (player != null)
+            {
+                playerCount++;
+            }
+        }
+        
+        if (prev != playerCount)
+        {
+            StateHasChanged();
+        }
+    }
+}
