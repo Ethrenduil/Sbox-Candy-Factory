@@ -5,6 +5,7 @@ using Sandbox;
 using Sandbox.Diagnostics;
 using Sandbox.Network;
 using Sandbox.Utility;
+using Sandbox.Services;
 
 namespace Eryziac.CandyFactory;
 
@@ -12,20 +13,25 @@ namespace Eryziac.CandyFactory;
 [Category( "Candy Factory" )]
 public class CandyFactory : Component, Component.INetworkListener
 {
-	public  IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
-	private List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
+	public  static IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
+	private static List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
 	
 	public static CandyFactory Instance { get; private set; }
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
 	[Property] public GameObject SpawnPoint { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
-	public Player GetPlayer( int slot ) => InternalPlayers[slot];
-	public List<Player> GetPlayers() => InternalPlayers;
-	public void AddPlayer( int slot, Player player )
+	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
+	public static List<Player> GetPlayers() => InternalPlayers;
+	public static void AddPlayer( int slot, Player player )
 	{
 		player.PlayerSlot = slot;
 		InternalPlayers[slot] = player;
+	}
+
+	public static void RemovePlayer( int slot )
+	{
+		InternalPlayers[slot] = null;
 	}
 
 	protected override void OnAwake()
@@ -73,6 +79,15 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );
+	}
+
+	void INetworkListener.OnDisconnected(Sandbox.Connection conn)
+	{
+		var player = Players.FirstOrDefault( p => p.Connection == conn );
+		if ( player is not null )
+		{
+			RemovePlayer( player.PlayerSlot );
+		}
 	}
 
 	public void RefreshTaskHUD()

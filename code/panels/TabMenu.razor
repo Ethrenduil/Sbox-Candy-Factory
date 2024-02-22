@@ -15,7 +15,7 @@
                         <p>@players[i].Connection.DisplayName</p>
                     </div>
                     <div class="player-info player-money">
-                        <p>💸 @players[i].Money</p>
+                        <p>💸 @players[i].GetMoney()</p>
                     </div>
                     <div class="player-info player-ping">
                         <p>🛜 @players[i].Connection.Ping</p>
@@ -39,8 +39,7 @@
     {
         base.OnStart();
         IsVisible = false;
-        candyFactory = Scene.GetAllComponents<CandyFactory>().FirstOrDefault();
-        players = candyFactory.GetPlayers();
+        players = CandyFactory.GetPlayers();
 
         StateHasChanged();
     }
