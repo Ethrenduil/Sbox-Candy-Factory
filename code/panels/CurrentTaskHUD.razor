@@ -19,7 +19,7 @@
                 }
                 @if(LocalPlayer.CurrentTask?.Needed?.CandyCreated != null)
                 {
-                    <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Name : @LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Quantity</span>
+                    <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Name : @LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Current / @LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Quantity</span>
                 }
                 @if(LocalPlayer.CurrentTask?.Needed?.CandySold != null)
                 {
