@@ -23,6 +23,7 @@ public class Player : Component
 	[Sync] private int Money { get; set; } = 0;
 	public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
+	[Sync] public string Name { get; set; }
 
 
 	protected override void OnEnabled()

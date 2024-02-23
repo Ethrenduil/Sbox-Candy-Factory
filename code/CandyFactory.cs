@@ -13,8 +13,8 @@ namespace Eryziac.CandyFactory;
 [Category( "Candy Factory" )]
 public class CandyFactory : Component, Component.INetworkListener
 {
-	public  static IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
-	private static List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
+	[Sync] public static IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
+	[Sync] private static List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
 	
 	public static CandyFactory Instance { get; private set; }
 	
@@ -74,7 +74,7 @@ public class CandyFactory : Component, Component.INetworkListener
 		var nameTagPanel = player.Components.Get<NameTagPanel>( FindMode.EverythingInSelfAndDescendants);
 		nameTagPanel.Name = connection.DisplayName;
 
-		playerComponent.Connection = connection;
+		playerComponent.Name = connection.DisplayName;
 		Log.Info( $"Player {connection.DisplayName} joined, slot {playerSlot}" );
 
 		AddPlayer( playerSlot, playerComponent );
