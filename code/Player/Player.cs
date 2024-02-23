@@ -59,7 +59,7 @@ public class Player : Component
 		UpdateCameraPosition();
 		UpdateBodyRotation();
 		UpdateCrouch();
-		UpdateAnimation();
+		UpdateAnimation();	
 	}
 
 	protected override void OnFixedUpdate()
