@@ -35,27 +35,29 @@
 				<div class="header">
 					<div class="title">Server List</div>
 				</div>
-				@if (refreshing) {
-					<div class="status-info">Refreshing..</div>
-				} else if (list.Count == 0) {
-					<div class="status-info">No lobbies were found</div>
-				} else {
-					@foreach (var lobby in list) {
-						<div class="button" onclick=@(() => OpenLobby( lobby ) )>
-							<div class="title">
-								@lobby.Name
-							</div>
-							<div class="meta">
-								<div class="map">
-									@lobby.Map
+				<div class="content-list">
+					@if (refreshing) {
+						<div class="status-info">Refreshing..</div>
+					} else if (list.Count == 0) {
+						<div class="status-info">No lobbies were found</div>
+					} else {
+						@foreach (var lobby in list) {
+							<div class="btn-lobby" onclick=@(() => OpenLobby( lobby ) )>
+								<div class="title">
+									<p>@lobby.Name</p>
 								</div>
-								<div class="count">
-									@lobby.Members / 4
+								<div class="meta">
+									<div class="map">
+										<p>@lobby.Map</p>
+									</div>
+									<div class="count">
+										<p>@lobby.Members/4</p>
+									</div>
 								</div>
 							</div>
-						</div>
+						}
 					}
-				}
+				</div>
 			</div>
 			<a class="btn refresh-join">
 				<h1 class="btn-txt refresh" onclick="@RefreshLobbyList">Refresh</h1>

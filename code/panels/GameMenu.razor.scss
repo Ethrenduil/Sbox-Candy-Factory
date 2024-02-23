@@ -1,109 +1,119 @@
 ﻿GameMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+
+  .background {
     position: absolute;
-    top: 0;
-    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     pointer-events: all;
-  
-    .background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-  
-    .content {
-      position: absolute;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      pointer-events: all;
-    }
-  
-    .logo {
-      position: absolute;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 1200px;
-      height: 425px;
-      z-index: 1;
-    }
-  
-    .btn {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      height: 100px;
-      background-color: white;
-      border-radius: 32px;
-      z-index: 1;
+  }
 
-      &:hover {
-        cursor: pointer;
-        // background-color: rgb(237, 190, 241);
-        width: 410px;
-        height: 110px;
-      }
-      
-      &.create {
-        top: 50%;
-        left: 50%;
-      }
-      
-      &.join {
-        top: 60%;
-        left: 50%;
-      }
-      
-      &.settings {
-        top: 70%;
-        left: 50%;
-      }
-      
-      &.quit {
-        top: 80%;
-        left: 50%;
-      }
-      
-      &.back {
-        top: 6%;
-        left: 8%;
-        width: 250px;
-        height: 75px;
-      }
-      
-      &.refresh-join {
-        width: 200px;
-        height: 50px;
-        top: 51.5%;
-        right: 26%;
-      }
+  .logo {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 425px;
+    z-index: 1;
+  }
+
+  .btn {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 100px;
+    background-color: white;
+    border-radius: 32px;
+    z-index: 1;
+
+    &:hover {
+      cursor: pointer;
+      // background-color: rgb(237, 190, 241);
+      width: 410px;
+      height: 110px;
     }
-  
-    .btn-txt {
-      position: absolute;
+    
+    &.create {
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 50px;
-      font-weight: bold;
-      color: #f13edc;
-      z-index: 1;
-
-
-      &:hover {
-        cursor: pointer;
-        color: rgb(108, 4, 84);
-        font-size: 55px;
-      }
-      
-      &.refresh {
-        font-size: 40px;
-      }
     }
+    
+    &.join {
+      top: 60%;
+      left: 50%;
+    }
+    
+    &.settings {
+      top: 70%;
+      left: 50%;
+    }
+    
+    &.quit {
+      top: 80%;
+      left: 50%;
+    }
+    
+    &.back {
+      top: 6%;
+      left: 8%;
+      width: 250px;
+      height: 75px;
+    }
+    
+    &.refresh-join {
+      width: 200px;
+      height: 50px;
+      top: 51.5%;
+      right: 26%;
+    }
+  }
+
+  .btn-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #f13edc;
+    z-index: 1;
+
+
+    &:hover {
+      cursor: pointer;
+      color: rgb(108, 4, 84);
+      font-size: 55px;
+    }
+    
+    &.refresh {
+      font-size: 40px;
+    }
+  }
+
+  // .btn-lobby {
+  //   position: absolute;
+  //   top: 16%;
+  //   // flex-direction: column;
+  //   // justify-content: center;
+  //   // align-items: center;
+  //   // width: 100%;
+  //   // height: 100%;
+  // }
 
   .sub-txt {
     position: absolute;
@@ -145,22 +155,81 @@
     }
   }
 
-  .display-list{
+  // .display-list{
+  //   position: absolute;
+  //   top: 48%;
+  //   background-color: #000000dd;
+  //   width:  40%;
+  //   height: 45%;
+  //   flex-direction: column;
+  //   justify-content: flex-start;
+  //   align-items: center;
+  //   overflow: scroll;
+  //   gap: 5px;
+  //   padding: 10px;
+  //   border-radius: 32px;
+  // }
+
+  .display-list {
     position: absolute;
-    top: 70%;
-    left: 40%;
-    transform: translate(-25%, -50%);
+    top: 48%;
     background-color: #000000dd;
     width:  40%;
     height: 45%;
+    display: flex; // Ensure flex display is set
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow: scroll;
-    gap: 5px;
+    // overflow: scroll;
     padding: 10px;
     border-radius: 32px;
+
+    .content-list {
+      padding-top: 5%;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: scroll;
+      width: 70%;
+    }
+
+    .btn-lobby {
+      width: 60%; // Set a fixed or maximum width if necessary
+      max-width: max-content; // Set a fixed or maximum width if necessary
+      padding: 10px; // This padding will reduce the height of the btn-lobby for the content
+      display: flex;
+      align-items: center; // This centers items vertically inside the flex container
+      justify-content: center; // This centers items horizontally inside the flex container
+      background-color: #ffffff;
+      border-radius: 8px;
+      margin-bottom: 10px; // Adds space between the buttons
+      gap: 10px; // Adds space between the text and the
+  
+      &:hover {
+        background-color: #f591ea;
+        color: #fff;
+        cursor: pointer;
+
+        p {
+          color: #fff;
+        }
+      }
+  
+      .meta {
+        gap: 10px;
+      }
+    
+      p {
+        margin: 0; // Keeps p tag text snug in the container
+        font-size: 20%; // Adjust as necessary for readability
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #f13edc;
+      }
+    }
   }
+  
+  
 
   .header {
     // margin-bottom: 10px;
