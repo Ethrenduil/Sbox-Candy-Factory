@@ -171,12 +171,6 @@
       "Enabled": true
     },
     {
-      "Id": "9512412c-0636-4a24-9f64-b1ead0b970eb",
-      "Name": "Map",
-      "Enabled": true,
-      "__Prefab": "prefabs/map.prefab"
-    },
-    {
       "Id": "5eceedf8-3ef3-4eea-84b0-2a3c8bd77dd8",
       "Name": "HUD",
       "Enabled": true,
@@ -259,6 +253,22 @@
           "Surface": null
         }
       ]
+    },
+    {
+      "Id": "d46a50a1-5520-43aa-82b1-c4744a8663f7",
+      "Name": "Map",
+      "Position": "-107.5587,-2582.691,80.90315",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "MapInstance",
+          "MapName": "maps/candy_factory.vmap",
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {
@@ -284,6 +294,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-21T23:45:38.627553-05:00",
+  "LastSaved": "2024-02-23T01:49:15.5098301\u002B01:00",
   "__references": []
 }

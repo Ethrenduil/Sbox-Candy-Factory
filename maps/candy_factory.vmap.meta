@@ -1,0 +1,31 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "candy_factory",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "candy_factory",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.floor_grass_dirt_cliff_blend_a#18754",
+        "gandesign.zuk#33505",
+        "mapperskai.road1#10774",
+        "facepunch.pavement_tile_01#28798",
+        "rustextended.road_a#43362"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/candy_factory.vmap"
+      }
+    }
+  }
+}
