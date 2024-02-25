@@ -21,7 +21,16 @@
         "gandesign.zuk#33505",
         "mapperskai.road1#10774",
         "facepunch.pavement_tile_01#28798",
-        "rustextended.road_a#43362"
+        "rustextended.road_a#43362",
+        "facepunch.floor_pavement_tile_a#18670",
+        "facepunch.floor_gravel_asphalt#18653",
+        "facepunch.tree_oak_big_a#38050",
+        "facepunch.bench_table_01#43440",
+        "facepunch.mountainbike#41787",
+        "facepunch.beech_hedge_96x128#29094",
+        "facepunch.rock_scatter_pile_03#47203",
+        "facepunch.beech_bush_large#29079",
+        "facepunch.tallgrass_b#29066"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/candy_factory.vmap"
