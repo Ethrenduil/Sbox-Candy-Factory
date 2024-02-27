@@ -6,7 +6,6 @@
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
-      "Enabled": true,
       "Components": [
         {
           "__type": "DirectionalLight",
@@ -304,6 +303,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-22T20:20:06.0605032-05:00",
+  "LastSaved": "2024-02-26T23:01:43.7799486\u002B01:00",
   "__references": []
 }
