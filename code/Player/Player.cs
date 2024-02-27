@@ -24,6 +24,8 @@ public class Player : Component
 	public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
 	[Sync] public string Name { get; set; }
+	private bool IsLoading { get; set; }
+	private bool IsSaving { get; set; }
 
 
 	protected override void OnEnabled()
@@ -77,6 +79,14 @@ public class Player : Component
 			{
 				AnimationHelper.Sitting = CitizenAnimationHelper.SittingStyle.None;
 			}
+		}
+
+		if (Input.Pressed("Slot1"))
+		{
+			Save();
+		} else if (Input.Pressed("Slot2"))
+		{
+			Load();
 		}
 
 		if (cc.IsOnGround && Input.Down("Jump"))
@@ -304,4 +314,35 @@ public class Player : Component
             Log.Error("CandyFactory component not found");
         }
     }
+
+	public void Save()
+	{
+		if (IsSaving)
+			return;
+		if (IsLoading)
+			return;
+		IsSaving = true;
+		Log.Info("Saving player");
+		SaveSystem.SavePlayer(this);
+		IsSaving = false;
+	}
+
+	public void Load()
+	{
+		if (IsLoading)
+			return;
+		if (IsSaving)
+			return;
+		IsLoading = true;
+		Log.Info("Loading player");
+		var data = SaveSystem.LoadPlayer();
+		if (data is not null)
+		{
+			Log.Info("Loading player data");
+			Money = data.Money;
+			CurrentTask = this.Components.GetAll<PlayerTask>().FirstOrDefault(x => x.Name == data.CurrentTask);
+			Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshMoneyHUD();
+		}
+		IsLoading = false;
+	}
 }
