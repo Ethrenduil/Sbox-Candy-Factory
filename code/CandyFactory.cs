@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using Sandbox;
@@ -19,7 +20,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	public static CandyFactory Instance { get; private set; }
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
-	[Property] public GameObject SpawnPoint { get; set; }
+	public static List<GameObject> SpawnPoint { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
 	public static List<Player> GetPlayers() => InternalPlayers;
@@ -42,8 +43,8 @@ public class CandyFactory : Component, Component.INetworkListener
 	
 	protected override void OnStart()
 	{
-
 		base.OnStart();
+		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
 	}
 
 	private int FindFreeSlot()
@@ -60,7 +61,8 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	void INetworkListener.OnActive( Connection connection )
 	{
-		var player = PlayerPrefab.Clone(SpawnPoint.Transform.World);
+		var selectedSpawnPoint = SpawnPoint[ new Random().Int( 0, SpawnPoint.Count ) ];
+		var player = PlayerPrefab.Clone(selectedSpawnPoint.Transform.World);
 		var playerSlot = FindFreeSlot();
 
 		if ( playerSlot < 0 )

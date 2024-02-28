@@ -155,10 +155,6 @@
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
           },
-          "SpawnPoint": {
-            "_type": "gameobject",
-            "go": "a8252eb8-cafe-4e2a-bde9-c72279497e05"
-          },
           "StartingMoney": 100
         }
       ]
@@ -303,6 +299,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-26T23:01:43.7799486\u002B01:00",
+  "LastSaved": "2024-02-28T18:24:45.1703188\u002B01:00",
   "__references": []
 }
