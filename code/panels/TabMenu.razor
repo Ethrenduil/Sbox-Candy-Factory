@@ -1,21 +1,22 @@
-@using Sandbox;
-@using Sandbox.UI;
-@using Eryziac.CandyFactory;
+@using Sandbox
+@using Sandbox.UI
+@using Eryziac.CandyFactory
 @inherits PanelComponent
 
 <root>
     @if (IsVisible)
     {
-        <div class="tabMenu">
+        <div class="TabMenu">
             @for (int i = 0; i < players.Count(); i++)
             {
                 <div class="player-container">
-                    <img class="player-background" src="/textures/ui/scoreboard/player_@(i + 1).png" />
-                    <div class="player-info player-name">
-                        <p>@players[i].Name</p>
-                    </div>
-                    <div class="player-info player-money">
-                        <p>💸 @players[i].GetMoney()</p>
+                    <div class="player-info" style="border-color: @GetBorderColor(i);">
+                        <image class="player-avatar" texture="@GetPlayerAvatar(i)" />
+                        <div class="player-name">@players[i].Name</div>
+                        <div class="money-container">
+                            <div class="player-money">@players[i].GetMoney()</div>
+                            <image class="money-icon" src="/textures/ui/money_hud/gold.png" alt="money" />
+                        </div>
                     </div>
                 </div>
             }
@@ -25,7 +26,6 @@
 
 @code
 {
-
     public bool IsVisible { get; set; }
     private List<Player> players;
 
@@ -35,10 +35,10 @@
         IsVisible = false;
         StateHasChanged();
     }
+
     protected override void OnUpdate()
     {
         base.OnUpdate();
-
         UpdateVisibility();
     }
 
@@ -49,15 +49,27 @@
             IsVisible = true;
             UpdatePlayers();
             StateHasChanged();
-        } else if (Input.Released("Score"))
+        }
+        else if (Input.Released("Score"))
         {
             IsVisible = false;
             StateHasChanged();
         }
     }
-    
+
+    private string GetPlayerAvatar(int i)
+    {
+        return "avatar:" + players[i].SteamId;
+    }
+
     void UpdatePlayers()
     {
         players = Scene.GetAllComponents<Player>().ToList();
+    }
+
+    private string GetBorderColor(int index)
+    {
+        var candyColors = new string[] { "#EF8CFF", "#ADD8E6", "#FFFF00", "#90EE90" };
+        return candyColors[index % candyColors.Length];
     }
 }

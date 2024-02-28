@@ -194,16 +194,15 @@
     }
 
     .btn-lobby {
-      width: 60%; // Set a fixed or maximum width if necessary
-      max-width: max-content; // Set a fixed or maximum width if necessary
-      padding: 10px; // This padding will reduce the height of the btn-lobby for the content
+      width: 60%;
+      padding: 10px;
       display: flex;
-      align-items: center; // This centers items vertically inside the flex container
-      justify-content: center; // This centers items horizontally inside the flex container
+      align-items: center;
+      justify-content: center;
       background-color: #ffffff;
       border-radius: 8px;
-      margin-bottom: 10px; // Adds space between the buttons
-      gap: 10px; // Adds space between the text and the
+      margin-bottom: 10px;
+      gap: 10px;
   
       &:hover {
         background-color: #f591ea;
