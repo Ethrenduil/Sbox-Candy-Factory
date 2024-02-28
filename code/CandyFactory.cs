@@ -61,7 +61,7 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	void INetworkListener.OnActive( Connection connection )
 	{
-		var selectedSpawnPoint = SpawnPoint[ new Random().Int( 0, SpawnPoint.Count ) ];
+		var selectedSpawnPoint = SpawnPoint[ new Random().Int( 0, SpawnPoint.Count - 1 ) ];
 		var player = PlayerPrefab.Clone(selectedSpawnPoint.Transform.World);
 		var playerSlot = FindFreeSlot();
 
