@@ -21,7 +21,7 @@ public class Player : Component
 	[Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
 	[Sync] private int Money { get; set; } = 0;
-	public PlayerTask CurrentTask { get; set; }
+	[Property] public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
 	[Sync] public string Name { get; set; }
 	private bool IsLoading { get; set; }
@@ -81,6 +81,7 @@ public class Player : Component
 			}
 		}
 
+		// Test Save/Load
 		if (Input.Pressed("Slot1"))
 		{
 			Save();
@@ -322,7 +323,6 @@ public class Player : Component
 		if (IsLoading)
 			return;
 		IsSaving = true;
-		Log.Info("Saving player");
 		SaveSystem.SavePlayer(this);
 		IsSaving = false;
 	}
@@ -333,14 +333,17 @@ public class Player : Component
 			return;
 		if (IsSaving)
 			return;
+
 		IsLoading = true;
-		Log.Info("Loading player");
 		var data = SaveSystem.LoadPlayer();
 		if (data is not null)
 		{
-			Log.Info("Loading player data");
 			Money = data.Money;
-			CurrentTask = this.Components.GetAll<PlayerTask>().FirstOrDefault(x => x.Name == data.CurrentTask);
+			var playerTask = this.Components.GetAll<PlayerTask>().FirstOrDefault();
+			if (playerTask is not null)
+			{
+				playerTask.Name = data.CurrentTask;
+			}
 			Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshMoneyHUD();
 		}
 		IsLoading = false;

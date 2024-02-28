@@ -68,6 +68,7 @@ public class CandyFactory : Component, Component.INetworkListener
 			throw new( "Player joined but there's no free slots!" );
 		}
 
+		player.Name = connection.DisplayName;
 		var playerComponent = player.Components.Get<Player>();
 
 		
