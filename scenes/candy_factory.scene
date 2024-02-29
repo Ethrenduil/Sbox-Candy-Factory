@@ -160,12 +160,6 @@
       ]
     },
     {
-      "Id": "a8252eb8-cafe-4e2a-bde9-c72279497e05",
-      "Name": "Spawn",
-      "Position": "-169.4014,-187.3345,99.86883",
-      "Enabled": true
-    },
-    {
       "Id": "5eceedf8-3ef3-4eea-84b0-2a3c8bd77dd8",
       "Name": "HUD",
       "Enabled": true,
@@ -227,6 +221,17 @@
           "Components": [
             {
               "__type": "Chat"
+            }
+          ]
+        },
+        {
+          "Id": "bd723838-4c8e-4f0b-8708-d5ecc74ed505",
+          "Name": "Pause",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "EscapeMenu",
+              "IsPaused": false
             }
           ]
         }
@@ -299,6 +304,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-28T18:24:45.1703188\u002B01:00",
+  "LastSaved": "2024-02-28T15:49:50.2570929-05:00",
   "__references": []
 }

@@ -28,12 +28,14 @@
 
     public bool IsVisible { get; set; }
     private List<Player> players;
+    private EscapeMenu escapeMenu;
 
     protected override void OnStart()
     {
         base.OnStart();
         IsVisible = false;
         StateHasChanged();
+        escapeMenu = Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
     }
     protected override void OnUpdate()
     {
@@ -44,7 +46,7 @@
 
     void UpdateVisibility()
     {
-        if (Input.Down("Score"))
+        if (Input.Down("Score") && !escapeMenu.IsPaused)
         {
             IsVisible = true;
             UpdatePlayers();
@@ -53,6 +55,13 @@
         {
             IsVisible = false;
             StateHasChanged();
+        } else if (escapeMenu.IsPaused)
+        {
+            if (IsVisible)
+            {
+                IsVisible = false;
+                StateHasChanged();
+            }
         }
     }
     

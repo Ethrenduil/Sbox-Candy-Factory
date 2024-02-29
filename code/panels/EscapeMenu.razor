@@ -1,0 +1,65 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@inherits PanelComponent
+
+
+<root>
+    @if (IsPaused)
+    {
+        <div class="pause">
+            <h2>Paused</h2>
+            <div class="options">
+                <div class="btn" @onclick="@Resume">
+                    <p>Resume</p>
+                </div>
+                <div class="btn"@onclick="@Quit">
+                    <p>Quit</p>
+                </div>
+            </div>
+        </div>
+    }
+</root>
+
+@code {
+
+    [Property]
+    public bool IsPaused = false;
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (Input.EscapePressed)
+        {
+            if (IsPaused)
+            {
+                Resume();
+                StateHasChanged();
+            }
+            else
+            {
+                Pause();
+                StateHasChanged();
+            }
+        }
+
+
+    }
+
+    private void Pause()
+    {
+        IsPaused = true;
+    }
+
+    private void Resume()
+    {
+        IsPaused = false;
+    }
+
+    private void Quit()
+    {
+        GameNetworkSystem.Disconnect();
+        GameManager.ActiveScene.LoadFromFile("scenes/menu.scene");
+    }
+}

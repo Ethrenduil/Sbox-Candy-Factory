@@ -1,0 +1,37 @@
+EscapeMenu {
+    .pause {
+        pointer-events: all;
+        background-color: rgba(156, 88, 154, 0.662);
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: Arial, Helvetica, sans-serif;
+
+        h2 {
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .btn {
+            background-color: #934caf;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 40px;
+            margin: 5% 10%;
+            cursor: pointer;
+            border-radius: 12px;
+            width: 17%;
+            justify-content: center;
+
+            &:hover {
+                background-color: #af77bc;
+            }
+        }
+    }
+}
