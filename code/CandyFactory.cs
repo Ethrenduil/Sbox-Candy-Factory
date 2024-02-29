@@ -61,15 +61,14 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	void INetworkListener.OnActive( Connection connection )
 	{
-		var selectedSpawnPoint = SpawnPoint[ new Random().Int( 0, SpawnPoint.Count - 1 ) ];
-		var player = PlayerPrefab.Clone(selectedSpawnPoint.Transform.World);
+		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
 		var playerSlot = FindFreeSlot();
 
 		if ( playerSlot < 0 )
 		{
 			throw new( "Player joined but there's no free slots!" );
 		}
-
+		var player = PlayerPrefab.Clone(SpawnPoint[playerSlot].Transform.World);
 		player.Name = connection.DisplayName;
 		var playerComponent = player.Components.Get<Player>();
 
@@ -86,7 +85,7 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	void INetworkListener.OnDisconnected(Sandbox.Connection conn)
 	{
-		var player = Players.FirstOrDefault( p => p.Connection == conn );
+		var player = Players.FirstOrDefault( p => p.SteamId == conn.SteamId );
 		if ( player is not null )
 		{
 			RemovePlayer( player.PlayerSlot );

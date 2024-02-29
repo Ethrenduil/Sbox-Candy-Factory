@@ -4,30 +4,30 @@
 @inherits PanelComponent
 
 <root>
-	@if (LocalPlayer != null)
-	{
-		<div class="title">
-			@("$ " + LocalPlayer.GetMoney().ToString("N0").Replace(",", " "))
-		</div>
-		<img class="image" src="/textures/ui/money_hud/gold.png" alt="money" />
-	}
+    @if (LocalPlayer != null)
+    {
+        <div class="title">
+            @("$ " + LocalPlayer.GetMoney().ToString("N0").Replace(",", " "))
+        </div>
+        <img class="image" src="/textures/ui/money_hud/gold.png" alt="money" />
+    }
 </root>
 
 @code
 {
-	public Player LocalPlayer;
+    public Player LocalPlayer;
 
-	protected override void OnStart()
-	{
-		LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
-	}
+    protected override void OnStart()
+    {
+        LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+    }
 
-	protected override void OnUpdate()
-	{
-		if (LocalPlayer == null)
-		{
-			LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
-			StateHasChanged();
-		}
-	}
+    protected override void OnUpdate()
+    {
+        if (LocalPlayer == null)
+        {
+            LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+            StateHasChanged();
+        }
+    }
 }

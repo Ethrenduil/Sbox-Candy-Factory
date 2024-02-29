@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.Utility;
 using System;
 using System.Drawing;
 using System.Runtime;
@@ -23,6 +24,7 @@ public class Player : Component
 	[Sync] private int Money { get; set; } = 0;
 	[Property] public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
+	[Sync] public ulong SteamId { get; set; }
 	[Sync] public string Name { get; set; }
 	private bool IsLoading { get; set; }
 	private bool IsSaving { get; set; }
@@ -314,6 +316,7 @@ public class Player : Component
         {
             Log.Error("CandyFactory component not found");
         }
+		SteamId = Steam.SteamId;
     }
 
 	public void Save()

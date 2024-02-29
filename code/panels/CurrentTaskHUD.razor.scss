@@ -1,6 +1,5 @@
-CurrentTaskHUD
-{
-	position: absolute;
+CurrentTaskHUD {
+    position: absolute;
     width: auto;
     height: auto;
     flex-direction: column;
@@ -13,7 +12,7 @@ CurrentTaskHUD
     font-weight: bold;
     border-radius: 20px;
 
-	.header {
+    .header {
         background-color: #EF8CFF;
         flex: 1;
         border-radius: 16px 16px 0 0;
@@ -33,6 +32,7 @@ CurrentTaskHUD
             align-self: center;
         }
     }
+
     .progress {
         width: 100%;
         background-color: #4444448e;
@@ -48,9 +48,7 @@ CurrentTaskHUD
         color: #fff;
 
         .category {
-            
             flex-direction: row;
         }
-
-      }
+    }
 }

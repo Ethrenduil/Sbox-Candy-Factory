@@ -1,52 +1,62 @@
-TabMenu {
-    .tabMenu {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.733);
+.TabMenu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.733);
+}
 
-        .player-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: auto; // Adjust as necessary
+.TabMenu .player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    height: 20%;
+    border-radius: 8px;
+}
 
-            .player-background {
-                width: 100%;
-                height: auto;
-            }
+.TabMenu .player-container .player-info {
+    background-color: #4444448e;
+    border: 2px solid #EF8CFF;
+    border-radius: 16px;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
 
-            .player-info {
-                position: absolute;
-                color: rgb(0, 0, 0);
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-            }
+.TabMenu .player-container .player-name {
+    padding-top: 5%;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-            .player-name {
-                font-size: 40%;
-                font-weight: bold;
-                top: 25%;
-            }
+.TabMenu .player-container .money-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
 
-            .player-money {
-                font-size: 30%;
-                top: 50%;
-            }
+.TabMenu .player-container .player-money {
+    font-size: 24px;
+}
 
-            .player-ping {
-                font-size: 30%;
-                font-weight: bold;
-                top: 70%;
-            }
-        }
-    }
-    
-    &.hide {
-        opacity: 0;
-    }
+.TabMenu .player-container .money-icon {
+    height: 50%;
+    aspect-ratio: 1;
+}
+
+.TabMenu .player-container .player-avatar {
+    width: 60%;
+    aspect-ratio: 1;
+}
+
+.TabMenu.hide {
+    opacity: 0;
 }
