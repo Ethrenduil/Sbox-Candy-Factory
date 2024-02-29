@@ -65,21 +65,28 @@
 			<a class="btn back">
 				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
 			</a>
-		} else if ( _isSettingsVisible ) {
+		} else @if ( _isSettingsVisible ) {
 			<div class="display-list settings">
-				<div class="header">
-					<div class="title">Settings</div>
+			<div class="header">
+				<div class="title">Settings</div>
+			</div>
+			<div class="setting-section">
+				<div class="setting-title">Display</div>
+				<div class="setting-option">
+					<span class="option-title">Resolution</span>
+					<select class="resolution-dropdown">
+						<option value="1920x1080">1920x1080</option>
+						<option value="1280x720">1280x720</option>
+					</select>
 				</div>
-				<div class="button">
-					<div class="title">
-						Resolution
-					</div>
-					<div class="meta">
-						<div class="resolution">
-							1920x1080
-						</div>
-					</div>
+			</div>
+			<div class="setting-section">
+				<div class="setting-title">Audio</div>
+				<div class="setting-option">
+					<span class="option-title">Volume</span>
+					<input type="range" min="0" max="100" class="volume-slider">
 				</div>
+			</div>
 			</div>
 			<a class="btn back">
 				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>

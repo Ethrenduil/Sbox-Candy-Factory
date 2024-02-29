@@ -19,12 +19,12 @@ public class Player : Component
 	[Sync] public Angles EyeAngles { get; set; }
 	[Sync] public bool IsRunning { get; set; }
 	[Sync] public bool IsCrouching { get; set; }
-	[Sync] public int PlayerSlot { get; set; }
+	[Property] [Sync] public int PlayerSlot { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
 	[Sync] private int Money { get; set; } = 0;
 	[Property] public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
-	[Sync] public ulong SteamId { get; set; }
+	[Property] [Sync] public ulong SteamId { get; set; }
 	[Sync] public string Name { get; set; }
 	private bool IsLoading { get; set; }
 	private bool IsSaving { get; set; }
@@ -316,7 +316,6 @@ public class Player : Component
         {
             Log.Error("CandyFactory component not found");
         }
-		SteamId = Steam.SteamId;
     }
 
 	public void Save()

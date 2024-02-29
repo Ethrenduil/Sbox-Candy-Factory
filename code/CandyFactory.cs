@@ -33,6 +33,17 @@ public class CandyFactory : Component, Component.INetworkListener
 	public static void RemovePlayer( int slot )
 	{
 		InternalPlayers[slot] = null;
+		 foreach ( var player in InternalPlayers )
+        {
+            if ( player is null ) continue;
+            if ( player.PlayerSlot > slot )
+            {
+                var newSlot = player.PlayerSlot - 1;
+                InternalPlayers[newSlot] = player;
+                InternalPlayers[player.PlayerSlot] = null;
+                player.PlayerSlot = newSlot;
+            }
+        }
 	}
 
 	protected override void OnAwake()
@@ -77,6 +88,7 @@ public class CandyFactory : Component, Component.INetworkListener
 		nameTagPanel.Name = connection.DisplayName;
 
 		playerComponent.Name = connection.DisplayName;
+		playerComponent.SteamId = connection.SteamId;
 		Log.Info( $"Player {connection.DisplayName} joined, slot {playerSlot}" );
 
 		AddPlayer( playerSlot, playerComponent );
