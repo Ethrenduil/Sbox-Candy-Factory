@@ -1,0 +1,44 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "factory",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "factory",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.wall_brick_blend_new_old#18733",
+        "facepunch.steel_diamond_plate_blend_a#47191",
+        "facepunch.metal_door_01a#43528",
+        "facepunch.doorframe_double_metal_a#33594",
+        "facepunch.ceiling_plaster_blend_01#28978",
+        "facepunch.roof_tile_a#18739",
+        "facepunch.airduct_a_joint_a_32#47207",
+        "facepunch.roof_vent_4#34214",
+        "facepunch.airduct_a_turn_32x16#47231",
+        "facepunch.airduct_a_vent_32x16#47235",
+        "facepunch.lamp_post_electronics#33829",
+        "facepunch.industrial_strip_light#27425",
+        "facepunch.industrial_light_fixture#27424",
+        "facepunch.wooden_chair_a#43573",
+        "facepunch.wooden_desk_01#43580",
+        "facepunch.ash_tray#38266",
+        "facepunch.dolly_02#47581",
+        "facepunch.filing_cabinet_03#45172"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "maps/factory.vmap"
+      }
+    }
+  }
+}

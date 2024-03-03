@@ -108,39 +108,19 @@
     {
       "Id": "61c5b2e5-5bfc-4d9b-b4f6-8ae831d9a2f9",
       "Name": "Bob",
-      "Position": "3846.139,-5843.225,161.0509",
-      "Rotation": "0.004982331,0.005008121,0.1569597,-0.9875797",
+      "Position": "4596.774,1203.214,49.9252",
+      "Rotation": "0,0,0.7071068,-0.7071068",
       "Scale": "0.2,0.2,0.2",
       "Enabled": true,
       "Components": [
         {
-          "__type": "SkinnedModelRenderer",
-          "AnimationGraph": "animgraphs/bob.vanmgrph",
-          "BodyGroups": 18446744073709551615,
-          "BoneMergeTarget": null,
-          "CreateBoneObjects": false,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
           "Model": "models/bob/bob.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Rigidbody",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "ModelCollider",
-          "IsTrigger": false,
-          "Model": "models/bob/bob.vmdl",
-          "Static": false,
-          "Surface": "surfaces/flesh.surface"
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
         }
       ]
     },
@@ -272,13 +252,107 @@
       "Components": [
         {
           "__type": "MapInstance",
-          "MapName": "maps/candy_factory.vmap",
+          "MapName": "maps/candy_factory.vpk",
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
       "Children": []
+    },
+    {
+      "Id": "6e4069f5-9638-41f1-8ddd-72f1603ba2eb",
+      "Name": "Factory",
+      "Position": "1954.553,-405.9712,187",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/factory/factory.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": [
+        {
+          "Id": "8004311f-a2f9-4a7a-86e1-48a2b35f9ac6",
+          "Name": "Door Frame",
+          "Position": "-20.55298,-255.506,-175",
+          "Rotation": "0,0,-0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
+              "Static": false,
+              "Surface": "surfaces/metal.surface"
+            }
+          ]
+        },
+        {
+          "Id": "c5c400db-9d64-43ec-b913-bd6f09ddc141",
+          "Name": "DoorA",
+          "Position": "26.48352,-255.5,-175",
+          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
+              "Static": false,
+              "Surface": "surfaces/metal.surface"
+            }
+          ]
+        },
+        {
+          "Id": "ad7a159b-88cb-4f96-bfbb-64696574f332",
+          "Name": "DoorA",
+          "Position": "-68,-255.5004,-175",
+          "Rotation": "0,0,0.7071068,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
+              "Static": false,
+              "Surface": "surfaces/metal.surface"
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -304,6 +378,9 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-02-28T15:49:50.2570929-05:00",
-  "__references": []
+  "LastSaved": "2024-03-03T23:10:25.4716326\u002B01:00",
+  "__references": [
+    "facepunch.doorframe_double_metal_a",
+    "facepunch.metal_door_01a"
+  ]
 }
