@@ -1,0 +1,34 @@
+{
+  "RootObject": {
+    "Id": "825405e6-1aef-4238-bedc-b3124baea41c",
+    "Name": "box",
+    "Tags": "interactable",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Prop",
+        "Health": 50,
+        "IsStatic": false,
+        "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+        "OnPropBreak": null,
+        "OnPropTakeDamage": null,
+        "ShowCreatedComponents": false
+      },
+      {
+        "__type": "Holdable",
+        "Description": "This is a holdable object",
+        "IsInteracted": false,
+        "Name": null,
+        "PrefabPath": "prefabs/box.prefab",
+        "Type": "Resource"
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "facepunch.wooden_crate"
+  ]
+}

@@ -360,18 +360,9 @@
       "Name": "wooden_crate",
       "Position": "4579.274,350.1551,35.14",
       "Tags": "interactable",
+      "Networked": true,
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
+      "__Prefab": "prefabs/box.prefab"
     },
     {
       "Id": "f7083fe8-a6ac-44c1-b935-27b2d9e33bbe",
@@ -584,11 +575,10 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-04T15:11:48.4792378\u002B01:00",
+  "LastSaved": "2024-03-04T12:15:31.3231316-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
-    "facepunch.wooden_crate",
     "facepunch.wooden_desk_01"
   ]
 }

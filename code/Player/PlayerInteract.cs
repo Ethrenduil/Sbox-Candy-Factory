@@ -8,8 +8,8 @@ public class PlayerInteract : Component
 	[Property] Player PlayerComponent;
 	
 	[Property]
-	[Range( 0f, 2000f, 50f )]
-	public float InteractDistance {get ; set; } = 500.0f;
+	[Range( 0f, 1000f, 50f )]
+	public float InteractDistance {get ; set; } = 150.0f;
 	public bool isInteracting = false;
 
 	protected override void OnStart()
@@ -21,18 +21,24 @@ public class PlayerInteract : Component
 
 	protected override void OnUpdate()
 	{
+		base.OnUpdate();
+		if (IsProxy)
+			return;
 		var position = GameObject.Transform.Position;
 		position.z += 50;
-		// Ray currentRay = new Ray(new Vector3(position.x, position.y, position.z + 50),  PlayerComponent.Camera.Transform.Rotation.Forward);
 
 		SceneTraceResult collisionResult = Scene.Trace
 				.Ray(position, position + PlayerComponent.Camera.Transform.Rotation.Forward * InteractDistance)
 				.WithTag("interactable")
 				.Run();
-		// Log.Info("Raycast result data: " + result.Hit + " " + result.EndPosition + " " + result.Normal + " " + result.GetType() + " " + result.Material); 
 		if (collisionResult.Hit)
 		{
-			Log.Info("Hit " + collisionResult.Component);
+			if (Input.Pressed("use"))
+			{
+				isInteracting = true;
+				AInteractable interactable = collisionResult.GameObject.Components.Get<AInteractable>();
+				interactable?.OnInteract(GameObject);
+			}
 		}
 	}
 }
