@@ -65,7 +65,7 @@
 			<a class="btn back">
 				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
 			</a>
-		} else @if ( _isSettingsVisible ) {
+		} else if ( _isSettingsVisible ) {
 			<div class="display-list settings">
 			<div class="header">
 				<div class="title">Settings</div>
@@ -74,7 +74,7 @@
 				<div class="setting-title">Display</div>
 				<div class="setting-option">
 					<span class="option-title">Resolution</span>
-					<select class="resolution-dropdown">
+					<select class="option-content resolution-dropdown" onselect="">
 						<option value="1920x1080">1920x1080</option>
 						<option value="1280x720">1280x720</option>
 					</select>

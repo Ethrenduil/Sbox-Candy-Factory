@@ -220,7 +220,7 @@
     {
       "Id": "65770da1-ee3c-4cf7-906c-fb3b001e7a43",
       "Name": "Change Task",
-      "Position": "165.1333,-866.5705,55.6918",
+      "Position": "165.1333,-822.1245,55.6918",
       "Enabled": true,
       "Components": [
         {
@@ -353,6 +353,24 @@
           ]
         }
       ]
+    },
+    {
+      "Id": "825405e6-1aef-4238-bedc-b3124baea41c",
+      "Name": "wooden_crate",
+      "Position": "4579.274,350.1551,35.14",
+      "Tags": "interactable",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -378,9 +396,10 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-03T23:10:25.4716326\u002B01:00",
+  "LastSaved": "2024-03-04T01:54:59.466504-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
-    "facepunch.metal_door_01a"
+    "facepunch.metal_door_01a",
+    "facepunch.wooden_crate"
   ]
 }
