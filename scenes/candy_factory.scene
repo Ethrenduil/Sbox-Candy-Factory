@@ -291,6 +291,7 @@
           "Name": "DoorRight",
           "Position": "26.48352,-255.5,-175",
           "Tags": "interactable",
+          "Networked": true,
           "Enabled": true,
           "Components": [
             {
@@ -326,6 +327,7 @@
           "Name": "DoorLeft",
           "Position": "-68,-255.5004,-175",
           "Tags": "interactable",
+          "Networked": true,
           "Enabled": true,
           "Components": [
             {
@@ -597,7 +599,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-04T14:42:55.8144135-05:00",
+  "LastSaved": "2024-03-04T22:58:57.3284089\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
