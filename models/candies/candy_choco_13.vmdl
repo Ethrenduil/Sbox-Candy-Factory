@@ -11,7 +11,13 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
-						remaps = [  ]
+						remaps = 
+						[
+							{
+								from = "candy_choco.vmat"
+								to = "materials/candies/choco.vmat"
+							},
+						]
 						use_global_default = false
 						global_default_material = ""
 					},
@@ -23,28 +29,18 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/factory/factory.fbx"
+						filename = "models/candies/fbx/candy_choco/candy_choco_13.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.03937
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"mesh_4Mesh",
-								"mesh_6Mesh",
-								"mesh_8Mesh",
-								"mesh_9Mesh",
-								"mesh_13Mesh",
-								"mesh_17Mesh",
-								"mesh_18Mesh",
-								"mesh_7Mesh",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -54,10 +50,10 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "factory"
+						_class = "PhysicsHullFile"
+						name = "candy_choco_1"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "glass"
 						collision_tags = "solid"
 						recenter_on_parent_bone = false
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -65,10 +61,12 @@
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
-						filename = "models/factory/factory.fbx"
-						import_scale = 1.0
-						maxMeshVertices = 0
-						qemError = 0.0
+						filename = "models/candies/fbx/candy_choco/candy_choco_13.fbx"
+						import_scale = 0.03937
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
 						import_filter = 
 						{
 							exclude_by_default = false
