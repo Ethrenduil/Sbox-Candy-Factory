@@ -288,8 +288,9 @@
         },
         {
           "Id": "c5c400db-9d64-43ec-b913-bd6f09ddc141",
-          "Name": "DoorA",
+          "Name": "DoorRight",
           "Position": "26.48352,-255.5,-175",
+          "Tags": "interactable",
           "Enabled": true,
           "Components": [
             {
@@ -307,13 +308,24 @@
               "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
               "Static": false,
               "Surface": "surfaces/metal.surface"
+            },
+            {
+              "__type": "Openable",
+              "Description": null,
+              "IsInteracted": false,
+              "IsOpen": false,
+              "Name": null,
+              "PrefabPath": null,
+              "Side": "Right",
+              "Type": "Resource"
             }
           ]
         },
         {
           "Id": "ad7a159b-88cb-4f96-bfbb-64696574f332",
-          "Name": "DoorA",
+          "Name": "DoorLeft",
           "Position": "-68,-255.5004,-175",
+          "Tags": "interactable",
           "Enabled": true,
           "Components": [
             {
@@ -331,6 +343,16 @@
               "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
               "Static": false,
               "Surface": "surfaces/metal.surface"
+            },
+            {
+              "__type": "Openable",
+              "Description": null,
+              "IsInteracted": false,
+              "IsOpen": false,
+              "Name": null,
+              "PrefabPath": null,
+              "Side": "Left",
+              "Type": "Resource"
             }
           ]
         },
@@ -575,7 +597,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-04T12:15:31.3231316-05:00",
+  "LastSaved": "2024-03-04T14:42:55.8144135-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
