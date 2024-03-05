@@ -27,7 +27,7 @@ Layer0
 	TextureNormal "textures/candies/crackers_normal.png"
 
 	//---- Roughness ----
-	g_flRoughnessScaleFactor "1.000"
+	g_flRoughnessScaleFactor "0.108"
 	TextureRoughness "materials/default/default_rough.tga"
 
 	//---- Texture Coordinates ----

@@ -357,6 +357,7 @@
               "IsInteracted": false,
               "IsOpen": false,
               "Name": "Door",
+              "OpeningTime": 0.5,
               "PrefabPath": null,
               "Side": "Right",
               "Type": "Other"
@@ -394,6 +395,7 @@
               "IsInteracted": false,
               "IsOpen": false,
               "Name": "Door",
+              "OpeningTime": 0.5,
               "PrefabPath": null,
               "Side": "Left",
               "Type": "Other"
@@ -622,6 +624,261 @@
           "ShowCreatedComponents": false
         }
       ]
+    },
+    {
+      "Id": "fafd0de0-145a-400b-9308-78a7f7567d1d",
+      "Name": "candy_choco_20",
+      "Position": "2526.672,-625.0218,52.80135",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_20.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "8e0ece2f-ac40-4983-9098-e1b506e50e08",
+      "Name": "candy_choco_21",
+      "Position": "2526.294,-633.6237,52.80135",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_21.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "d7da3347-2374-41c7-b768-7cbc7990dda4",
+      "Name": "candy_choco_22",
+      "Position": "2518.5,-633.6068,52.80135",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_22.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "f64be5de-40ea-4d87-9233-f7df37bff3dc",
+      "Name": "candy_choco_23",
+      "Position": "2519.133,-626.0916,52.80135",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_23.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "6781215e-fd2e-471f-a963-e3482a2a053d",
+      "Name": "candy_choco_24",
+      "Position": "2520.292,-617.6891,52.80135",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_24.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "aea16a4f-4f31-4481-9143-72824d4c522e",
+      "Name": "candy_choco_25",
+      "Position": "2511.758,-633.6694,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_25.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "51d25587-5915-4e69-8c25-dbc8dc43c152",
+      "Name": "candy_choco_25",
+      "Position": "2512.227,-625.2591,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_25.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "b32666be-0a22-49ed-90e6-f23352b0409b",
+      "Name": "candy_choco_27",
+      "Position": "2513.354,-617.1804,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_27.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "4dd00889-1183-4a2a-8742-220a48d52eb4",
+      "Name": "candy_choco_28",
+      "Position": "2505.845,-635.008,52.82747",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_28.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "f6c33be2-f755-482a-a72f-fb1cc73c79fd",
+      "Name": "candy_choco_29",
+      "Position": "2506.715,-626.3985,52.8014",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_29.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "f1334947-3256-4172-9c99-9b1316ece45b",
+      "Name": "candy_choco_30",
+      "Position": "2507.463,-617.4857,52.82747",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_30.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "01f34fb4-92ba-4a89-80c5-c0a797412edf",
+      "Name": "candy_glass_01",
+      "Position": "2497.835,-630.7429,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_01.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "1967328b-b9f7-4578-8840-fc370a935a53",
+      "Name": "candy_glass_02",
+      "Position": "2497.941,-624.9601,53.07168",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_02.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "2f9d6317-7cf8-40bb-bc9a-868ca93b9532",
+      "Name": "candy_glass_03",
+      "Position": "2498.314,-618.9991,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_03.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "4b26a9cd-635b-48de-ad0b-1f94408a487b",
+      "Name": "candy_glass_04",
+      "Position": "2497.717,-637.2781,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_04.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -647,7 +904,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-04T21:17:03.3902682-05:00",
+  "LastSaved": "2024-03-05T20:59:11.7768815\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
