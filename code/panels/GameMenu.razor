@@ -123,7 +123,7 @@
 
 	void CreateRoom()
 	{
-		GameManager.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
+		Game.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
 		GameNetworkSystem.CreateLobby();
 	}
 
@@ -140,7 +140,7 @@
 	{
 		if (lobby.Members >= 4) return;
 		GameNetworkSystem.Connect(lobby.LobbyId);
-		GameManager.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
+		Game.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
 	}
 
 	void QuitGame()

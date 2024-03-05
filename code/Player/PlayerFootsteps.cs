@@ -1,52 +1,46 @@
-using Sandbox;
-
-namespace Eryziac.CandyFactory;
-
-[Group( "Player" )]
-[Title( "Player Footsteps" )]
 public sealed class PlayerFootsteps : Component
 {
-	[Property] private SkinnedModelRenderer ModelRenderer { get; set; }
+	[Property] SkinnedModelRenderer Source { get; set; }
 
-	private TimeSince TimeSinceLastStep { get; set; }
-	
 	protected override void OnEnabled()
 	{
-		if ( !ModelRenderer.IsValid() )
+		if ( Source is null )
 			return;
 
-		ModelRenderer.OnFootstepEvent += OnEvent;
+		Source.OnFootstepEvent += OnEvent;
 	}
 
 	protected override void OnDisabled()
 	{
-		if ( !ModelRenderer.IsValid() )
+		if ( Source is null )
 			return;
 
-		ModelRenderer.OnFootstepEvent -= OnEvent;
+		Source.OnFootstepEvent -= OnEvent;
 	}
-	
+
+	TimeSince timeSinceStep;
+
 	private void OnEvent( SceneModel.FootstepEvent e )
 	{
-		if ( TimeSinceLastStep < 0.2f )
+		if ( timeSinceStep < 0.2f )
 			return;
 
-		var trace = Scene.Trace
-			.Ray( e.Transform.Position + Vector3.Up * 20f, e.Transform.Position + Vector3.Up * -20f )
+		var tr = Scene.Trace
+			.Ray( e.Transform.Position + Vector3.Up * 20, e.Transform.Position + Vector3.Up * -20 )
 			.Run();
 
-		if ( !trace.Hit )
+		if ( !tr.Hit )
 			return;
 
-		if ( trace.Surface is null )
+		if ( tr.Surface is null )
 			return;
 
-		TimeSinceLastStep = 0f;
+		timeSinceStep = 0;
 
-		var sound = e.FootId == 0 ? trace.Surface.Sounds.FootLeft : trace.Surface.Sounds.FootRight;
+		var sound = e.FootId == 0 ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
 		if ( sound is null ) return;
 
-		var handle = Sound.Play( sound, trace.HitPosition + trace.Normal * 5f );
+		var handle = Sound.Play( sound, tr.HitPosition + tr.Normal * 5 );
 		handle.Volume *= e.Volume;
 	}
 }
