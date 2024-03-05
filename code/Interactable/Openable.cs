@@ -10,6 +10,7 @@ public class Openable : AInteractable
     [Property] override public InteractableType Type { get; set; } = InteractableType.Resource;
     [Property] override public string PrefabPath { get; set; }
     [Property] override public bool IsInteracted { get; set; }
+    [Property] public float OpeningTime { get; set; } = 1f;
     [Property] public bool IsOpen { get; set; }
     [Property] public OpenableSide Side { get; set; }
 
@@ -28,7 +29,7 @@ public class Openable : AInteractable
             Rotation direction = CalculateRotation();
             IsOpen = !IsOpen;
             Description = IsOpen ? "Press E to close" : "Press E to open";
-            await RotateOverTime(direction, 1f);
+            await RotateOverTime(direction, OpeningTime);
             IsInteracted = false;
         }
     }
