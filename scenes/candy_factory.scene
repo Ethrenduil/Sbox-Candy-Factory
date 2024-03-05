@@ -879,6 +879,181 @@
           "ShowCreatedComponents": false
         }
       ]
+    },
+    {
+      "Id": "1603cb4a-efb5-49e5-b899-da507dd02e58",
+      "Name": "candy_glass_05",
+      "Position": "2493.105,-637.6833,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_05.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "4c4a0cb7-260b-4bd5-b189-8ec6dec406f1",
+      "Name": "candy_glass_06",
+      "Position": "2493.937,-632.5797,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_06.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "deb1dd41-bcab-4d00-97e3-ec4830242889",
+      "Name": "candy_glass_07",
+      "Position": "2495.039,-625.5646,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_07.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "946b7bc6-124f-480d-b404-959bab90808d",
+      "Name": "candy_glass_08",
+      "Position": "2495.125,-619.1537,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_08.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "533e71f0-b681-4b81-9915-5bb9f64086d4",
+      "Name": "candy_glass_09",
+      "Position": "2491.372,-619.9486,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_09.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "2ed4e711-2f8d-4017-a4e8-0cef75d8691b",
+      "Name": "candy_glass_10",
+      "Position": "2479.14,-636.7533,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_10.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "f2b9a197-07ab-4594-a2fe-45e9ef6d1f71",
+      "Name": "candy_glass_11",
+      "Position": "2480.319,-626.0419,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_11.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "abaafb4d-dba5-41dd-9384-d0fc095c4193",
+      "Name": "candy_glass_12",
+      "Position": "2485.709,-620.2598,52.7995",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_12.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "5a8e314a-c35a-405e-986d-a44e53bb9c0f",
+      "Name": "candy_glass_13",
+      "Position": "2487.246,-629.2028,52.90892",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_glass_13.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "6461edd6-df20-43a8-9e3f-872f12806f4e",
+      "Name": "Spot Light",
+      "Position": "2462.112,-630.4276,99.35294",
+      "Rotation": "0,0.5,0,0.8660254",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpotLight",
+          "Attenuation": 1,
+          "ConeInner": 15,
+          "ConeOuter": 45,
+          "Cookie": null,
+          "FogMode": "Disabled",
+          "FogStrength": 1,
+          "LightColor": "1,1,1,1",
+          "Radius": 500,
+          "Shadows": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -904,7 +1079,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-05T20:59:11.7768815\u002B01:00",
+  "LastSaved": "2024-03-05T21:09:18.9169522\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
