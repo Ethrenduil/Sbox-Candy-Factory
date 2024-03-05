@@ -1,0 +1,25 @@
+@using Sandbox
+@using Sandbox.UI
+@using Eryziac.CandyFactory;
+@inherits PanelComponent
+
+
+<root style="width: 100%; height: 100%;">
+    @if (Value != null)
+    {
+        <div class="interact-prompt">
+            <p>@Value</p>
+        </div>
+    }
+</root>
+
+@code {
+    public string Value { get; set; } = null;
+    // Add any logic you need here
+
+    public void SetValue(string value)
+    {
+        Value = value;
+        StateHasChanged();
+    }
+}  

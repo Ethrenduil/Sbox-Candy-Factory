@@ -16,9 +16,9 @@
       },
       {
         "__type": "Holdable",
-        "Description": "This is a holdable object",
+        "Description": "",
         "IsInteracted": false,
-        "Name": null,
+        "Name": "Sugar Box",
         "PrefabPath": "prefabs/box.prefab",
         "Type": "Resource"
       }

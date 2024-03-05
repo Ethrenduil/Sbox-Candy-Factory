@@ -198,6 +198,16 @@
               "IsPaused": false
             }
           ]
+        },
+        {
+          "Id": "c6c6b53f-24db-47ab-82df-628a9828cc0d",
+          "Name": "Interact",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Interact"
+            }
+          ]
         }
       ]
     },
@@ -290,6 +300,7 @@
           "Id": "c5c400db-9d64-43ec-b913-bd6f09ddc141",
           "Name": "DoorRight",
           "Position": "26.48352,-255.5,-175",
+          "Rotation": "0,-0,-0.7071068,0.7071068",
           "Tags": "interactable",
           "Networked": true,
           "Enabled": true,
@@ -312,13 +323,13 @@
             },
             {
               "__type": "Openable",
-              "Description": null,
+              "Description": "",
               "IsInteracted": false,
               "IsOpen": false,
-              "Name": null,
+              "Name": "Door",
               "PrefabPath": null,
               "Side": "Right",
-              "Type": "Resource"
+              "Type": "Other"
             }
           ]
         },
@@ -326,6 +337,7 @@
           "Id": "ad7a159b-88cb-4f96-bfbb-64696574f332",
           "Name": "DoorLeft",
           "Position": "-68,-255.5004,-175",
+          "Rotation": "0,0,0.7071068,0.7071068",
           "Tags": "interactable",
           "Networked": true,
           "Enabled": true,
@@ -351,10 +363,10 @@
               "Description": null,
               "IsInteracted": false,
               "IsOpen": false,
-              "Name": null,
+              "Name": "Door",
               "PrefabPath": null,
               "Side": "Left",
-              "Type": "Resource"
+              "Type": "Other"
             }
           ]
         },
@@ -599,7 +611,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-04T22:58:57.3284089\u002B01:00",
+  "LastSaved": "2024-03-04T20:03:28.4256282-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",

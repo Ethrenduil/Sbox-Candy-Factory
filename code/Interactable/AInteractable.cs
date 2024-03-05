@@ -17,6 +17,7 @@ public class AInteractable : Component
     protected const float InteractionCooldown = 0.5f;
     virtual public void OnInteract(GameObject interactor) { }
 
+
 }
 
 

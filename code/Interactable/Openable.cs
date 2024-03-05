@@ -16,7 +16,7 @@ public class Openable : AInteractable
     protected override void OnStart()
     {
         base.OnStart();
-        Name = GameObject.Name;
+        Description = IsOpen ? "Press E to close" : "Press E to open";
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -27,6 +27,7 @@ public class Openable : AInteractable
             Log.Info("Interacted with " + Name);
             Rotation direction = CalculateRotation();
             IsOpen = !IsOpen;
+            Description = IsOpen ? "Press E to close" : "Press E to open";
             await RotateOverTime(direction, 1f);
             IsInteracted = false;
         }

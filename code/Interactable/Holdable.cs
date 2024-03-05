@@ -13,7 +13,7 @@ public class Holdable : AInteractable
     protected override void OnStart()
     {
         base.OnStart();
-        Name = GameObject.Name;
+        Description = "Press E to pick up " + Name;
     }
 
     protected override void OnUpdate()
@@ -21,11 +21,11 @@ public class Holdable : AInteractable
         base.OnUpdate();
         if (IsInteracted && Interactor != null)
         {
+            PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();
             Vector3 offsetInFront = Interactor.Components.Get<Player>().EyeAngles.ToRotation().Forward * 100;
             Vector3 verticalOffset = new(0, 0, 50);
             Transform.Position = Interactor.Transform.Position + offsetInFront + verticalOffset;
-
-            if (Input.Pressed("use") && Time.Now - InteractionTime > InteractionCooldown)
+            if (Input.Pressed("use") && Time.Now - InteractionTime > InteractionCooldown && playerInteract.isInteracting == false)
             {
                 InteractionTime = Time.Now;
                 OnInteract(Interactor);
