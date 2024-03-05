@@ -25,9 +25,9 @@ public class Holdable : AInteractable
             Vector3 offsetInFront = Interactor.Components.Get<Player>().EyeAngles.ToRotation().Forward * 100;
             Vector3 verticalOffset = new(0, 0, 50);
             Transform.Position = Interactor.Transform.Position + offsetInFront + verticalOffset;
-            if (Input.Pressed("use") && Time.Now - InteractionTime > InteractionCooldown && playerInteract.isInteracting == false)
+            if (Input.Pressed("use") && playerInteract.InteractionCooldownPassed())
             {
-                InteractionTime = Time.Now;
+                playerInteract.StartInteract();
                 OnInteract(Interactor);
             }
         }
@@ -38,16 +38,13 @@ public class Holdable : AInteractable
         if (IsInteracted && interactor == Interactor)
         {
             IsInteracted = false;
-            Log.Info("Stopped interacting with " + Name);
             Interactor = null;
             GameObject.Transform.Position = GameObject.Transform.Position;
             GameObject.Components.Get<Collider>(FindMode.DisabledInSelfAndChildren).Enabled = true;
         } else {
             IsInteracted = true;
-            Log.Info("Interacted with " + Name);
             Interactor = interactor;
             GameObject.Components.Get<Collider>().Enabled = false;
-            InteractionTime = Time.Now;
         }
 
     }

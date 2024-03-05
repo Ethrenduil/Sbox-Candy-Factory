@@ -208,6 +208,16 @@
               "__type": "Interact"
             }
           ]
+        },
+        {
+          "Id": "de065e30-8f41-425b-8399-50a2b16c4b4c",
+          "Name": "DeliveryHud",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "DeliveryHud"
+            }
+          ]
         }
       ]
     },
@@ -268,6 +278,26 @@
           "OnPropBreak": null,
           "OnPropTakeDamage": null,
           "ShowCreatedComponents": false
+        },
+        {
+          "__type": "Delivery",
+          "DeliveryDestination": {
+            "_type": "gameobject",
+            "go": "8182abc6-4c4a-4df2-88ae-02269a3b73ab"
+          },
+          "DeliveryHud": {
+            "_type": "component",
+            "go": "de065e30-8f41-425b-8399-50a2b16c4b4c",
+            "component_type": "DeliveryHud"
+          },
+          "DeliveryPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/deliverybox.prefab"
+          },
+          "DeliveryProgress": 0,
+          "DeliveryTime": 10,
+          "Goods": {},
+          "Status": "None"
         }
       ],
       "Children": [
@@ -388,6 +418,12 @@
               "ShowCreatedComponents": true
             }
           ]
+        },
+        {
+          "Id": "8182abc6-4c4a-4df2-88ae-02269a3b73ab",
+          "Name": "DeliveryDestination",
+          "Position": "241.3923,-332.9185,-150.0428",
+          "Enabled": true
         }
       ]
     },
@@ -611,7 +647,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-04T20:03:28.4256282-05:00",
+  "LastSaved": "2024-03-04T21:17:03.3902682-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",

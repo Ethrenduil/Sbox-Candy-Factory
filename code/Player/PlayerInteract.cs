@@ -2,6 +2,8 @@ using System.Diagnostics;
 using Sandbox;
 using Sandbox.Engine.Utility.RayTrace;
 
+[Category("Player")]
+[Title ("Player Interact")]
 public class PlayerInteract : Component
 {
 	MeshTraceRequest request = new MeshTraceRequest();
@@ -12,6 +14,8 @@ public class PlayerInteract : Component
 	public float InteractDistance {get ; set; } = 150.0f;
 	public bool isInteracting = false;
 	[Property] public Interact interactHud;
+	protected float InteractionTime = 0.0f;
+    protected const float InteractionCooldown = 0.5f;
 
 	protected override void OnStart()
 	{
@@ -35,19 +39,31 @@ public class PlayerInteract : Component
 				.Run();
 		if (collisionResult.Hit)
 		{
-			isInteracting = true;
 			AInteractable interactable = collisionResult.GameObject.Components.Get<AInteractable>();
 			interactHud.SetValue(interactable.Description);
-			if (Input.Pressed("use"))
+			if (Input.Pressed("use") && !isInteracting )
 			{
+				StartInteract();
 				interactable?.OnInteract(GameObject);
 				interactHud.SetValue(null);
-				isInteracting = false;
 			}
 		} else
 		{
-			isInteracting = false;
 			interactHud.SetValue(null);
 		}
+		if (isInteracting && InteractionCooldownPassed())
+		{
+			isInteracting = false;
+		}
+	}
+
+	public void StartInteract()
+	{
+		isInteracting = true;
+		InteractionTime = Time.Now;
+	}
+	public bool InteractionCooldownPassed()
+	{
+		return Time.Now - InteractionTime > InteractionCooldown;
 	}
 }
