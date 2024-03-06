@@ -16,11 +16,15 @@
       },
       {
         "__type": "Holdable",
-        "Description": "Press E to pick up Sugar Box",
+        "Description": "Press E to pick up Delivery Box",
         "IsInteracted": false,
-        "Name": "Sugar Box",
+        "Name": "Delivery",
         "PrefabPath": "prefabs/box.prefab",
         "Type": "Resource"
+      },
+      {
+        "__type": "DeliveryGood",
+        "Goods": {}
       }
     ],
     "Children": [

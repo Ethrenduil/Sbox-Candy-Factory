@@ -35,17 +35,19 @@ public sealed class Delivery : Component
         }
 	}
 
+    // Start a delivery with a list of goods
     public void StartDelivery(Dictionary<DeliveryGoods, int> goods)
     {
         Status = DeliveryStatus.InProgress;
         Goods = goods;
     }
 
+    // Spawn a delivery object at the delivery destination
     public void SpawnDelivery()
     {
-        // Spawn a delivery object at the delivery destination
         var temp = DeliveryPrefab.Clone(DeliveryDestination.Transform.World);
         temp.Components.Get<DeliveryGood>().SetGoods(Goods);
+        DeliveryHud.SetProgress(null);
     }
 
 }
