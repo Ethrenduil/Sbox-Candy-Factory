@@ -1,39 +1,41 @@
-using System.Diagnostics;
 using Sandbox;
 using Sandbox.Engine.Utility.RayTrace;
-
-
+using System;
 public class Holdable : AInteractable
 {
-    [Property] override public string Name { get; set; }
-    [Property] override public string Description { get; set; }
-    [Property] override public InteractableType Type { get; set; } = InteractableType.Resource;
-    [Property] override public string PrefabPath { get; set; }
-    [Property] override public bool IsInteracted { get; set; }
-    private GameObject HoldRelative { get; set; }
-    private float forwardOffset = 70f;
-    private float verticalOffset = 40f;
+    [Property] public override string Name { get; set; }
+    [Property] public override string Description { get; set; }
+    [Property] public override InteractableType Type { get; set; } = InteractableType.Resource;
+    [Property] public override string PrefabPath { get; set; }
+    [Property] public override bool IsInteracted { get; set; }
+
+    [Sync] GameObject HoldRelative { get; set; }
+    private const float ForwardOffset = 70f;
+    private const float VerticalOffset = 40f;
+
     protected override void OnStart()
     {
         base.OnStart();
-        Description = "Press E to pick up " + Name;
+        Description = $"Press E to pick up {Name}";
+        GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
     }
+
+  
 
     protected override void OnUpdate()
     {
-        if (IsProxy)
-            return;
+        Log.Info($"Owner is {Network.OwnerId}");
 
-        if (IsInteracted && Interactor != null)
+        if (IsProxy || !IsInteracted || Interactor == null) return;
+
+        PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();
+        Transform.Position = HoldRelative.Transform.Position + HoldRelative.Transform.Rotation.Forward * new Vector3(0, 0, VerticalOffset);
+        Transform.Rotation = HoldRelative.Parent.Transform.Rotation;
+
+        if (Input.Pressed("use") && playerInteract.InteractionCooldownPassed())
         {
-            PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();
-            Transform.Position = HoldRelative.Transform.Position + HoldRelative.Transform.Rotation.Forward * new Vector3(0,0,verticalOffset);
-            Transform.Rotation = HoldRelative.Parent.Transform.Rotation;
-            if (Input.Pressed("use") && playerInteract.InteractionCooldownPassed())
-            {
-                playerInteract.StartInteract();
-                OnInteract(Interactor);
-            }
+            playerInteract.StartInteract();
+            OnInteract(Interactor);
         }
     }
 
@@ -42,34 +44,37 @@ public class Holdable : AInteractable
         if (IsInteracted && interactor == Interactor)
         {
             IsInteracted = false;
-            GameObject.Components.Get<Rigidbody>(FindMode.DisabledInSelfAndChildren).Enabled = true;
+            Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>(FindMode.DisabledInSelfAndChildren);
+            rigidbody.Enabled = true;
             GameObject.SetParent(null, true);
             GameObject.Network.DropOwnership();
-            Log.Info(HoldRelative.Transform.Rotation.Forward);
-            Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * forwardOffset;
-            if (dropPosition.z < 0)
-                dropPosition.z = 40;
+
+            Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * ForwardOffset;
+            dropPosition.z = Math.Max(dropPosition.z, 40);
             GameObject.Transform.Position = dropPosition;
 
-            var ca = interactor.Components.Get<Player>().AnimationHelper;
-            ca.IkLeftHand = null;
-            ca.IkRightHand = null;
+            var animationHelper = interactor.Components.Get<Player>().AnimationHelper;
+            animationHelper.IkLeftHand = null;
+            animationHelper.IkRightHand = null;
 
             Interactor = null;
             HoldRelative = null;
-        } else {
+        }
+        else
+        {
             IsInteracted = true;
             Interactor = interactor;
-            GameObject.Components.Get<Rigidbody>().Enabled = false;
+            Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>();
+            rigidbody.Enabled = false;
             GameObject.SetParent(interactor, true);
             GameObject.Network.TakeOwnership();
 
-            var ply = interactor.Components.Get<Player>();
+            var player = interactor.Components.Get<Player>();
+            var animationHelper = player.AnimationHelper;
 
-            ply.AnimationHelper.IkLeftHand =  GameObject.Children.FirstOrDefault( x => x.Name == "LeftHandSlot");
-		    ply.AnimationHelper.IkRightHand = GameObject.Children.FirstOrDefault( x => x.Name == "RightHandSlot");
-            HoldRelative = Interactor.Children.FirstOrDefault( x => x.Name == "Body").Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;
+            animationHelper.IkLeftHand = GameObject.Children.FirstOrDefault(x => x.Name == "LeftHandSlot");
+            animationHelper.IkRightHand = GameObject.Children.FirstOrDefault(x => x.Name == "RightHandSlot");
+            HoldRelative = Interactor.Children.FirstOrDefault(x => x.Name == "Body")?.Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;
         }
-
     }
 }
