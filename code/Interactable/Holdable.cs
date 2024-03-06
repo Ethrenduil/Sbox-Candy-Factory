@@ -1,6 +1,7 @@
 using Sandbox;
 using Sandbox.Engine.Utility.RayTrace;
 using System;
+
 public class Holdable : AInteractable
 {
     [Property] public override string Name { get; set; }
@@ -9,27 +10,32 @@ public class Holdable : AInteractable
     [Property] public override string PrefabPath { get; set; }
     [Property] public override bool IsInteracted { get; set; }
 
-    [Sync] GameObject HoldRelative { get; set; }
+    [Sync] private GameObject HoldRelative { get; set; }
     private const float ForwardOffset = 70f;
     private const float VerticalOffset = 40f;
 
     protected override void OnStart()
     {
         base.OnStart();
+        // Set the default description for interaction
         Description = $"Press E to pick up {Name}";
+        // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
     }
 
-  
-
     protected override void OnUpdate()
     {
+        // Exit early if this is a proxy or not currently interacted
         if (IsProxy || !IsInteracted || Interactor == null) return;
 
+        // Get the PlayerInteract component of the interactor
         PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();
+
+        // Update the position and rotation of the holdable object based on the relative object
         Transform.Position = HoldRelative.Transform.Position + HoldRelative.Transform.Rotation.Forward * new Vector3(0, 0, VerticalOffset);
         Transform.Rotation = HoldRelative.Parent.Transform.Rotation;
 
+        // Check for user input to initiate interaction
         if (Input.Pressed("use") && playerInteract.InteractionCooldownPassed())
         {
             playerInteract.StartInteract();
@@ -39,40 +45,63 @@ public class Holdable : AInteractable
 
     public override void OnInteract(GameObject interactor)
     {
+        // If already interacted and the same interactor, release the holdable object
         if (IsInteracted && interactor == Interactor)
         {
-            IsInteracted = false;
-            Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>(FindMode.DisabledInSelfAndChildren);
-            rigidbody.Enabled = true;
-            GameObject.SetParent(null, true);
-            GameObject.Network.DropOwnership();
-
-            Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * ForwardOffset;
-            dropPosition.z = Math.Max(dropPosition.z, 40);
-            GameObject.Transform.Position = dropPosition;
-
-            var animationHelper = interactor.Components.Get<Player>().AnimationHelper;
-            animationHelper.IkLeftHand = null;
-            animationHelper.IkRightHand = null;
-
-            Interactor = null;
-            HoldRelative = null;
+            ReleaseHoldable();
         }
         else
         {
-            IsInteracted = true;
-            Interactor = interactor;
-            Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>();
-            rigidbody.Enabled = false;
-            GameObject.SetParent(interactor, true);
-            GameObject.Network.TakeOwnership();
-
-            var player = interactor.Components.Get<Player>();
-            var animationHelper = player.AnimationHelper;
-
-            animationHelper.IkLeftHand = GameObject.Children.FirstOrDefault(x => x.Name == "LeftHandSlot");
-            animationHelper.IkRightHand = GameObject.Children.FirstOrDefault(x => x.Name == "RightHandSlot");
-            HoldRelative = Interactor.Children.FirstOrDefault(x => x.Name == "Body")?.Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;
+            // If not interacted, pick up the holdable object
+            PickUpHoldable(interactor);
         }
+    }
+
+    private void ReleaseHoldable()
+    {
+        // Reset interaction state
+        IsInteracted = false;
+
+        // Enable the Rigidbody for physics simulation
+        Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>(FindMode.DisabledInSelfAndChildren);
+        rigidbody.Enabled = true;
+
+        // Detach from the parent, drop ownership, and set the drop position
+        GameObject.SetParent(null, true);
+        GameObject.Network.DropOwnership();
+        Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * ForwardOffset;
+        dropPosition.z = Math.Max(dropPosition.z, 40);
+        GameObject.Transform.Position = dropPosition;
+
+        // Reset animation helper hands
+        var animationHelper = Interactor.Components.Get<Player>().AnimationHelper;
+        animationHelper.IkLeftHand = null;
+        animationHelper.IkRightHand = null;
+
+        // Reset interactor and relative object
+        Interactor = null;
+        HoldRelative = null;
+    }
+
+    private void PickUpHoldable(GameObject interactor)
+    {
+        // Set interaction state to true
+        IsInteracted = true;
+
+        // Set the current interactor and disable Rigidbody for physics simulation
+        Interactor = interactor;
+        Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>();
+        rigidbody.Enabled = false;
+
+        // Attach to the interactor, take ownership, and set the animation helper hands
+        GameObject.SetParent(interactor, true);
+        GameObject.Network.TakeOwnership();
+        var player = interactor.Components.Get<Player>();
+        var animationHelper = player.AnimationHelper;
+        animationHelper.IkLeftHand = GameObject.Children.FirstOrDefault(x => x.Name == "LeftHandSlot");
+        animationHelper.IkRightHand = GameObject.Children.FirstOrDefault(x => x.Name == "RightHandSlot");
+
+        // Set the holdable's relative object
+        HoldRelative = Interactor.Children.FirstOrDefault(x => x.Name == "Body")?.Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;
     }
 }
