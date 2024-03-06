@@ -25,6 +25,8 @@ public class Player : Component
 	[Property] public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
 	[Property] [Sync] public ulong SteamId { get; set; }
+	[Property] public GameObject LeftHand { get; set; }
+    [Property] public GameObject RightHand { get; set; }
 	[Sync] public string Name { get; set; }
 	private bool IsLoading { get; set; }
 	private bool IsSaving { get; set; }

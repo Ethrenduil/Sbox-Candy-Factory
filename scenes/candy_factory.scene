@@ -430,33 +430,6 @@
       ]
     },
     {
-      "Id": "825405e6-1aef-4238-bedc-b3124baea41c",
-      "Name": "wooden_crate",
-      "Position": "4579.261,350.137,8.124666",
-      "Tags": "interactable",
-      "Networked": true,
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Holdable",
-          "Description": "Press E to pick up Sugar Box",
-          "IsInteracted": false,
-          "Name": "Sugar Box",
-          "PrefabPath": "prefabs/box.prefab",
-          "Type": "Resource"
-        }
-      ]
-    },
-    {
       "Id": "f7083fe8-a6ac-44c1-b935-27b2d9e33bbe",
       "Name": "candy_choco_01",
       "Position": "2158.633,-455.9133,83.01256",
@@ -791,6 +764,14 @@
           "Turn": true
         }
       ]
+    },
+    {
+      "Id": "0bec0f16-4635-4844-9a9f-9f0bd7da7d5d",
+      "Name": "box",
+      "Position": "4581.679,624.5346,8.000122",
+      "Tags": "interactable",
+      "Enabled": true,
+      "__Prefab": "prefabs/box.prefab"
     }
   ],
   "SceneProperties": {
@@ -816,11 +797,10 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-06T00:33:12.3225677\u002B01:00",
+  "LastSaved": "2024-03-05T23:40:10.0615928-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
-    "facepunch.wooden_crate",
     "facepunch.wooden_desk_01"
   ]
 }

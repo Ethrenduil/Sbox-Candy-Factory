@@ -55,7 +55,15 @@
           "go": "a386ba5c-e3e7-42b6-ae57-cf5f355362f6"
         },
         "Gravity": "0,0,800",
+        "LeftHand": {
+          "_type": "gameobject",
+          "go": "c6ebfc6a-ef9a-420c-b678-f867e38dcc7f"
+        },
         "PlayerSlot": 0,
+        "RightHand": {
+          "_type": "gameobject",
+          "go": "e1bd622c-042f-4d9e-9a80-4030bf597a42"
+        },
         "SteamId": 0
       },
       {
@@ -68,11 +76,7 @@
       },
       {
         "__type": "PlayerFootsteps",
-        "ModelRenderer": {
-          "_type": "component",
-          "go": "857a29b3-61fd-45cd-acd4-acc9473041ad",
-          "component_type": "SkinnedModelRenderer"
-        }
+        "Source": null
       },
       {
         "__type": "Rigidbody",
@@ -107,7 +111,10 @@
         "WorldspacePlayback": true
       },
       {
-        "__type": "PlayerInteract"
+        "__type": "PlayerInteract",
+        "interactHud": null,
+        "PlayerComponent": null,
+        "InteractDistance": 150
       }
     ],
     "Children": [

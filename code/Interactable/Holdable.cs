@@ -10,6 +10,9 @@ public class Holdable : AInteractable
     [Property] override public InteractableType Type { get; set; } = InteractableType.Resource;
     [Property] override public string PrefabPath { get; set; }
     [Property] override public bool IsInteracted { get; set; }
+    private GameObject HoldRelative { get; set; }
+    private float forwardOffset = 70f;
+    private float verticalOffset = 40f;
     protected override void OnStart()
     {
         base.OnStart();
@@ -18,13 +21,14 @@ public class Holdable : AInteractable
 
     protected override void OnUpdate()
     {
-        base.OnUpdate();
+        if (IsProxy)
+            return;
+
         if (IsInteracted && Interactor != null)
         {
             PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();
-            Vector3 offsetInFront = Interactor.Components.Get<Player>().EyeAngles.ToRotation().Forward * 100;
-            Vector3 verticalOffset = new(0, 0, 50);
-            Transform.Position = Interactor.Transform.Position + offsetInFront + verticalOffset;
+            Transform.Position = HoldRelative.Transform.Position + HoldRelative.Transform.Rotation.Forward * new Vector3(0,0,verticalOffset);
+            Transform.Rotation = HoldRelative.Parent.Transform.Rotation;
             if (Input.Pressed("use") && playerInteract.InteractionCooldownPassed())
             {
                 playerInteract.StartInteract();
@@ -38,13 +42,33 @@ public class Holdable : AInteractable
         if (IsInteracted && interactor == Interactor)
         {
             IsInteracted = false;
+            GameObject.Components.Get<Rigidbody>(FindMode.DisabledInSelfAndChildren).Enabled = true;
+            GameObject.SetParent(null, true);
+            GameObject.Network.DropOwnership();
+            Log.Info(HoldRelative.Transform.Rotation.Forward);
+            Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * forwardOffset;
+            if (dropPosition.z < 0)
+                dropPosition.z = 40;
+            GameObject.Transform.Position = dropPosition;
+
+            var ca = interactor.Components.Get<Player>().AnimationHelper;
+            ca.IkLeftHand = null;
+            ca.IkRightHand = null;
+
             Interactor = null;
-            GameObject.Transform.Position = GameObject.Transform.Position;
-            GameObject.Components.Get<Collider>(FindMode.DisabledInSelfAndChildren).Enabled = true;
+            HoldRelative = null;
         } else {
             IsInteracted = true;
             Interactor = interactor;
-            GameObject.Components.Get<Collider>().Enabled = false;
+            GameObject.Components.Get<Rigidbody>().Enabled = false;
+            GameObject.SetParent(interactor, true);
+            GameObject.Network.TakeOwnership();
+
+            var ply = interactor.Components.Get<Player>();
+
+            ply.AnimationHelper.IkLeftHand =  GameObject.Children.FirstOrDefault( x => x.Name == "LeftHandSlot");
+		    ply.AnimationHelper.IkRightHand = GameObject.Children.FirstOrDefault( x => x.Name == "RightHandSlot");
+            HoldRelative = Interactor.Children.FirstOrDefault( x => x.Name == "Body").Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;
         }
 
     }
