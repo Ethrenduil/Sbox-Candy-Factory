@@ -24,8 +24,6 @@ public class Holdable : AInteractable
 
     protected override void OnUpdate()
     {
-        Log.Info($"Owner is {Network.OwnerId}");
-
         if (IsProxy || !IsInteracted || Interactor == null) return;
 
         PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();

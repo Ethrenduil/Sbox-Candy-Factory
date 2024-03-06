@@ -11,13 +11,14 @@ public class Openable : AInteractable
     [Property] override public string PrefabPath { get; set; }
     [Property] override public bool IsInteracted { get; set; }
     [Property] public float OpeningTime { get; set; } = 1f;
-    [Property] public bool IsOpen { get; set; }
+    [Property][Sync] public bool IsOpen { get; set; }
     [Property] public OpenableSide Side { get; set; }
 
     protected override void OnStart()
     {
         base.OnStart();
         Description = IsOpen ? "Press E to close" : "Press E to open";
+        GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -25,12 +26,13 @@ public class Openable : AInteractable
         if (!IsInteracted)
         {
             IsInteracted = true;
-            Log.Info("Interacted with " + Name);
+			GameObject.Network.TakeOwnership();
             Rotation direction = CalculateRotation();
             IsOpen = !IsOpen;
             Description = IsOpen ? "Press E to close" : "Press E to open";
             await RotateOverTime(direction, OpeningTime);
             IsInteracted = false;
+			GameObject.Network.DropOwnership();
         }
     }
 
