@@ -31,13 +31,15 @@
       {
         "Id": "ab0aeff0-e3fc-49fa-ae71-258fbbaff709",
         "Name": "RightHandSlot",
-        "Position": "0,-15.9391,0",
+        "Position": "0,-15.9391,16.77539",
+        "Rotation": "0.6830126,-0.6830127,0.1830127,0.1830127",
         "Enabled": true
       },
       {
         "Id": "3b24d9e8-138b-4321-bcaf-41920ee1e4b0",
         "Name": "LeftHandSlot",
-        "Position": "0,15.74985,-0.000002017814",
+        "Position": "0,15.74985,16.77539",
+        "Rotation": "0.1830127,-0.1830127,0.6830127,0.6830126",
         "Enabled": true
       }
     ]
