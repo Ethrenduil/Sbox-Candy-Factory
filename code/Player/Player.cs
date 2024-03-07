@@ -28,6 +28,7 @@ public class Player : Component
 	[Sync] public string Name { get; set; }
 	private bool IsLoading { get; set; }
 	private bool IsSaving { get; set; }
+	private bool Zoom { get; set; }
 
 
 	protected override void OnEnabled()
@@ -59,11 +60,28 @@ public class Player : Component
 
 	protected override void OnUpdate()
 	{
+		GetInput();
 		UpdateEyeInput();
 		UpdateCameraPosition();
 		UpdateBodyRotation();
 		UpdateCrouch();
 		UpdateAnimation();	
+	}
+
+	private void GetInput()
+	{
+		if (IsProxy)
+			return;
+
+		if (Input.Down("attack2"))
+			Zoom = true;
+		else
+			Zoom = false;
+
+		if (Input.Pressed("Slot1"))
+			Save();
+		else if (Input.Pressed("Slot2"))
+			Load();
 	}
 
 	protected override void OnFixedUpdate()
@@ -81,15 +99,6 @@ public class Player : Component
 			{
 				AnimationHelper.Sitting = CitizenAnimationHelper.SittingStyle.None;
 			}
-		}
-
-		// Test Save/Load
-		if (Input.Pressed("Slot1"))
-		{
-			Save();
-		} else if (Input.Pressed("Slot2"))
-		{
-			Load();
 		}
 
 		if (cc.IsOnGround && Input.Down("Jump"))
@@ -149,6 +158,15 @@ public class Player : Component
 			else
 				camPos = collisionResult.EndPosition;
 
+			if (Zoom)
+			{
+				cam.FieldOfView = 30;
+			}
+			else
+			{
+				cam.FieldOfView = 80;
+			}
+			
 			cam.Transform.Position = camPos;
 			cam.Transform.Rotation = lookDir;
 		}
