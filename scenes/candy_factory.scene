@@ -450,8 +450,52 @@
       ]
     },
     {
+      "Id": "0bec0f16-4635-4844-9a9f-9f0bd7da7d5d",
+      "Name": "box",
+      "Position": "4573.836,624.5346,8.000122",
+      "Tags": "interactable",
+      "Networked": true,
+      "Enabled": true,
+      "__Prefab": "prefabs/box.prefab"
+    },
+    {
+      "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
+      "Name": "Transformer",
+      "Position": "1346.866,-459.1089,11.64279",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Scale": "0.8,0.8,0.8",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/conveyor/transformer.vmdl",
+          "Static": true,
+          "Surface": null
+        },
+        {
+          "__type": "SkinnedModelRenderer",
+          "AnimationGraph": "animgraphs/upgrader.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "BoneMergeTarget": null,
+          "CreateBoneObjects": false,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/conveyor/transformer.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Conveyor",
+          "IsMoving": true,
+          "Speed": 100,
+          "Turn": false
+        }
+      ]
+    },
+    {
       "Id": "16b156d0-244e-4440-9c91-801cac975915",
-      "Name": "conveyor_s",
+      "Name": "Conveyor",
       "Position": "1346.866,-539.4505,12",
       "Rotation": "0,0,0.7071067,0.7071068",
       "Enabled": true,
@@ -474,138 +518,9 @@
       ]
     },
     {
-      "Id": "67d018cf-beea-440f-b61b-eda31b3db241",
-      "Name": "conveyor_s (1)",
-      "Position": "2139.484,-449.7806,12",
-      "Rotation": "0,0,-1,0.0000001947072",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/conveyor/conveyor_s.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": false
-        }
-      ]
-    },
-    {
-      "Id": "ae29a119-f877-412d-a0e2-57b2de4bbcda",
-      "Name": "conveyor_turn",
-      "Position": "2177.307,-338.4223,56.94744",
-      "Rotation": "0,0,-0.7071067,0.7071068",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/conveyor/conveyor_turn.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": true
-        }
-      ]
-    },
-    {
-      "Id": "7dd7ba8d-920b-40c9-ac07-9cd97d3d67cf",
-      "Name": "conveyor_turn (1)",
-      "Position": "2233.447,-394.2911,56.94744",
-      "Rotation": "0,0,-0.9999999,0.0000001490116",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/conveyor/conveyor_turn.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": true
-        }
-      ]
-    },
-    {
-      "Id": "372506be-ddf6-4556-8781-a01296dd3e9b",
-      "Name": "conveyor_turn (2)",
-      "Position": "2100.777,-449.8854,56.94744",
-      "Rotation": "0,0,-0.7071069,-0.7071065",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/conveyor/conveyor_turn.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": true
-        }
-      ]
-    },
-    {
-      "Id": "d82e77bf-416f-4fdd-a8b3-8d4750bd5617",
-      "Name": "conveyor_turn (3)",
-      "Position": "2046.575,-394.0722,56.94744",
-      "Rotation": "0,-0,-0.0000003576279,-1",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/conveyor/conveyor_turn.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": true
-        }
-      ]
-    },
-    {
-      "Id": "0bec0f16-4635-4844-9a9f-9f0bd7da7d5d",
-      "Name": "box",
-      "Position": "4573.836,624.5346,8.000122",
-      "Tags": "interactable",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/box.prefab"
-    },
-    {
-      "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-      "Name": "transformer",
-      "Position": "1346.866,-459.1089,11.64279",
+      "Id": "c118b649-5a8c-434e-a350-2c6a90125411",
+      "Name": "Furnace",
+      "Position": "1346.866,-615.9421,11.64279",
       "Rotation": "0,0,0.7071068,0.7071068",
       "Scale": "0.8,0.8,0.8",
       "Enabled": true,
@@ -613,19 +528,19 @@
         {
           "__type": "ModelCollider",
           "IsTrigger": false,
-          "Model": "models/conveyor/transformer.vmdl",
+          "Model": "models/conveyor/furnace.vmdl",
           "Static": true,
           "Surface": null
         },
         {
           "__type": "SkinnedModelRenderer",
-          "AnimationGraph": "animgraphs/upgrader.vanmgrph",
+          "AnimationGraph": null,
           "BodyGroups": 18446744073709551615,
           "BoneMergeTarget": null,
           "CreateBoneObjects": false,
           "MaterialGroup": null,
           "MaterialOverride": null,
-          "Model": "models/conveyor/transformer.vmdl",
+          "Model": "models/conveyor/furnace.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
@@ -679,7 +594,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-07T14:16:46.6977478\u002B01:00",
+  "LastSaved": "2024-03-07T21:05:46.2319324\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
