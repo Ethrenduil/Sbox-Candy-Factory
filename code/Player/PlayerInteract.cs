@@ -5,15 +5,17 @@ using Sandbox.Engine.Utility.RayTrace;
 [Category("Player")]
 [Title ("Player Interact")]
 public class PlayerInteract : Component
-{
-	MeshTraceRequest request = new MeshTraceRequest();
-	[Property] Player PlayerComponent;
-	
+{	
+	[Category("Parameters")]
 	[Property]
 	[Range( 0f, 1000f, 50f )]
 	public float InteractDistance {get ; set; } = 150.0f;
-	public bool isInteracting = false;
-	[Property] public Interact interactHud;
+
+	Player PlayerComponent;
+	public bool IsInteracting = false;
+
+	[Sync] public bool IsCarrying { get; set; } = false;
+	public Interact interactHud;
 	protected float InteractionTime = 0.0f;
     protected const float InteractionCooldown = 0.5f;
 
@@ -21,7 +23,6 @@ public class PlayerInteract : Component
 	{
 		base.OnStart();
 		PlayerComponent = GameObject.Components.Get<Player>(FindMode.EnabledInSelf);
-		request = request.WithTag( "interactable" );
 		interactHud = Scene.GetAllComponents<Interact>().FirstOrDefault();
 	}
 
@@ -33,6 +34,9 @@ public class PlayerInteract : Component
 		var position = GameObject.Transform.Position;
 		position.z += 50;
 
+		// If the plyaer has interacted and the cooldown has passed, reset the interaction state
+		IsInteracting = IsInteracting && !InteractionCooldownPassed();
+
 		SceneTraceResult collisionResult = Scene.Trace
 				.Ray(position, position + PlayerComponent.Camera.Transform.Rotation.Forward * InteractDistance)
 				.WithTag("interactable")
@@ -41,25 +45,30 @@ public class PlayerInteract : Component
 		{
 			AInteractable interactable = collisionResult.GameObject.Components.Get<AInteractable>();
 			interactHud.SetValue(interactable.Description);
-			if (Input.Pressed("use") && !isInteracting )
+			if (Input.Pressed("use") && !IsInteracting)
 			{
+				if (interactable.Type == InteractableType.Resource && IsCarrying) return;
 				StartInteract();
 				interactable?.OnInteract(GameObject);
 				interactHud.SetValue(null);
+				IsCarrying = interactable.Type == InteractableType.Resource || IsCarrying;
 			}
 		} else
 		{
 			interactHud.SetValue(null);
-		}
-		if (isInteracting && InteractionCooldownPassed())
-		{
-			isInteracting = false;
+
+			// If the player is carrying an object and the use button is pressed, drop the object
+			if (Input.Pressed("use") && !IsInteracting && IsCarrying)
+			{
+				GameObject.Children.FirstOrDefault(x => x.Tags.Has("interactable")).Components.Get<AInteractable>().OnInteract(GameObject);
+				IsCarrying = false;
+			}
 		}
 	}
 
 	public void StartInteract()
 	{
-		isInteracting = true;
+		IsInteracting = true;
 		InteractionTime = Time.Now;
 	}
 	public bool InteractionCooldownPassed()

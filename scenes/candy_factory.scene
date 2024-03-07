@@ -354,7 +354,6 @@
             {
               "__type": "Openable",
               "Description": "Press E to close",
-              "IsInteracted": false,
               "IsOpen": false,
               "Name": "Door",
               "OpeningTime": 0.5,
@@ -392,7 +391,6 @@
             {
               "__type": "Openable",
               "Description": "Press E to open",
-              "IsInteracted": false,
               "IsOpen": false,
               "Name": "Door",
               "OpeningTime": 0.5,
@@ -768,7 +766,7 @@
     {
       "Id": "0bec0f16-4635-4844-9a9f-9f0bd7da7d5d",
       "Name": "box",
-      "Position": "4581.679,624.5346,8.000122",
+      "Position": "4573.836,624.5346,8.000122",
       "Tags": "interactable",
       "Networked": true,
       "Enabled": true,
@@ -798,7 +796,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-06T21:52:52.6845885\u002B01:00",
+  "LastSaved": "2024-03-06T23:35:55.7228174-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",

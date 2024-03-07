@@ -8,9 +8,7 @@ public class Holdable : AInteractable
     [Property] public override string Description { get; set; }
     [Property] public override InteractableType Type { get; set; } = InteractableType.Resource;
     [Property] public override string PrefabPath { get; set; }
-    [Property] public override bool IsInteracted { get; set; }
-
-    [Sync] private GameObject HoldRelative { get; set; }
+    private GameObject HoldRelative { get; set; }
     private const float ForwardOffset = 70f;
     private const float VerticalOffset = 40f;
 
@@ -22,25 +20,14 @@ public class Holdable : AInteractable
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
     }
-
-    protected override void OnUpdate()
+	protected override void OnUpdate()
     {
         // Exit early if this is a proxy or not currently interacted
         if (IsProxy || !IsInteracted || Interactor == null) return;
 
-        // Get the PlayerInteract component of the interactor
-        PlayerInteract playerInteract = Interactor.Components.Get<PlayerInteract>();
-
         // Update the position and rotation of the holdable object based on the relative object
         Transform.Position = HoldRelative.Transform.Position + HoldRelative.Transform.Rotation.Forward * new Vector3(0, 0, VerticalOffset);
         Transform.Rotation = HoldRelative.Parent.Transform.Rotation;
-
-        // Check for user input to initiate interaction
-        if (Input.Pressed("use") && playerInteract.InteractionCooldownPassed())
-        {
-            playerInteract.StartInteract();
-            OnInteract(Interactor);
-        }
     }
 
     public override void OnInteract(GameObject interactor)
@@ -72,12 +59,7 @@ public class Holdable : AInteractable
         Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * ForwardOffset;
         dropPosition.z = Math.Max(dropPosition.z, 40);
         GameObject.Transform.Position = dropPosition;
-
-        // Reset animation helper hands
-        var animationHelper = Interactor.Components.Get<Player>().AnimationHelper;
-        animationHelper.IkLeftHand = null;
-        animationHelper.IkRightHand = null;
-
+        
         // Reset interactor and relative object
         Interactor = null;
         HoldRelative = null;
@@ -97,9 +79,6 @@ public class Holdable : AInteractable
         GameObject.SetParent(interactor, true);
         GameObject.Network.TakeOwnership();
         var player = interactor.Components.Get<Player>();
-        var animationHelper = player.AnimationHelper;
-        animationHelper.IkLeftHand = GameObject.Children.FirstOrDefault(x => x.Name == "LeftHandSlot");
-        animationHelper.IkRightHand = GameObject.Children.FirstOrDefault(x => x.Name == "RightHandSlot");
 
         // Set the holdable's relative object
         HoldRelative = Interactor.Children.FirstOrDefault(x => x.Name == "Body")?.Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;

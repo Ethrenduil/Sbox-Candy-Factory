@@ -47,6 +47,7 @@ public sealed class Delivery : Component
     {
         var temp = DeliveryPrefab.Clone(DeliveryDestination.Transform.World);
         temp.Components.Get<DeliveryGood>().SetGoods(Goods);
+        temp.NetworkSpawn();
         DeliveryHud.SetProgress(null);
     }
 

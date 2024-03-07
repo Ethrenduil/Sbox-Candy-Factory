@@ -1,8 +1,9 @@
 {
   "RootObject": {
-    "Id": "825405e6-1aef-4238-bedc-b3124baea41c",
+    "Id": "30f79f6e-5d65-4481-b186-2cd64379a0c7",
     "Name": "box",
     "Tags": "interactable",
+    "Networked": true,
     "Enabled": true,
     "Components": [
       {
@@ -17,7 +18,6 @@
       {
         "__type": "Holdable",
         "Description": "Press E to pick up Delivery Box",
-        "IsInteracted": false,
         "Name": "Delivery",
         "PrefabPath": "prefabs/box.prefab",
         "Type": "Resource"
@@ -29,14 +29,14 @@
     ],
     "Children": [
       {
-        "Id": "ab0aeff0-e3fc-49fa-ae71-258fbbaff709",
+        "Id": "5e4be162-4f0e-4bcb-8311-21476739f6f7",
         "Name": "RightHandSlot",
         "Position": "0,-15.9391,16.77539",
         "Rotation": "0.6830126,-0.6830127,0.1830127,0.1830127",
         "Enabled": true
       },
       {
-        "Id": "3b24d9e8-138b-4321-bcaf-41920ee1e4b0",
+        "Id": "7ff72df6-d8ab-4d62-85d3-25bdc06981da",
         "Name": "LeftHandSlot",
         "Position": "0,15.74985,16.77539",
         "Rotation": "0.1830127,-0.1830127,0.6830127,0.6830126",

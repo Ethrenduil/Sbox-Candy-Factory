@@ -25,8 +25,6 @@ public class Player : Component
 	[Property] public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
 	[Property] [Sync] public ulong SteamId { get; set; }
-	[Property] public GameObject LeftHand { get; set; }
-    [Property] public GameObject RightHand { get; set; }
 	[Sync] public string Name { get; set; }
 	private bool IsLoading { get; set; }
 	private bool IsSaving { get; set; }
@@ -168,7 +166,10 @@ public class Player : Component
 
 	private void UpdateAnimation()
 	{
-		var cc = GameObject.Components.Get<CharacterController>();
+		var cc = GameObject.Components.Get<CharacterController>() ?? null;
+		var playerInteract = GameObject.Components.Get<PlayerInteract>() ?? null;
+		var holdingItem = GameObject.Children.FirstOrDefault(x => x.Tags.Has("interactable"));
+
 		if (cc is null)
 			return;
 
@@ -190,6 +191,17 @@ public class Player : Component
 			else
 			{
 				AnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
+			}
+
+			// Set the hands to the correct position
+			if (playerInteract != null && holdingItem != null)
+			{
+				AnimationHelper.IkLeftHand = holdingItem.Children.FirstOrDefault(x => x.Name == "LeftHandSlot");
+            	AnimationHelper.IkRightHand = holdingItem.Children.FirstOrDefault(x => x.Name == "RightHandSlot");
+			} else if (playerInteract != null && holdingItem == null)
+			{
+				AnimationHelper.IkLeftHand = null;
+				AnimationHelper.IkRightHand = null;
 			}
 		}
 	}
