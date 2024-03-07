@@ -428,181 +428,10 @@
       ]
     },
     {
-      "Id": "f7083fe8-a6ac-44c1-b935-27b2d9e33bbe",
-      "Name": "candy_choco_01",
-      "Position": "2158.633,-455.9133,83.01256",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_01.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": true
-        }
-      ]
-    },
-    {
-      "Id": "e077d798-509c-4e33-b467-0e4d8fa61ad1",
-      "Name": "candy_choco_02",
-      "Position": "2158.627,-442.0819,83.10075",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_02.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "02a4e637-5ce1-4e34-a119-65182308f6a8",
-      "Name": "candy_choco_03",
-      "Position": "2217.432,-353.0229,81.29292",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_03.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "74bb5767-110b-41bd-a90a-6b3d7f1426bc",
-      "Name": "candy_choco_07",
-      "Position": "2158.592,-350.822,83.68263",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_07.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "aea16a4f-4f31-4481-9143-72824d4c522e",
-      "Name": "candy_choco_25",
-      "Position": "2207.544,-442.0507,81.12595",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_25.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "f6c33be2-f755-482a-a72f-fb1cc73c79fd",
-      "Name": "candy_choco_29",
-      "Position": "2181.263,-442.0674,82.1869",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_29.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "2ed4e711-2f8d-4017-a4e8-0cef75d8691b",
-      "Name": "candy_glass_10",
-      "Position": "2138.663,-442.0948,83.90678",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_glass_10.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "abaafb4d-dba5-41dd-9384-d0fc095c4193",
-      "Name": "candy_glass_12",
-      "Position": "2147.963,-442.0888,83.5313",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_glass_12.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
-      "Id": "5a8e314a-c35a-405e-986d-a44e53bb9c0f",
-      "Name": "candy_glass_13",
-      "Position": "2158.627,-442.0819,83.10075",
-      "Rotation": "0.003183407,0.02017459,0.0002571608,0.9997914",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_glass_13.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
-    },
-    {
       "Id": "6461edd6-df20-43a8-9e3f-872f12806f4e",
       "Name": "Spot Light",
-      "Position": "2462.112,-630.4276,99.35294",
-      "Rotation": "0,0.5,0,0.8660254",
+      "Position": "1628.6,-464.6547,246.985",
+      "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
       "Tags": "light_spot,light",
       "Enabled": true,
       "Components": [
@@ -623,7 +452,8 @@
     {
       "Id": "16b156d0-244e-4440-9c91-801cac975915",
       "Name": "conveyor_s",
-      "Position": "2140.622,-338.2272,12",
+      "Position": "1346.866,-539.4505,12",
+      "Rotation": "0,0,0.7071067,0.7071068",
       "Enabled": true,
       "Components": [
         {
@@ -771,6 +601,59 @@
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/box.prefab"
+    },
+    {
+      "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
+      "Name": "transformer",
+      "Position": "1346.866,-459.1089,11.64279",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Scale": "0.8,0.8,0.8",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/conveyor/transformer.vmdl",
+          "Static": true,
+          "Surface": null
+        },
+        {
+          "__type": "SkinnedModelRenderer",
+          "AnimationGraph": "animgraphs/upgrader.vanmgrph",
+          "BodyGroups": 18446744073709551615,
+          "BoneMergeTarget": null,
+          "CreateBoneObjects": false,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/conveyor/transformer.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Conveyor",
+          "IsMoving": true,
+          "Speed": 100,
+          "Turn": false
+        }
+      ]
+    },
+    {
+      "Id": "3a91ab36-7bbf-4591-bbd7-a7ed6c1e546e",
+      "Name": "candy_choco_01",
+      "Position": "1335.776,-562.9289,104.1572",
+      "Tags": "candy",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/candies/candy_choco_01.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -796,7 +679,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-06T23:35:55.7228174-05:00",
+  "LastSaved": "2024-03-07T14:16:46.6977478\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",

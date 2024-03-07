@@ -5,7 +5,7 @@ using System.Numerics;
 public sealed class Conveyor : Component, Component.ICollisionListener
 {
     [Property] private bool IsMoving = true;
-    [Property] private float Speed = 500; // Change this to the speed you want
+    [Property] private float Speed = 100; // Change this to the speed you want
 	[Property] private bool Turn = false;
 	public List<GameObject> Candies { get; set; } = new();
 
