@@ -26,16 +26,16 @@
 								to = "materials/furnace/charnieres.vmat"
 							},
 							{
+								from = "door.vmat"
+								to = "materials/furnace/door.vmat"
+							},
+							{
 								from = "furnace.vmat"
 								to = "materials/furnace/furnace.vmat"
 							},
 							{
 								from = "screen.vmat"
 								to = "materials/furnace/screen.vmat"
-							},
-							{
-								from = "door.vmat"
-								to = "materials/furnace/door.vmat"
 							},
 						]
 						use_global_default = false
@@ -87,8 +87,11 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = false
-							exception_list = [  ]
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube",
+							]
 						}
 					},
 				]
@@ -105,7 +108,7 @@
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
-						looping = true
+						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
@@ -165,20 +168,6 @@
 					},
 				]
 				default_root_bone_name = ""
-			},
-			{
-				_class = "WeightListList"
-				children = 
-				[
-					{
-						_class = "WeightList"
-						name = "e"
-						default_weight = 0.0
-						weights = [  ]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-				]
 			},
 		]
 		model_archetype = "animated_model"
