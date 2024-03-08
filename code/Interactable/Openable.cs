@@ -5,10 +5,6 @@ using Sandbox.Engine.Utility.RayTrace;
 
 public class Openable : AInteractable
 {
-    [Property] override public string Name { get; set; }
-    [Property] override public string Description { get; set; }
-    [Property] override public InteractableType Type { get; set; } = InteractableType.Resource;
-    [Property] override public string PrefabPath { get; set; }
     [Property] public float OpeningTime { get; set; } = 1f;
     [Property][Sync] public bool IsOpen { get; set; }
     [Property] public OpenableSide Side { get; set; }
@@ -18,6 +14,7 @@ public class Openable : AInteractable
         base.OnStart();
         Description = IsOpen ? "Press E to close" : "Press E to open";
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
+        Type = InteractableType.Building;
     }
 
     public override async void OnInteract(GameObject interactor)

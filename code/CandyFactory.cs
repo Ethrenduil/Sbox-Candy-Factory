@@ -15,41 +15,13 @@ namespace Eryziac.CandyFactory;
 [Category( "Candy Factory" )]
 public class CandyFactory : Component, Component.INetworkListener
 {
-	[Sync] public static IEnumerable<Player> Players => InternalPlayers.Where( p => p.IsValid() );
-	[Sync] private static List<Player> InternalPlayers { get; set; } = new( 4 ) { null, null, null, null };
-	
-	public static CandyFactory Instance { get; private set; }
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
 	public static List<GameObject> SpawnPoint { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
-	public static Player GetPlayer( int slot ) => InternalPlayers[slot];
-	public static List<Player> GetPlayers() => InternalPlayers;
-	public static void AddPlayer( int slot, Player player )
-	{
-		player.PlayerSlot = slot;
-		InternalPlayers[slot] = player;
-	}
-
-	public static void RemovePlayer( int slot )
-	{
-		InternalPlayers[slot] = null;
-		 foreach ( var player in InternalPlayers )
-        {
-            if ( player is null ) continue;
-            if ( player.PlayerSlot > slot )
-            {
-                var newSlot = player.PlayerSlot - 1;
-                InternalPlayers[newSlot] = player;
-                InternalPlayers[player.PlayerSlot] = null;
-                player.PlayerSlot = newSlot;
-            }
-        }
-	}
 
 	protected override void OnAwake()
 	{
-		Instance = this;
 		base.OnAwake();
 	}
 	
@@ -59,51 +31,39 @@ public class CandyFactory : Component, Component.INetworkListener
 		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
 	}
 
-	private int FindFreeSlot()
-	{
-		for ( var i = 0; i < 4; i++ )
-		{
-			var player = InternalPlayers[i];
-			if ( player.IsValid() ) continue;
-			return i;
-		}
-
-		return -1;
-	}
-
 	void INetworkListener.OnActive( Connection connection )
 	{
-		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
-		var playerSlot = FindFreeSlot();
-
-		if ( playerSlot < 0 )
+		// Get the list of spawn points and the number of players
+		int nbPlayer = Scene.Components.GetAll<Player>().Count();
+		if ( nbPlayer > 4 )
 		{
 			throw new( "Player joined but there's no free slots!" );
 		}
-		var player = PlayerPrefab.Clone(SpawnPoint[playerSlot].Transform.World);
-		player.Name = connection.DisplayName;
-		var playerComponent = player.Components.Get<Player>();
 
-		
+		// Spawn the player
+		var player = PlayerPrefab.Clone(SpawnPoint[nbPlayer].Transform.World);
+
+		// Set the player's name and name tag
+		player.Name = connection.DisplayName;
 		var nameTagPanel = player.Components.Get<NameTagPanel>( FindMode.EverythingInSelfAndDescendants);
 		nameTagPanel.Name = connection.DisplayName;
 
+		// Set the player Components's steam id and name
+		var playerComponent = player.Components.Get<Player>();
 		playerComponent.Name = connection.DisplayName;
 		playerComponent.SteamId = connection.SteamId;
-		Log.Info( $"Player {connection.DisplayName} joined, slot {playerSlot}" );
 
-		AddPlayer( playerSlot, playerComponent );
+		Log.Info( $"Player {connection.DisplayName} joined" );
+
+		// Network spawn the player and enable the navmesh
 		player.NetworkSpawn( connection );
 		Scene.NavMesh.IsEnabled = true;
+
 	}
 
 	void INetworkListener.OnDisconnected(Sandbox.Connection conn)
 	{
-		var player = Players.FirstOrDefault( p => p.SteamId == conn.SteamId );
-		if ( player is not null )
-		{
-			RemovePlayer( player.PlayerSlot );
-		}
+		Log.Info( $"Player {conn.DisplayName} disconnected" );
 	}
 
 	public void RefreshTaskHUD()

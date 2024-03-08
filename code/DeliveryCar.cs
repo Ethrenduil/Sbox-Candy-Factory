@@ -34,7 +34,8 @@ public sealed class DeliveryCar : Component
 		if (IsProxy) return;
 
 		// Move the delivery car to the destination
-		if (IsDelivering || IsReturning) Agent.MoveTo(Destination);
+		if (IsDelivering || IsReturning)
+			Agent.MoveTo(Destination);
 
 		// If the delivery car has finished delivering and has arrived at the spawn, destroy the delivery car
 		if (IsReturning && IsArrived())
