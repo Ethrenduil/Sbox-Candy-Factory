@@ -37,6 +37,7 @@
     protected override void OnStart()
     {
         LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+		StateHasChanged();
     }
 
     protected override void OnUpdate()
