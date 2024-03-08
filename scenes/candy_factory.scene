@@ -281,6 +281,19 @@
         },
         {
           "__type": "Delivery",
+          "DeliveryBoxPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/box.prefab"
+          },
+          "DeliveryCar": null,
+          "DeliveryCarPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/deliveryvehicule.prefab"
+          },
+          "DeliveryCarSpawn": {
+            "_type": "gameobject",
+            "go": "253742a9-bff1-4e70-b77d-ce55991ba4ee"
+          },
           "DeliveryDestination": {
             "_type": "gameobject",
             "go": "8182abc6-4c4a-4df2-88ae-02269a3b73ab"
@@ -289,10 +302,6 @@
             "_type": "component",
             "go": "de065e30-8f41-425b-8399-50a2b16c4b4c",
             "component_type": "DeliveryHud"
-          },
-          "DeliveryPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/box.prefab"
           },
           "DeliveryProgress": 0,
           "DeliveryTime": 10,
@@ -569,6 +578,12 @@
           "ShowCreatedComponents": false
         }
       ]
+    },
+    {
+      "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
+      "Name": "DeliverySpawn",
+      "Position": "5792.484,-1154.679,19.74191",
+      "Enabled": true
     }
   ],
   "SceneProperties": {
@@ -580,7 +595,7 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "NavMesh": {
-      "Enabled": false,
+      "Enabled": true,
       "IncludeStaticBodies": true,
       "IncludeKeyframedBodies": true,
       "EditorAutoUpdate": true,
@@ -594,7 +609,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-07T21:05:46.2319324\u002B01:00",
+  "LastSaved": "2024-03-07T20:33:32.676533-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",

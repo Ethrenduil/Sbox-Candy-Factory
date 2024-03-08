@@ -1,0 +1,40 @@
+{
+  "RootObject": {
+    "Id": "9216a950-6ac6-4ad9-8d46-35247c9ec3b4",
+    "Name": "deliveryvehicule",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "bici_itau.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "NavMeshAgent",
+        "Acceleration": 200,
+        "Height": 60,
+        "MaxSpeed": 500,
+        "Radius": 30,
+        "Separation": 0.25,
+        "UpdatePosition": true,
+        "UpdateRotation": true
+      },
+      {
+        "__type": "DeliveryCar",
+        "IsDelivering": false
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "sboxchile.bici_itau"
+  ]
+}

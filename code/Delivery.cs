@@ -8,15 +8,18 @@ public sealed class Delivery : Component
     [Property] public float DeliveryProgress { get; set; } = 0.0f;
     [Property] public DeliveryStatus Status { get; set; } = DeliveryStatus.None;
     [Property] public GameObject DeliveryDestination { get; set; }
-    [Property] public GameObject DeliveryPrefab { get; set; }
+    [Property] public GameObject DeliveryBoxPrefab { get; set; }
     [Property] public DeliveryHud DeliveryHud { get; set; }
     [Property] public Dictionary<DeliveryGoods, int> Goods { get; set; } = new Dictionary<DeliveryGoods, int>();
+    [Property] public GameObject DeliveryCarPrefab { get; set; }
+    [Property] public DeliveryCar DeliveryCar { get; set; }
+    [Property] public GameObject DeliveryCarSpawn { get; set; }
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
 
         // Trigger Order Delivery // Test
-        if (Input.Pressed("drop"))
+        if (Input.Pressed("drop") && Status == DeliveryStatus.None)
         {
             StartDelivery(new Dictionary<DeliveryGoods, int> { { DeliveryGoods.Sugar, 10 }, { DeliveryGoods.Flour, 10 }, { DeliveryGoods.Milk, 10 } });
         }
@@ -25,30 +28,55 @@ public sealed class Delivery : Component
         if (Status == DeliveryStatus.InProgress)
         {
             DeliveryProgress += Time.Delta;
-            DeliveryHud.SetProgress((DeliveryTime - DeliveryProgress).ToString("0") + "s left");
-            if (DeliveryProgress >= DeliveryTime)
+            if (DeliveryCar.IsArrived())
             {
                 Status = DeliveryStatus.Delivered;
                 DeliveryProgress = 0.0f;
                 SpawnDelivery();
             }
         }
+
+        if (Status == DeliveryStatus.Delivered && !DeliveryCar.Active)
+        {
+            DeliveryHud.SetProgress(null);
+            DeliveryCar = null;
+            Status = DeliveryStatus.None;
+        }
 	}
 
     // Start a delivery with a list of goods
     public void StartDelivery(Dictionary<DeliveryGoods, int> goods)
     {
+        // Set the delivery status and goods
         Status = DeliveryStatus.InProgress;
         Goods = goods;
+
+        // Spawn and start the delivery car
+        var GOCar = DeliveryCarPrefab.Clone(DeliveryCarSpawn.Transform.Position, DeliveryCarSpawn.Transform.Rotation);
+        GOCar.NetworkSpawn();
+        DeliveryCar = GOCar.Components.Get<DeliveryCar>();
+        DeliveryCar.StartDelivery(DeliveryDestination.Transform.Position);
+
+        // Set the delivery progress
+        DeliveryHud.SetProgress("Delivery in progress");
     }
 
     // Spawn a delivery object at the delivery destination
     public void SpawnDelivery()
     {
-        var temp = DeliveryPrefab.Clone(DeliveryDestination.Transform.World);
+        // Spawn the delivery box and set it up 
+        var temp = DeliveryBoxPrefab.Clone(DeliveryDestination.Transform.World);
         temp.Components.Get<DeliveryGood>().SetGoods(Goods);
         temp.NetworkSpawn();
-        DeliveryHud.SetProgress(null);
+
+        // Reset the delivery status
+        DeliveryHud.SetProgress("Delivery complete");
+
+        // Return the delivery car to the spawn
+        DeliveryCar.StopDelivery(DeliveryCarSpawn.Transform.Position);
+
+        // Set the delivery status
+        Status = DeliveryStatus.Delivered;
     }
 
 }
