@@ -4,10 +4,6 @@ using System;
 
 public class Holdable : AInteractable
 {
-    [Property] public override string Name { get; set; }
-    [Property] public override string Description { get; set; }
-    [Property] public override InteractableType Type { get; set; } = InteractableType.Resource;
-    [Property] public override string PrefabPath { get; set; }
     private GameObject HoldRelative { get; set; }
     private const float ForwardOffset = 70f;
     private const float VerticalOffset = 40f;
@@ -19,6 +15,7 @@ public class Holdable : AInteractable
         Description = $"Press E to pick up {Name}";
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
+        Type = InteractableType.Resource;
     }
 	protected override void OnUpdate()
     {

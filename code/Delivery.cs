@@ -14,9 +14,12 @@ public sealed class Delivery : Component
     [Property] public GameObject DeliveryCarPrefab { get; set; }
     [Property] public DeliveryCar DeliveryCar { get; set; }
     [Property] public GameObject DeliveryCarSpawn { get; set; }
+    [Property] public GameObject Receiver { get; set; }
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
+
+        if (IsProxy) return;
 
         // Trigger Order Delivery // Test
         if (Input.Pressed("drop") && Status == DeliveryStatus.None)
@@ -68,6 +71,7 @@ public sealed class Delivery : Component
         var temp = DeliveryBoxPrefab.Clone(DeliveryDestination.Transform.World);
         temp.Components.Get<DeliveryGood>().SetGoods(Goods);
         temp.NetworkSpawn();
+        temp.Network.TakeOwnership();
 
         // Reset the delivery status
         DeliveryHud.SetProgress("Delivery complete");
