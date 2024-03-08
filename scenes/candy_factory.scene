@@ -363,6 +363,7 @@
             {
               "__type": "Openable",
               "Description": "Press E to close",
+              "IsInteracted": false,
               "IsOpen": false,
               "Name": "Door",
               "OpeningTime": 0.5,
@@ -400,6 +401,7 @@
             {
               "__type": "Openable",
               "Description": "Press E to open",
+              "IsInteracted": false,
               "IsOpen": false,
               "Name": "Door",
               "OpeningTime": 0.5,
@@ -439,21 +441,21 @@
     {
       "Id": "6461edd6-df20-43a8-9e3f-872f12806f4e",
       "Name": "Spot Light",
-      "Position": "1628.6,-464.6547,246.985",
+      "Position": "1476.965,-535.884,204.1936",
       "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
       "Tags": "light_spot,light",
       "Enabled": true,
       "Components": [
         {
           "__type": "SpotLight",
-          "Attenuation": 1,
-          "ConeInner": 15,
-          "ConeOuter": 45,
+          "Attenuation": 0,
+          "ConeInner": 40.6,
+          "ConeOuter": 78.09,
           "Cookie": null,
           "FogMode": "Disabled",
           "FogStrength": 1,
           "LightColor": "1,1,1,1",
-          "Radius": 500,
+          "Radius": 1000,
           "Shadows": true
         }
       ]
@@ -470,7 +472,7 @@
     {
       "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
       "Name": "Transformer",
-      "Position": "1346.866,-459.1089,11.64279",
+      "Position": "1346.866,-455.5266,11.64279",
       "Rotation": "0,0,0.7071068,0.7071068",
       "Scale": "0.8,0.8,0.8",
       "Enabled": true,
@@ -505,7 +507,7 @@
     {
       "Id": "16b156d0-244e-4440-9c91-801cac975915",
       "Name": "Conveyor",
-      "Position": "1346.866,-539.4505,12",
+      "Position": "1346.866,-535.7939,12",
       "Rotation": "0,0,0.7071067,0.7071068",
       "Enabled": true,
       "Components": [
@@ -609,7 +611,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-07T20:33:32.676533-05:00",
+  "LastSaved": "2024-03-08T17:57:55.2302274\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
     "facepunch.metal_door_01a",
