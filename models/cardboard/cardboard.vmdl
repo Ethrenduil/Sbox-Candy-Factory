@@ -28,10 +28,10 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
+						_class = "PhysicsHullFile"
 						name = "cardboard"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "plastic.hollow"
 						collision_tags = "solid"
 						recenter_on_parent_bone = false
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -41,8 +41,10 @@
 						align_origin_z_type = "None"
 						filename = "models/cardboard/fbx/cardboard_physic.fbx"
 						import_scale = 1.0
-						maxMeshVertices = 0
-						qemError = 0.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
 						import_filter = 
 						{
 							exclude_by_default = false

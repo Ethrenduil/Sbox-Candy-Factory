@@ -10,7 +10,7 @@
         "__type": "Prop",
         "Health": 50,
         "IsStatic": false,
-        "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+        "Model": "models/cardboard/cardboard.vmdl",
         "OnPropBreak": null,
         "OnPropTakeDamage": null,
         "ShowCreatedComponents": false
@@ -18,8 +18,8 @@
       {
         "__type": "Holdable",
         "Description": "Press E to pick up Delivery Box",
+        "IsInteracted": false,
         "Name": "Delivery",
-        "PrefabPath": "prefabs/box.prefab",
         "Type": "Resource"
       },
       {
@@ -47,7 +47,5 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": [
-    "facepunch.wooden_crate"
-  ]
+  "__references": []
 }
