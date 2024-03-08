@@ -7,6 +7,7 @@ using Sandbox.Diagnostics;
 using Sandbox.Network;
 using Sandbox.Utility;
 using Sandbox.Services;
+using Sandbox.Navigation;
 
 namespace Eryziac.CandyFactory;
 
@@ -93,6 +94,7 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		AddPlayer( playerSlot, playerComponent );
 		player.NetworkSpawn( connection );
+		Scene.NavMesh.IsEnabled = true;
 	}
 
 	void INetworkListener.OnDisconnected(Sandbox.Connection conn)

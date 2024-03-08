@@ -31,6 +31,7 @@ public sealed class DeliveryCar : Component
 	}
 	protected override void OnUpdate()
 	{
+		if (IsProxy) return;
 
 		// Move the delivery car to the destination
 		if (IsDelivering || IsReturning) Agent.MoveTo(Destination);
@@ -49,7 +50,6 @@ public sealed class DeliveryCar : Component
 	{
 		IsDelivering = true;
 		Destination = destination;
-		
 	}
 
 	// Stop the delivery car and return to the spawn

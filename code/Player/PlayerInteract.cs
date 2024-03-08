@@ -12,9 +12,9 @@ public class PlayerInteract : Component
 	public float InteractDistance {get ; set; } = 150.0f;
 
 	Player PlayerComponent;
-	public bool IsInteracting = false;
+	[Property] public bool IsInteracting = false;
 
-	[Sync] public bool IsCarrying { get; set; } = false;
+	[Property] [Sync] public bool IsCarrying { get; set; }
 	public Interact interactHud;
 	protected float InteractionTime = 0.0f;
     protected const float InteractionCooldown = 0.5f;
@@ -24,6 +24,7 @@ public class PlayerInteract : Component
 		base.OnStart();
 		PlayerComponent = GameObject.Components.Get<Player>(FindMode.EnabledInSelf);
 		interactHud = Scene.GetAllComponents<Interact>().FirstOrDefault();
+		IsCarrying = false;
 	}
 
 	protected override void OnUpdate()

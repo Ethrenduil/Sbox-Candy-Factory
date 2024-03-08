@@ -53,9 +53,6 @@ public class Holdable : AInteractable
         Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>(FindMode.DisabledInSelfAndChildren);
         rigidbody.Enabled = true;
 
-        // Detach from the parent, drop ownership, and set the drop position
-        GameObject.SetParent(null, true);
-        GameObject.Network.DropOwnership();
         Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * ForwardOffset;
         dropPosition.z = Math.Max(dropPosition.z, 40);
         GameObject.Transform.Position = dropPosition;
@@ -63,24 +60,27 @@ public class Holdable : AInteractable
         // Reset interactor and relative object
         Interactor = null;
         HoldRelative = null;
+
+        // Detach from the parent, drop ownership, and set the drop position
+        GameObject.SetParent(null, true);
+        GameObject.Network.DropOwnership();
     }
 
     private void PickUpHoldable(GameObject interactor)
     {
-        // Set interaction state to true
-        IsInteracted = true;
+        // Attach to the interactor, take ownership, and set the animation helper hands
+        GameObject.SetParent(interactor, true);
+        GameObject.Network.TakeOwnership();
 
         // Set the current interactor and disable Rigidbody for physics simulation
         Interactor = interactor;
         Rigidbody rigidbody = GameObject.Components.Get<Rigidbody>();
         rigidbody.Enabled = false;
 
-        // Attach to the interactor, take ownership, and set the animation helper hands
-        GameObject.SetParent(interactor, true);
-        GameObject.Network.TakeOwnership();
-        var player = interactor.Components.Get<Player>();
-
         // Set the holdable's relative object
         HoldRelative = Interactor.Children.FirstOrDefault(x => x.Name == "Body")?.Children.FirstOrDefault(x => x.Name == "pelvis") ?? Interactor;
+        
+        // Set the interaction state
+        IsInteracted = true;
     }
 }

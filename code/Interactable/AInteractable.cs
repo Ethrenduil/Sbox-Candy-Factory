@@ -10,7 +10,7 @@ public class AInteractable : Component
     virtual public string Description { get; set; } = "This is an interactable object";
     virtual public InteractableType Type { get; set; } 
     virtual public string PrefabPath { get; set; } 
-    [Sync] public bool IsInteracted { get; set; } = false;
+    [Property] [Sync] public bool IsInteracted { get; set; } = false;
 
     virtual protected GameObject Interactor { get; set; }
     virtual public void OnInteract(GameObject interactor) { }
