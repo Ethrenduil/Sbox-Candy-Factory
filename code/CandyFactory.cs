@@ -28,12 +28,12 @@ public class CandyFactory : Component, Component.INetworkListener
 	protected override void OnStart()
 	{
 		base.OnStart();
-		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
 	}
 
 	void INetworkListener.OnActive( Connection connection )
 	{
 		// Get the list of spawn points and the number of players
+		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
 		int nbPlayer = Scene.Components.GetAll<Player>().Count();
 		if ( nbPlayer > 4 )
 		{
