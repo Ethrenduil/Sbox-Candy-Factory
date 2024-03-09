@@ -10,6 +10,7 @@ obj/*
 Properties/*
 code/obj/*
 code/Properties/*
+*.sln
 
 # Editor Projects
 code/Editor/obj/*
@@ -21,5 +22,6 @@ code/Editor/.vscode/*
 # Auto-generated asset related files
 *.generated.*
 *.*_c
-*.sln
 !*.shader_c
+*.sln
+*.sln

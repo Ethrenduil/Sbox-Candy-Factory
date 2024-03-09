@@ -29,9 +29,9 @@ public sealed class Factory : Component
 		Name = owner.DisplayName;
 
 		// For each interactable in the factory, take ownership
-		foreach (var interactable in GameObject.Children.Where(c => c.Tags.Has("interactable")))
+		foreach (var children in GameObject.Children.Where(c => c.Networked))
 		{
-			interactable.Network.TakeOwnership();
+			children.Network.TakeOwnership();
 		}
 
 		// Set the Factory Title to the owner's name

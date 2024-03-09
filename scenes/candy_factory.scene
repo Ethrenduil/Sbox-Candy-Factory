@@ -273,6 +273,7 @@
       "Id": "6e4069f5-9638-41f1-8ddd-72f1603ba2eb",
       "Name": "Factory",
       "Position": "1954.553,-405.9712,187",
+      "Networked": true,
       "Enabled": true,
       "Components": [
         {
@@ -448,74 +449,154 @@
           "Enabled": true
         },
         {
-          "Id": "371c384f-f891-4fe4-8110-758cde445c4e",
-          "Name": "Shelving",
-          "Position": "591.7446,24.97095,-175",
-          "Tags": "interactable",
+          "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
+          "Name": "Transformer",
+          "Position": "-607.687,-49.55542,-175.3572",
+          "Rotation": "0,0,0.7071068,0.7071068",
+          "Scale": "0.8,0.8,0.8",
+          "Networked": true,
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/conveyor/transformer.vmdl",
+              "Static": true,
+              "Surface": null
+            },
+            {
+              "__type": "SkinnedModelRenderer",
+              "AnimationGraph": "animgraphs/upgrader.vanmgrph",
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": null,
+              "CreateBoneObjects": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/conveyor/transformer.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Conveyor",
+              "IsMoving": true,
+              "Speed": 100,
+              "Turn": false
+            }
+          ]
+        },
+        {
+          "Id": "16b156d0-244e-4440-9c91-801cac975915",
+          "Name": "Conveyor",
+          "Position": "-607.687,-129.8227,-175",
+          "Rotation": "0,0,0.7071067,0.7071068",
           "Networked": true,
           "Enabled": true,
           "Components": [
             {
               "__type": "Prop",
               "Health": 0,
-              "IsStatic": false,
-              "Model": "models/props/trim_sheets/shelving/industrial_ shelving/industrial_ shelving_01.vmdl",
+              "IsStatic": true,
+              "Model": "models/conveyor/conveyor_s.vmdl",
               "OnPropBreak": null,
               "OnPropTakeDamage": null,
-              "ShowCreatedComponents": false
+              "ShowCreatedComponents": true
             },
             {
-              "__type": "Stockable",
-              "Description": "",
-              "IsInteracted": false,
-              "Name": "Shelving",
-              "Owner": null,
-              "Stock": null,
-              "Type": "Storage"
+              "__type": "Conveyor",
+              "IsMoving": true,
+              "Speed": 100,
+              "Turn": false
             }
           ]
         },
         {
-          "Id": "e28d24a5-2ba9-4d6b-b7b6-8a7de2d8138b",
-          "Name": "Title",
-          "Position": "64.24689,-260.0291,-107",
-          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Id": "c118b649-5a8c-434e-a350-2c6a90125411",
+          "Name": "Furnace",
+          "Position": "-607.687,-209.9709,-175.3572",
+          "Rotation": "0,0,0.7071068,0.7071068",
+          "Scale": "0.8,0.8,0.8",
+          "Networked": true,
           "Enabled": true,
           "Components": [
             {
-              "__type": "WorldPanel",
-              "HorizontalAlign": "Center",
-              "LookAtCamera": false,
-              "PanelSize": "512,512",
-              "RenderScale": 1,
-              "VerticalAlign": "Center"
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/conveyor/furnace.vmdl",
+              "Static": true,
+              "Surface": null
             },
             {
-              "__type": "TitleFactory"
+              "__type": "SkinnedModelRenderer",
+              "AnimationGraph": null,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": null,
+              "CreateBoneObjects": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/conveyor/furnace.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Furnace",
+              "IsMoving": true,
+              "Speed": 100,
+              "CookedObject": {
+                "_type": "gameobject",
+                "prefab": "prefabs/candy_choco_01.prefab"
+              },
+              "CookedSound": "sounds/furnace/furnace_cooked.sound",
+              "CookingSound": "sounds/furnace/furnace_cooking.sound"
+            }
+          ],
+          "Children": [
+            {
+              "Id": "6be9b2f6-e9a3-43f2-8696-22cba13e5174",
+              "Name": "Furnace Screen",
+              "Position": "-19.05182,-29.87411,97.66831",
+              "Rotation": "0,0,-0.7071068,0.7071068",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "WorldPanel",
+                  "HorizontalAlign": "Center",
+                  "LookAtCamera": false,
+                  "PanelSize": "1000,680",
+                  "RenderScale": 1,
+                  "VerticalAlign": "Center"
+                },
+                {
+                  "__type": "FurnacePanel",
+                  "candy": {
+                    "_type": "gameobject",
+                    "prefab": "prefabs/candy_choco_01.prefab"
+                  }
+                }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "Id": "6461edd6-df20-43a8-9e3f-872f12806f4e",
-      "Name": "Spot Light",
-      "Position": "1628.6,-464.6547,246.985",
-      "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
-      "Tags": "light_spot,light",
-      "Enabled": true,
-      "Components": [
+        },
         {
-          "__type": "SpotLight",
-          "Attenuation": 1,
-          "ConeInner": 15,
-          "ConeOuter": 45,
-          "Cookie": null,
-          "FogMode": "Disabled",
-          "FogStrength": 1,
-          "LightColor": "1,1,1,1",
-          "Radius": 500,
-          "Shadows": true
+          "Id": "6461edd6-df20-43a8-9e3f-872f12806f4e",
+          "Name": "Spot Light",
+          "Position": "-477.588,-129.9128,17.1936",
+          "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
+          "Tags": "light_spot,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpotLight",
+              "Attenuation": 0,
+              "ConeInner": 40.6,
+              "ConeOuter": 78.09,
+              "Cookie": null,
+              "FogMode": "Disabled",
+              "FogStrength": 1,
+              "LightColor": "1,1,1,1",
+              "Radius": 1000,
+              "Shadows": true
+            }
+          ]
         }
       ]
     },
@@ -527,118 +608,6 @@
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/box.prefab"
-    },
-    {
-      "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-      "Name": "Transformer",
-      "Position": "1346.866,-459.1089,11.64279",
-      "Rotation": "0,0,0.7071068,0.7071068",
-      "Scale": "0.8,0.8,0.8",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ModelCollider",
-          "IsTrigger": false,
-          "Model": "models/conveyor/transformer.vmdl",
-          "Static": true,
-          "Surface": null
-        },
-        {
-          "__type": "SkinnedModelRenderer",
-          "AnimationGraph": "animgraphs/upgrader.vanmgrph",
-          "BodyGroups": 18446744073709551615,
-          "BoneMergeTarget": null,
-          "CreateBoneObjects": false,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/conveyor/transformer.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": false
-        }
-      ]
-    },
-    {
-      "Id": "16b156d0-244e-4440-9c91-801cac975915",
-      "Name": "Conveyor",
-      "Position": "1346.866,-539.4505,12",
-      "Rotation": "0,0,0.7071067,0.7071068",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/conveyor/conveyor_s.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": false
-        }
-      ]
-    },
-    {
-      "Id": "c118b649-5a8c-434e-a350-2c6a90125411",
-      "Name": "Furnace",
-      "Position": "1346.866,-615.9421,11.64279",
-      "Rotation": "0,0,0.7071068,0.7071068",
-      "Scale": "0.8,0.8,0.8",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ModelCollider",
-          "IsTrigger": false,
-          "Model": "models/conveyor/furnace.vmdl",
-          "Static": true,
-          "Surface": null
-        },
-        {
-          "__type": "SkinnedModelRenderer",
-          "AnimationGraph": null,
-          "BodyGroups": 18446744073709551615,
-          "BoneMergeTarget": null,
-          "CreateBoneObjects": false,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/conveyor/furnace.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Conveyor",
-          "IsMoving": true,
-          "Speed": 100,
-          "Turn": false
-        }
-      ]
-    },
-    {
-      "Id": "3a91ab36-7bbf-4591-bbd7-a7ed6c1e546e",
-      "Name": "candy_choco_01",
-      "Position": "1335.776,-562.9289,104.1572",
-      "Tags": "candy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/candies/candy_choco_01.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ]
     },
     {
       "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
@@ -670,10 +639,9 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-09T01:50:03.487255-05:00",
+  "LastSaved": "2024-03-09T17:54:42.5542448\u002B01:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
-    "facepunch.industrial_shelving_01",
     "facepunch.metal_door_01a",
     "facepunch.wooden_desk_01"
   ]
