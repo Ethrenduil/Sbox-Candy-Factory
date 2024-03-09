@@ -90,4 +90,10 @@ public class Holdable : AInteractable
         // Set the interaction state
         IsInteracted = true;
     }
+
+	[Broadcast]
+	public void Open()
+	{
+		Components.Get<SkinnedModelRenderer>().Set( "Opening", true );
+	}
 }

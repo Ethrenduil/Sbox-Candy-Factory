@@ -84,12 +84,12 @@ public class Furnace : Component, Component.ICollisionListener
 		{
 			gameObject.Transform.Position = Transform.Position + BoxOffset;
 			gameObject.Transform.Rotation *= new Angles( 0, 0, 180 );
-			gameObject.Components.Get<SkinnedModelRenderer>().Set( "Opening", true );
 			gameObject.Components.Get<Rigidbody>().Destroy();
 			gameObject.Components.Get<ModelCollider>().Destroy();
+			gameObject.Components.Get<Holdable>().Open();
 			await GameTask.Delay( 3000 );
 			gameObject.Destroy();
-		    IsCooking = true; 
+		    IsCooking = true;
 			Cook();
 			return;
 		}
@@ -108,19 +108,38 @@ public class Furnace : Component, Component.ICollisionListener
 		return objectPosition.z > conveyorPosition.z;
 	}
 
+	[Broadcast]
+	private void CookingStarted(float CookTime)
+	{
+		if ( CookingSound is not null )
+        	sound = Sound.Play( CookingSound, Transform.Position + CookedOffset );
+		Components.Get<FurnacePanel>(FindMode.EnabledInSelfAndChildren).StartCooking(CookTime);
+	}
+
+	[Broadcast]
+	private void CookingFinished()
+	{
+		Components.Get<SkinnedModelRenderer>().Set( "Opening", true );
+		sound?.Stop();
+		if ( CookedSound is not null )
+        	Sound.Play( CookedSound, Transform.Position + CookedOffset);
+	}
+
+	[Broadcast]
+	private void CloseOven()
+	{
+		Components.Get<SkinnedModelRenderer>().Set( "Opening", false );
+	}
+
 	private async void Cook()
     {
         var cooked = CookedObject.Clone( Transform.Position + CookedOffset );
         cooked.NetworkSpawn();
 		var candy = cooked.Components.Get<Candies>();
         var CookTime = candy.CookingTime;
-		if ( CookingSound is not null )
-        	sound = Sound.Play( CookingSound, Transform.Position + CookedOffset );
-		Components.Get<FurnacePanel>(FindMode.EnabledInSelfAndChildren).StartCooking(CookTime);
+		CookingStarted(CookTime);
         await GameTask.DelaySeconds( CookTime );
-		sound?.Stop();
-		if ( CookedSound is not null )
-        	Sound.Play( CookedSound, Transform.Position + CookedOffset);
+		CookingFinished();
 		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
 		if ( currentTask is not null )
 		{
@@ -130,5 +149,7 @@ public class Furnace : Component, Component.ICollisionListener
 			}
 		}
         IsCooking = false;
+        await GameTask.DelaySeconds( 2 );
+		CloseOven();
     }
 }
