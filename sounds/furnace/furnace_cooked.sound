@@ -1,0 +1,15 @@
+{
+  "UI": false,
+  "Volume": "20.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 80,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/furnace/furnace_cooked.vsnd"
+  ],
+  "Occlusion": true,
+  "Reflections": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "__references": []
+}
