@@ -43,7 +43,7 @@ public sealed class PlayerTask : Component
 		Name = "Tutorial";
 		Description = "Welcome in Candy Factory";
 		IsComplete = false;
-		Needed = new Needed(100, new Candy("Chocolate", 10), new Candy("Caramel", 10));
+		Needed = new Needed(100, new Candy("Dark Chocolate", 10), new Candy("Caramel", 10));
 	}
 
 	protected override void OnUpdate()
