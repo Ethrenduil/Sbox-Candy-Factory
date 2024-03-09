@@ -61,13 +61,6 @@ public class PlayerInteract : Component
 
 	public static bool IsOwner(GameObject gameObject)
 	{
-		// Log.Info("GameObject.Network.OwnerId: " + gameObject.Network.OwnerId.ToString() + " GameObject.Id: " + GameObject.Id.ToString());
-		// // print all the player ids
-		// foreach (var player in Scene.GetAllComponents<Player>())
-		// {
-		// 	Log.Info("Player name " + player.GameObject.Name + " Id: " + player.GameObject.Id.ToString());
-		// }
-		// Log.Info("isOwner :" +  gameObject.Network.IsOwner);
 		return gameObject.Network.IsOwner;
 	}
 

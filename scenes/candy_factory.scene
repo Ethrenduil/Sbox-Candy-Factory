@@ -597,6 +597,61 @@
               "Shadows": true
             }
           ]
+        },
+        {
+          "Id": "de88537e-2793-49d6-b0dc-58768a829f1d",
+          "Name": "Shelving",
+          "Position": "589.447,-22.39215,-175",
+          "Tags": "interactable",
+          "Networked": true,
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/shelving/industrial_ shelving/industrial_ shelving_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "IsTrigger": false,
+              "Model": "models/props/trim_sheets/shelving/industrial_ shelving/industrial_ shelving_01.vmdl",
+              "Static": false,
+              "Surface": "surfaces/metal.surface"
+            },
+            {
+              "__type": "Stockable",
+              "Description": "This is an interactable object",
+              "IsInteracted": false,
+              "Name": "Storage",
+              "Owner": null,
+              "Stock": null,
+              "Type": "Storage"
+            }
+          ]
+        },
+        {
+          "Id": "fe1bdd70-c2d8-4184-a27a-5317d0a0b8e2",
+          "Name": "TitleFactory",
+          "Position": "45.4469,-259.6282,-91",
+          "Rotation": "0,0,-0.7071068,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "WorldPanel",
+              "HorizontalAlign": "Center",
+              "LookAtCamera": false,
+              "PanelSize": "512,512",
+              "RenderScale": 1,
+              "VerticalAlign": "Center"
+            },
+            {
+              "__type": "TitleFactory"
+            }
+          ]
         }
       ]
     },
@@ -639,9 +694,10 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-09T17:54:42.5542448\u002B01:00",
+  "LastSaved": "2024-03-09T13:19:36.3623116-05:00",
   "__references": [
     "facepunch.doorframe_double_metal_a",
+    "facepunch.industrial_shelving_01",
     "facepunch.metal_door_01a",
     "facepunch.wooden_desk_01"
   ]
