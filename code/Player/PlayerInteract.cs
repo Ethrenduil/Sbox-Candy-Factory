@@ -29,15 +29,18 @@ public class PlayerInteract : Component
 
 	protected override void OnUpdate()
 	{
-		base.OnUpdate();
 		if (IsProxy)
 			return;
 
 		// If the plyaer has interacted and the cooldown has passed, reset the interaction state
 		IsInteracting = !InteractionCooldownPassed();
 
+		// Check if the player is carrying an object
+		IsCarrying = GameObject.Components.Get<Holdable>(FindMode.EverythingInChildren) != null;
+
 		InteractionHandler();
 
+		// If the player is carrying an object and the use button is pressed, drop the object
 		if (Input.Pressed("use") && !IsInteracting && IsCarrying)
 		{
 			GameObject.Children.FirstOrDefault(x => x.Tags.Has("interactable")).Components.Get<AInteractable>().OnInteract(GameObject);
@@ -56,14 +59,21 @@ public class PlayerInteract : Component
 		return Time.Now - InteractionTime > InteractionCooldown;
 	}
 
-	public bool IsOwner()
+	public static bool IsOwner(GameObject gameObject)
 	{
-		if (GameObject.Network.OwnerConnection.SteamId == GameObject.Components.Get<Player>().SteamId)return true;
-		return false;
+		// Log.Info("GameObject.Network.OwnerId: " + gameObject.Network.OwnerId.ToString() + " GameObject.Id: " + GameObject.Id.ToString());
+		// // print all the player ids
+		// foreach (var player in Scene.GetAllComponents<Player>())
+		// {
+		// 	Log.Info("Player name " + player.GameObject.Name + " Id: " + player.GameObject.Id.ToString());
+		// }
+		// Log.Info("isOwner :" +  gameObject.Network.IsOwner);
+		return gameObject.Network.IsOwner;
 	}
 
 	private bool ErrorChecking(AInteractable interactable)
 	{
+
 		// If the interactable is null, return
 		if (interactable == null) return false;
 
@@ -99,19 +109,16 @@ public class PlayerInteract : Component
 
 			// If the use button is pressed and the player is not interacting, start the interaction
 			// Interactor must be the owner of the object
-			if (Input.Pressed("use") && !IsInteracting && IsOwner())
+			if (Input.Pressed("use") && !IsInteracting && IsOwner(interactable.GameObject))
 			{
 				// Start the interaction and call the OnInteract method of the interactable
 				StartInteract();
 				interactable?.OnInteract(GameObject);
 				interactHud.SetValue(null);
-				IsCarrying = interactable.Type == InteractableType.Resource || IsCarrying;
 			}
 		} else
 		{
 			interactHud.SetValue(null);
-
-			// If the player is carrying an object and the use button is pressed, drop the object
 		}
 	}
 }

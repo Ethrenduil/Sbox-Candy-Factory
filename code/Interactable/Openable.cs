@@ -28,7 +28,6 @@ public class Openable : AInteractable
             Description = IsOpen ? "Press E to close" : "Press E to open";
             await RotateOverTime(direction, OpeningTime);
             IsInteracted = false;
-			GameObject.Network.DropOwnership();
         }
     }
 

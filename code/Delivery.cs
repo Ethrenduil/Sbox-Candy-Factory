@@ -67,7 +67,7 @@ public sealed class Delivery : Component
     // Spawn a delivery object at the delivery destination
     public void SpawnDelivery()
     {
-        // Spawn the delivery box and set it up 
+        // Spawn the delivery box and set it up
         var temp = DeliveryBoxPrefab.Clone(DeliveryDestination.Transform.World);
         temp.Components.Get<DeliveryGood>().SetGoods(Goods);
         temp.NetworkSpawn();
@@ -98,6 +98,9 @@ public enum DeliveryGoods
     None,
     Sugar,
     Flour,
-    Milk
+    Milk,
+    Egg,
+    Cacao,
+    Vanilla,
 }
 

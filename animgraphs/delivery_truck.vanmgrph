@@ -64,7 +64,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 240.0, -96.0 ]
+					m_vecPosition = [ 240.0, -112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 755136756
@@ -121,7 +121,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 192854353
+									m_id = 2107150446
 								}
 								m_outputID = 
 								{
@@ -188,7 +188,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 2107150446
+									m_id = 192854353
 								}
 								m_outputID = 
 								{

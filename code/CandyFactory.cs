@@ -19,6 +19,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	[Property] public GameObject PlayerPrefab { get; set; }
 	public static List<GameObject> SpawnPoint { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
+	[Property] public Factory Factory { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -58,7 +59,7 @@ public class CandyFactory : Component, Component.INetworkListener
 		// Network spawn the player and enable the navmesh
 		player.NetworkSpawn( connection );
 		Scene.NavMesh.IsEnabled = true;
-
+		Factory.StartFactory( connection );
 	}
 
 	void INetworkListener.OnDisconnected(Sandbox.Connection conn)

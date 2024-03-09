@@ -1,28 +1,10 @@
 {
   "RootObject": {
-    "Id": "1efa11d0-292d-4ba2-bb99-ed22dd39b03e",
+    "Id": "0282a1df-5dc9-4baa-a3ca-8e0da6e243ee",
     "Name": "deliveryvehicule",
-    "Rotation": "0,0,1,-0.00000004371139",
     "Networked": true,
     "Enabled": true,
     "Components": [
-      {
-        "__type": "NavMeshAgent",
-        "Acceleration": 200,
-        "Height": 60,
-        "MaxSpeed": 500,
-        "Radius": 30,
-        "Separation": 0.25,
-        "UpdatePosition": true,
-        "UpdateRotation": true
-      },
-      {
-        "__type": "DeliveryCar",
-        "DesinationMargin": 100,
-        "IsDelivering": false,
-        "IsReturning": false,
-        "Spawn": null
-      },
       {
         "__type": "SkinnedModelRenderer",
         "AnimationGraph": "animgraphs/delivery_truck.vanmgrph",
@@ -34,6 +16,30 @@
         "Model": "models/delivery_truck/delivery_truck.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/delivery_truck/delivery_truck.vmdl",
+        "Static": false,
+        "Surface": "surfaces/metal.surface"
+      },
+      {
+        "__type": "NavMeshAgent",
+        "Acceleration": 200,
+        "Height": 200,
+        "MaxSpeed": 500,
+        "Radius": 200,
+        "Separation": 0.25,
+        "UpdatePosition": true,
+        "UpdateRotation": true
+      },
+      {
+        "__type": "DeliveryCar",
+        "DesinationMargin": 100,
+        "IsDelivering": false,
+        "IsReturning": false,
+        "Spawn": null
       }
     ],
     "Children": []

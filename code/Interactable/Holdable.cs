@@ -17,7 +17,17 @@ public class Holdable : AInteractable
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
         Type = InteractableType.Resource;
     }
+
 	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+        if (Transform.Position.z < 0)
+        {
+            Transform.Position = new Vector3(Transform.Position.x, Transform.Position.y, 40);
+        }
+	}
+	protected override void OnFixedUpdate()
     {
         // Exit early if this is a proxy or not currently interacted
         if (IsProxy || !IsInteracted || Interactor == null) return;
@@ -60,7 +70,7 @@ public class Holdable : AInteractable
 
         // Detach from the parent, drop ownership, and set the drop position
         GameObject.SetParent(null, true);
-        GameObject.Network.DropOwnership();
+        // GameObject.Network.DropOwnership();
     }
 
     private void PickUpHoldable(GameObject interactor)
