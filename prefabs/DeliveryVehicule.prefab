@@ -1,19 +1,11 @@
 {
   "RootObject": {
-    "Id": "9216a950-6ac6-4ad9-8d46-35247c9ec3b4",
+    "Id": "1efa11d0-292d-4ba2-bb99-ed22dd39b03e",
     "Name": "deliveryvehicule",
+    "Rotation": "0,0,1,-0.00000004371139",
     "Networked": true,
     "Enabled": true,
     "Components": [
-      {
-        "__type": "ModelRenderer",
-        "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
-        "Model": "bici_itau.vmdl",
-        "RenderType": "On",
-        "Tint": "1,1,1,1"
-      },
       {
         "__type": "NavMeshAgent",
         "Acceleration": 200,
@@ -26,7 +18,22 @@
       },
       {
         "__type": "DeliveryCar",
-        "IsDelivering": false
+        "DesinationMargin": 100,
+        "IsDelivering": false,
+        "IsReturning": false,
+        "Spawn": null
+      },
+      {
+        "__type": "SkinnedModelRenderer",
+        "AnimationGraph": "animgraphs/delivery_truck.vanmgrph",
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
+        "CreateBoneObjects": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/delivery_truck/delivery_truck.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
       }
     ],
     "Children": []
@@ -34,7 +41,5 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": [
-    "sboxchile.bici_itau"
-  ]
+  "__references": []
 }

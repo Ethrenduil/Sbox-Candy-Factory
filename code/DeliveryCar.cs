@@ -24,10 +24,16 @@ public sealed class DeliveryCar : Component
 
 	public NavMeshAgent Agent { get; set; }
 	public Vector3 Destination { get; set; }
+
+	private SkinnedModelRenderer Renderer { get; set; }	
 	protected override void OnAwake()
 	{
 		IsDelivering = false;
 		Agent = GameObject.Components.Get<NavMeshAgent>();
+		Renderer = Components.Get<SkinnedModelRenderer>( true );
+
+		Renderer.Set("Riding", true);
+		
 	}
 	protected override void OnUpdate()
 	{
