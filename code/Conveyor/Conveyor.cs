@@ -1,16 +1,19 @@
+using Microsoft.VisualBasic;
 using Sandbox;
 using System.Numerics;
 
-[Category( "Candy Factory" )]
-public sealed class Conveyor : Component, Component.ICollisionListener
+[Category( "Candy Factory - Factory" )]
+public class Conveyor : Component, Component.ICollisionListener
 {
     [Property] private bool IsMoving = true;
-    [Property] private float Speed = 100; // Change this to the speed you want
-	[Property] private bool Turn = false;
+    [Property] private readonly float Speed = 100; // Change this to the speed you want
+	[Property] private readonly bool Turn = false;
 	public List<GameObject> Candies { get; set; } = new();
 
     protected override void OnFixedUpdate()
     {
+		base.OnFixedUpdate();
+
 		if (!IsMoving)
     	{
     	    return;
@@ -39,7 +42,7 @@ public sealed class Conveyor : Component, Component.ICollisionListener
     	}
     }
 
-    public void OnCollisionStart(Collision o)
+    public virtual void OnCollisionStart(Collision o)
     {
         HandleCollision(o);
     }
@@ -86,4 +89,5 @@ public sealed class Conveyor : Component, Component.ICollisionListener
     	// Check if the object is within the conveyor's collision area
     	return objectPosition.z > conveyorPosition.z;
 	}
+
 }
