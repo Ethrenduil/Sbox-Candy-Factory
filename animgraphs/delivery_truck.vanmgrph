@@ -9,34 +9,13 @@
 			{
 				key = 
 				{
-					m_id = 149303271
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Shaking"
-					m_vecPosition = [ -48.0, 112.0 ]
-					m_nNodeID = 
-					{
-						m_id = 149303271
-					}
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "Shaking"
-					m_playbackSpeed = 5.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 192854353
 				}
 				value = 
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Idle"
-					m_vecPosition = [ -32.0, -32.0 ]
+					m_vecPosition = [ -48.0, -32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 192854353
@@ -93,66 +72,6 @@
 					m_sNote = ""
 					m_states = 
 					[
-						{
-							_class = "CAnimState"
-							m_transitions = 
-							[
-								{
-									_class = "CAnimStateTransition"
-									m_conditions = 
-									[
-										{
-											_class = "CFinishedCondition"
-											m_comparisonOp = 0
-											m_option = "FinishedConditionOption_OnFinished"
-											m_bIsFinished = true
-										},
-									]
-									m_blendDuration = 0.2
-									m_destState = 
-									{
-										m_id = 1342515988
-									}
-									m_bReset = true
-									m_resetCycleOption = "Beginning"
-									m_flFixedCycleValue = 0.0
-									m_blendCurve = 
-									{
-										m_vControlPoint1 = [ 0.5, 0.0 ]
-										m_vControlPoint2 = [ 0.5, 1.0 ]
-									}
-									m_bForceFootPlant = false
-									m_bDisabled = false
-									m_bRandomTimeBetween = false
-									m_flRandomTimeStart = 0.0
-									m_flRandomTimeEnd = 0.0
-								},
-							]
-							m_tags = [  ]
-							m_tagBehaviors = [  ]
-							m_name = "Closing"
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 2107150446
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_stateID = 
-							{
-								m_id = 1125706861
-							}
-							m_position = [ -752.0, -384.0 ]
-							m_bIsStartState = false
-							m_bIsEndtState = false
-							m_bIsPassthrough = false
-							m_bIsRootMotionExclusive = false
-							m_bAlwaysEvaluate = false
-						},
 						{
 							_class = "CAnimState"
 							m_transitions = 
@@ -229,16 +148,23 @@
 									m_conditions = 
 									[
 										{
-											_class = "CFinishedCondition"
+											_class = "CParameterAnimCondition"
 											m_comparisonOp = 0
-											m_option = "FinishedConditionOption_OnFinished"
-											m_bIsFinished = true
+											m_paramID = 
+											{
+												m_id = 1894156178
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 1
+												m_data = false
+											}
 										},
 									]
 									m_blendDuration = 0.2
 									m_destState = 
 									{
-										m_id = 1220490717
+										m_id = 1342515988
 									}
 									m_bReset = true
 									m_resetCycleOption = "Beginning"
@@ -257,12 +183,12 @@
 							]
 							m_tags = [  ]
 							m_tagBehaviors = [  ]
-							m_name = "Opening"
+							m_name = "Riding"
 							m_inputConnection = 
 							{
 								m_nodeID = 
 								{
-									m_id = 1058601732
+									m_id = 2107150446
 								}
 								m_outputID = 
 								{
@@ -280,90 +206,9 @@
 							m_bIsRootMotionExclusive = false
 							m_bAlwaysEvaluate = false
 						},
-						{
-							_class = "CAnimState"
-							m_transitions = 
-							[
-								{
-									_class = "CAnimStateTransition"
-									m_conditions = 
-									[
-										{
-											_class = "CFinishedCondition"
-											m_comparisonOp = 0
-											m_option = "FinishedConditionOption_OnFinished"
-											m_bIsFinished = true
-										},
-									]
-									m_blendDuration = 0.2
-									m_destState = 
-									{
-										m_id = 1125706861
-									}
-									m_bReset = true
-									m_resetCycleOption = "Beginning"
-									m_flFixedCycleValue = 0.0
-									m_blendCurve = 
-									{
-										m_vControlPoint1 = [ 0.5, 0.0 ]
-										m_vControlPoint2 = [ 0.5, 1.0 ]
-									}
-									m_bForceFootPlant = false
-									m_bDisabled = false
-									m_bRandomTimeBetween = false
-									m_flRandomTimeStart = 0.0
-									m_flRandomTimeEnd = 0.0
-								},
-							]
-							m_tags = [  ]
-							m_tagBehaviors = [  ]
-							m_name = "Shaking"
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 149303271
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_stateID = 
-							{
-								m_id = 1220490717
-							}
-							m_position = [ -736.0, 48.0 ]
-							m_bIsStartState = false
-							m_bIsEndtState = false
-							m_bIsPassthrough = false
-							m_bIsRootMotionExclusive = false
-							m_bAlwaysEvaluate = false
-						},
 					]
 					m_bBlockWaningTags = false
 					m_bLockStateWhenWaning = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1058601732
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Opening"
-					m_vecPosition = [ -32.0, 32.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1058601732
-					}
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "Opening"
-					m_playbackSpeed = 5.0
-					m_bLoop = false
 				}
 			},
 			{
@@ -374,7 +219,7 @@
 				value = 
 				{
 					_class = "CSequenceAnimNode"
-					m_sName = "Closing"
+					m_sName = "Riding"
 					m_vecPosition = [ -16.0, -160.0 ]
 					m_nNodeID = 
 					{
@@ -382,9 +227,9 @@
 					}
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "Closing"
+					m_sequenceName = "Riding"
 					m_playbackSpeed = 1.0
-					m_bLoop = false
+					m_bLoop = true
 				}
 			},
 		]
@@ -396,14 +241,14 @@
 		[
 			{
 				_class = "CBoolAnimParameter"
-				m_name = "Opening"
+				m_name = "Riding"
 				m_id = 
 				{
 					m_id = 1894156178
 				}
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bUseMostRecentValue = false
-				m_bAutoReset = true
+				m_bAutoReset = false
 				m_bDefaultValue = false
 			},
 		]
@@ -445,13 +290,13 @@
 	}
 	m_previewModels = 
 	[
-		"models/cardboard/cardboard.vmdl",
+		"models/delivery_truck/delivery_truck.vmdl",
 	]
 	m_boneMergeModels = [  ]
 	m_cameraSettings = 
 	{
 		m_flFov = 60.0
-		m_sLockBoneName = "Top"
+		m_sLockBoneName = "rear_rw"
 		m_bLockCamera = false
 		m_bViewModelCamera = false
 	}

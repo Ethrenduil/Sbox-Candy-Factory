@@ -14,28 +14,8 @@
 						remaps = 
 						[
 							{
-								from = "belt_mat.vmat"
-								to = "materials/conveyor/belt_mat.vmat"
-							},
-							{
-								from = "conveyor_mat.vmat"
-								to = "materials/conveyor/conveyor_mat.vmat"
-							},
-							{
-								from = "charnieres.vmat"
-								to = "materials/furnace/charnieres.vmat"
-							},
-							{
-								from = "door.vmat"
-								to = "materials/furnace/door.vmat"
-							},
-							{
-								from = "furnace.vmat"
-								to = "materials/furnace/furnace.vmat"
-							},
-							{
-								from = "screen.vmat"
-								to = "materials/furnace/screen.vmat"
+								from = "07___default.vmat"
+								to = "materials/delivery_truck/delivery_truck_blue.vmat"
 							},
 						]
 						use_global_default = false
@@ -48,8 +28,8 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
-						name = "furnace_physics"
+						_class = "PhysicsHullFile"
+						name = "delivery_truck_physics"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
@@ -59,10 +39,12 @@
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
-						filename = "models/conveyor/fbx/furnace_physics.fbx"
+						filename = "models/delivery_truck/fbx/delivery_truck_physics.fbx"
 						import_scale = 1.0
-						maxMeshVertices = 0
-						qemError = 0.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
 						import_filter = 
 						{
 							exclude_by_default = false
@@ -77,7 +59,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/conveyor/fbx/furnace.fbx"
+						filename = "models/delivery_truck/fbx/delivery_truck.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -87,8 +69,11 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = false
-							exception_list = [  ]
+							exclude_by_default = true
+							exception_list = 
+							[
+								"delivery_truck",
+							]
 						}
 					},
 				]
@@ -99,8 +84,8 @@
 				[
 					{
 						_class = "AnimFile"
-						name = "Idle"
-						activity_name = "Idle"
+						name = "Riding"
+						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -112,7 +97,7 @@
 						anim_markup_ordered = false
 						disable_compression = false
 						enable_scale = false
-						source_filename = "models/conveyor/fbx/furnace.fbx"
+						source_filename = "models/delivery_truck/fbx/delivery_truck.fbx"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -121,8 +106,8 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "Opening"
-						activity_name = "Opening"
+						name = "Idle"
+						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -134,29 +119,7 @@
 						anim_markup_ordered = false
 						disable_compression = false
 						enable_scale = false
-						source_filename = "models/conveyor/fbx/furnace.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 2
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "Closing"
-						activity_name = "Closing"
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						enable_scale = false
-						source_filename = "models/conveyor/fbx/furnace.fbx"
+						source_filename = "models/delivery_truck/fbx/delivery_truck.fbx"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -169,7 +132,7 @@
 		]
 		model_archetype = "animated_model"
 		primary_associated_entity = "prop_dynamic"
-		anim_graph_name = "animgraphs/furnace.vanmgrph"
+		anim_graph_name = "animgraphs/delivery_truck.vanmgrph"
 		base_model_name = ""
 	}
 }
