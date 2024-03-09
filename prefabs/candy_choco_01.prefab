@@ -1,0 +1,29 @@
+{
+  "RootObject": {
+    "Id": "a64316d0-3170-49bb-a35e-661f98332f8f",
+    "Name": "candy_choco_01",
+    "Tags": "candy",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Prop",
+        "Health": 0,
+        "IsStatic": false,
+        "Model": "models/candies/candy_choco_01.vmdl",
+        "OnPropBreak": null,
+        "OnPropTakeDamage": null,
+        "ShowCreatedComponents": false
+      },
+      {
+        "__type": "Candies",
+        "CookingTime": 5,
+        "Name": "Dark Chocolate"
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

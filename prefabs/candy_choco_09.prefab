@@ -1,0 +1,24 @@
+{
+  "RootObject": {
+    "Id": "4cd68ed6-c059-43d0-adea-8ead12bb514b",
+    "Name": "candy_choco_09",
+    "Position": "1406.585,-563.3068,12",
+    "Tags": "candy",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Prop",
+        "Health": 0,
+        "IsStatic": false,
+        "Model": "models/candies/candy_choco_09.vmdl",
+        "OnPropBreak": null,
+        "OnPropTakeDamage": null,
+        "ShowCreatedComponents": false
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}
