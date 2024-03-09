@@ -21,3 +21,5 @@ code/Editor/.vscode/*
 # Auto-generated asset related files
 *.generated.*
 *.*_c
+*.sln
+!*.shader_c
