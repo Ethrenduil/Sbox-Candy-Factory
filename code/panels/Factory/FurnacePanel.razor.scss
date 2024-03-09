@@ -10,36 +10,32 @@ FurnacePanel
 	font-weight: bold;
 	.title
 	{
+        top : 5%;
         position: absolute;
 		font-size: 50px;
 		font-family: Poppins;
 		color: #000000;
         margin-bottom: 50px;
 	}
-    .infos
+    .candy-model
     {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        .candy-name
-        {
-            font-size: 30px;
-            font-family: Poppins;
-            color: #000000;
-            margin-bottom: 20px;
-        }
-        .remaining-time-bar {
-            width: 80%;
-            height: 20px;
-            background-color: #e0e0e0; /* Change this to your desired background color */
-            border-radius: 10px;
-        }
-        .remaining-time-fill {
-            width: 100%;
-            height: 100%;
-            background-color: #057c01; /* Change this to your desired fill color */
-            border-radius: 10px;
-        }
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1;
+    }
+    .remaining-time-bar {
+        position: absolute;
+        bottom: 5%;
+        width: 80%;
+        height: 20px;
+        background-color: #e0e0e0; /* Change this to your desired background color */
+        border-radius: 10px;
+    }
+    .remaining-time-fill {
+        width: 100%;
+        height: 100%;
+        background-color: #057c01; /* Change this to your desired fill color */
+        border-radius: 10px;
     }
 }

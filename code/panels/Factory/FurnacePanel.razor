@@ -3,13 +3,10 @@
 @inherits PanelComponent
 
 <root>
-	<div class="title">Oven</div>
-	<div class="infos">
-		<div class="candy-name">@CandyName</div>
-		<div class="candy-model">@CandyModel</div>
-		<div class="remaining-time-bar">
-			<div class="remaining-time-fill" style="width: @remainingTimePercentage%;"></div>
-		</div>
+	<img class="candy-model" src="@CandyIcon" />
+	<div class="title">@CandyName</div>
+	<div class="remaining-time-bar">
+		<div class="remaining-time-fill" style="width: @remainingTimePercentage%;"></div>
 	</div>
 </root>
 
@@ -18,7 +15,7 @@
 	[Property] public GameObject candy { get; set; }
 	public float CurrentCookingTime = 0;
 	public string CandyName = "None";
-	public string CandyModel = "None";
+	public string CandyIcon = "None";
 	public int remainingTimePercentage = 0;
 	public float TotalCookingTime = 0;
 
@@ -27,7 +24,8 @@
 		base.OnEnabled();
 		var test = candy.Clone();
 		CandyName = test.Components.Get<Candies>().Name;
-		CandyModel = test.Components.Get<ModelRenderer>().Model.ResourcePath;
+		CandyIcon = "textures/ui/candies/" + CandyName.ToLower().Replace(" ", "_") + ".png";
+		Log.Info(CandyIcon);
 		StateHasChanged();
 		test.Destroy();
 	}
@@ -42,9 +40,10 @@
 			remainingTimePercentage = (int)((CurrentCookingTime / TotalCookingTime) * 100);
 			StateHasChanged();
 		}
+		await GameTask.DelaySeconds(1);
 		CurrentCookingTime = 0;
 		TotalCookingTime = 0;
+		remainingTimePercentage = 0;
+		StateHasChanged();
 	}
-
-	protected override int BuildHash() => System.HashCode.Combine(CurrentCookingTime);
 }
