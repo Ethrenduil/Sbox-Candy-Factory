@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "6d23854b-0854-410b-84ef-caeec0979914",
+    "Id": "bb39bd14-e498-4c28-b9f5-84e3c598c9f9",
     "Name": "factory",
     "Networked": true,
     "Enabled": true,
@@ -10,8 +10,6 @@
         "Health": 0,
         "IsStatic": true,
         "Model": "models/factory/factory.vmdl",
-        "OnPropBreak": null,
-        "OnPropTakeDamage": null,
         "ShowCreatedComponents": false
       },
       {
@@ -20,34 +18,29 @@
           "_type": "gameobject",
           "prefab": "prefabs/box.prefab"
         },
-        "DeliveryCar": null,
         "DeliveryCarPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/deliveryvehicule.prefab"
         },
-        "DeliveryCarSpawn": null,
         "DeliveryDestination": {
           "_type": "gameobject",
-          "go": "de203114-2cfd-4a67-a45a-d0137e39bdae"
+          "go": "9b457037-7c97-475e-af1c-f452f8ce5626"
         },
-        "DeliveryHud": null,
         "DeliveryProgress": 0,
         "DeliveryTime": 10,
         "Goods": {},
-        "Receiver": null,
         "Status": "None"
       },
       {
         "__type": "Factory",
         "Money": 0,
-        "Name": null,
         "SteamId": 0,
         "Stock": {}
       }
     ],
     "Children": [
       {
-        "Id": "766ab75e-a0c1-4cfb-8be6-a5fe0a531c29",
+        "Id": "9fc94208-58c8-46a7-af57-54de5a845207",
         "Name": "Door Frame",
         "Position": "-20.55298,-255.506,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -56,8 +49,6 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
             "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
@@ -72,7 +63,7 @@
         ]
       },
       {
-        "Id": "b037c82c-9f12-45ed-a11a-2219288ecc75",
+        "Id": "e201016a-4d42-4701-8f95-a681367dcdb3",
         "Name": "DoorRight",
         "Position": "26.48352,-255.5,-175",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -83,8 +74,6 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
@@ -109,7 +98,7 @@
         ]
       },
       {
-        "Id": "b7f618ae-3bda-41e5-818b-782070a1ec2d",
+        "Id": "09291076-e9ff-4b74-acaa-bc95767012f6",
         "Name": "DoorLeft",
         "Position": "-68,-255.5004,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -120,8 +109,6 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
@@ -146,7 +133,7 @@
         ]
       },
       {
-        "Id": "298f1024-5278-4b1f-9fc3-23d84c3e669a",
+        "Id": "c68d131f-655f-47bc-82ac-b27191f700d4",
         "Name": "Wooden Desk",
         "Position": "558.6235,-221.2169,-175.0005",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -158,22 +145,20 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": true
           }
         ]
       },
       {
-        "Id": "de203114-2cfd-4a67-a45a-d0137e39bdae",
+        "Id": "9b457037-7c97-475e-af1c-f452f8ce5626",
         "Name": "DeliveryDestination",
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true
       },
       {
-        "Id": "1ca87f10-daae-4406-9010-dadbc392bada",
+        "Id": "9bf9f1e5-d92f-4823-94dd-20f06fac1f6f",
         "Name": "Conveyor",
-        "Position": "-607.687,-129.8227,-175",
+        "Position": "-610,-129.8227,-175",
         "Rotation": "0,0,0.7071067,0.7071068",
         "Networked": true,
         "Enabled": true,
@@ -183,8 +168,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/conveyor/conveyor_s.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": true
           },
           {
@@ -198,7 +181,7 @@
         ]
       },
       {
-        "Id": "947afe32-893d-4e3b-a564-4332426c5f77",
+        "Id": "bfd55a07-38b8-4cdf-8fc0-1ddcd6305f08",
         "Name": "Spot Light",
         "Position": "-477.588,-129.9128,17.1936",
         "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -210,7 +193,6 @@
             "Attenuation": 0,
             "ConeInner": 40.6,
             "ConeOuter": 78.09,
-            "Cookie": null,
             "FogMode": "Disabled",
             "FogStrength": 1,
             "LightColor": "1,1,1,1",
@@ -220,7 +202,7 @@
         ]
       },
       {
-        "Id": "374677db-730c-471f-b8ea-3add9e26b797",
+        "Id": "2fd12e0c-5830-49a7-b440-735e5eade444",
         "Name": "Shelving",
         "Position": "589.447,-22.39215,-175",
         "Tags": "interactable",
@@ -230,8 +212,6 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
             "Model": "models/props/trim_sheets/shelving/industrial_ shelving/industrial_ shelving_01.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
@@ -248,14 +228,12 @@
             "Description": "This is an interactable object",
             "IsInteracted": false,
             "Name": "Storage",
-            "Owner": null,
-            "Stock": null,
             "Type": "Storage"
           }
         ]
       },
       {
-        "Id": "e5e0ae9a-0859-4e82-b0c5-6b1b8366dc43",
+        "Id": "37ea1a20-0307-458d-ad79-d86c64f4c0e6",
         "Name": "TitleFactory",
         "Position": "45.4469,-259.6282,-91",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -277,9 +255,9 @@
         ]
       },
       {
-        "Id": "372f6caf-c0c5-4aa2-9b3d-01914e136636",
+        "Id": "6e3e1850-2c40-405d-8383-64d4ad0fd5d3",
         "Name": "furnace",
-        "Position": "-607.687,-210.3741,-175",
+        "Position": "-610,-210.3741,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Scale": "0.8,0.8,0.8",
         "Tags": "interactable",
@@ -288,15 +266,31 @@
         "__Prefab": "prefabs/furnace.prefab"
       },
       {
-        "Id": "b6616a25-d3da-4f96-a082-edce4408df4a",
+        "Id": "82ca4d8f-1314-47c1-96c6-ffb7bc38b825",
         "Name": "Upgrader",
-        "Position": "-607.687,-49.20265,-175",
+        "Position": "-610,-49.20265,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Scale": "0.8,0.8,0.8",
         "Tags": "interactable",
         "Networked": true,
         "Enabled": true,
         "__Prefab": "prefabs/upgrader.prefab"
+      },
+      {
+        "Id": "f55ad18e-1c2e-4183-806e-7f2e544b1f0e",
+        "Name": "vending_box",
+        "Position": "-609.9998,16.43066,-175",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/factory/vending_box.vmdl",
+            "ShowCreatedComponents": false
+          }
+        ]
       }
     ]
   },
