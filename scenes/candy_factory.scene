@@ -331,7 +331,7 @@
         {
           "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
           "Name": "DeliverySpawn",
-          "Position": "452.0439,51.45142,-259.2424",
+          "Position": "452.0439,51.45142,-262.9843",
           "Enabled": true
         }
       ]
@@ -360,6 +360,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-09T19:57:04.3169285-05:00",
+  "LastSaved": "2024-03-09T22:40:07.2287424-05:00",
   "__references": []
 }

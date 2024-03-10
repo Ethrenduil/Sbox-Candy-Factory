@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "0282a1df-5dc9-4baa-a3ca-8e0da6e243ee",
+    "Id": "3eefc766-8cd7-42a9-9489-20c94429a311",
     "Name": "deliveryvehicule",
     "Networked": true,
     "Enabled": true,
@@ -25,24 +25,48 @@
         "Surface": "surfaces/metal.surface"
       },
       {
-        "__type": "NavMeshAgent",
-        "Acceleration": 200,
-        "Height": 200,
-        "MaxSpeed": 500,
-        "Radius": 200,
-        "Separation": 0.25,
-        "UpdatePosition": true,
-        "UpdateRotation": true
+        "__type": "DeliveryCar",
+        "DeliveryGuyPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/deliveryguy.prefab"
+        },
+        "DesinationMargin": 50,
+        "IsDelivering": false,
+        "IsGuyDelivering": false,
+        "IsReturning": false,
+        "IsWaiting": false
       },
       {
-        "__type": "DeliveryCar",
-        "DesinationMargin": 100,
-        "IsDelivering": false,
-        "IsReturning": false,
-        "Spawn": null
+        "__type": "NavMeshAgent",
+        "__enabled": false,
+        "Acceleration": 100,
+        "Height": 64,
+        "MaxSpeed": 200,
+        "Radius": 5.5333385,
+        "Separation": 0.07,
+        "UpdatePosition": true,
+        "UpdateRotation": false
+      },
+      {
+        "__type": "Rigidbody",
+        "__enabled": false,
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
       }
     ],
-    "Children": []
+    "Children": [
+      {
+        "Id": "9217cc82-b9df-4e42-b5a7-85f16323ad5e",
+        "Name": "SpawnGuy",
+        "Position": "240,0,0",
+        "Enabled": true
+      }
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,
