@@ -1,0 +1,11 @@
+
+Layer0
+{
+	shader "shaders/complex.shader_c"
+
+	TextureColor "textures/vending_box/box_color.png"
+	TextureAmbientOcclusion "materials/default/default_ao.tga"
+	TextureNormal "textures/vending_box/box_normal.png"
+	TextureRoughness "textures/vending_box/box_rough.png"
+
+}
