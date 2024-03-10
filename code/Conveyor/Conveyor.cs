@@ -9,8 +9,7 @@ public class Conveyor : Component, Component.ICollisionListener
     [Property] private readonly float Speed = 100; // Change this to the speed you want
 	[Property] private readonly bool Turn = false;
 	[Property] private readonly bool special = false;
-	[Property]
-	public List<GameObject> Candies { get; set; } = new();
+	[Property] public List<GameObject> Candies { get; set; } = new();
 
     protected override void OnFixedUpdate()
     {
@@ -48,7 +47,6 @@ public class Conveyor : Component, Component.ICollisionListener
 				centerPosition.z += 64;
 
             	var distanceToCenter = candy.Transform.Position.Distance(centerPosition);
-				Log.Info(distanceToCenter);
             	if (distanceToCenter < 20f)
             	{
             	    IsMoving = false;

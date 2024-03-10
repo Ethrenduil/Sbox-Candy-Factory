@@ -52,11 +52,11 @@ public class Upgrader : AInteractable
     }
 
 	[Broadcast]
-	private void UpgradeStarted()
+	private void UpgradeStarted(float time)
 	{
 		if ( upgradeSound is not null )
         	sound = Sound.Play( upgradeSound, Transform.Position + upgradedOffset );
-		furnacePanel.StartCooking(upgradeTimer);
+		furnacePanel.StartCooking(time);
 	}
 
 	[Broadcast]
@@ -83,7 +83,7 @@ public class Upgrader : AInteractable
         upgraded.NetworkSpawn();
 		var candy = upgraded.Components.Get<Candies>();
         upgradeTimer = candy.CookingTime;
-		UpgradeStarted();
+		UpgradeStarted(upgradeTimer);
         await GameTask.DelaySeconds( upgradeTimer );
 		UpgradeFinished();
 		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
