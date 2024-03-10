@@ -18,8 +18,10 @@ public class CandyFactory : Component, Component.INetworkListener
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
 	public static List<GameObject> SpawnPoint { get; set; }
+	[Property] public List<GameObject> FactoryList { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
-	[Property] public Factory Factory { get; set; }
+	[Property] public GameObject Factory { get; set; }
+	[Property] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
 
 	protected override void OnAwake()
 	{
@@ -35,8 +37,9 @@ public class CandyFactory : Component, Component.INetworkListener
 	{
 		// Get the list of spawn points and the number of players
 		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
+
 		int nbPlayer = Scene.Components.GetAll<Player>().Count();
-		if ( nbPlayer > 4 )
+		if ( nbPlayer >= 4 )
 		{
 			throw new( "Player joined but there's no free slots!" );
 		}
@@ -58,13 +61,17 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		// Network spawn the player and enable the navmesh
 		player.NetworkSpawn( connection );
-		Scene.NavMesh.IsEnabled = true;
-		Factory.StartFactory( connection );
+		Scene.NavMesh.IsEnabled = true;	
+		// Spawn Factory and start it
+		var factory = Factory.Clone(FactoryList[GetFreeFactoryIndex(connection)].Transform.World);
+		factory.Components.Get<Factory>().StartFactory( connection);
+		factory.NetworkSpawn(connection);
 	}
 
-	void INetworkListener.OnDisconnected(Sandbox.Connection conn)
+	void INetworkListener.OnDisconnected(Connection conn)
 	{
 		Log.Info( $"Player {conn.DisplayName} disconnected" );
+		_isFactoryActive[_isFactoryActive.IndexOf(conn.SteamId)] = 0;
 	}
 
 	public void RefreshTaskHUD()
@@ -81,5 +88,20 @@ public class CandyFactory : Component, Component.INetworkListener
 	{
 		RefreshTaskHUD();
 		RefreshMoneyHUD();
+	}
+
+	private int GetFreeFactoryIndex(Connection connection)
+	{
+		Log.Info( $"Looking for a free factory" );
+		for (int i = 0; i < _isFactoryActive.Count; i++)
+		{
+			if (_isFactoryActive[i] == 0)
+			{
+				_isFactoryActive[i] = connection.SteamId;
+				Log.Info( $"Factory {i} is now active" );
+				return i;
+			}
+		}
+		return -1;
 	}
 }

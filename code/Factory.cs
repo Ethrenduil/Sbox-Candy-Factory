@@ -28,13 +28,16 @@ public sealed class Factory : Component
 		SteamId = owner.SteamId;
 		Name = owner.DisplayName;
 
+		// Set the Factory Title to the owner's name
+		
+		GameObject.Components.Get<TitleFactory>(FindMode.InChildren).SetTitle(owner.DisplayName);
 		// For each interactable in the factory, take ownership
 		foreach (var children in GameObject.Children.Where(c => c.Networked))
 		{
-			children.Network.TakeOwnership();
+			children.Network.AssignOwnership(owner);
 		}
 
-		// Set the Factory Title to the owner's name
-		GameObject.Components.Get<TitleFactory>(FindMode.InChildren).SetTitle(owner.DisplayName);
+		GameObject.Network.AssignOwnership(owner);
+
 	}
 }
