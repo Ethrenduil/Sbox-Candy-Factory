@@ -23,6 +23,3 @@ code/Editor/.vscode/*
 *.generated.*
 *.*_c
 !*.shader_c
-*.sln
-*.sln
-candy_factory.sln
