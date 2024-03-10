@@ -57,6 +57,12 @@ public class Conveyor : Component, Component.ICollisionListener
     	}
     }
 
+	[Broadcast]
+	public void RemoveCandies()
+	{
+		Candies.Clear();
+	}
+
     public virtual void OnCollisionStart(Collision o)
     {
         var gameObject = o.Other.GameObject.Root;

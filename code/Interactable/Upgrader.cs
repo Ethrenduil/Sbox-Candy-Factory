@@ -77,7 +77,7 @@ public class Upgrader : AInteractable
 	private async void Upgrade()
     {
         conveyor.Candies.First().Destroy();
-        conveyor.Candies.RemoveAt( 0 );
+        conveyor.RemoveCandies();
         var upgraded = upgradedObject.Clone( Transform.Position + upgradedOffset );
 		upgraded.Tags.Add( "Upgraded" );
         upgraded.NetworkSpawn();
