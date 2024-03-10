@@ -13,6 +13,7 @@ public class Upgrader : AInteractable
 	private Vector3 upgradedOffset { get; set; } = new( 0, -15, 80 );
 	private SoundHandle sound;
 	private SkinnedModelRenderer Renderer { get; set; }
+	private ParticleBoxEmitter Smoke { get; set; }
 
 
     protected override void OnStart()
@@ -23,6 +24,7 @@ public class Upgrader : AInteractable
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 		Renderer = Components.Get<SkinnedModelRenderer>();
+		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
     }
 	protected override void OnUpdate()
     {
@@ -57,6 +59,8 @@ public class Upgrader : AInteractable
 		if ( upgradeSound is not null )
         	sound = Sound.Play( upgradeSound, Transform.Position + upgradedOffset );
 		furnacePanel.StartCooking(time);
+		if ( Smoke is not null )
+			Smoke.Enabled = true;
 	}
 
 	[Broadcast]
@@ -66,6 +70,9 @@ public class Upgrader : AInteractable
 		sound?.Stop();
 		if ( upgradedSound is not null )
         	Sound.Play( upgradedSound, Transform.Position + upgradedOffset);
+		
+		if ( Smoke is not null )
+			Smoke.Enabled = false;
 	}
 
 	[Broadcast]

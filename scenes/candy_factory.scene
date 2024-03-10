@@ -92,7 +92,7 @@
     {
       "Id": "61c5b2e5-5bfc-4d9b-b4f6-8ae831d9a2f9",
       "Name": "Bob",
-      "Position": "4596.772,1111.853,8.149941",
+      "Position": "4596.771,1178.077,48.21342",
       "Rotation": "-0.00002130096,-0.00000368921,0.7071068,-0.7071068",
       "Scale": "0.2,0.2,0.2",
       "Enabled": true,
@@ -102,8 +102,6 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/bob/bob.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
           "ShowCreatedComponents": true
         }
       ]
@@ -258,8 +256,6 @@
         {
           "__type": "ModelRenderer",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -272,8 +268,7 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ]
     },
@@ -285,8 +280,6 @@
         {
           "__type": "MapInstance",
           "MapName": "maps/candy_factory.vmap",
-          "OnMapLoaded": null,
-          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -360,6 +353,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-09T22:40:07.2287424-05:00",
+  "LastSaved": "2024-03-10T14:10:47.1855045\u002B01:00",
   "__references": []
 }

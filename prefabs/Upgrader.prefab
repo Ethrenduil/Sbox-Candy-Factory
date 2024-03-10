@@ -1,9 +1,7 @@
 {
   "RootObject": {
     "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-    "Name": "Upgrader",
-    "Position": "-607.687,-49.55542,-175.3572",
-    "Rotation": "0,0,0.7071068,0.7071068",
+    "Name": "upgrader",
     "Scale": "0.8,0.8,0.8",
     "Tags": "interactable",
     "Networked": true,
@@ -13,17 +11,13 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "models/conveyor/transformer.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       },
       {
         "__type": "SkinnedModelRenderer",
         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
         "BodyGroups": 18446744073709551615,
-        "BoneMergeTarget": null,
         "CreateBoneObjects": true,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/conveyor/transformer.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
@@ -64,20 +58,21 @@
       {
         "Id": "1cadc133-3f4b-402f-82ea-6e4cda80dee2",
         "Name": "Panel",
-        "Position": "0,0,57.16129",
-        "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
+        "Position": "0.000001194439,0.00001090264,45.72902",
+        "Rotation": "0.4999998,0.4999997,0.5,0.5000005",
+        "Scale": "0.8,0.8,0.8",
         "Enabled": true,
         "Children": [
           {
             "Id": "9b0a42ee-21d7-407f-9a6c-fafb96d9262d",
             "Name": "Panel_end",
-            "Position": "-0.000006923074,13.6884,0.00001631785",
+            "Position": "0.00002017575,13.68841,0.00002183861",
             "Enabled": true,
             "Children": [
               {
                 "Id": "5ffdeebd-5821-46ca-a01e-1376de1e9c80",
                 "Name": "Panel_end_end",
-                "Position": "-0.000006923061,13.68838,0.00001631782",
+                "Position": "0.00002385267,13.68838,0.00001952869",
                 "Enabled": true
               }
             ]
@@ -87,20 +82,21 @@
       {
         "Id": "4087a1aa-4cd8-4b3e-bc15-4e2c0634600b",
         "Name": "Upgrader",
-        "Position": "0,0,136.7999",
-        "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
+        "Position": "0.000002858549,0.00002609249,109.4399",
+        "Rotation": "0.4999998,0.4999997,0.5,0.5000005",
+        "Scale": "0.8,0.8,0.8",
         "Enabled": true,
         "Children": [
           {
             "Id": "d1299b3d-daa5-486f-822b-49f9295eaed1",
             "Name": "Upgrader_end",
-            "Position": "-0.00001809684,35.78135,0.00004265469",
+            "Position": "0.00004778798,35.78135,0.00005364798",
             "Enabled": true,
             "Children": [
               {
                 "Id": "4598f581-1c6d-4ff4-9596-42aff72381bb",
                 "Name": "Upgrader_end_end",
-                "Position": "-0.000006377609,12.60994,0.00005317919",
+                "Position": "0.0000481445,12.60994,0.00004390113",
                 "Enabled": true,
                 "Children": [
                   {
@@ -131,6 +127,152 @@
                 ]
               }
             ]
+          }
+        ]
+      },
+      {
+        "Id": "abdad696-1e3c-4bfa-ad0f-84323ad5e45e",
+        "Name": "Smoke",
+        "Position": "-0.04322338,0.2534761,91.10779",
+        "Tags": "particles",
+        "Components": [
+          {
+            "__type": "ParticleEffect",
+            "Alpha": {
+              "Type": "Curve",
+              "CurveA": [
+                {
+                  "in": -4.0000024,
+                  "out": 4.0000024
+                },
+                {
+                  "x": 0.20812808,
+                  "y": 0.475
+                },
+                {
+                  "x": 1
+                }
+              ],
+              "Constants": "1,0,0,0"
+            },
+            "ApplyColor": true,
+            "ApplyRotation": true,
+            "ApplyShape": true,
+            "Bounce": {
+              "Constants": "1,0,0,0"
+            },
+            "Brightness": {
+              "Constants": "1,0,0,0"
+            },
+            "Bumpiness": {},
+            "Collision": false,
+            "CollisionRadius": 1,
+            "Damping": {
+              "Constants": "5,0,0,0"
+            },
+            "DieOnCollisionChance": {},
+            "Force": true,
+            "ForceDirection": "0,0,100",
+            "ForceScale": {
+              "Constants": "1,0,0,0"
+            },
+            "Friction": {
+              "Constants": "1,0,0,0"
+            },
+            "Gradient": {
+              "Type": "Range",
+              "Evaluation": "Particle",
+              "GradientA": {
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "GradientB": {
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "ConstantA": "0.18317,0.18317,0.18317,1",
+              "ConstantB": "1,1,1,1"
+            },
+            "Lifetime": {
+              "Type": "Range",
+              "Evaluation": "Particle",
+              "Constants": "5,8,0,0"
+            },
+            "MaxParticles": 5000,
+            "PerParticleTimeScale": {
+              "Constants": "1,0.4,0,0"
+            },
+            "PreWarm": 0,
+            "PushStrength": {},
+            "Roll": {
+              "Type": "Range",
+              "Evaluation": "Particle",
+              "Constants": "0,360,0,0"
+            },
+            "Scale": {
+              "Type": "Range",
+              "Evaluation": "Particle",
+              "CurveA": [
+                {}
+              ],
+              "Constants": "50,60,0,0"
+            },
+            "SequenceId": {},
+            "SequenceSpeed": {
+              "Constants": "0.5,0,0,0"
+            },
+            "SequenceTime": {
+              "Constants": "1,0,0,0"
+            },
+            "SheetSequence": true,
+            "Space": "World",
+            "StartVelocity": {
+              "Type": "Range",
+              "Evaluation": "Particle",
+              "Constants": "10,70,0,0"
+            },
+            "Stretch": {},
+            "TimeScale": 1,
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ParticleSpriteRenderer",
+            "Additive": false,
+            "BlurAmount": 0.5,
+            "BlurOpacity": 0.91,
+            "BlurSpacing": 0.73,
+            "DepthFeather": 0,
+            "FaceVelocity": false,
+            "FogStrength": 1,
+            "LeadingTrail": true,
+            "MotionBlur": false,
+            "Opaque": false,
+            "RotationOffset": 0,
+            "Scale": 0.29,
+            "Shadows": true,
+            "SortMode": "Unsorted",
+            "Texture": "materials/particles/smoke/render/smokeloop_g_1.vtex"
+          },
+          {
+            "__type": "ParticleBoxEmitter",
+            "Burst": 100,
+            "Delay": 0,
+            "DestroyOnEnd": false,
+            "Duration": 10,
+            "Loop": true,
+            "OnEdge": false,
+            "Rate": 1,
+            "Size": "50,60,50"
           }
         ]
       }

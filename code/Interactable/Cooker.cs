@@ -9,11 +9,12 @@ public class Cooker : AInteractable
 	[Property] private SoundEvent CookingSound { get; set; }
 	[Property] private SoundEvent CookedSound { get; set; }
 	private float cookTimer { get; set; }
-	private Vector3 boxOffset { get; set; } = new( 0, -20, 150 );
+	private Vector3 boxOffset { get; set; } = new( 0, -20, -150 );
 	private Vector3 cookedOffset { get; set; } = new( 0, -15, 80 );
 	private SoundHandle sound;
 	private FurnacePanel furnacePanel { get; set; }
 	private SkinnedModelRenderer Renderer { get; set; }
+	private ParticleBoxEmitter Smoke { get; set; }
 
 
     protected override void OnStart()
@@ -25,6 +26,7 @@ public class Cooker : AInteractable
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 		furnacePanel = Components.Get<FurnacePanel>(FindMode.EnabledInSelfAndChildren);
 		Renderer = Components.Get<SkinnedModelRenderer>();
+		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
     }
 	protected override void OnUpdate()
     {
@@ -36,7 +38,7 @@ public class Cooker : AInteractable
         var box = interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
         if (box == null) return;
 		box.GameObject.Components.Get<AInteractable>().OnInteract(interactor);
-        box.GameObject.Transform.Position = Transform.Position + boxOffset;
+        box.GameObject.Transform.Position = Transform.Position+ Transform.Rotation.Forward * boxOffset + new Vector3(0,0,150);
 		box.GameObject.Transform.Rotation *= new Angles( 0, 0, 180 );
 		box.GameObject.Components.Get<Rigidbody>().Destroy();
 		box.GameObject.Components.Get<Holdable>().Open();
@@ -55,8 +57,10 @@ public class Cooker : AInteractable
 	private void CookingStarted(float time)
 	{
 		if ( CookingSound is not null )
-        	sound = Sound.Play( CookingSound, Transform.Position + cookedOffset );
+        	sound = Sound.Play( CookingSound, Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80) );
 		furnacePanel.StartCooking(time);
+		if ( Smoke is not null )
+			Smoke.Enabled = true;
 	}
 
 	[Broadcast]
@@ -65,18 +69,19 @@ public class Cooker : AInteractable
 		Renderer.Set( "Opening", true );
 		sound?.Stop();
 		if ( CookedSound is not null )
-        	Sound.Play( CookedSound, Transform.Position + cookedOffset);
+        	Sound.Play( CookedSound, Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
 	}
 
 	[Broadcast]
 	private void CloseOven()
 	{
 		Renderer.Set( "Opening", false );
+		Smoke.Enabled = false;
 	}
 
 	private async void Cook()
     {
-        var cooked = CookedObject.Clone( Transform.Position + cookedOffset );
+        var cooked = CookedObject.Clone( Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
         cooked.NetworkSpawn();
 		var candy = cooked.Components.Get<Candies>();
         cookTimer = candy.CookingTime;
