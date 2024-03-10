@@ -15,6 +15,15 @@ public sealed class Delivery : Component
     [Property] public DeliveryCar DeliveryCar { get; set; }
     [Property] public GameObject DeliveryCarSpawn { get; set; }
     [Property] public GameObject Receiver { get; set; }
+
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        if (IsProxy) return;
+
+        DeliveryHud = Scene.GetAllComponents<DeliveryHud>().FirstOrDefault();
+        DeliveryCarSpawn = Scene.Children.Where(c => c.Name == "Spawn").FirstOrDefault().Children.Where(c => c.Name == "DeliverySpawn").FirstOrDefault();
+    }
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();

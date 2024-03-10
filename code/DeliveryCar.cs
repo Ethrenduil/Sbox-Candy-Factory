@@ -57,6 +57,7 @@ public sealed class DeliveryCar : Component
 	{
 		IsDelivering = true;
 		Destination = destination;
+		Log.Info("Delivery Car is delivering at" + Destination);
 	}
 
 	// Stop the delivery car and return to the spawn

@@ -290,44 +290,51 @@
           "UseMapFromLaunch": false
         }
       ],
+      "Children": []
+    },
+    {
+      "Id": "96e9fc11-b1fb-40a8-b8e1-d715838c3202",
+      "Name": "Spawn",
+      "Position": "5340.44,-1206.13,278.9843",
+      "Enabled": true,
       "Children": [
         {
-          "Id": "85a4f285-6ea1-48be-b5aa-affb1a2c0516",
+          "Id": "c1e9c0b7-886b-481d-b456-c189605a1ddf",
           "Name": "FactorySpawn",
-          "Position": "1954,-405,187",
-          "Tags": "factory",
-          "Enabled": true
-        },
-        {
-          "Id": "61da1333-bb5f-4720-bf71-ec5b2dbf16cf",
-          "Name": "FactorySpawn",
-          "Position": "1954,-1888,187",
-          "Rotation": "-0,0,-1,-0.00000004371139",
+          "Position": "-7500.44,801.1304,-91.98434",
           "Tags": "factory",
           "Enabled": true
         },
         {
           "Id": "9f09acb6-738c-438e-b064-bc86e5dd8e6b",
           "Name": "FactorySpawn",
-          "Position": "-2160,-1888,187",
-          "Rotation": "-0,0,-1,-0.00000004371139",
+          "Position": "-7500.44,-681.8696,-91.98434",
+          "Rotation": "0,0,-1,-0.00000004371139",
           "Tags": "factory",
           "Enabled": true
         },
         {
-          "Id": "c1e9c0b7-886b-481d-b456-c189605a1ddf",
+          "Id": "61da1333-bb5f-4720-bf71-ec5b2dbf16cf",
           "Name": "FactorySpawn",
-          "Position": "-2160,-405,187",
+          "Position": "-3386.44,-681.8696,-91.98434",
+          "Rotation": "0,0,-1,-0.00000004371139",
           "Tags": "factory",
+          "Enabled": true
+        },
+        {
+          "Id": "85a4f285-6ea1-48be-b5aa-affb1a2c0516",
+          "Name": "FactorySpawn",
+          "Position": "-3386.44,801.1304,-91.98434",
+          "Tags": "factory",
+          "Enabled": true
+        },
+        {
+          "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
+          "Name": "DeliverySpawn",
+          "Position": "452.0439,51.45142,-259.2424",
           "Enabled": true
         }
       ]
-    },
-    {
-      "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
-      "Name": "DeliverySpawn",
-      "Position": "5792.484,-1154.679,19.74191",
-      "Enabled": true
     }
   ],
   "SceneProperties": {
@@ -353,6 +360,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-09T19:16:23.651554-05:00",
+  "LastSaved": "2024-03-09T19:57:04.3169285-05:00",
   "__references": []
 }

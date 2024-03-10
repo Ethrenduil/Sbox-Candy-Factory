@@ -60,8 +60,7 @@ public class CandyFactory : Component, Component.INetworkListener
 		Log.Info( $"Player {connection.DisplayName} joined" );
 
 		// Network spawn the player and enable the navmesh
-		player.NetworkSpawn( connection );
-		Scene.NavMesh.IsEnabled = true;	
+		player.NetworkSpawn( connection );	
 		// Spawn Factory and start it
 		var factory = Factory.Clone(FactoryList[GetFreeFactoryIndex(connection)].Transform.World);
 		factory.Components.Get<Factory>().StartFactory( connection);
@@ -92,13 +91,11 @@ public class CandyFactory : Component, Component.INetworkListener
 
 	private int GetFreeFactoryIndex(Connection connection)
 	{
-		Log.Info( $"Looking for a free factory" );
 		for (int i = 0; i < _isFactoryActive.Count; i++)
 		{
 			if (_isFactoryActive[i] == 0)
 			{
 				_isFactoryActive[i] = connection.SteamId;
-				Log.Info( $"Factory {i} is now active" );
 				return i;
 			}
 		}

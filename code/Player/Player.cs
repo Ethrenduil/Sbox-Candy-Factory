@@ -348,6 +348,8 @@ public class Player : Component
         {
             Log.Error("CandyFactory component not found");
         }
+
+		Scene.NavMesh.IsEnabled = true;
     }
 
 	public void Save()
