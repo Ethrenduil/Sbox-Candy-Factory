@@ -21,7 +21,8 @@ public class AInteractable : Component
 public enum InteractableType
 {
     None,
-    Machine,
+    Cooker,
+	Upgrader,
     Conveyor,
     Storage,
     Resource,

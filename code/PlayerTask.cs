@@ -20,14 +20,14 @@ public class Needed
     public int Money { get; set; }
 	public int CurrentMoney { get; set; }
     public Candy CandyCreated { get; set; }
-    public Candy CandySold { get; set; }
+    public Candy CandyUpgraded { get; set; }
 
-	public Needed(int money, Candy candyCreated, Candy candySold)
+	public Needed(int money, Candy candyCreated, Candy candyUpgraded)
 	{
 		CurrentMoney = 0;
 		Money = money;
 		CandyCreated = candyCreated;
-		CandySold = candySold;
+		CandyUpgraded = candyUpgraded;
 	}
 }
 
@@ -43,12 +43,12 @@ public sealed class PlayerTask : Component
 		Name = "Tutorial";
 		Description = "Welcome in Candy Factory";
 		IsComplete = false;
-		Needed = new Needed(100, new Candy("Dark Chocolate", 10), new Candy("Caramel", 10));
+		Needed = new Needed(100, new Candy("Dark Chocolate", 10), new Candy("White Chocolate Cone", 10));
 	}
 
 	protected override void OnUpdate()
 	{
-		if (Needed.CurrentMoney >= Needed.Money && Needed.CandyCreated.Current >= Needed.CandyCreated.Quantity && Needed.CandySold.Current >= Needed.CandySold.Quantity)
+		if (Needed.CurrentMoney >= Needed.Money && Needed.CandyCreated.Current >= Needed.CandyCreated.Quantity && Needed.CandyUpgraded.Current >= Needed.CandyUpgraded.Quantity)
 		{
 			IsComplete = true;
 		}

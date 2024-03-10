@@ -72,6 +72,9 @@ public class PlayerInteract : Component
 
 		// If the player is not carrying an object and the interactable is a storage, return
 		if (interactable.Type == InteractableType.Storage && !IsCarrying) return false;
+
+		// If the player is not carrying an object and the interactable is a machine, return
+		if (interactable.Type == InteractableType.Cooker && !IsCarrying) return false;
 		
 		// If the interactable is a resource and the player is already carrying an object, return
 		if (interactable.Type == InteractableType.Resource && IsCarrying) return false;

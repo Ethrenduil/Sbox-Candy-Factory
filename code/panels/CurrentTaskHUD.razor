@@ -21,9 +21,9 @@
                 {
                     <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Name : @LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Current / @LocalPlayer.CurrentTask?.Needed?.CandyCreated?.Quantity</span>
                 }
-                @if (LocalPlayer.CurrentTask?.Needed?.CandySold != null)
+                @if (LocalPlayer.CurrentTask?.Needed?.CandyUpgraded != null)
                 {
-                    <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandySold?.Name : @LocalPlayer.CurrentTask?.Needed?.CandySold?.Current / @LocalPlayer.CurrentTask?.Needed?.CandySold?.Quantity</span>
+                    <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandyUpgraded?.Name : @LocalPlayer.CurrentTask?.Needed?.CandyUpgraded?.Current / @LocalPlayer.CurrentTask?.Needed?.CandyUpgraded?.Quantity</span>
                 }
             }
         </div>

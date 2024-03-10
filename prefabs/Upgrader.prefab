@@ -1,0 +1,143 @@
+{
+  "RootObject": {
+    "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
+    "Name": "Upgrader",
+    "Position": "-607.687,-49.55542,-175.3572",
+    "Rotation": "0,0,0.7071068,0.7071068",
+    "Scale": "0.8,0.8,0.8",
+    "Tags": "interactable",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/conveyor/transformer.vmdl",
+        "Static": true,
+        "Surface": null
+      },
+      {
+        "__type": "SkinnedModelRenderer",
+        "AnimationGraph": "animgraphs/upgrader.vanmgrph",
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
+        "CreateBoneObjects": true,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/conveyor/transformer.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Conveyor",
+        "special": true,
+        "Speed": 100,
+        "Turn": false,
+        "Candies": [],
+        "IsMoving": true
+      },
+      {
+        "__type": "Upgrader",
+        "conveyor": {
+          "_type": "component",
+          "go": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
+          "component_type": "Conveyor"
+        },
+        "Description": "This is an interactable object",
+        "furnacePanel": {
+          "_type": "component",
+          "go": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
+          "component_type": "FurnacePanel"
+        },
+        "IsInteracted": false,
+        "Name": "Upgrader",
+        "Type": "Upgrader",
+        "upgradedObject": {
+          "_type": "gameobject",
+          "prefab": "prefabs/candy_choco_09.prefab"
+        },
+        "upgradedSound": "sounds/furnace/furnace_cooked.sound",
+        "upgradeSound": "sounds/furnace/furnace_cooking.sound"
+      }
+    ],
+    "Children": [
+      {
+        "Id": "1cadc133-3f4b-402f-82ea-6e4cda80dee2",
+        "Name": "Panel",
+        "Position": "0,0,57.16129",
+        "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
+        "Enabled": true,
+        "Children": [
+          {
+            "Id": "9b0a42ee-21d7-407f-9a6c-fafb96d9262d",
+            "Name": "Panel_end",
+            "Position": "-0.000006923074,13.6884,0.00001631785",
+            "Enabled": true,
+            "Children": [
+              {
+                "Id": "5ffdeebd-5821-46ca-a01e-1376de1e9c80",
+                "Name": "Panel_end_end",
+                "Position": "-0.000006923061,13.68838,0.00001631782",
+                "Enabled": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "4087a1aa-4cd8-4b3e-bc15-4e2c0634600b",
+        "Name": "Upgrader",
+        "Position": "0,0,136.7999",
+        "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
+        "Enabled": true,
+        "Children": [
+          {
+            "Id": "d1299b3d-daa5-486f-822b-49f9295eaed1",
+            "Name": "Upgrader_end",
+            "Position": "-0.00001809684,35.78135,0.00004265469",
+            "Enabled": true,
+            "Children": [
+              {
+                "Id": "4598f581-1c6d-4ff4-9596-42aff72381bb",
+                "Name": "Upgrader_end_end",
+                "Position": "-0.000006377609,12.60994,0.00005317919",
+                "Enabled": true,
+                "Children": [
+                  {
+                    "Id": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
+                    "Name": "Furnace Screen",
+                    "Position": "-31.99995,-29.39128,-0.00008908479",
+                    "Rotation": "0.00000003090862,0.7071069,0.7071066,-0.00000003090867",
+                    "Scale": "1.25,1.25,1.25",
+                    "Enabled": true,
+                    "Components": [
+                      {
+                        "__type": "WorldPanel",
+                        "HorizontalAlign": "Center",
+                        "LookAtCamera": false,
+                        "PanelSize": "800,544",
+                        "RenderScale": 1,
+                        "VerticalAlign": "Center"
+                      },
+                      {
+                        "__type": "FurnacePanel",
+                        "candy": {
+                          "_type": "gameobject",
+                          "prefab": "prefabs/candy_choco_09.prefab"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}
