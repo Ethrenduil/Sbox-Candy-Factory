@@ -1,6 +1,7 @@
 using Sandbox;
 using System;
 using Eryziac.CandyFactory;
+using System.Threading.Tasks;
 
 public class Upgrader : AInteractable
 {
@@ -32,6 +33,8 @@ public class Upgrader : AInteractable
 
     public override async void OnInteract(GameObject interactor)
     {
+		if (IsInteracted)
+			return;
         IsInteracted = true;
 
         if (conveyor.Candies.Count == 0)
@@ -46,11 +49,9 @@ public class Upgrader : AInteractable
 
 		await GameTask.Delay( 1000 );
 		
-		Upgrade();
-
-
-        IsInteracted = false;
-        
+		await Upgrade();
+		
+        IsInteracted = false; 
     }
 
 	[Broadcast]
@@ -81,23 +82,35 @@ public class Upgrader : AInteractable
 		Renderer.Set( "Closing", true );
 	}
 
-	private async void Upgrade()
+	private async Task Upgrade()
     {
-        conveyor.Candies.First().Destroy();
-        conveyor.RemoveCandies();
-        var upgraded = upgradedObject.Clone( Transform.Position + upgradedOffset );
-		upgraded.Tags.Add( "Upgraded" );
-        upgraded.NetworkSpawn();
-		var candy = upgraded.Components.Get<Candies>();
-        upgradeTimer = candy.CookingTime;
+		var candyName = "";
+		var candyNumber = 0;
+        foreach (var candy in conveyor.Candies.ToList()) // ToList to avoid collection modified exception
+    	{
+			if ( candy.Tags.Has("Upgraded") )
+				continue;
+    	    candy.Destroy();
+    	    conveyor.RemoveCandy();
+    	    var upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
+    	    upgraded.Tags.Add("Upgraded");
+    	    upgraded.NetworkSpawn();
+			var temp = upgraded.Components.Get<Candies>();
+        	upgradeTimer += temp.CookingTime;
+			candyNumber++;
+			if ( candyName == "" )
+				candyName = temp.Name;
+		}
+		if ( upgradeTimer == 0 )
+			return;
 		UpgradeStarted(upgradeTimer);
         await GameTask.DelaySeconds( upgradeTimer );
 		UpgradeFinished();
 		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
 		if ( currentTask is not null )
 		{
-			if ( currentTask.Needed.CandyUpgraded.Name == candy.Name && currentTask.Needed.CandyUpgraded.Current < currentTask.Needed.CandyUpgraded.Quantity) {
-				currentTask.Needed.CandyUpgraded.Current++;
+			if ( currentTask.Needed.CandyUpgraded.Name == candyName && currentTask.Needed.CandyUpgraded.Current < currentTask.Needed.CandyUpgraded.Quantity) {
+				currentTask.Needed.CandyUpgraded.Current = Math.Min( currentTask.Needed.CandyUpgraded.Quantity, currentTask.Needed.CandyUpgraded.Current + candyNumber );
 				Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
 			}
 		}

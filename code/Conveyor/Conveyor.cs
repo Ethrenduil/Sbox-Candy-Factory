@@ -1,5 +1,6 @@
 using Microsoft.VisualBasic;
 using Sandbox;
+using Sandbox.UI;
 using System.Numerics;
 
 [Category( "Candy Factory - Factory" )]
@@ -56,9 +57,14 @@ public class Conveyor : Component, Component.ICollisionListener
     }
 
 	[Broadcast]
-	public void RemoveCandies()
+	public void RemoveCandy()
 	{
-		Candies.Clear();
+		if (Candies.Count == 0)
+		{
+			return;
+		}
+		
+		Candies.RemoveAt(0);
 	}
 
     public virtual void OnCollisionStart(Collision o)

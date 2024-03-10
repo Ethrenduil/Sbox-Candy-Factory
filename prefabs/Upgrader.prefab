@@ -97,32 +97,30 @@
                 "Id": "4598f581-1c6d-4ff4-9596-42aff72381bb",
                 "Name": "Upgrader_end_end",
                 "Position": "0.0000481445,12.60994,0.00004390113",
+                "Enabled": true
+              },
+              {
+                "Id": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
+                "Name": "Furnace Screen",
+                "Position": "-31.9999,-16.78134,-0.00004853187",
+                "Rotation": "0.00000005960464,0.7071068,0.7071067,-0.00000002980232",
+                "Scale": "1.25,1.25,1.25",
                 "Enabled": true,
-                "Children": [
+                "Components": [
                   {
-                    "Id": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
-                    "Name": "Furnace Screen",
-                    "Position": "-31.99995,-29.39128,-0.00008908479",
-                    "Rotation": "0.00000003090862,0.7071069,0.7071066,-0.00000003090867",
-                    "Scale": "1.25,1.25,1.25",
-                    "Enabled": true,
-                    "Components": [
-                      {
-                        "__type": "WorldPanel",
-                        "HorizontalAlign": "Center",
-                        "LookAtCamera": false,
-                        "PanelSize": "800,544",
-                        "RenderScale": 1,
-                        "VerticalAlign": "Center"
-                      },
-                      {
-                        "__type": "FurnacePanel",
-                        "candy": {
-                          "_type": "gameobject",
-                          "prefab": "prefabs/candy_choco_09.prefab"
-                        }
-                      }
-                    ]
+                    "__type": "WorldPanel",
+                    "HorizontalAlign": "Center",
+                    "LookAtCamera": false,
+                    "PanelSize": "800,544",
+                    "RenderScale": 1,
+                    "VerticalAlign": "Center"
+                  },
+                  {
+                    "__type": "FurnacePanel",
+                    "candy": {
+                      "_type": "gameobject",
+                      "prefab": "prefabs/candy_choco_09.prefab"
+                    }
                   }
                 ]
               }
@@ -135,6 +133,7 @@
         "Name": "Smoke",
         "Position": "-0.04322338,0.2534761,91.10779",
         "Tags": "particles",
+        "Enabled": true,
         "Components": [
           {
             "__type": "ParticleEffect",
@@ -265,11 +264,12 @@
           },
           {
             "__type": "ParticleBoxEmitter",
+            "__enabled": false,
             "Burst": 100,
             "Delay": 0,
             "DestroyOnEnd": false,
             "Duration": 10,
-            "Loop": true,
+            "Loop": false,
             "OnEdge": false,
             "Rate": 1,
             "Size": "50,60,50"
