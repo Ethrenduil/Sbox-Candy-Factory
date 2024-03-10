@@ -1,0 +1,85 @@
+{
+  "RootObject": {
+    "Id": "c118b649-5a8c-434e-a350-2c6a90125411",
+    "Name": "furnace",
+    "Scale": "0.8,0.8,0.8",
+    "Tags": "interactable",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/conveyor/furnace.vmdl",
+        "Static": true,
+        "Surface": null
+      },
+      {
+        "__type": "SkinnedModelRenderer",
+        "AnimationGraph": null,
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
+        "CreateBoneObjects": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/conveyor/furnace.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Cooker",
+        "conveyor": {
+          "_type": "component",
+          "go": "c118b649-5a8c-434e-a350-2c6a90125411",
+          "component_type": "Conveyor"
+        },
+        "CookedObject": {
+          "_type": "gameobject",
+          "prefab": "prefabs/candy_choco_01.prefab"
+        },
+        "CookedSound": "sounds/furnace/furnace_cooked.sound",
+        "CookingSound": "sounds/furnace/furnace_cooking.sound",
+        "Description": "This is an interactable object",
+        "IsInteracted": false,
+        "Name": "Furnace",
+        "Type": "Cooker"
+      },
+      {
+        "__type": "Conveyor",
+        "Speed": 100,
+        "Turn": false,
+        "IsMoving": true
+      }
+    ],
+    "Children": [
+      {
+        "Id": "6be9b2f6-e9a3-43f2-8696-22cba13e5174",
+        "Name": "Furnace Screen",
+        "Position": "-19.05182,-29.87411,97.66831",
+        "Rotation": "0,0,-0.7071068,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": false,
+            "PanelSize": "1000,680",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "FurnacePanel",
+            "candy": {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_01.prefab"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

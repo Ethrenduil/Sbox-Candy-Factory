@@ -4,7 +4,14 @@
 
 <root>
 	<img class="candy-model" src="@CandyIcon" />
-	<div class="title">@CandyName</div>
+	@if (CandyName.Length > 15)
+	{
+		<div class="title" style="font-size: 30px;">@CandyName</div>
+	}
+	else
+	{
+		<div class="title">@CandyName</div>
+	}
 	<div class="remaining-time-bar">
 		<div class="remaining-time-fill" style="width: @remainingTimePercentage%;"></div>
 	</div>
@@ -22,12 +29,11 @@
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
-		var test = candy.Clone();
-		CandyName = test.Components.Get<Candies>().Name;
+		var temp = candy.Clone();
+		CandyName = temp.Components.Get<Candies>().Name;
 		CandyIcon = "textures/ui/candies/" + CandyName.ToLower().Replace(" ", "_") + ".png";
-		Log.Info(CandyIcon);
 		StateHasChanged();
-		test.Destroy();
+		temp.Destroy();
 	}
 
 	public async void StartCooking(float cookingTime)

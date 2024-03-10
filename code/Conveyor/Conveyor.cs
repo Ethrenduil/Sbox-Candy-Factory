@@ -5,9 +5,11 @@ using System.Numerics;
 [Category( "Candy Factory - Factory" )]
 public class Conveyor : Component, Component.ICollisionListener
 {
-    [Property] private bool IsMoving = true;
+    [Property] [Sync] public bool IsMoving { get; set; } = true;
     [Property] private readonly float Speed = 100; // Change this to the speed you want
 	[Property] private readonly bool Turn = false;
+	[Property] private readonly bool special = false;
+	[Property]
 	public List<GameObject> Candies { get; set; } = new();
 
     protected override void OnFixedUpdate()
@@ -39,12 +41,31 @@ public class Conveyor : Component, Component.ICollisionListener
     	    }
 
     	    rigidbodyCandy.Velocity = newVelocity;
+
+			if (special && !candy.Tags.Has("Upgraded"))
+        	{
+            	var centerPosition = this.GameObject.Transform.Position;
+				centerPosition.z += 64;
+
+            	var distanceToCenter = candy.Transform.Position.Distance(centerPosition);
+				Log.Info(distanceToCenter);
+            	if (distanceToCenter < 20f)
+            	{
+            	    IsMoving = false;
+            	}
+        	}
     	}
     }
 
     public virtual void OnCollisionStart(Collision o)
     {
-        HandleCollision(o);
+        var gameObject = o.Other.GameObject.Root;
+		
+
+        if (!gameObject.Tags.Has("Candy"))
+			return;
+
+        HandleCollision(gameObject);
     }
 
     public void OnCollisionStop( CollisionStop o )
@@ -61,23 +82,14 @@ public class Conveyor : Component, Component.ICollisionListener
     {
     }
 
-    private void HandleCollision(Collision o)
+    private void HandleCollision(GameObject gameObject)
     {
-        if (!IsMoving)
-        {
-            return;
-        }
-
-        var gameObject = o.Other.GameObject.Root;
         if (!IsAboveConveyor(gameObject))
         {
             return;
         }
 
-        if (gameObject.Tags.Has("Candy"))
-		{
-			Candies.Add(gameObject);
-		}
+		Candies.Add(gameObject);
 	}
 
    	private bool IsAboveConveyor(GameObject gameObject)
