@@ -52,11 +52,11 @@ public class Cooker : AInteractable
     }
 
 	[Broadcast]
-	private void CookingStarted()
+	private void CookingStarted(float time)
 	{
 		if ( CookingSound is not null )
         	sound = Sound.Play( CookingSound, Transform.Position + cookedOffset );
-		furnacePanel.StartCooking(cookTimer);
+		furnacePanel.StartCooking(time);
 	}
 
 	[Broadcast]
@@ -80,7 +80,7 @@ public class Cooker : AInteractable
         cooked.NetworkSpawn();
 		var candy = cooked.Components.Get<Candies>();
         cookTimer = candy.CookingTime;
-		CookingStarted();
+		CookingStarted(cookTimer);
         await GameTask.DelaySeconds( cookTimer );
 		CookingFinished();
 		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
