@@ -108,13 +108,13 @@
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
-						take = 0
+						take = 1
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
-						name = "Upgrade"
-						activity_name = "Upgrade"
+						name = "Closing"
+						activity_name = "Closing"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -130,7 +130,29 @@
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
-						take = 1
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Opening"
+						activity_name = "Opening"
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						enable_scale = false
+						source_filename = "models/conveyor/fbx/transformer.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 2
 						reverse = false
 					},
 				]

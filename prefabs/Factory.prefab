@@ -171,42 +171,6 @@
         "Enabled": true
       },
       {
-        "Id": "7c46dd50-db6e-415d-b64d-c2d63e252df2",
-        "Name": "Transformer",
-        "Position": "-607.687,-49.55542,-175.3572",
-        "Rotation": "0,0,0.7071068,0.7071068",
-        "Scale": "0.8,0.8,0.8",
-        "Networked": true,
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "ModelCollider",
-            "IsTrigger": false,
-            "Model": "models/conveyor/transformer.vmdl",
-            "Static": true,
-            "Surface": null
-          },
-          {
-            "__type": "SkinnedModelRenderer",
-            "AnimationGraph": "animgraphs/upgrader.vanmgrph",
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": null,
-            "CreateBoneObjects": false,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
-            "Model": "models/conveyor/transformer.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "Conveyor",
-            "IsMoving": true,
-            "Speed": 100,
-            "Turn": false
-          }
-        ]
-      },
-      {
         "Id": "1ca87f10-daae-4406-9010-dadbc392bada",
         "Name": "Conveyor",
         "Position": "-607.687,-129.8227,-175",
@@ -225,76 +189,11 @@
           },
           {
             "__type": "Conveyor",
-            "IsMoving": true,
+            "special": false,
             "Speed": 100,
-            "Turn": false
-          }
-        ]
-      },
-      {
-        "Id": "71456d18-a0c9-446c-a3e5-b919b82bcb87",
-        "Name": "Furnace",
-        "Position": "-607.687,-209.9709,-175.3572",
-        "Rotation": "0,0,0.7071068,0.7071068",
-        "Scale": "0.8,0.8,0.8",
-        "Networked": true,
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "ModelCollider",
-            "IsTrigger": false,
-            "Model": "models/conveyor/furnace.vmdl",
-            "Static": true,
-            "Surface": null
-          },
-          {
-            "__type": "SkinnedModelRenderer",
-            "AnimationGraph": null,
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": null,
-            "CreateBoneObjects": false,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
-            "Model": "models/conveyor/furnace.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "Furnace",
-            "IsMoving": true,
-            "Speed": 100,
-            "CookedObject": {
-              "_type": "gameobject",
-              "prefab": "prefabs/candy_choco_01.prefab"
-            },
-            "CookedSound": "sounds/furnace/furnace_cooked.sound",
-            "CookingSound": "sounds/furnace/furnace_cooking.sound"
-          }
-        ],
-        "Children": [
-          {
-            "Id": "13003efd-bd9a-4273-8423-1321e9d73663",
-            "Name": "Furnace Screen",
-            "Position": "-19.05182,-29.87411,97.66831",
-            "Rotation": "0,0,-0.7071068,0.7071068",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "WorldPanel",
-                "HorizontalAlign": "Center",
-                "LookAtCamera": false,
-                "PanelSize": "1000,680",
-                "RenderScale": 1,
-                "VerticalAlign": "Center"
-              },
-              {
-                "__type": "FurnacePanel",
-                "candy": {
-                  "_type": "gameobject",
-                  "prefab": "prefabs/candy_choco_01.prefab"
-                }
-              }
-            ]
+            "Turn": false,
+            "Candies": [],
+            "IsMoving": true
           }
         ]
       },
@@ -376,6 +275,28 @@
             "MyStringValue": "Hello World!"
           }
         ]
+      },
+      {
+        "Id": "372f6caf-c0c5-4aa2-9b3d-01914e136636",
+        "Name": "furnace",
+        "Position": "-607.687,-210.3741,-175",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Scale": "0.8,0.8,0.8",
+        "Tags": "interactable",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/furnace.prefab"
+      },
+      {
+        "Id": "b6616a25-d3da-4f96-a082-edce4408df4a",
+        "Name": "Upgrader",
+        "Position": "-607.687,-49.20265,-175",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Scale": "0.8,0.8,0.8",
+        "Tags": "interactable",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/upgrader.prefab"
       }
     ]
   },
