@@ -25,3 +25,4 @@ code/Editor/.vscode/*
 !*.shader_c
 *.sln
 *.sln
+candy_factory.sln
