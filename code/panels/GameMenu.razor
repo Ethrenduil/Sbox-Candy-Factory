@@ -102,6 +102,9 @@
 	bool refreshing;
 	List<LobbyInformation> list = new();
 
+	[Property] SoundEvent buttonClickSound { get; set; }	
+
+
 	void DisplayContent()
 	{
 		_isContentVisible = true;
@@ -116,6 +119,11 @@
 
 	void DisplaySettings()
 	{
+		if ( buttonClickSound is not null )
+		{
+			Log.Info( "Playing sound" );
+        	Sound.Play( buttonClickSound, 1.0f );
+		}
 		_isContentVisible = false;
 		_isJoinRoomVisible = false;
 		_isSettingsVisible = true;

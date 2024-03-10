@@ -39,7 +39,11 @@
           "ZIndex": 100
         },
         {
-          "__type": "GameMenu"
+          "__type": "GameMenu",
+          "buttonClickSound": "sounds/ui/button.sound"
+        },
+        {
+          "__type": "Music"
         }
       ]
     }
@@ -67,6 +71,6 @@
   },
   "Title": "Menu",
   "Description": "",
-  "LastSaved": "2024-02-21T01:46:15.2917534-05:00",
+  "LastSaved": "2024-03-09T23:38:02.6346747-05:00",
   "__references": []
 }
