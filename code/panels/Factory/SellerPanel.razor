@@ -3,7 +3,7 @@
 @inherits PanelComponent
 
 <root>
-	@if (CurrentSellingTime > 0)
+	@if (TotalSellingTime > 0)
 	{
 		<div class="remaining-time-bar">
 			<div class="remaining-time-fill" style="width: @remainingTimePercentage%;"></div>
@@ -28,7 +28,6 @@
 			remainingTimePercentage = (int)((CurrentSellingTime / TotalSellingTime) * 100);
 			StateHasChanged();
 		}
-		await GameTask.DelaySeconds(1);
 		CurrentSellingTime = 0;
 		TotalSellingTime = 0;
 		remainingTimePercentage = 0;

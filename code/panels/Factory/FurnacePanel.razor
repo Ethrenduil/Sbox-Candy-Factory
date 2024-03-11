@@ -46,7 +46,6 @@
 			remainingTimePercentage = (int)((CurrentCookingTime / TotalCookingTime) * 100);
 			StateHasChanged();
 		}
-		await GameTask.DelaySeconds(1);
 		CurrentCookingTime = 0;
 		TotalCookingTime = 0;
 		remainingTimePercentage = 0;
