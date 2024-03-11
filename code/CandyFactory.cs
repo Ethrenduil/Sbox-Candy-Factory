@@ -13,7 +13,7 @@ namespace Eryziac.CandyFactory;
 
 [Title( "Gamemode" )]
 [Category( "Candy Factory" )]
-public class CandyFactory : Component, Component.INetworkListener
+public class CandyFactory : Component
 {
 	
 	[Property] public GameObject PlayerPrefab { get; set; }
@@ -21,19 +21,32 @@ public class CandyFactory : Component, Component.INetworkListener
 	[Property] public List<GameObject> FactoryList { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	[Property] public GameObject Factory { get; set; }
-	[Property] [Sync] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
+	[Property] [Sync] public List<bool> _isFactoryActive { get; set; } = new List<bool> { false, false, false, false };
 
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 	}
-	
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+		// for (int i = 0; i < 4; i++)
+		// {
+		// 	Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
+		// }
+	}
 	protected override void OnStart()
 	{
 		base.OnStart();
+		// UpdateFactorySlot();
+		for (int i = 0; i < 4; i++)
+		{
+			Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
+		}
 	}
 
-	void INetworkListener.OnActive( Connection connection )
+	public void NewPlayer( Connection connection )
 	{
 		// Get the list of spawn points and the number of players
 		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
@@ -46,6 +59,9 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		// Get Free Factory Index
 		int freeFactoryIndex = GetFreeFactoryIndex(connection);
+		Log.Info( $"Free factory index: {freeFactoryIndex}" );
+		_isFactoryActive[freeFactoryIndex] = true;
+
 
 		// Spawn the player
 		var player = PlayerPrefab.Clone(SpawnPoint[freeFactoryIndex].Transform.World);
@@ -59,6 +75,7 @@ public class CandyFactory : Component, Component.INetworkListener
 		var playerComponent = player.Components.Get<Player>();
 		playerComponent.Name = connection.DisplayName;
 		playerComponent.SteamId = connection.SteamId;
+		playerComponent.PlayerSlot = freeFactoryIndex;
 
 		Log.Info( $"Player {connection.DisplayName} joined" );
 
@@ -71,10 +88,11 @@ public class CandyFactory : Component, Component.INetworkListener
 		factory.NetworkSpawn(connection);
 	}
 
-	void INetworkListener.OnDisconnected(Connection conn)
+	public void DeletePlayer(Connection conn)
 	{
 		Log.Info( $"Player {conn.DisplayName} disconnected" );
-		_isFactoryActive[_isFactoryActive.IndexOf(conn.SteamId)] = 0;
+		var player = Scene.GetAllComponents<Player>().FirstOrDefault( p => p.SteamId == conn.SteamId );
+		_isFactoryActive[player.PlayerSlot] = false;
 	}
 
 	public void RefreshTaskHUD()
@@ -97,9 +115,10 @@ public class CandyFactory : Component, Component.INetworkListener
 	{
 		for (int i = 0; i < _isFactoryActive.Count; i++)
 		{
-			if (_isFactoryActive[i] == 0)
+			if (_isFactoryActive[i] == false)
 			{
-				_isFactoryActive[i] = connection.SteamId;
+				Log.Info( $"Factory {i} is free" );
+				_isFactoryActive[i] = true;
 				return i;
 			}
 		}
