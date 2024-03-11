@@ -109,15 +109,16 @@
     {
       "Id": "120e5267-334f-4af0-a4ca-08655c252616",
       "Name": "CandyFactory",
+      "Networked": true,
       "Enabled": true,
       "Components": [
         {
           "__type": "CandyFactory",
           "_isFactoryActive": [
-            0,
-            0,
-            0,
-            0
+            false,
+            false,
+            false,
+            false
           ],
           "Factory": {
             "_type": "gameobject",
@@ -336,6 +337,17 @@
           "Enabled": true
         }
       ]
+    },
+    {
+      "Id": "189ac754-24e0-41c0-b0fa-5af395593321",
+      "Name": "Network",
+      "Position": "3921.605,-3162.721,632.3683",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NetworkManager"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -361,6 +373,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-10T20:03:15.6639099-04:00",
+  "LastSaved": "2024-03-11T01:15:21.721992-04:00",
   "__references": []
 }

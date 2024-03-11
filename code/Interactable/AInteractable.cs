@@ -11,7 +11,7 @@ public class AInteractable : Component
     [Property] virtual public InteractableType Type { get; set; } 
     [Property] [Sync] public bool IsInteracted { get; set; } = false;
 
-    virtual protected GameObject Interactor { get; set; }
+    virtual public GameObject Interactor { get; set; }
     virtual public void OnInteract(GameObject interactor) { }
     virtual public bool CanInteract(GameObject interactor) { return true; }
 

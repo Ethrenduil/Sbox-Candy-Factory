@@ -23,6 +23,10 @@
       },
       {
         "__type": "Cooker",
+        "BoxPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/box.prefab"
+        },
         "conveyor": {
           "_type": "component",
           "go": "c118b649-5a8c-434e-a350-2c6a90125411",

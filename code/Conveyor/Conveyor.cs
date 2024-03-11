@@ -56,8 +56,14 @@ public class Conveyor : Component, Component.ICollisionListener
 
     	foreach (var candy in Candies)
     	{
+			if (!candy.IsValid())
+			{
+				Candies.Remove(candy);
+				continue;
+			}
     	    var rigidbodyCandy = candy.Components.Get<Rigidbody>();
     	    var newVelocity = conveyorDirection * Speed;
+
 
     	    if (rigidbodyCandy.Velocity.Length > Speed)
     	    {

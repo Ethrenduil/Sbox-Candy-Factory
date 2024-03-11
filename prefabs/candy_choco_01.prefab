@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "53053265-4eaa-4eb7-8a5d-90abe1d5d658",
+    "Id": "822626a2-572d-4beb-a371-d9fc0f91e3bd",
     "Name": "candy_choco_01",
     "Tags": "candy",
     "Enabled": true,
@@ -15,6 +15,10 @@
       {
         "__type": "Candies",
         "CookingTime": 5,
+        "Ingredients": {
+          "Sugar": 3,
+          "Flour": 10
+        },
         "Name": "Dark Chocolate",
         "Price": 5,
         "SellingTime": 5

@@ -51,4 +51,22 @@
 		remainingTimePercentage = 0;
 		StateHasChanged();
 	}
+
+	public bool CanCook(Dictionary<DeliveryGoods, int> goods)
+	{
+		var temp = candy.Clone();
+		var candyComp = temp.Components.Get<Candies>();
+		var canCook = candyComp.CanCook(goods);
+		temp.Destroy();
+		return canCook;
+	}
+
+	public Dictionary<DeliveryGoods, int> GetIngredients()
+	{
+		var temp = candy.Clone();
+		var candyComp = temp.Components.Get<Candies>();
+		var ingredients = candyComp.GetIngredients();
+		temp.Destroy();
+		return ingredients;
+	}
 }

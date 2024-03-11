@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 public class Cooker : AInteractable
 {
     [Property] public Conveyor conveyor { get; set; }
+	[Property] public GameObject BoxPrefab { get; set; }
 	[Property] public GameObject CookedObject { get; set; }
 	[Property] private SoundEvent CookingSound { get; set; }
 	[Property] private SoundEvent CookedSound { get; set; }
@@ -40,15 +41,21 @@ public class Cooker : AInteractable
         IsInteracted = true;
         var box = interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
         if (box == null) return;
-		box.GameObject.Components.Get<AInteractable>().OnInteract(interactor);
-        box.GameObject.Transform.Position = Transform.Position+ Transform.Rotation.Forward * boxOffset + new Vector3(0,0,150);
-		box.GameObject.Transform.Rotation *= new Angles( 0, 0, 180 );
-		box.GameObject.Components.Get<Rigidbody>().Destroy();
-		box.GameObject.Components.Get<Holdable>().Open();
+
+		// Remove the ingredients from the box
+		box.RemoveGoods(furnacePanel.GetIngredients());
+		
+		// Create a new box, animate, and place it in the cooker to be cooked
+		var boxGo = BoxPrefab.Clone();
+        boxGo.Transform.Position = Transform.Position+ Transform.Rotation.Forward * boxOffset + new Vector3(0,0,150);
+		boxGo.Transform.Rotation *= new Angles( 0, 0, 180 );
+		boxGo.Components.Get<Rigidbody>().Destroy();
+		boxGo.Components.Get<Holdable>().Open();
 		await GameTask.Delay( 3000 );
-		box.Destroy();
+
 		conveyor.IsMoving = false;
-        box.GameObject.Destroy();
+		if (box.IsEmpty()) box.GameObject.Destroy();
+		boxGo.Destroy();
 
 		await Cook();
 
@@ -61,7 +68,10 @@ public class Cooker : AInteractable
 		if (IsInteracted) return false;
 
 		// if the cooker is not cooking and the player is carrying a box, return true
-		if (interactor.Components.Get<PlayerInteract>().IsCarrying) return true;
+		if (!interactor.Components.Get<PlayerInteract>().IsCarrying) return false;
+
+		var box = interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
+		if (furnacePanel.CanCook(box.Goods)) return true;
 		
 		return false;
 	}
