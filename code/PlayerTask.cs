@@ -37,13 +37,15 @@ public sealed class PlayerTask : Component
 	public string Description { get; set; }
 	public bool IsComplete { get; set; }
 	public Needed Needed { get; set; }
+	public string CompletedMessage { get; set; }
 
 	public PlayerTask()
 	{
 		Name = "Tutorial";
-		Description = "Welcome in Candy Factory";
+		Description = "Welcome in Candy Factory !";
 		IsComplete = false;
 		Needed = new Needed(100, new Candy("Dark Chocolate", 10), new Candy("White Chocolate Cone", 10));
+		CompletedMessage = "You have completed the tutorial ! Thanks for playing ! New updates are coming soon!";
 	}
 
 	protected override void OnUpdate()

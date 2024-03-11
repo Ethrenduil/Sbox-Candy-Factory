@@ -11,7 +11,7 @@
             <div class="description">@LocalPlayer.CurrentTask?.Description</div>
         </div>
         <div class="progress">
-            @if (LocalPlayer.CurrentTask?.Needed != null)
+            @if (LocalPlayer.CurrentTask?.Needed != null && LocalPlayer.CurrentTask?.IsComplete == false)
             {
                 @if (LocalPlayer.CurrentTask?.Needed?.Money > 0)
                 {
@@ -26,6 +26,10 @@
                     <span class="category">@LocalPlayer.CurrentTask?.Needed?.CandyUpgraded?.Name : @LocalPlayer.CurrentTask?.Needed?.CandyUpgraded?.Current / @LocalPlayer.CurrentTask?.Needed?.CandyUpgraded?.Quantity</span>
                 }
             }
+			else if (LocalPlayer.CurrentTask?.IsComplete == true)
+			{
+				<span class="completed">@LocalPlayer.CurrentTask?.CompletedMessage</span>
+			}
         </div>
     }
 </root>
