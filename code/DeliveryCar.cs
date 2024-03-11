@@ -44,7 +44,6 @@ public sealed class DeliveryCar : Component
 
 	private Rigidbody rigidbodyCar { get; set; }
 	[Property] public float Speed { get; set; } = 100.0f;
-	private int Direction { get; set; } = 1;
 
 	protected override void OnAwake()
 	{
@@ -99,7 +98,6 @@ public sealed class DeliveryCar : Component
 		IsDelivering = true;
 		BoxDestination = destination;
 		Destination = destination;
-		if (Direction < 0) Direction *= -1;
 	}
 
 	// Stop the delivery car and return to the spawn
@@ -156,9 +154,10 @@ public sealed class DeliveryCar : Component
 		DeliveryGuy.GameObject.Destroy();
 	}
 
+	[Broadcast]
 	private void AdjustVelocity()
 	{
-		var wishVelocity = Transform.Rotation.Forward * Speed * Direction;
+		var wishVelocity = Transform.Rotation.Forward * Speed;
 		if (rigidbodyCar.Velocity.Length > Speed)
 		{
 			var velocityLength = rigidbodyCar.Velocity.Length;

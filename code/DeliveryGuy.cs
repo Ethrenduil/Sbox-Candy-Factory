@@ -17,14 +17,19 @@ public sealed class DeliveryGuy : Component
 	[Category ("Variable")]
 	[Property]
 	[Range (0.0f, 500.0f)]
+	[Sync]
 	public float DesinationMargin { get; set; } = 10.0f;
 
 	public NavMeshAgent Agent { get; set; }
 	public Vector3 Destination { get; set; }
 
-	private CitizenAnimationHelper AnimationHelper { get; set; }	
+	private CitizenAnimationHelper AnimationHelper { get; set; }
+
+
+	[Broadcast]
 	protected override void OnAwake()
 	{
+		Log.Info( "OnAwake" );
 		IsDelivering = false;
 		Agent = GameObject.Components.Get<NavMeshAgent>();
 		AnimationHelper = Components.Get<CitizenAnimationHelper>( true );
@@ -74,6 +79,7 @@ public sealed class DeliveryGuy : Component
 
     private void UpdateAnimation()
 	{
+		// Log.Info( "UpdateAnimation" );
 		float rotateDifference = 0;
 
 		if (AnimationHelper is not null)
@@ -85,8 +91,10 @@ public sealed class DeliveryGuy : Component
 		}
 	}
 
+	[Broadcast]
 	private void DressDeliveryGuy()
 	{
+		// Log.Info( "DressDeliveryGuy" );
 		// Dress the delivery guy
 		var clothing = new ClothingContainer();
 		clothing.Deserialize( FileSystem.Mounted.ReadAllText( "clothes/delivery_guy.json" ) );
