@@ -21,7 +21,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	[Property] public List<GameObject> FactoryList { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	[Property] public GameObject Factory { get; set; }
-	[Property] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
+	[Property] [Sync] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
 
 	protected override void OnAwake()
 	{
@@ -64,7 +64,7 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		// Network spawn the player and enable the navmesh
 		player.NetworkSpawn( connection );	
-		
+
 		// Spawn Factory and start it
 		var factory = Factory.Clone(FactoryList[freeFactoryIndex].Transform.World);
 		factory.Components.Get<Factory>().StartFactory( connection);
