@@ -10,22 +10,47 @@ public class Conveyor : Component, Component.ICollisionListener
     [Property] private readonly float Speed = 100; // Change this to the speed you want
 	[Property] private readonly bool Turn = false;
 	[Property] private readonly bool special = false;
+	[Property] private readonly bool IsCooker  = false;
 	[Property] public List<GameObject> Candies { get; set; } = new();
+	[Property]private Conveyor NextConveyor { get; set; }
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+		SceneTraceResult collisionResult = Scene.Trace
+				.Box( Transform.Scale / 2 , Transform.Position, Transform.Position + Transform.Rotation.Forward * 100 )
+				.WithTag("conveyor")
+				.IgnoreGameObject(this.GameObject)
+				.Run();
+
+		if (collisionResult.Hit)
+		{
+			NextConveyor = collisionResult.GameObject.Components.Get<Conveyor>();
+		}
+	}
 
     protected override void OnFixedUpdate()
     {
 		base.OnFixedUpdate();
+
+		if (NextConveyor is not null && !IsCooker)
+		{
+			if (NextConveyor.IsMoving)
+				IsMoving = true;
+			else
+				IsMoving = false;
+		}
 
 		if (!IsMoving)
     	{
     	    return;
     	}
 
-    	var conveyorDirection = this.GameObject.Transform.Rotation.Forward;
+    	var conveyorDirection = Transform.Rotation.Forward;
 
 		if (Turn)
 		{
-			var targetDirection = this.GameObject.Transform.Rotation.Left;
+			var targetDirection = Transform.Rotation.Left;
     		conveyorDirection = Vector3.Lerp(conveyorDirection, targetDirection, 0.5f);
 		}
 

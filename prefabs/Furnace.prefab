@@ -3,7 +3,7 @@
     "Id": "c118b649-5a8c-434e-a350-2c6a90125411",
     "Name": "furnace",
     "Scale": "0.8,0.8,0.8",
-    "Tags": "interactable",
+    "Tags": "interactable,conveyor",
     "Networked": true,
     "Enabled": true,
     "Components": [
@@ -41,6 +41,7 @@
       },
       {
         "__type": "Conveyor",
+        "IsCooker": true,
         "special": false,
         "Speed": 100,
         "Turn": false,

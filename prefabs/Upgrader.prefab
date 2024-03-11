@@ -3,7 +3,7 @@
     "Id": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
     "Name": "upgrader",
     "Scale": "0.8,0.8,0.8",
-    "Tags": "interactable",
+    "Tags": "interactable,conveyor",
     "Networked": true,
     "Enabled": true,
     "Components": [

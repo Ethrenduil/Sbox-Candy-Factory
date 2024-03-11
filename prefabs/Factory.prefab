@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "c5af14d6-7b5c-4c6b-9088-8bacfde3d2da",
+    "Id": "2ee13008-e205-45c8-b343-4b03d24bb291",
     "Name": "factory",
     "Networked": true,
     "Enabled": true,
@@ -24,7 +24,7 @@
         },
         "DeliveryDestination": {
           "_type": "gameobject",
-          "go": "281a9802-f4ab-4e74-863c-af2abfea0093"
+          "go": "44d016a9-70ca-49dd-99fc-f0c0c6a68a71"
         },
         "DeliveryProgress": 0,
         "DeliveryTime": 10,
@@ -40,7 +40,7 @@
     ],
     "Children": [
       {
-        "Id": "4de41c9d-be72-41d7-bea8-a0b5f010d8c9",
+        "Id": "2a571b0f-0810-41f4-a0f5-1a5fab90e9e7",
         "Name": "Door Frame",
         "Position": "-20.55298,-255.506,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -63,7 +63,7 @@
         ]
       },
       {
-        "Id": "9031aeaf-3630-4e79-95a8-eee87ef58e58",
+        "Id": "4e37d1c3-24a0-498a-826c-704df25b93e7",
         "Name": "DoorRight",
         "Position": "26.48352,-255.5,-175",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -98,7 +98,7 @@
         ]
       },
       {
-        "Id": "fe5c5930-3f27-4bde-b094-e2772c05df50",
+        "Id": "569b84da-0758-4283-8871-e186932f3feb",
         "Name": "DoorLeft",
         "Position": "-68,-255.5004,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -133,7 +133,7 @@
         ]
       },
       {
-        "Id": "8cc5f027-cee5-4578-9dd4-22d22ceffcc9",
+        "Id": "9d721859-9d1f-4e13-8705-05a02a3a30e2",
         "Name": "Wooden Desk",
         "Position": "558.6235,-221.2169,-175.0005",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -150,16 +150,17 @@
         ]
       },
       {
-        "Id": "281a9802-f4ab-4e74-863c-af2abfea0093",
+        "Id": "44d016a9-70ca-49dd-99fc-f0c0c6a68a71",
         "Name": "DeliveryDestination",
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true
       },
       {
-        "Id": "35ae0e5f-e32d-4ff3-8d7f-577b869440ac",
+        "Id": "5f42196f-74b0-44e3-a1e3-731f8781dc25",
         "Name": "Conveyor",
         "Position": "-610,-129.8227,-175",
         "Rotation": "0,0,0.7071067,0.7071068",
+        "Tags": "conveyor",
         "Networked": true,
         "Enabled": true,
         "Components": [
@@ -181,7 +182,7 @@
         ]
       },
       {
-        "Id": "6ac6fc9d-1098-4ba6-ab13-fa97709fb298",
+        "Id": "ec47d020-528e-4163-9bb6-e65ebaeb14d3",
         "Name": "Spot Light",
         "Position": "-477.588,-129.9128,17.1936",
         "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -202,7 +203,7 @@
         ]
       },
       {
-        "Id": "037447f0-f7c2-4fde-bd7d-949d625e40c1",
+        "Id": "475f8635-6ba6-4836-ad80-8ac20b7d4287",
         "Name": "Shelving",
         "Position": "589.447,-22.39215,-175",
         "Tags": "interactable",
@@ -233,7 +234,7 @@
         ]
       },
       {
-        "Id": "ce1a3a35-4eb5-4341-8697-55fa9a6b96de",
+        "Id": "1af92a05-202a-4cb5-8121-e71bc522c48f",
         "Name": "TitleFactory",
         "Position": "45.4469,-259.6282,-91",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -255,29 +256,29 @@
         ]
       },
       {
-        "Id": "46fd6d6c-8dde-4597-a637-674d529ad058",
+        "Id": "b56232b1-c67e-4634-8bf3-8f2fb6d47fe0",
         "Name": "furnace",
         "Position": "-610,-210.3741,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Scale": "0.8,0.8,0.8",
-        "Tags": "interactable",
+        "Tags": "interactable,conveyor",
         "Networked": true,
         "Enabled": true,
         "__Prefab": "prefabs/furnace.prefab"
       },
       {
-        "Id": "d13bef27-aaa5-42e8-b68e-5e6a89610135",
+        "Id": "aa4200f1-6897-4439-ae0a-38cb3b42c56a",
         "Name": "Upgrader",
         "Position": "-610,-49.20265,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Scale": "0.8,0.8,0.8",
-        "Tags": "interactable",
+        "Tags": "interactable,conveyor",
         "Networked": true,
         "Enabled": true,
         "__Prefab": "prefabs/upgrader.prefab"
       },
       {
-        "Id": "5253e17e-10f1-4462-8c9f-fea23bdb7188",
+        "Id": "08bc1271-c158-4de4-9583-7f14407e2cb5",
         "Name": "vending_box",
         "Position": "-609.9997,6.042275,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
