@@ -14,6 +14,7 @@ public sealed class Delivery : Component
     [Property] public GameObject DeliveryCarPrefab { get; set; }
     [Property] public DeliveryCar DeliveryCar { get; set; }
     [Property] public GameObject DeliveryCarSpawn { get; set; }
+    [Property] public GameObject DeliveryCarSpawnEnd { get; set; }
     [Property] public GameObject Receiver { get; set; }
 
     protected override void OnAwake()
@@ -23,6 +24,7 @@ public sealed class Delivery : Component
 
         DeliveryHud = Scene.GetAllComponents<DeliveryHud>().FirstOrDefault();
         DeliveryCarSpawn = Scene.Children.Where(c => c.Name == "Spawn").FirstOrDefault().Children.Where(c => c.Name == "DeliverySpawn").FirstOrDefault();
+        DeliveryCarSpawnEnd = Scene.Children.Where(c => c.Name == "Spawn").FirstOrDefault().Children.Where(c => c.Name == "DeliverySpawnEnd").FirstOrDefault();
     }
 	protected override void OnUpdate()
 	{
@@ -86,7 +88,7 @@ public sealed class Delivery : Component
         DeliveryHud.SetProgress("Delivery complete");
 
         // Return the delivery car to the spawn
-        DeliveryCar.StopDelivery(DeliveryCarSpawn.Transform.Position);
+        DeliveryCar.StopDelivery(DeliveryCarSpawnEnd.Transform.Position);
 
         // Set the delivery status
         Status = DeliveryStatus.Delivered;

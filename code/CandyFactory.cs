@@ -21,7 +21,7 @@ public class CandyFactory : Component, Component.INetworkListener
 	[Property] public List<GameObject> FactoryList { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	[Property] public GameObject Factory { get; set; }
-	[Property] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
+	[Property] [Sync] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
 
 	protected override void OnAwake()
 	{
@@ -44,8 +44,11 @@ public class CandyFactory : Component, Component.INetworkListener
 			throw new( "Player joined but there's no free slots!" );
 		}
 
+		// Get Free Factory Index
+		int freeFactoryIndex = GetFreeFactoryIndex(connection);
+
 		// Spawn the player
-		var player = PlayerPrefab.Clone(SpawnPoint[nbPlayer].Transform.World);
+		var player = PlayerPrefab.Clone(SpawnPoint[freeFactoryIndex].Transform.World);
 
 		// Set the player's name and name tag
 		player.Name = connection.DisplayName;
@@ -61,8 +64,9 @@ public class CandyFactory : Component, Component.INetworkListener
 
 		// Network spawn the player and enable the navmesh
 		player.NetworkSpawn( connection );	
+
 		// Spawn Factory and start it
-		var factory = Factory.Clone(FactoryList[GetFreeFactoryIndex(connection)].Transform.World);
+		var factory = Factory.Clone(FactoryList[freeFactoryIndex].Transform.World);
 		factory.Components.Get<Factory>().StartFactory( connection);
 		factory.NetworkSpawn(connection);
 	}
