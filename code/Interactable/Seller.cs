@@ -62,13 +62,14 @@ public class Seller : AInteractable, Component.ICollisionListener
 		var moneyEarning = 0;
 		foreach (var candy in Candies.ToList())
 		{
-			player.AddMoney(candy.Price);
 			moneyEarning += candy.Price;
 			SellStarted(candy.SellingTime);
 			await GameTask.DelaySeconds(candy.SellingTime);
 			SellFinished();
+			player.AddMoney(candy.Price);
 			candy.GameObject.Destroy();
 			RemoveCandy();
+			await GameTask.DelaySeconds(1);
 		}
 		var currentTask = player.CurrentTask;
 		if ( currentTask is not null )
@@ -81,6 +82,15 @@ public class Seller : AInteractable, Component.ICollisionListener
 		}
         IsInteracted = false; 
     }
+
+	public override bool CanInteract(GameObject interactor)
+	{
+		if (IsInteracted) return false;
+
+		if (Candies.Count > 0) return true;
+
+		return false;
+	}
 
 	public virtual void OnCollisionStart(Collision o)
     {
@@ -106,5 +116,4 @@ public class Seller : AInteractable, Component.ICollisionListener
     public void OnCollisionUpdate(Collision o)
     {
     }
-
 }
