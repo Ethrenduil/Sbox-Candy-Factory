@@ -28,6 +28,7 @@ public sealed class DeliveryGuy : Component
 		IsDelivering = false;
 		Agent = GameObject.Components.Get<NavMeshAgent>();
 		AnimationHelper = Components.Get<CitizenAnimationHelper>( true );
+		DressDeliveryGuy();
 	}
 
     protected override void OnUpdate()
@@ -56,7 +57,6 @@ public sealed class DeliveryGuy : Component
 	{
 		IsDelivering = true;
 		Destination = destination;
-		Log.Info("Delivery Guy is delivering at: " + Destination);
 	}
 
 	// Stop the delivery car and return to the spawn
@@ -81,10 +81,18 @@ public sealed class DeliveryGuy : Component
 
 		if (AnimationHelper is not null)
 		{
-			AnimationHelper.WithVelocity(110);
-			AnimationHelper.WithWishVelocity(110);
+			AnimationHelper.WithVelocity(Agent.Velocity.Length);
+			AnimationHelper.WithWishVelocity(Agent.WishVelocity.Length);
 			AnimationHelper.IsGrounded = true;
 			AnimationHelper.FootShuffle = rotateDifference;
 		}
+	}
+
+	private void DressDeliveryGuy()
+	{
+		// Dress the delivery guy
+		var clothing = new ClothingContainer();
+		clothing.Deserialize( FileSystem.Mounted.ReadAllText( "clothes/delivery_guy.json" ) );
+		clothing.Apply( GameObject.Components.Get<SkinnedModelRenderer>(FindMode.EverythingInChildren));
 	}
 }

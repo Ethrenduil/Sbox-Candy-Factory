@@ -324,7 +324,15 @@
         {
           "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
           "Name": "DeliverySpawn",
-          "Position": "452.0439,51.45142,-262.9843",
+          "Position": "339.5601,166.1305,-262.9843",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "Id": "ad595d01-01ac-41dd-b568-e80ee966b9c1",
+          "Name": "DeliverySpawnEnd",
+          "Position": "-10428.44,166.1295,-262.9843",
+          "Rotation": "0,0,1,-0.00000004371139",
           "Enabled": true
         }
       ]
@@ -353,6 +361,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-10T14:10:47.1855045\u002B01:00",
+  "LastSaved": "2024-03-10T20:03:15.6639099-04:00",
   "__references": []
 }

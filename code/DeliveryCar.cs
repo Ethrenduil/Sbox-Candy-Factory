@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Sandbox;
 
@@ -39,15 +40,26 @@ public sealed class DeliveryCar : Component
 	public Vector3 Destination { get; set; }
 	public Vector3 BoxDestination { get; set; }
 
-	private SkinnedModelRenderer Renderer { get; set; }	
+	private SkinnedModelRenderer Renderer { get; set; }
+
+	private Rigidbody rigidbodyCar { get; set; }
+	[Property] public float Speed { get; set; } = 100.0f;
+	private int Direction { get; set; } = 1;
+
 	protected override void OnAwake()
 	{
 		IsDelivering = false;
 		// Agent = GameObject.Components.Get<NavMeshAgent>();
 		Renderer = Components.Get<SkinnedModelRenderer>( true );
 		SpawnPositionGuy = GameObject.Children.Where(x => x.Name == "SpawnGuy").FirstOrDefault();
+		rigidbodyCar = GameObject.Components.Get<Rigidbody>();
 
 		Renderer.Set("Riding", true);
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
 	}
 	protected override void OnUpdate()
 	{
@@ -58,7 +70,8 @@ public sealed class DeliveryCar : Component
 		{
 			// Move the delivery car to the destination
 			// Agent.MoveTo(Destination);
-			Transform.Position = Transform.Position.LerpTo(Destination, 0.004f);
+			// Transform.Position = Transform.Position.LerpTo(Destination, 0.004f);
+			AdjustVelocity();
 		}
 
 		// if the car has arrived near the delivery destination, stop the car and spawn the delivery guy
@@ -85,9 +98,8 @@ public sealed class DeliveryCar : Component
 	{
 		IsDelivering = true;
 		BoxDestination = destination;
-		destination.y = -1152.0f;
 		Destination = destination;
-		Log.Info("Delivery Car is delivering at: " + Destination);
+		if (Direction < 0) Direction *= -1;
 	}
 
 	// Stop the delivery car and return to the spawn
@@ -100,7 +112,7 @@ public sealed class DeliveryCar : Component
 	// Check if the delivery car has arrived at the destination
 	public bool IsCarArrived()
 	{
-		return Transform.Position.Distance(Destination) < DesinationMargin;
+		return Math.Abs(Transform.Position.x - Destination.x) < DesinationMargin;
 	}
 	public bool IsArrived()
 	{
@@ -142,6 +154,22 @@ public sealed class DeliveryCar : Component
 
 		// Destroy the delivery guy and rotate the car
 		DeliveryGuy.GameObject.Destroy();
-		Transform.Rotation = Rotation.From(0, 180, 0);
+	}
+
+	private void AdjustVelocity()
+	{
+		var wishVelocity = Transform.Rotation.Forward * Speed * Direction;
+		if (rigidbodyCar.Velocity.Length > Speed)
+		{
+			var velocityLength = rigidbodyCar.Velocity.Length;
+			wishVelocity = new Vector3(rigidbodyCar.Velocity.x / velocityLength, rigidbodyCar.Velocity.y / velocityLength, rigidbodyCar.Velocity.z / velocityLength) * Speed;
+		}
+
+		if (IsCarArrived())
+		{
+			wishVelocity = Vector3.Zero;
+		}
+
+		rigidbodyCar.Velocity = wishVelocity;
 	}
 }
