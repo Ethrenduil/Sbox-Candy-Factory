@@ -5,7 +5,8 @@ TitleFactory
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #444;
+	background-color: #EF8CFF;
+    border: 8px solid #474343;
 	justify-content: center;
 	align-items: center;
 	font-weight: bold;
@@ -13,9 +14,10 @@ TitleFactory
 	
 	.title
 	{
-		width: 100%;
-		font-size: 50px;
+		font-size: 60px;
 		font-family: Poppins;
+        display: flex;
+        text-align: center; 
 		color: #fff;
 	}
 }

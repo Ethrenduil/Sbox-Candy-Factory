@@ -32,5 +32,15 @@ public class Candies : Component
 		return Ingredients;
 	}
 
+	public string GetIngredientsString()
+	{
+		string ingredients = "";
+		foreach (var ingredient in Ingredients)
+		{
+			ingredients += $"{ingredient.Value}x {ingredient.Key.ToString()} ";
+		}
+		return ingredients;
+	}
+
 	
 }

@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "193b33aa-a435-4b70-be1d-702c85957008",
+    "Id": "ffe55860-3151-40f7-80c9-b3522ce7122b",
     "Name": "factory",
     "Networked": true,
     "Enabled": true,
@@ -24,7 +24,7 @@
         },
         "DeliveryDestination": {
           "_type": "gameobject",
-          "go": "59660587-4f65-4920-8d3d-ae95d98a8e8d"
+          "go": "e437651a-4716-4ac9-bd36-15f161363529"
         },
         "DeliveryProgress": 0,
         "DeliveryTime": 10,
@@ -40,7 +40,7 @@
     ],
     "Children": [
       {
-        "Id": "fb8ad655-9e98-4e05-9b0f-410ce109c2a8",
+        "Id": "dc1779b5-273b-4999-be4a-7bda9b4412b6",
         "Name": "Door Frame",
         "Position": "-20.55298,-255.506,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -63,7 +63,7 @@
         ]
       },
       {
-        "Id": "b73af99a-5c64-43f7-b67c-fc66ad9bc2e9",
+        "Id": "52bb9fdc-5a1b-4b57-ad2f-e5d89730ce3c",
         "Name": "DoorRight",
         "Position": "26.48352,-255.5,-175",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -98,7 +98,7 @@
         ]
       },
       {
-        "Id": "1bc8e2f3-09c4-4f53-993c-b1cba31fe1f9",
+        "Id": "09bd4733-f831-40e2-9449-4107fa9e43b3",
         "Name": "DoorLeft",
         "Position": "-68,-255.5004,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -133,7 +133,7 @@
         ]
       },
       {
-        "Id": "394c3b02-d437-471f-bfcb-4f36593df27d",
+        "Id": "edd9f7e2-71c4-408f-8cea-86ef0564433d",
         "Name": "Wooden Desk",
         "Position": "558.6235,-221.2169,-175.0005",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -150,13 +150,24 @@
         ]
       },
       {
-        "Id": "59660587-4f65-4920-8d3d-ae95d98a8e8d",
+        "Id": "e437651a-4716-4ac9-bd36-15f161363529",
         "Name": "DeliveryDestination",
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true
       },
       {
-        "Id": "1d6a4bd0-3bd9-4293-af6d-61422e92647d",
+        "Id": "872faf6a-a6f9-4a53-bae6-58fb67b7fb85",
+        "Name": "furnace",
+        "Position": "-610,-210.3741,-175",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Scale": "0.8,0.8,0.8",
+        "Tags": "interactable,conveyor",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/furnace.prefab"
+      },
+      {
+        "Id": "2d18aa7b-3ceb-41d8-ba61-464b7bbb1aa2",
         "Name": "Conveyor",
         "Position": "-610,-129.8227,-175",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -183,7 +194,62 @@
         ]
       },
       {
-        "Id": "1f599199-ae42-4b7d-99fe-a6e9b3b3ca93",
+        "Id": "75234ce3-78fe-485c-855b-8445e644f9b1",
+        "Name": "Upgrader Slot",
+        "Position": "-610,-49.20265,-175",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Scale": "0.8,0.8,0.8",
+        "Enabled": true,
+        "Children": [
+          {
+            "Id": "1a503afe-d291-44bd-b90e-9e6a7b9b229e",
+            "Name": "Conveyor",
+            "Position": "0,0,0",
+            "Scale": "1.25,1.25,1.25",
+            "Tags": "conveyor",
+            "Networked": true,
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Prop",
+                "Health": 0,
+                "IsStatic": true,
+                "Model": "models/conveyor/conveyor_s.vmdl",
+                "ShowCreatedComponents": true
+              },
+              {
+                "__type": "Conveyor",
+                "IsCooker": false,
+                "special": false,
+                "Speed": 100,
+                "Turn": false,
+                "Candies": [],
+                "IsMoving": true
+              }
+            ]
+          },
+          {
+            "Id": "92f66fe1-7e51-45b0-a793-493301d74fe4",
+            "Name": "Upgrader",
+            "Position": "0,0,0",
+            "Tags": "interactable,conveyor",
+            "Networked": true,
+            "__Prefab": "prefabs/upgrader.prefab"
+          }
+        ]
+      },
+      {
+        "Id": "36fb8a11-1562-427d-948a-8875630a594c",
+        "Name": "vending_box",
+        "Position": "-609.9997,6.042275,-175",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Tags": "interactable",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/vending_box.prefab"
+      },
+      {
+        "Id": "96423763-06df-4bcc-962c-942fe8ba0bf4",
         "Name": "Spot Light",
         "Position": "-477.588,-129.9128,17.1936",
         "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -204,7 +270,7 @@
         ]
       },
       {
-        "Id": "099d8b65-36ba-42b3-879f-c90eaefdbf5d",
+        "Id": "e6b112a4-0c37-444f-8b74-5c9abaa950f7",
         "Name": "Shelving",
         "Position": "589.447,-22.39215,-175",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -240,9 +306,9 @@
         ]
       },
       {
-        "Id": "501af321-8bb5-4bbd-85ba-4cad816abf68",
+        "Id": "0b3f00bd-2660-4548-b977-8081661fd5b7",
         "Name": "TitleFactory",
-        "Position": "45.4469,-259.6282,-91",
+        "Position": "-20.70431,-259.6282,-49.60486",
         "Rotation": "0,0,-0.7071068,0.7071068",
         "Networked": true,
         "Enabled": true,
@@ -251,47 +317,27 @@
             "__type": "WorldPanel",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
-            "PanelSize": "512,512",
+            "PanelSize": "2048,512",
             "RenderScale": 1,
             "VerticalAlign": "Center"
           },
           {
             "__type": "TitleFactory",
-            "MyStringValue": "Hello World!"
+            "MyStringValue": "Factory to sell"
           }
         ]
       },
       {
-        "Id": "470d8b6c-9e13-45a5-906c-fd0f0b0abf99",
-        "Name": "furnace",
-        "Position": "-610,-210.3741,-175",
-        "Rotation": "0,0,0.7071068,0.7071068",
-        "Scale": "0.8,0.8,0.8",
-        "Tags": "interactable,conveyor",
-        "Networked": true,
-        "Enabled": true,
-        "__Prefab": "prefabs/furnace.prefab"
+        "Id": "e489bdf7-eb4b-4b32-bf76-74d157cfb225",
+        "Name": "Introduction",
+        "Position": "446.4409,-733.8622,155.2563",
+        "Enabled": true
       },
       {
-        "Id": "8d165f09-5707-43fa-9111-434f27c47b9b",
-        "Name": "Upgrader",
-        "Position": "-610,-49.20265,-175",
-        "Rotation": "0,0,0.7071068,0.7071068",
-        "Scale": "0.8,0.8,0.8",
-        "Tags": "interactable,conveyor",
-        "Networked": true,
-        "Enabled": true,
-        "__Prefab": "prefabs/upgrader.prefab"
-      },
-      {
-        "Id": "45898080-6963-42c0-a162-563ffa2967ae",
-        "Name": "vending_box",
-        "Position": "-609.9997,6.042275,-175",
-        "Rotation": "0,0,-0.7071067,0.7071068",
-        "Tags": "interactable",
-        "Networked": true,
-        "Enabled": true,
-        "__Prefab": "prefabs/vending_box.prefab"
+        "Id": "36cc2666-7682-471e-ad3c-98656b8cd047",
+        "Name": "Introduction",
+        "Position": "-550.4506,-733.8622,155.2563",
+        "Enabled": true
       }
     ]
   },

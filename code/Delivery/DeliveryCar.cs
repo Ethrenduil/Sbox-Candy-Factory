@@ -1,8 +1,6 @@
 using System;
-using System.IO;
-using Sandbox;
 
-
+[Category( "Candy Factory - delivery" )]
 public sealed class DeliveryCar : Component
 {
 	[Category ("Status")]

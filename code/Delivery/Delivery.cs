@@ -1,6 +1,6 @@
 using Sandbox;
 
-[Category("Candy Factory")]
+[Category( "Candy Factory - delivery" )]
 [Title( "Delivery" )]
 public sealed class Delivery : Component
 {
@@ -35,7 +35,7 @@ public sealed class Delivery : Component
         // Trigger Order Delivery // Test
         if (Input.Pressed("drop") && Status == DeliveryStatus.None)
         {
-            StartDelivery(new Dictionary<DeliveryGoods, int> { { DeliveryGoods.Sugar, 10 }, { DeliveryGoods.Flour, 10 }, { DeliveryGoods.Milk, 10 } });
+            StartDelivery(new Dictionary<DeliveryGoods, int> { { DeliveryGoods.Sugar, 10 }, { DeliveryGoods.Flour, 10 }, { DeliveryGoods.Milk, 10 }, { DeliveryGoods.Vanilla, 10 } });
         }
         //End Test
 

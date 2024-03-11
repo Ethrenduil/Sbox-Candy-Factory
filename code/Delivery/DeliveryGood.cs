@@ -1,6 +1,6 @@
 using Sandbox;
 
-[Category("Candy Factory")]
+[Category( "Candy Factory - delivery" )]
 [Title( "Delivery Good" )]
 public sealed class DeliveryGood : Component
 {

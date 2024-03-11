@@ -12,9 +12,16 @@
 	{
 		<div class="title">@CandyName</div>
 	}
-	<div class="remaining-time-bar">
-		<div class="remaining-time-fill" style="width: @remainingTimePercentage%;"></div>
-	</div>
+	@if (TotalCookingTime > 0)
+	{
+		<div class="remaining-time-bar">
+			<div class="remaining-time-fill" style="width: @remainingTimePercentage%;"></div>
+		</div>
+	} else {
+		<div class="ingredients">
+			@CandyIngredients
+		</div>
+	}
 </root>
 
 @code
@@ -23,6 +30,7 @@
 	public float CurrentCookingTime = 0;
 	public string CandyName = "None";
 	public string CandyIcon = "None";
+	public string CandyIngredients = "None";
 	public int remainingTimePercentage = 0;
 	public float TotalCookingTime = 0;
 
@@ -32,12 +40,14 @@
 		var temp = candy.Clone();
 		CandyName = temp.Components.Get<Candies>().Name;
 		CandyIcon = "textures/ui/candies/" + CandyName.ToLower().Replace(" ", "_") + ".png";
+		CandyIngredients = temp.Components.Get<Candies>().GetIngredientsString();
 		StateHasChanged();
 		temp.Destroy();
 	}
 
 	public async void StartCooking(float cookingTime)
 	{
+		StateHasChanged();
 		TotalCookingTime = cookingTime;
 		while (CurrentCookingTime < TotalCookingTime)
 		{

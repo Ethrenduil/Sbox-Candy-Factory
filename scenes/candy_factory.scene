@@ -348,6 +348,16 @@
           "__type": "NetworkManager"
         }
       ]
+    },
+    {
+      "Id": "b4413304-f2e8-479b-b179-b6f35f8a491f",
+      "Name": "Introduction",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "IntroductionSystem"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -373,6 +383,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-11T01:15:21.721992-04:00",
+  "LastSaved": "2024-03-11T11:59:35.5287059\u002B01:00",
   "__references": []
 }

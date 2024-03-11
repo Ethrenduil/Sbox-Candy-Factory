@@ -1,5 +1,3 @@
-using Sandbox;
-using Sandbox.Engine.Utility.RayTrace;
 using System;
 
 [Category( "Candy Factory - interactable")]

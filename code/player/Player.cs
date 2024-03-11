@@ -29,9 +29,10 @@ public class Player : Component
 	private bool IsLoading { get; set; }
 	private bool IsSaving { get; set; }
 	private bool Zoom { get; set; }
+	public bool InCinematic { get; set; }
 
 
-	protected override void OnEnabled()
+	protected override async void OnEnabled()
 	{
 		base.OnEnabled();
 
@@ -46,6 +47,9 @@ public class Player : Component
 			EyeAngles = ee;
 			Camera = cam;
 		}
+
+		await GameTask.DelaySeconds(1f);
+		Scene.GetAllComponents<IntroductionSystem>().FirstOrDefault().StartIntroduction(this);
 	}
 
 	protected override void OnAwake()
@@ -60,6 +64,10 @@ public class Player : Component
 
 	protected override void OnUpdate()
 	{
+		if (InCinematic)
+		{
+			return;
+		}
 		GetInput();
 		UpdateEyeInput();
 		UpdateCameraPosition();

@@ -60,7 +60,8 @@ public class Seller : AInteractable, Component.ICollisionListener
 		}
 		var player = interactor.Components.Get<Player>();
 		var moneyEarning = 0;
-		foreach (var candy in Candies.ToList())
+		var candy = Candies[0];
+		if (candy is not null)
 		{
 			moneyEarning += candy.Price;
 			SellStarted(candy.SellingTime);
@@ -69,15 +70,14 @@ public class Seller : AInteractable, Component.ICollisionListener
 			player.AddMoney(candy.Price);
 			candy.GameObject.Destroy();
 			RemoveCandy();
-			await GameTask.DelaySeconds(1);
-		}
-		var currentTask = player.CurrentTask;
-		if ( currentTask is not null )
-		{
-			if ( currentTask.Needed.CurrentMoney < currentTask.Needed.Money) {
-				currentTask.Needed.CurrentMoney += moneyEarning;
-				currentTask.Needed.CurrentMoney = Math.Min(currentTask.Needed.CurrentMoney, currentTask.Needed.Money);
-				Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
+			var currentTask = player.CurrentTask;
+			if ( currentTask is not null )
+			{
+				if ( currentTask.Needed.CurrentMoney < currentTask.Needed.Money) {
+					currentTask.Needed.CurrentMoney += moneyEarning;
+					currentTask.Needed.CurrentMoney = Math.Min(currentTask.Needed.CurrentMoney, currentTask.Needed.Money);
+					Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
+				}
 			}
 		}
         IsInteracted = false; 

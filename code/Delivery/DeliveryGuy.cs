@@ -1,7 +1,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 
-
+[Category( "Candy Factory - delivery" )]
 public sealed class DeliveryGuy : Component
 {
 	[Category ("Status")]

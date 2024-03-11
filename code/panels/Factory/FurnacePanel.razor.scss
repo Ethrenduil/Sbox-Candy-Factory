@@ -38,4 +38,10 @@ FurnacePanel
         background-image: url('textures/ui/progress_bar/fill.png');
         border-radius: 10px;
     }
+    .ingredients {
+        position: absolute;
+        bottom: 5%;
+        text-align: center; 
+        font-size: 40px;
+    }
 }
