@@ -52,6 +52,14 @@ public class Holdable : AInteractable
         }
     }
 
+    public override bool CanInteract(GameObject interactor)
+    {
+        // Check if player is Carrying an object and if the object is not already being interacted with
+        if (interactor.Components.Get<PlayerInteract>().IsCarrying && !IsInteracted) return false;
+
+        return true;
+    }
+
     private void ReleaseHoldable()
     {
         // Reset interaction state

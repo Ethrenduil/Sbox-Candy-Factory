@@ -70,14 +70,10 @@ public class PlayerInteract : Component
 		// If the interactable is null, return
 		if (interactable == null) return false;
 
-		// If the player is not carrying an object and the interactable is a storage, return
-		if (interactable.Type == InteractableType.Storage && !IsCarrying) return false;
-
-		// If the player is not carrying an object and the interactable is a machine, return
-		if (interactable.Type == InteractableType.Cooker && !IsCarrying) return false;
+		// // If the player is not carrying an object and the interactable is a machine, return
+		// if (interactable.Type == InteractableType.Cooker && !IsCarrying) return false;
 		
-		// If the interactable is a resource and the player is already carrying an object, return
-		if (interactable.Type == InteractableType.Resource && IsCarrying) return false;
+		// if (interactable.Type == InteractableType.Resource && IsCarrying) return false;
 
 		return true;
 	}
@@ -97,8 +93,13 @@ public class PlayerInteract : Component
 		{
 			AInteractable interactable = collisionResult.GameObject.Components.Get<AInteractable>();
 
+			// If the interactable is null, return
+			if (interactable == null) return;
+
 			// If the interactable is not valid for the current interaction, return
-			if (!ErrorChecking(interactable)) return;
+			// if (!ErrorChecking(interactable)) return;
+
+			if(!interactable.CanInteract(GameObject)) return;
 			
 			// Set the interact HUD value to the interactable description
 			interactHud.SetValue(interactable.Description);

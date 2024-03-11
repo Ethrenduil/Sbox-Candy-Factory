@@ -73,7 +73,6 @@ public class Seller : AInteractable, Component.ICollisionListener
 		var currentTask = player.CurrentTask;
 		if ( currentTask is not null )
 		{
-			Log.Info( $"Current money: {currentTask.Needed.CurrentMoney} Money: {currentTask.Needed.Money}" );
 			if ( currentTask.Needed.CurrentMoney < currentTask.Needed.Money) {
 				currentTask.Needed.CurrentMoney += moneyEarning;
 				currentTask.Needed.CurrentMoney = Math.Min(currentTask.Needed.CurrentMoney, currentTask.Needed.Money);

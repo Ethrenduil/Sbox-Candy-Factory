@@ -69,9 +69,6 @@ public sealed class DeliveryGuy : Component
 	// Check if the delivery car has arrived at the destination
 	public bool IsArrived()
 	{
-		if (Transform.Position.Distance(Destination) < DesinationMargin)
-			Log.Info(Transform.Position.Distance(Destination));
-
 		return Transform.Position.Distance(Destination) < DesinationMargin;
 	}
 

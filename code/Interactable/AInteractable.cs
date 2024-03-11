@@ -13,6 +13,7 @@ public class AInteractable : Component
 
     virtual protected GameObject Interactor { get; set; }
     virtual public void OnInteract(GameObject interactor) { }
+    virtual public bool CanInteract(GameObject interactor) { return true; }
 
 }
 

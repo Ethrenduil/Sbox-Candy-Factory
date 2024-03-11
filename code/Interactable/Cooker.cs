@@ -1,6 +1,8 @@
 using Sandbox;
 using System;
 using Eryziac.CandyFactory;
+using System.Security;
+using System.Threading.Tasks;
 
 [Category( "Candy Factory - interactable")]
 public class Cooker : AInteractable
@@ -46,13 +48,23 @@ public class Cooker : AInteractable
 		await GameTask.Delay( 3000 );
 		box.Destroy();
 		conveyor.IsMoving = false;
-		Cook();
-
         box.GameObject.Destroy();
 
+		await Cook();
+
         IsInteracted = false;
-        
     }
+
+	public override bool CanInteract(GameObject interactor)
+	{
+		// If the cooker is already cooking, return false
+		if (IsInteracted) return false;
+
+		// if the cooker is not cooking and the player is carrying a box, return true
+		if (interactor.Components.Get<PlayerInteract>().IsCarrying) return true;
+		
+		return false;
+	}
 
 	[Broadcast]
 	private void CookingStarted(float time)
@@ -80,7 +92,7 @@ public class Cooker : AInteractable
 		Smoke.Enabled = false;
 	}
 
-	private async void Cook()
+	private async Task Cook()
     {
         var cooked = CookedObject.Clone( Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
         cooked.NetworkSpawn();

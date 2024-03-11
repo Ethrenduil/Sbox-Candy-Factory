@@ -54,6 +54,17 @@ public class Upgrader : AInteractable
         IsInteracted = false; 
     }
 
+	public override bool CanInteract(GameObject interactor)
+	{
+		// If the cooker is already cooking, return false
+		if (IsInteracted) return false;
+
+		// If the upgrader have at least one candie on the conveyor, return false
+		if (conveyor.Candies.Count > 0) return true;
+
+		return false;
+	}
+
 	[Broadcast]
 	private void UpgradeStarted(float time)
 	{

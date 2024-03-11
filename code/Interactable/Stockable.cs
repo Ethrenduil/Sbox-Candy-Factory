@@ -50,4 +50,12 @@ public class Stockable : AInteractable
         IsInteracted = false;
         
     }
+
+    public override bool CanInteract(GameObject interactor)
+    {
+        // If the player is already carrying an object, return true
+        if (interactor.Components.Get<PlayerInteract>().IsCarrying) return true;
+
+        return false;
+    }
 }
