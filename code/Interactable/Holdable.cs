@@ -2,6 +2,7 @@ using Sandbox;
 using Sandbox.Engine.Utility.RayTrace;
 using System;
 
+[Category( "Candy Factory - interactable")]
 public class Holdable : AInteractable
 {
     private GameObject HoldRelative { get; set; }

@@ -1,33 +1,14 @@
-FurnacePanel
+SellerPanel
 {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #808080;
-	justify-content: center;
-	font-weight: bold;
-	.title
-	{
-        top : 5%;
-        position: absolute;
-		font-size: 40px;
-		font-family: Poppins;
-		color: #000000;
-        margin-bottom: 50px;
-	}
-    .candy-model
-    {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 1;
-    }
     .remaining-time-bar {
         position: absolute;
         bottom: 5%;
-        width: 80%;
+        width: 100%;
         height: 20px;
         background-color: #000000; /* Change this to your desired background color */
         border-radius: 10px;

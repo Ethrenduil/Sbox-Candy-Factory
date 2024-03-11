@@ -28,7 +28,7 @@
 				children = 
 				[
 					{
-						_class = "PhysicsHullFile"
+						_class = "PhysicsMeshFile"
 						name = "vending_box"
 						parent_bone = ""
 						surface_prop = "wood.sheet"
@@ -40,11 +40,9 @@
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
 						filename = "models/factory/fbx/vending_box.fbx"
-						import_scale = 0.8
-						faceMergeAngle = 10.0
-						maxHullVertices = 0
-						import_mode = "SingleHull"
-						optimization_algorithm = "QEM"
+						import_scale = 0.6
+						maxMeshVertices = 0
+						qemError = 0.0
 						import_filter = 
 						{
 							exclude_by_default = false
@@ -62,7 +60,7 @@
 						filename = "models/factory/fbx/vending_box.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 0.8
+						import_scale = 0.6
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"

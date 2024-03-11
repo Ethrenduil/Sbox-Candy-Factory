@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Sandbox;
 using Sandbox.Engine.Utility.RayTrace;
 
+[Category( "Candy Factory - interactable")]
 public class Openable : AInteractable
 {
     [Property] public float OpeningTime { get; set; } = 1f;

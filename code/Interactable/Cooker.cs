@@ -2,6 +2,7 @@ using Sandbox;
 using System;
 using Eryziac.CandyFactory;
 
+[Category( "Candy Factory - interactable")]
 public class Cooker : AInteractable
 {
     [Property] public Conveyor conveyor { get; set; }

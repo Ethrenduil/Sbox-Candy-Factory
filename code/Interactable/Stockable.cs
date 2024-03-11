@@ -1,6 +1,7 @@
 using Sandbox;
 using System;
 
+[Category("Candy Factory - interactable")]
 public class Stockable : AInteractable
 {
 

@@ -35,7 +35,7 @@
 							},
 							{
 								from = "screen.vmat"
-								to = "materials/furnace/screen.vmat"
+								to = "materials/conveyor/conveyor_mat.vmat"
 							},
 						]
 						use_global_default = false

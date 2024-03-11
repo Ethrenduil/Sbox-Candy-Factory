@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Sandbox;
 using Sandbox.Engine.Utility.RayTrace;
 
-
+[Category( "Candy Factory - interactable")]
 public class AInteractable : Component
 {
 
@@ -23,7 +23,7 @@ public enum InteractableType
     None,
     Cooker,
 	Upgrader,
-    Conveyor,
+	VendingBox,
     Storage,
     Resource,
     Building,

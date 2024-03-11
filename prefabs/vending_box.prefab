@@ -1,0 +1,64 @@
+{
+  "RootObject": {
+    "Id": "5253e17e-10f1-4462-8c9f-fea23bdb7188",
+    "Name": "vending_box",
+    "Tags": "interactable",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/factory/vending_box.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/factory/vending_box.vmdl",
+        "Static": true,
+        "Surface": "surfaces/wood.sheet.surface"
+      },
+      {
+        "__type": "Seller",
+        "Description": "This is an interactable object",
+        "IsInteracted": false,
+        "Name": "Vending Box",
+        "sellerPanel": {
+          "_type": "component",
+          "go": "d4abf449-b844-44d5-98a0-70d249da57ba",
+          "component_type": "SellerPanel"
+        },
+        "sellSound": "sounds/factory/money_sound.sound",
+        "Type": "VendingBox"
+      }
+    ],
+    "Children": [
+      {
+        "Id": "d4abf449-b844-44d5-98a0-70d249da57ba",
+        "Name": "Selling Panel",
+        "Position": "0.000007280905,24.71777,28.76128",
+        "Rotation": "0,0,0.7071066,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": false,
+            "PanelSize": "512,70",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "SellerPanel"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

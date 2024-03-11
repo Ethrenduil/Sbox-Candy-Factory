@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "9976d329-613d-4018-866a-801506321e67",
+    "Id": "34a9797a-38c2-40bd-b831-1b65af506e74",
     "Name": "candy_choco_09",
     "Tags": "candy",
     "Enabled": true,
@@ -10,14 +10,14 @@
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_09.vmdl",
-        "OnPropBreak": null,
-        "OnPropTakeDamage": null,
         "ShowCreatedComponents": false
       },
       {
         "__type": "Candies",
         "CookingTime": 15,
-        "Name": "White Chocolate Cone"
+        "Name": "White Chocolate Cone",
+        "Price": 30,
+        "SellingTime": 10
       }
     ],
     "Children": []

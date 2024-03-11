@@ -1,8 +1,8 @@
-using Sandbox;
 using System;
 using Eryziac.CandyFactory;
 using System.Threading.Tasks;
 
+[Category( "Candy Factory - interactable")]
 public class Upgrader : AInteractable
 {
     [Property] public Conveyor conveyor { get; set; }
@@ -86,6 +86,7 @@ public class Upgrader : AInteractable
     {
 		var candyName = "";
 		var candyNumber = 0;
+		upgradeTimer = 0;
         foreach (var candy in conveyor.Candies.ToList()) // ToList to avoid collection modified exception
     	{
 			if ( candy.Tags.Has("Upgraded") )
