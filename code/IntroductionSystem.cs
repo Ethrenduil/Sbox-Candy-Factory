@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 
 public sealed class IntroductionSystem : Component
 {
+    private SoundHandle currentSound = null;
     protected override void OnUpdate()
     {
-
+        if (currentSound is not null) currentSound.Position = Scene.Camera.Transform.Position;
     }
 
     public async void StartIntroduction(Player player)
@@ -22,7 +23,7 @@ public sealed class IntroductionSystem : Component
 		
 		camera.Transform.Position = cameraPositions[0].Transform.Position;
         float duration = 20.0f;
-		Sound.Play( "sounds/bob/intro/intro.sound", camera.Transform.Position );
+		currentSound = Sound.Play( "sounds/bob/intro/intro.sound", camera.Transform.Position );
         float startTime = Time.Now;
         while (Time.Now - startTime < duration)
         {
