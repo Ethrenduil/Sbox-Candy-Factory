@@ -95,6 +95,7 @@
       "Position": "4596.771,1178.077,48.21342",
       "Rotation": "-0.00002130096,-0.00000368921,0.7071068,-0.7071068",
       "Scale": "0.2,0.2,0.2",
+      "Tags": "interactable",
       "Enabled": true,
       "Components": [
         {
@@ -103,6 +104,13 @@
           "IsStatic": false,
           "Model": "models/bob/bob.vmdl",
           "ShowCreatedComponents": true
+        },
+        {
+          "__type": "Bob",
+          "Description": "This is an interactable object",
+          "IsInteracted": false,
+          "Name": "Bob",
+          "Type": "Bob"
         }
       ]
     },
@@ -383,6 +391,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-11T11:59:35.5287059\u002B01:00",
+  "LastSaved": "2024-03-11T12:58:52.7079394\u002B01:00",
   "__references": []
 }

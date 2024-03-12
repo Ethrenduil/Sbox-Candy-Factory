@@ -22,6 +22,7 @@ public class AInteractable : Component
 public enum InteractableType
 {
     None,
+	Bob,
     Cooker,
 	Upgrader,
 	VendingBox,

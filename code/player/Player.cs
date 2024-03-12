@@ -32,7 +32,7 @@ public class Player : Component
 	public bool InCinematic { get; set; }
 
 
-	protected override async void OnEnabled()
+	protected override void OnEnabled()
 	{
 		base.OnEnabled();
 
@@ -47,9 +47,6 @@ public class Player : Component
 			EyeAngles = ee;
 			Camera = cam;
 		}
-
-		await GameTask.DelaySeconds(1f);
-		Scene.GetAllComponents<IntroductionSystem>().FirstOrDefault().StartIntroduction(this);
 	}
 
 	protected override void OnAwake()

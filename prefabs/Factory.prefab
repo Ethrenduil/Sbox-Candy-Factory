@@ -329,13 +329,13 @@
       },
       {
         "Id": "e489bdf7-eb4b-4b32-bf76-74d157cfb225",
-        "Name": "Introduction",
+        "Name": "Camera Start",
         "Position": "446.4409,-733.8622,155.2563",
         "Enabled": true
       },
       {
         "Id": "36cc2666-7682-471e-ad3c-98656b8cd047",
-        "Name": "Introduction",
+        "Name": "Camera Waypoints",
         "Position": "-550.4506,-733.8622,155.2563",
         "Enabled": true
       }

@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.UI;
+using System;
 using System.Threading.Tasks;
 
 public sealed class IntroductionSystem : Component
@@ -9,8 +10,8 @@ public sealed class IntroductionSystem : Component
 
     }
 
-    public async void StartIntroduction(Player player)
-    {
+    public async void StartIntroduction(Player player, GameObject startingPosition, List<GameObject> waypoints, GameObject objectToLook, String soundPath, float duration)
+	{
 		if (IsProxy)
 			return;
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
@@ -20,17 +21,24 @@ public sealed class IntroductionSystem : Component
 		
 		player.InCinematic = true;
 		
-		camera.Transform.Position = cameraPositions[0].Transform.Position;
-        float duration = 20.0f;
-		Sound.Play( "sounds/bob/intro/intro.sound", camera.Transform.Position );
-        float startTime = Time.Now;
-        while (Time.Now - startTime < duration)
-        {
-            float t = (Time.Now - startTime) / duration;
-            camera.Transform.Position = Vector3.Lerp(camera.Transform.Position, cameraPositions[1].Transform.Position, t / 1000);
-			camera.Transform.Rotation = Rotation.LookAt( door.Transform.Position - camera.Transform.Position, Vector3.Up );
-            await Task.Delay(1);
-        }
+		camera.Transform.Position = startingPosition.Transform.Position;
+		Sound.Play( soundPath );
+		for (int i = 0; i < waypoints.Count; i++)
+		{
+			await MoveCameraToWaypoint(camera, waypoints[i], objectToLook, duration);
+		}
 		player.InCinematic = false;
-    }
+	}
+
+	private async Task MoveCameraToWaypoint(CameraComponent camera, GameObject waypoint, GameObject objectToLook, float duration)
+	{
+		var startTime = Time.Now;
+		while (Time.Now - startTime < duration)
+		{
+			float t = (Time.Now - startTime) / duration;
+			camera.Transform.Position = Vector3.Lerp(camera.Transform.Position, waypoint.Transform.Position, t / 1000);
+			camera.Transform.Rotation = Rotation.LookAt(objectToLook.Transform.Position - camera.Transform.Position, Vector3.Up);
+			await Task.Delay(1);
+		}
+	}
 }
