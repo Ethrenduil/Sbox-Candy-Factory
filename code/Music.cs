@@ -3,12 +3,15 @@ using Sandbox;
 public sealed class Music : Component
 {
     public MusicPlayer MP { get; set; }
-	[Property] public float Volume { get; set; } = 5f;
+	[Property] public float Volume { get; set; }
+
+	[Property] public Settings Settings { get; set; }
 
 	protected override void OnAwake()
 	{
 		MP = MusicPlayer.Play(FileSystem.Mounted , "music/menu.mp3");
-        MP.Volume = Volume;
+		MP.Repeat = true;
+        MP.Volume = Settings.Volume;
 	}
 
 	protected override void OnDestroy()
@@ -20,7 +23,7 @@ public sealed class Music : Component
 	{
 		if (MP != null && !MP.Paused)
 		{
-			MP.Volume = Volume;
+			MP.Volume = Settings.Volume;
 		}
 	}
 }

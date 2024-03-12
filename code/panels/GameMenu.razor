@@ -18,17 +18,17 @@
 	<div class="content">
 		<img src="textures\ui\menu\logo.png" class="logo" alt=""/>
 		@if ( _isContentVisible ) {
-			<a class="btn create">
-				<h1 class="btn-txt" onclick="@CreateRoom">Create a Room</h1>
+			<a class="btn create" onclick="@CreateRoom">
+				<h1 class="btn-txt">Create a Room</h1>
 			</a>
-			<a class="btn join">
-				<h1 class="btn-txt" onclick="@DisplayJoinRoom">Join a Room</h1>
+			<a class="btn join" onclick="@DisplayJoinRoom">
+				<h1 class="btn-txt">Join a Room</h1>
 			</a>
-			<a class="btn settings">
-				<h1 class="btn-txt" onclick="@DisplaySettings">Settings</h1>
+			<a class="btn settings" onclick="@DisplaySettings">
+				<h1 class="btn-txt">Settings</h1>
 			</a>
-			<a class="btn quit">
-				<h1 class="btn-txt" onclick="@QuitGame">Quit</h1>
+			<a class="btn quit" onclick="@QuitGame">
+				<h1 class="btn-txt">Quit</h1>
 			</a>
 		} else if ( _isJoinRoomVisible ) {
 			<div class="display-list lobby-list">
@@ -59,8 +59,8 @@
 					}
 				</div>
 			</div>
-			<a class="btn refresh-join">
-				<h1 class="btn-txt refresh" onclick="@RefreshLobbyList">Refresh</h1>
+			<a class="btn refresh-join" onclick="@RefreshLobbyList">
+				<h1 class="btn-txt refresh">Refresh</h1>
 			</a>
 			<a class="btn back">
 				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
@@ -84,7 +84,11 @@
 				<div class="setting-title">Audio</div>
 				<div class="setting-option">
 					<span class="option-title">Volume</span>
-					<input type="range" min="0" max="100" class="volume-slider">
+					<div class="option-volume">
+						<span class="option-operator" onclick="@AdjustVolume" value="-">-</span>
+						<span class="option-content" value="@settings.Volume">@settings.GetStringVolume()</span>
+						<span class="option-operator" onclick="@AdjustVolume" value="+">+</span>
+					</div>
 				</div>
 			</div>
 			</div>
@@ -101,7 +105,15 @@
 	private bool _isSettingsVisible = false;
 	bool refreshing;
 	List<LobbyInformation> list = new();
-	[Property] SoundEvent buttonClickSound { get; set; }	
+	[Property] public SoundEvent buttonClickSound { get; set; }
+	[Property] public Settings settings { get; set; }
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+		settings = GameObject.Components.Get<Settings>();
+		Log.Info(settings.Volume.ToString());
+	}
 
 
 	void DisplayContent()
@@ -124,6 +136,7 @@
 		_isContentVisible = false;
 		_isJoinRoomVisible = false;
 		_isSettingsVisible = true;
+		StateHasChanged();
 	}
 
 	void CreateRoom()
@@ -159,6 +172,31 @@
 
 	void PlaySound()
 	{
+		buttonClickSound.Volume = settings.Volume / 1000;
+		buttonClickSound.UI = true;
 		Sound.Play(buttonClickSound);
+	}
+
+	public string GetVolumeSettings()
+	{
+		Log.Info(settings.Volume.ToString());
+		return settings.Volume.ToString();
+	}
+
+	public void AdjustVolume(PanelEvent e)
+	{
+		PlaySound();
+		// Get element value
+		var sign = e.This.StringValue == "-" ? -1 : 1;
+		var wishQuantity = settings.Volume + sign * 5;
+
+		// Check if the quantity is valid
+		if (wishQuantity <= 0) wishQuantity = 0;
+		if (wishQuantity >= 100) wishQuantity = 100;
+
+		// Set the new value
+		settings.SetVolume(wishQuantity);
+		// Update the UI
+		StateHasChanged();
 	}
 }

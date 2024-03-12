@@ -46,7 +46,16 @@
         },
         {
           "__type": "Music",
+          "Settings": {
+            "_type": "component",
+            "go": "53232367-c5ff-4bc3-a735-682f5575c89c",
+            "component_type": "Settings"
+          },
           "Volume": 5
+        },
+        {
+          "__type": "Settings",
+          "Volume": 0.5
         }
       ]
     }
@@ -74,6 +83,6 @@
   },
   "Title": "Menu",
   "Description": "",
-  "LastSaved": "2024-03-11T20:33:50.3632031-04:00",
+  "LastSaved": "2024-03-12T13:23:46.1331512-04:00",
   "__references": []
 }
