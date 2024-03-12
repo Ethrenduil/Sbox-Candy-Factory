@@ -44,6 +44,7 @@ public class Cooker : AInteractable
 
 		// Remove the ingredients from the box
 		box.RemoveGoods(furnacePanel.GetIngredients());
+		if (box.IsEmpty()) box.GameObject.Destroy();
 		
 		// Create a new box, animate, and place it in the cooker to be cooked
 		var boxGo = BoxPrefab.Clone();
@@ -54,7 +55,6 @@ public class Cooker : AInteractable
 		await GameTask.Delay( 3000 );
 
 		conveyor.IsMoving = false;
-		if (box.IsEmpty()) box.GameObject.Destroy();
 		boxGo.Destroy();
 
 		await Cook();

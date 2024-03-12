@@ -29,7 +29,6 @@ public sealed class DeliveryGuy : Component
 	[Broadcast]
 	protected override void OnAwake()
 	{
-		Log.Info( "OnAwake" );
 		IsDelivering = false;
 		Agent = GameObject.Components.Get<NavMeshAgent>();
 		AnimationHelper = Components.Get<CitizenAnimationHelper>( true );

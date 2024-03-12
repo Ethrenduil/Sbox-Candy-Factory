@@ -31,19 +31,10 @@ public class CandyFactory : Component
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
-		// for (int i = 0; i < 4; i++)
-		// {
-		// 	Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
-		// }
 	}
 	protected override void OnStart()
 	{
 		base.OnStart();
-		// UpdateFactorySlot();
-		for (int i = 0; i < 4; i++)
-		{
-			Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
-		}
 	}
 
 	public void NewPlayer( Connection connection )
@@ -51,6 +42,7 @@ public class CandyFactory : Component
 		// Get the list of spawn points and the number of players
 		SpawnPoint = Scene.GetAllComponents<SpawnPoint>().Select( s => s.GameObject ).ToList();
 
+		// Check if there's a free slot for the player
 		int nbPlayer = Scene.Components.GetAll<Player>().Count();
 		if ( nbPlayer >= 4 )
 		{
@@ -59,7 +51,6 @@ public class CandyFactory : Component
 
 		// Get Free Factory Index
 		int freeFactoryIndex = GetFreeFactoryIndex(connection);
-		Log.Info( $"Free factory index: {freeFactoryIndex}" );
 		_isFactoryActive[freeFactoryIndex] = true;
 
 
@@ -117,7 +108,6 @@ public class CandyFactory : Component
 		{
 			if (_isFactoryActive[i] == false)
 			{
-				Log.Info( $"Factory {i} is free" );
 				_isFactoryActive[i] = true;
 				return i;
 			}

@@ -8,8 +8,9 @@ public class Stockable : AInteractable
     [Property] public GameObject Owner { get; set; }
 
     // temporary stock
-    [Property] public Factory Stock { get; set; }
+    [Property] public Factory FactoryPlayer { get; set; }
     [Property] public GameObject boxPrefab { get; set; }
+    [Property] public StoragePanel StoragePanel { get; set; }
 
     protected override void OnStart()
     {
@@ -19,7 +20,8 @@ public class Stockable : AInteractable
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
         Type = InteractableType.Storage;
-        Stock = GameObject.Parent.Components.Get<Factory>();
+        FactoryPlayer = GameObject.Parent.Components.Get<Factory>();
+        StoragePanel = GameObject.Parent.Components.Get<StoragePanel>(FindMode.EverythingInChildren);
     }
 	protected override void OnUpdate()
     {
@@ -30,13 +32,14 @@ public class Stockable : AInteractable
         IsInteracted = true;
 
         var box = interactor.Components.Get<Holdable>(FindMode.EverythingInSelfAndChildren) ?? null;
+        Interactor = interactor;
         if (box != null)
         {
-            StockGoods(interactor);
+            StockGoods();
         }
         else
         {
-            RetrieveGoods(interactor);
+            StoragePanel.OpenStorageWindow();
         }
 
         // Reset interaction state
@@ -49,40 +52,30 @@ public class Stockable : AInteractable
         // If the player is already carrying an object, return true
         if (interactor.Components.Get<PlayerInteract>().IsCarrying) return true;
 
-        if (Stock.Stock.Count == 0 ) return false;
 
         return true;
     }
 
-    public void StockGoods( GameObject interactor)
+    public void StockGoods()
     {
-        var box = interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
+        var box = Interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
         if (box == null) return;
 
-        var goods = box.Goods;
-        foreach (var good in goods)
-        {
-            if (Stock.Stock.ContainsKey(good.Key))
-            {
-                Stock.Stock[good.Key] += good.Value;
-            }
-            else
-            {
-                Stock.Stock.Add(good.Key, good.Value);
-            }
-        }
+        FactoryPlayer.AddStockFromDictionary(box.Goods);
 
         // Destroy the delivery box
         box.GameObject.Destroy();
     }
 
-    public void RetrieveGoods( GameObject interactor)
+    public bool RetrieveGoods(Dictionary<DeliveryGoods, int> goods)
     {
         var box = boxPrefab.Clone();
         var delivery = box.Components.Get<DeliveryGood>();
-        delivery.AddGoods(Stock.Stock);
-        box.Components.Get<Holdable>().OnInteract(interactor);
+        if (!FactoryPlayer.RemoveStockFromDictionary(goods)) return false;
+        delivery.AddGoods(goods);
+        box.Components.Get<Holdable>().OnInteract(Interactor);
         box.NetworkSpawn();
         box.Network.TakeOwnership();
+        return true;
     }
 }

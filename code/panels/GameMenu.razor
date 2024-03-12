@@ -101,24 +101,26 @@
 	private bool _isSettingsVisible = false;
 	bool refreshing;
 	List<LobbyInformation> list = new();
-
 	[Property] SoundEvent buttonClickSound { get; set; }	
 
 
 	void DisplayContent()
 	{
+		PlaySound();
 		_isContentVisible = true;
 		_isJoinRoomVisible = false;
 	}
 
 	void DisplayJoinRoom()
 	{
+		PlaySound();
 		_isContentVisible = false;
 		_isJoinRoomVisible = true;
 	}
 
 	void DisplaySettings()
 	{
+		PlaySound();
 		_isContentVisible = false;
 		_isJoinRoomVisible = false;
 		_isSettingsVisible = true;
@@ -126,12 +128,14 @@
 
 	void CreateRoom()
 	{
+		PlaySound();
 		Game.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
 		GameNetworkSystem.CreateLobby();
 	}
 
 	async void RefreshLobbyList()
 	{
+		PlaySound();
 		StateHasChanged();
 		refreshing = true;
 		list = await Networking.QueryLobbies();
@@ -141,6 +145,7 @@
 	
 	void OpenLobby(LobbyInformation lobby)
 	{
+		PlaySound();
 		if (lobby.Members >= 4) return;
 		GameNetworkSystem.Connect(lobby.LobbyId);
 		Game.ActiveScene.LoadFromFile("scenes/candy_factory.scene");
@@ -148,6 +153,12 @@
 
 	void QuitGame()
 	{
+		PlaySound();
 		Game.Close();
+	}
+
+	void PlaySound()
+	{
+		Sound.Play(buttonClickSound);
 	}
 }

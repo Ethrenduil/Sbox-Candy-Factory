@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 public sealed class IntroductionSystem : Component
 {
+    private SoundHandle currentSound = null;
     protected override void OnUpdate()
     {
-
+        if (currentSound is not null) currentSound.Position = Scene.Camera.Transform.Position;
     }
 
     public async void StartIntroduction(Player player, GameObject startingPosition, List<GameObject> waypoints, GameObject objectToLook, String soundPath, float duration)

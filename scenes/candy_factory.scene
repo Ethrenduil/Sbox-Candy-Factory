@@ -6,6 +6,7 @@
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkyBox2D",
@@ -31,6 +32,7 @@
       "Position": "2364.606,-173.0864,78.7081",
       "Rotation": "-0.07875207,-0.1036509,0.5998253,-0.7894708",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "CameraComponent",
@@ -97,6 +99,7 @@
       "Scale": "0.2,0.2,0.2",
       "Tags": "interactable",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Prop",
@@ -117,8 +120,8 @@
     {
       "Id": "120e5267-334f-4af0-a4ca-08655c252616",
       "Name": "CandyFactory",
-      "Networked": true,
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "CandyFactory",
@@ -162,6 +165,7 @@
       "Id": "5eceedf8-3ef3-4eea-84b0-2a3c8bd77dd8",
       "Name": "HUD",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ScreenPanel",
@@ -176,6 +180,7 @@
           "Id": "3ca33199-640b-4c30-8bc0-30a21fa9dd5b",
           "Name": "Money",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "MoneyHUD"
@@ -186,6 +191,7 @@
           "Id": "d01a5715-2361-408c-b6ba-befcb239ce3f",
           "Name": "CurrentTask",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "CurrentTaskHUD"
@@ -199,6 +205,7 @@
           "Id": "52ee0ea3-f3e0-422a-8117-c9de07bf1ac1",
           "Name": "Scoreboard",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "ScreenPanel",
@@ -217,6 +224,7 @@
           "Name": "Chat",
           "Position": "0.0003662109,0,-0.00001525879",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Chat"
@@ -227,6 +235,7 @@
           "Id": "bd723838-4c8e-4f0b-8708-d5ecc74ed505",
           "Name": "Pause",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "EscapeMenu",
@@ -238,6 +247,7 @@
           "Id": "c6c6b53f-24db-47ab-82df-628a9828cc0d",
           "Name": "Interact",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Interact"
@@ -248,6 +258,7 @@
           "Id": "de065e30-8f41-425b-8399-50a2b16c4b4c",
           "Name": "DeliveryHud",
           "Enabled": true,
+          "NetworkMode": 2,
           "Components": [
             {
               "__type": "DeliveryHud"
@@ -261,6 +272,7 @@
       "Name": "Change Task",
       "Position": "165.1333,-822.1245,55.6918",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
@@ -285,6 +297,7 @@
       "Id": "d46a50a1-5520-43aa-82b1-c4744a8663f7",
       "Name": "Map",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "MapInstance",
@@ -299,13 +312,15 @@
       "Name": "Spawn",
       "Position": "5340.44,-1206.13,278.9843",
       "Enabled": true,
+      "NetworkMode": 2,
       "Children": [
         {
           "Id": "c1e9c0b7-886b-481d-b456-c189605a1ddf",
           "Name": "FactorySpawn",
           "Position": "-7500.44,801.1304,-91.98434",
           "Tags": "factory",
-          "Enabled": true
+          "Enabled": true,
+          "NetworkMode": 2
         },
         {
           "Id": "9f09acb6-738c-438e-b064-bc86e5dd8e6b",
@@ -313,7 +328,8 @@
           "Position": "-7500.44,-681.8696,-91.98434",
           "Rotation": "0,0,-1,-0.00000004371139",
           "Tags": "factory",
-          "Enabled": true
+          "Enabled": true,
+          "NetworkMode": 2
         },
         {
           "Id": "61da1333-bb5f-4720-bf71-ec5b2dbf16cf",
@@ -321,28 +337,32 @@
           "Position": "-3386.44,-681.8696,-91.98434",
           "Rotation": "0,0,-1,-0.00000004371139",
           "Tags": "factory",
-          "Enabled": true
+          "Enabled": true,
+          "NetworkMode": 2
         },
         {
           "Id": "85a4f285-6ea1-48be-b5aa-affb1a2c0516",
           "Name": "FactorySpawn",
           "Position": "-3386.44,801.1304,-91.98434",
           "Tags": "factory",
-          "Enabled": true
+          "Enabled": true,
+          "NetworkMode": 2
         },
         {
           "Id": "253742a9-bff1-4e70-b77d-ce55991ba4ee",
           "Name": "DeliverySpawn",
           "Position": "339.5601,166.1305,-262.9843",
           "Rotation": "0,0,1,-0.00000004371139",
-          "Enabled": true
+          "Enabled": true,
+          "NetworkMode": 2
         },
         {
           "Id": "ad595d01-01ac-41dd-b568-e80ee966b9c1",
           "Name": "DeliverySpawnEnd",
           "Position": "-10428.44,166.1295,-262.9843",
           "Rotation": "0,0,1,-0.00000004371139",
-          "Enabled": true
+          "Enabled": true,
+          "NetworkMode": 2
         }
       ]
     },
@@ -351,6 +371,7 @@
       "Name": "Network",
       "Position": "3921.605,-3162.721,632.3683",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "NetworkManager"
@@ -361,6 +382,7 @@
       "Id": "b4413304-f2e8-479b-b179-b6f35f8a491f",
       "Name": "Introduction",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "IntroductionSystem"
@@ -391,6 +413,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-11T12:58:52.7079394\u002B01:00",
+  "LastSaved": "2024-03-12T01:45:02.7564575-04:00",
   "__references": []
 }

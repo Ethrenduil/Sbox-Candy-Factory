@@ -1,0 +1,182 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class="@(isStorageWindowOpen ? "storagePanel" : "")">
+	@if (isStorageWindowOpen)
+	{
+		<div class="backContent">
+			<button class="backButton" onclick="@CloseStorageWindow">Back</button>
+		</div>
+		<div class="window">
+			<div class="storageWindow">
+				<div class="storageWindowHeader">
+					<div class="storageWindowHeaderTitle">Storage</div>
+					<div class="storageWindowHeaderButton">
+						<button class="storageWindowHeaderButtonConfirm" onclick="@ConfirmOrder">Confirm</button>
+					</div>
+				</div>
+				<div class="storageWindowContent">
+					@foreach (var item in storageItems)
+					{
+						<div class="storageWindowContentItem">
+							<div class="storageWindowContentItemIcon">
+								<img src="https://via.placeholder.com/64" alt="itemIcon" />
+							</div>
+							<div class="storageWindowContentItemName" value="@item.Key">@item.Key</div>
+							<button class="storageWindowContentItemQuantityButton minus" onclick="@AdjustQuantity" value="-">-</button>
+							<div class="storageWindowContentItemAmount" value="@GetOrderQuantity(item.Key)">@GetOrderQuantity(item.Key) / @GetMaxItems(item.Key)</div>
+							<div class="storageWindowContentItemQuantityButton plus" onclick="@AdjustQuantity" value="+">+</div>
+						</div>
+					}
+				</div>
+				<div class="storageWindowFooter">
+					<div class="storageWindowFooterTips">
+						<div class="storageWindowFooterTipsTitle">Tips: </div>
+						<div class="storageWindowFooterTipsContent">@MessageTips</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	[Property] public string MessageTips { get; set; } = "You can retrieve items from storage.";
+	[Property] public Dictionary<string, int> storageItems { get; set; }
+	[Property] public Dictionary<string, int> order { get; set; }
+	[Property] public Factory factory { get; set; }
+
+	[Category ("Required")]
+	[Property]
+	public Stockable stockable { get; set; }
+	private bool isStorageWindowOpen { get; set; }
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+	}
+
+        public void OpenStorageWindow()
+	{
+		// Open the storage window
+		isStorageWindowOpen = true;
+
+		storageItems.Clear();
+
+		// Set the storage window properties
+		var storageItemsTemp = stockable.FactoryPlayer.Stock;
+		foreach (var item in storageItemsTemp)
+		{
+			storageItems.Add(factory.GetStockItemName(item.Key), item.Value);
+		}
+		factory = stockable.FactoryPlayer;
+		StateHasChanged();
+	}
+
+	public void CloseStorageWindow()
+	{
+		// Close the storage window
+		order.Clear();
+		isStorageWindowOpen = false;
+		MessageTips = "You can retrieve items from storage.";
+		StateHasChanged();
+	}
+
+	// Adjust the quantity of an item when the user clicks the + or - button
+	public void AdjustQuantity(PanelEvent e)
+	{
+		// Get element value
+		var sign = e.This.StringValue == "-" ? -1 : 1;
+		var item = e.This.Parent.Children.ToList()[1].StringValue;
+		var wishQuantity = int.Parse(e.This.Parent.Children.ToList()[3].StringValue) + sign;
+
+		// Check if the quantity is valid
+		if (wishQuantity <= 0) wishQuantity = 0;
+		if (!ErrorChecking(item, wishQuantity, sign)) SetOrderQuantity(item, wishQuantity);
+		// Update the UI
+		StateHasChanged();
+	}
+
+	// Get the order quantity of an item from the order dictionary
+	public string GetOrderQuantity(string item)
+	{
+		if (order.ContainsKey(item))
+		{
+			return order[item].ToString();
+		}
+		return "0";
+	}
+
+	// Set the order quantity of an item in the order dictionary
+	public void SetOrderQuantity(string item, int quantity)
+	{
+		if (quantity == 0)
+		{
+			order.Remove(item);
+		}
+		else if (order.ContainsKey(item))
+		{
+			order[item] = quantity;
+		}
+		else
+		{
+			order.Add(item, quantity);
+		}
+	}
+
+	public bool ErrorChecking(string item, int wishQuantity, int sign)
+	{
+		if (!factory.CanGetQuantity(item, wishQuantity))
+		{
+			MessageTips = "You can't get more items than you have in storage.";
+			return true;
+		} else if (GetNumberOfItems() + sign > factory.MaxItems)
+		{
+			MessageTips = "You can only get " + factory.MaxItems + " items at a time.";
+			return true;
+		}
+		return false;
+	}
+
+	// Confirm the order and retrieve the goods from storage
+	public void ConfirmOrder()
+	{
+		// Check if the order is empty
+		if (order.Count == 0)
+		{
+			MessageTips = "You have to select at least one item.";
+			StateHasChanged();
+			return;
+		}
+		// Convert the order dictionary to a list of DeliveryGoods
+		var orderTemp = factory.ConvertStringStockToDeliveryGoods(order);
+
+		// Retrieve the goods from storage and clear the order
+		stockable.RetrieveGoods(orderTemp);
+
+		// Close the storage window
+		CloseStorageWindow();
+	}
+
+	public string GetMaxItems(string item)
+	{
+		return factory.GetStockItemCountFromString(item).ToString();
+	}
+
+	public int GetNumberOfItems()
+	{
+		var count = 0;
+		foreach (var item in order)
+		{
+			count += item.Value;
+		}
+		return count;
+	}
+}
