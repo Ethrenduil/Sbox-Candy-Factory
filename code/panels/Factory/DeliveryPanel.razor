@@ -96,14 +96,15 @@
 		StateHasChanged();
 	}
 
-	public void CloseDeliveryWindow()
+	public async void CloseDeliveryWindow()
 	{
 		// Close the delivery window
 		order.Clear();
 		isDeliveryWindowOpen = false;
 		MessageTips = "You can order items.";
-		player.InMenu = false;
 		StateHasChanged();
+		await Task.Delay(100);
+		player.InMenu = false;
 	}
 
 	// Adjust the quantity of an item when the user clicks the + or - button

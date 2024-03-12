@@ -86,14 +86,15 @@
 		StateHasChanged();
 	}
 
-	public void CloseStorageWindow()
+	public async void CloseStorageWindow()
 	{
 		// Close the storage window
 		order.Clear();
 		isStorageWindowOpen = false;
 		MessageTips = "You can retrieve items from storage.";
-		player.InMenu = false;
 		StateHasChanged();
+		await Task.Delay(100);
+		player.InMenu = false;
 	}
 
 	// Adjust the quantity of an item when the user clicks the + or - button
