@@ -3,61 +3,74 @@
 @using Sandbox.Network;
 @inherits PanelComponent
 
-
 <root>
     @if (InDialogue)
     {
-		<div class="dialogue">
-			<h1>@talkerName</h1>
-			<p>@dialogueText</p>
-		</div>
-	}
+        <div class="dialogue">
+            <div class = "talkerName">
+                @talkerName
+            </div>
+            <div class = "dialogueText">
+                @dialogueText
+            </div>
+            <button class="nextButton" @onclick="NextDialogue">Suivant</button>
+        </div>
+    }
 </root>
 
 @code {
 
     [Property]
     public bool InDialogue = false;
-	public string talkerName = "Talker";
-	public string dialogueText = "Some text";
-	private Player player;
+    public string talkerName = "Talker";
+    public string dialogueText = "Some text";
+    public List<string> dialogueLines = new List<string>();
+    public int currentDialogueIndex = 0;
+    private Player player;
 
-        protected override void OnStart()
-        {
-            base.OnAwake();
-			player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
-        }
+    protected override void OnStart()
+    {
+        base.OnAwake();
+        player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+    }
 
-        protected override void OnUpdate()
+    protected override void OnUpdate()
     {
         base.OnUpdate();
 
-        if (Input.EscapePressed)
+        if (Input.EscapePressed && InDialogue)
         {
-           	ChangeState();
+               ChangeState();
         }
     }
 
-	protected void ChangeState()
-	{
-		InDialogue = !InDialogue;
-		StateHasChanged();
-	}
+    protected void ChangeState()
+    {
+        InDialogue = !InDialogue;
+        StateHasChanged();
+    }
 
-	public async void StartDialogue(Factory factory, string name, List<string> dialogue)
-	{
-	    InDialogue = true;
-	
-	    Scene.GetAllComponents<IntroductionSystem>().FirstOrDefault().StartGameIntroduction(player, factory);
-	    foreach (var line in dialogue)
-	    {
-	        dialogueText = line;
-	        int wordCount = line.Split(' ').Length;
-	        int readingSpeed = 50; // mots par minute
-	        int displayTime = (wordCount / readingSpeed) * 60 * 1000; // convertir en millisecondes
-	    	StateHasChanged();
-	        await Task.Delay(displayTime);
-	    }
-	}
+    public void StartDialogue(Factory factory, string name, List<string> dialogue)
+    {
+        ChangeState();
+        talkerName = name;
+        dialogueLines = dialogue;
+        currentDialogueIndex = 0;
+        dialogueText = dialogueLines[currentDialogueIndex];
+        Scene.GetAllComponents<IntroductionSystem>().FirstOrDefault().StartGameIntroduction(player, factory);
+    }
 
+    public void NextDialogue()
+    {
+        currentDialogueIndex++;
+        if (currentDialogueIndex < dialogueLines.Count)
+        {
+            dialogueText = dialogueLines[currentDialogueIndex];
+            StateHasChanged();
+        }
+        else
+        {
+            ChangeState();
+        }
+    }
 }
