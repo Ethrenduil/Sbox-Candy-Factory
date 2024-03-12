@@ -7,7 +7,7 @@
     @if (IsVisible)
     {
         <div class="TabMenu">
-            @for (int i = 0; i < players.Count(); i++)
+            @for (int i = 0; i < players.Count; i++)
             {
                 <div class="player-container">
                     <div class="player-info" style="border-color: @GetBorderColor(i);">
@@ -29,6 +29,8 @@
     public bool IsVisible { get; set; }
     private List<Player> players;
     private EscapeMenu escapeMenu;
+	private Player player;
+    private static readonly string[] candyColors = { "#EF8CFF", "#ADD8E6", "#FFFF00", "#90EE90" };
 
     protected override void OnStart()
     {
@@ -36,6 +38,7 @@
         IsVisible = false;
         StateHasChanged();
         escapeMenu = Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
+		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
     }
 
     protected override void OnUpdate()
@@ -48,27 +51,21 @@
     {
         if (Input.Down("Score") && !escapeMenu.IsPaused)
         {
-            IsVisible = true;
+			player.InMenu = true;
             UpdatePlayers();
-            StateHasChanged();
+            IsVisible = true;
         }
-        else if (Input.Released("Score"))
+        else if (Input.Released("Score") || escapeMenu.IsPaused)
         {
+			player.InMenu = false;
             IsVisible = false;
-            StateHasChanged();
-        } else if (escapeMenu.IsPaused)
-        {
-            if (IsVisible)
-            {
-                IsVisible = false;
-                StateHasChanged();
-            }
         }
+        StateHasChanged();
     }
 
     private string GetPlayerAvatar(int i)
     {
-        return "avatar:" + players[i].SteamId;
+        return $"avatar:{players[i].SteamId}";
     }
 
     void UpdatePlayers()
@@ -78,7 +75,6 @@
 
     private string GetBorderColor(int index)
     {
-        var candyColors = new string[] { "#EF8CFF", "#ADD8E6", "#FFFF00", "#90EE90" };
         return candyColors[index % candyColors.Length];
     }
 }

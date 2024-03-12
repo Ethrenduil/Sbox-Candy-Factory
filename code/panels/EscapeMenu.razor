@@ -10,7 +10,7 @@
         <div class="pause">
             <h2>Paused</h2>
             <div class="options">
-                <div class="btn" @onclick="@Resume">
+                <div class="btn" @onclick="@ChangeState">
                     <p>Resume</p>
                 </div>
                 <div class="btn"@onclick="@Quit">
@@ -25,37 +25,30 @@
 
     [Property]
     public bool IsPaused = false;
+	private Player player;
 
-    protected override void OnUpdate()
+        protected override void OnStart()
+        {
+            base.OnAwake();
+			player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+        }
+
+        protected override void OnUpdate()
     {
         base.OnUpdate();
 
         if (Input.EscapePressed)
         {
-            if (IsPaused)
-            {
-                Resume();
-                StateHasChanged();
-            }
-            else
-            {
-                Pause();
-                StateHasChanged();
-            }
+			if (!player.InCinematic && !player.InMenu)
+           		ChangeState();
         }
-
-
     }
 
-    private void Pause()
-    {
-        IsPaused = true;
-    }
-
-    private void Resume()
-    {
-        IsPaused = false;
-    }
+	protected void ChangeState()
+	{
+		IsPaused = !IsPaused;
+		StateHasChanged();
+	}
 
     private void Quit()
     {

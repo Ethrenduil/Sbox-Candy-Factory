@@ -1,0 +1,63 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@inherits PanelComponent
+
+
+<root>
+    @if (InDialogue)
+    {
+		<div class="dialogue">
+			<h1>@talkerName</h1>
+			<p>@dialogueText</p>
+		</div>
+	}
+</root>
+
+@code {
+
+    [Property]
+    public bool InDialogue = false;
+	public string talkerName = "Talker";
+	public string dialogueText = "Some text";
+	private Player player;
+
+        protected override void OnStart()
+        {
+            base.OnAwake();
+			player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+        }
+
+        protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (Input.EscapePressed)
+        {
+           	ChangeState();
+        }
+    }
+
+	protected void ChangeState()
+	{
+		InDialogue = !InDialogue;
+		StateHasChanged();
+	}
+
+	public async void StartDialogue(Factory factory, string name, List<string> dialogue)
+	{
+	    InDialogue = true;
+	
+	    Scene.GetAllComponents<IntroductionSystem>().FirstOrDefault().StartGameIntroduction(player, factory);
+	    foreach (var line in dialogue)
+	    {
+	        dialogueText = line;
+	        int wordCount = line.Split(' ').Length;
+	        int readingSpeed = 50; // mots par minute
+	        int displayTime = (wordCount / readingSpeed) * 60 * 1000; // convertir en millisecondes
+	    	StateHasChanged();
+	        await Task.Delay(displayTime);
+	    }
+	}
+
+}

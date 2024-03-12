@@ -13,6 +13,7 @@ public class Player : Component
 	public Vector3 WishVelocity { get; private set; }
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
+	[Property] public GameObject ZoomPos { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	public CameraComponent Camera { get; set; }
 	[Property] public TagSet CameraIgnoreTags { get; set; }
@@ -30,6 +31,7 @@ public class Player : Component
 	private bool IsSaving { get; set; }
 	private bool Zoom { get; set; }
 	public bool InCinematic { get; set; }
+	public bool InMenu { get; set; } = false;
 
 
 	protected override void OnEnabled()
@@ -163,13 +165,10 @@ public class Player : Component
 			else
 				camPos = collisionResult.EndPosition;
 
+			
 			if (Zoom)
 			{
-				cam.FieldOfView = 30;
-			}
-			else
-			{
-				cam.FieldOfView = 80;
+				camPos = ZoomPos.Transform.Position;
 			}
 			
 			cam.Transform.Position = camPos;

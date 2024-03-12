@@ -52,15 +52,20 @@
 	[Property]
 	public Stockable stockable { get; set; }
 	private bool isStorageWindowOpen { get; set; }
+	private Player player;
 
 	protected override void OnStart()
 	{
 		base.OnStart();
+		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
 	}
 
 	protected override void OnUpdate()
 	{
-		base.OnUpdate();
+		if (Input.EscapePressed && isStorageWindowOpen)
+		{
+			CloseStorageWindow();
+		}
 	}
 
         public void OpenStorageWindow()
@@ -77,6 +82,7 @@
 			storageItems.Add(factory.GetStockItemName(item.Key), item.Value);
 		}
 		factory = stockable.FactoryPlayer;
+		player.InMenu = true;
 		StateHasChanged();
 	}
 

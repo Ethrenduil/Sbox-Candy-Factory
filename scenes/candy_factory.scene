@@ -264,6 +264,18 @@
               "__type": "DeliveryHud"
             }
           ]
+        },
+        {
+          "Id": "1565d19b-0cb3-486f-84f8-8c1e117d0178",
+          "Name": "Screen",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "DialogueMenu",
+              "InDialogue": false
+            }
+          ]
         }
       ]
     },
@@ -413,6 +425,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-12T01:45:02.7564575-04:00",
+  "LastSaved": "2024-03-12T12:09:37.7745723\u002B01:00",
   "__references": []
 }

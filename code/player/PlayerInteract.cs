@@ -40,6 +40,7 @@ public class PlayerInteract : Component
 
 		InteractionHandler();
 
+
 		// If the player is carrying an object and the use button is pressed, drop the object
 		if (Input.Pressed("use") && !IsInteracting && IsCarrying)
 		{
@@ -106,7 +107,7 @@ public class PlayerInteract : Component
 
 			// If the use button is pressed and the player is not interacting, start the interaction
 			// Interactor must be the owner of the object
-			if (Input.Pressed("use") && !IsInteracting && IsOwner(interactable.GameObject))
+			if (Input.Pressed("use") && !IsInteracting && (IsOwner(interactable.GameObject) || interactable.Type == InteractableType.Bob))
 			{
 				// Start the interaction and call the OnInteract method of the interactable
 				StartInteract();

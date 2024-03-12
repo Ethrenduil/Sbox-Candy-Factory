@@ -7,6 +7,7 @@ public sealed class Factory : Component
 	[Property] [Sync] public int Money { get; set; }
 	[Property] [Sync] public int MaxItems { get; set; } = 10;
 	[Property] public Dictionary<DeliveryGoods, int> Stock { get; set; } = new Dictionary<DeliveryGoods, int>();
+	public bool IsStarted { get; set; } = false;
 
 	protected override void OnAwake()
 	{
@@ -33,7 +34,7 @@ public sealed class Factory : Component
 		
 		GameObject.Components.Get<TitleFactory>(FindMode.InChildren).SetTitle(owner.DisplayName + "'s Factory");
 		// For each interactable in the factory, take ownership
-		foreach (var children in GameObject.Children.Where(c => c.Networked))
+		foreach (var children in GameObject.Children.Where(c => c.NetworkMode == NetworkMode.Snapshot))
 		{
 			children.Network.AssignOwnership(owner);
 		}
