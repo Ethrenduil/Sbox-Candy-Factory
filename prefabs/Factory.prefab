@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "0ff24d4b-f3b5-4bc7-817a-52d61acda3c8",
+    "Id": "4513a747-98b8-48d8-bbf9-8eab495f3447",
     "Name": "factory",
     "Enabled": true,
     "NetworkMode": 1,
@@ -22,13 +22,15 @@
           "_type": "gameobject",
           "prefab": "prefabs/deliveryvehicule.prefab"
         },
+        "DeliveryCooldown": 30,
         "DeliveryDestination": {
           "_type": "gameobject",
-          "go": "1fb88ef9-0414-4dfa-8dd4-be396ca37fef"
+          "go": "8016163b-151e-4cdc-973a-544a1af7e2e0"
         },
         "DeliveryProgress": 0,
         "DeliveryTime": 10,
         "Goods": {},
+        "GoodsPrices": {},
         "Status": "None"
       },
       {
@@ -41,7 +43,7 @@
     ],
     "Children": [
       {
-        "Id": "72a307b8-49b4-4777-9c71-ecb84863110f",
+        "Id": "5e5fe672-cae8-4ad4-b436-bc9ccddeeee1",
         "Name": "Door Frame",
         "Position": "-20.55298,-255.506,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -65,7 +67,7 @@
         ]
       },
       {
-        "Id": "b9da491a-340a-46b6-8b83-e96e9796d2ab",
+        "Id": "6bae2a36-0019-41ff-9fc1-28c5afe39434",
         "Name": "DoorRight",
         "Position": "26.48352,-255.5,-175",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -100,7 +102,7 @@
         ]
       },
       {
-        "Id": "8c0c3e42-3cdd-4f59-aafe-a24abb465a3c",
+        "Id": "21573988-05b2-4fda-9e7b-b1a9280c7421",
         "Name": "DoorLeft",
         "Position": "-68,-255.5004,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -135,7 +137,7 @@
         ]
       },
       {
-        "Id": "d923f946-9163-4b3f-9fc1-419606204eca",
+        "Id": "ac5ae227-dc75-4f07-8b7c-ffa611c4e0f0",
         "Name": "Wooden Desk",
         "Position": "558.6235,-221.2169,-175.0005",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -153,14 +155,14 @@
         ]
       },
       {
-        "Id": "1fb88ef9-0414-4dfa-8dd4-be396ca37fef",
+        "Id": "8016163b-151e-4cdc-973a-544a1af7e2e0",
         "Name": "DeliveryDestination",
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "Id": "85cf1003-b4a8-4d00-9fce-ea6ce952cd45",
+        "Id": "d46f316e-6354-413c-96e7-f4b7261a4f7a",
         "Name": "furnace",
         "Position": "-610,-210.3741,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -171,7 +173,7 @@
         "__Prefab": "prefabs/furnace.prefab"
       },
       {
-        "Id": "a3a2d23f-a5bb-4ea6-8b68-0845e7b7c4cf",
+        "Id": "da365d25-360f-41c7-a6a4-1b66e7931ebd",
         "Name": "Conveyor",
         "Position": "-610,-129.8227,-175",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -198,7 +200,7 @@
         ]
       },
       {
-        "Id": "3c86a136-48dd-46bb-92d2-f104161c35bf",
+        "Id": "08c8809c-be15-45d8-a2a1-6c1c568a891d",
         "Name": "Upgrader Slot",
         "Position": "-610,-49.20265,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -207,7 +209,7 @@
         "NetworkMode": 2,
         "Children": [
           {
-            "Id": "850c6630-1b90-4c47-aa67-e66834e14a86",
+            "Id": "baf85b41-81a5-4a7a-8563-966f579acdb9",
             "Name": "Conveyor",
             "Position": "0,0,0",
             "Scale": "1.25,1.25,1.25",
@@ -234,7 +236,7 @@
             ]
           },
           {
-            "Id": "378c5e9a-26ce-4e77-ab34-aa2ad88d47f2",
+            "Id": "e455f0ad-4d35-4990-9b03-69f43ebcf2a9",
             "Name": "Upgrader",
             "Position": "0,0,0",
             "Tags": "interactable,conveyor",
@@ -244,7 +246,7 @@
         ]
       },
       {
-        "Id": "a0970dfd-738e-4f6b-ba7b-81116dcee8eb",
+        "Id": "f1dd7340-3249-4cfa-9748-3dea06c5dd6d",
         "Name": "vending_box",
         "Position": "-609.9997,6.042275,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -254,7 +256,7 @@
         "__Prefab": "prefabs/vending_box.prefab"
       },
       {
-        "Id": "83876c07-1f5a-47e7-a877-4ef5282a2958",
+        "Id": "24a6d528-788f-4677-96d7-dfa0127e930a",
         "Name": "Spot Light",
         "Position": "-477.588,-129.9128,17.1936",
         "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -276,7 +278,7 @@
         ]
       },
       {
-        "Id": "5b1565fd-f2e9-4231-9c3b-3a82d2671a02",
+        "Id": "531d3e1f-a922-4d77-a79b-e2bbac6437ca",
         "Name": "Shelving",
         "Position": "589.447,-15.99995,-175",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -312,7 +314,7 @@
         ]
       },
       {
-        "Id": "bdd18247-50fa-4841-b2b7-afd956ec3eac",
+        "Id": "7638f0c3-c66a-4f2d-bec5-31ecf983fe7e",
         "Name": "TitleFactory",
         "Position": "-20.70431,-259.6282,-49.60486",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -334,21 +336,21 @@
         ]
       },
       {
-        "Id": "e489bdf7-eb4b-4b32-bf76-74d157cfb225",
+        "Id": "2f8dfb56-d11e-4d39-9a48-c4deb0d942f5",
         "Name": "Camera Start",
         "Position": "446.4409,-733.8622,155.2563",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "Id": "36cc2666-7682-471e-ad3c-98656b8cd047",
+        "Id": "6eeda554-61e6-46ff-83a3-26f935c9902f",
         "Name": "Camera Waypoints",
         "Position": "-550.4506,-733.8622,155.2563",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "Id": "3c807a5b-fa0d-4bdf-a250-5fde68361abc",
+        "Id": "966af880-30a8-4e6c-bab5-5e2e180c188a",
         "Name": "StoragePanel",
         "Position": "592,-32,-157.5449",
         "Enabled": true,
@@ -365,17 +367,44 @@
             "__type": "StoragePanel",
             "factory": {
               "_type": "component",
-              "go": "0ff24d4b-f3b5-4bc7-817a-52d61acda3c8",
+              "go": "4513a747-98b8-48d8-bbf9-8eab495f3447",
               "component_type": "Factory"
             },
             "MessageTips": "You can retrieve items from storage.",
             "order": {},
             "stockable": {
               "_type": "component",
-              "go": "5b1565fd-f2e9-4231-9c3b-3a82d2671a02",
+              "go": "531d3e1f-a922-4d77-a79b-e2bbac6437ca",
               "component_type": "Stockable"
             },
             "storageItems": {}
+          }
+        ]
+      },
+      {
+        "Id": "c4b89677-05c2-4785-a4e4-9ec1659dedc7",
+        "Name": "DeliveryPanel",
+        "Position": "600.22,124.0358,-160.8286",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ScreenPanel",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          },
+          {
+            "__type": "DeliveryPanel",
+            "Delivery": {
+              "_type": "component",
+              "go": "4513a747-98b8-48d8-bbf9-8eab495f3447",
+              "component_type": "Delivery"
+            },
+            "Items": {},
+            "MessageTips": "You can order items.",
+            "order": {}
           }
         ]
       }

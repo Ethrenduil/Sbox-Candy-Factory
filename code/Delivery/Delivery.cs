@@ -11,11 +11,14 @@ public sealed class Delivery : Component
     [Property] public GameObject DeliveryBoxPrefab { get; set; }
     [Property] public DeliveryHud DeliveryHud { get; set; }
     [Property] public Dictionary<DeliveryGoods, int> Goods { get; set; } = new Dictionary<DeliveryGoods, int>();
+    [Property] public Dictionary<DeliveryGoods, int> GoodsPrices { get; set; }
     [Property] public GameObject DeliveryCarPrefab { get; set; }
     [Property] public DeliveryCar DeliveryCar { get; set; }
     [Property] public GameObject DeliveryCarSpawn { get; set; }
     [Property] public GameObject DeliveryCarSpawnEnd { get; set; }
     [Property] public GameObject Receiver { get; set; }
+    [Property] public float DeliveryCooldown { get; set; } = 30.0f;
+
 
     protected override void OnAwake()
     {
@@ -25,6 +28,7 @@ public sealed class Delivery : Component
         DeliveryHud = Scene.GetAllComponents<DeliveryHud>().FirstOrDefault();
         DeliveryCarSpawn = Scene.Children.Where(c => c.Name == "Spawn").FirstOrDefault().Children.Where(c => c.Name == "DeliverySpawn").FirstOrDefault();
         DeliveryCarSpawnEnd = Scene.Children.Where(c => c.Name == "Spawn").FirstOrDefault().Children.Where(c => c.Name == "DeliverySpawnEnd").FirstOrDefault();
+        SetUpGoodsPrices();
     }
 	protected override void OnUpdate()
 	{
@@ -32,11 +36,6 @@ public sealed class Delivery : Component
 
         if (IsProxy) return;
 
-        // Trigger Order Delivery // Test
-        if (Input.Pressed("drop") && Status == DeliveryStatus.None)
-        {
-            StartDelivery(new Dictionary<DeliveryGoods, int> { { DeliveryGoods.Sugar, 10 }, { DeliveryGoods.Flour, 10 }, { DeliveryGoods.Milk, 10 }, { DeliveryGoods.Vanilla, 10 } });
-        }
         //End Test
 
         if (Status == DeliveryStatus.InProgress)
@@ -52,12 +51,26 @@ public sealed class Delivery : Component
 
         if (Status == DeliveryStatus.Delivered && !DeliveryCar.Active)
         {
-            DeliveryHud.SetProgress(null);
-            DeliveryCar = null;
-            Status = DeliveryStatus.None;
+            OnDeliveryFinished();
         }
 	}
 
+    public void OnDeliveryFinished()
+    {
+        DeliveryHud.SetProgress("Delivery cooldown: " + DeliveryCooldown.ToString("0.0") + "s");
+        DeliveryCooldown -= Time.Delta;
+        if (DeliveryCooldown <= 0)
+        {
+            Status = DeliveryStatus.None;
+            DeliveryCooldown = 10.0f;
+            DeliveryHud.SetProgress("Delivery available");
+        }
+    }
+
+    public bool CanDeliver()
+    {
+        return Status == DeliveryStatus.None;
+    }
     // Start a delivery with a list of goods
     public void StartDelivery(Dictionary<DeliveryGoods, int> goods)
     {
@@ -94,6 +107,49 @@ public sealed class Delivery : Component
         Status = DeliveryStatus.Delivered;
     }
 
+    public void SetUpGoodsPrices()
+    {
+        GoodsPrices = new Dictionary<DeliveryGoods, int> {
+            { DeliveryGoods.Sugar, 3 },
+            { DeliveryGoods.Flour, 2 },
+            { DeliveryGoods.Milk, 5 },
+            { DeliveryGoods.Vanilla, 7 }
+        };
+    }
+
+    public static string GetItemName(DeliveryGoods item)
+    {
+		return item switch
+		{
+			DeliveryGoods.Sugar => "Sugar",
+			DeliveryGoods.Flour => "Flour",
+			DeliveryGoods.Milk => "Milk",
+			DeliveryGoods.Vanilla => "Vanilla",
+			_ => "Unknown",
+		};
+	}
+
+    public static DeliveryGoods GetDeliveryGoodsFromString(string item)
+    {
+        return item switch
+        {
+            "Sugar" => DeliveryGoods.Sugar,
+            "Flour" => DeliveryGoods.Flour,
+            "Milk" => DeliveryGoods.Milk,
+            "Vanilla" => DeliveryGoods.Vanilla,
+            _ => DeliveryGoods.None,
+        };
+    }
+
+    public static Dictionary<DeliveryGoods, int> GetDictionaryGoodsFromString(Dictionary<string, int> goods)
+    {
+        var result = new Dictionary<DeliveryGoods, int>();
+        foreach (var item in goods)
+        {
+            result.Add(GetDeliveryGoodsFromString(item.Key), item.Value);
+        }
+        return result;
+    }
 }
 
 public enum DeliveryStatus
@@ -101,7 +157,8 @@ public enum DeliveryStatus
     None,
     InProgress,
     Delivered,
-    Failed
+    Failed,
+    CoolDown,
 }
 
 public enum DeliveryGoods

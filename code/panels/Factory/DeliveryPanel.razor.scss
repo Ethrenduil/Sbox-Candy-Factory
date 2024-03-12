@@ -1,0 +1,244 @@
+DeliveryPanel
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+    text-align: center;
+
+	.deliveryPanel {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #44444495;
+		font-weight: bold;
+		border-radius: 20px;
+		pointer-events: all;
+	}
+
+	.backContent {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #00000095;
+		font-weight: bold;
+		pointer-events: all;
+	}
+
+	.backButton {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		font-size: 30px;
+		color: #ffffff;
+		background-color: #EF8CFF;
+		border-radius: 15px;
+		padding: 5px 20px;
+
+		&:hover {
+			color: #EF8CFF;
+			background-color: #ffffff;
+		}
+	}
+
+	.window {
+		width: 75%;
+		height: 75%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: #3b3b3b;
+		border-radius: 75px;
+		border: 4px solid #EF8CFF;
+		pointer-events: all;
+	}
+
+	.deliveryWindow {
+		position: absolute;
+		width: 90%;
+		height: 90%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		// justify-content: center;
+	}
+
+	.deliveryWindowHeader {
+		width: 100%;
+		height: 50px;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+	}
+
+	.deliveryWindowHeaderTitle {
+		font-size: 50px;
+		color: #EF8CFF;
+	}
+
+	.deliveryWindowHeaderButton {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		
+		font-size: 30px;
+		color: #ffff;
+		background-color: #EF8CFF;
+		border-radius: 15px;
+
+		&:hover {
+			color: #EF8CFF;
+			background-color: #ffffff;
+		}
+	}
+
+	.deliveryWindowHeaderButtonConfirm {
+		padding: 5%;
+	}
+
+	.deliveryWindowContent {
+		width: 80%;
+		height: 75%;
+		margin-top: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: scroll;
+		border: 2px solid #EF8CFF;
+		border-radius: 15px;
+	}
+
+	
+	.deliveryWindowContentItem {
+		width: 100%;
+		height: 50px;
+		display: flex;
+		flex-direction: row;
+        justify-content: center;
+        align-items: center;
+		margin-bottom: 20px;
+        gap: 10%;
+        
+		// border: 2px solid #000000;
+		// border-radius: 15px;
+	}
+	
+	.deliveryWindowContentItemIcon {
+		width: 50px;
+		height: 50px;
+	}
+	
+	.deliveryWindowContentItemIcon img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.deliveryWindowContentItemName {
+        width: 20%;
+		font-size: 24px;
+        justify-content: center;
+		color: #EF8CFF;
+	}
+	
+	.deliveryWindowContentItemQuantityButton {
+		font-size: 30px;
+		font-weight: bold;
+		color: #EF8CFF;
+		background-color: #ffffff;
+		border-radius: 15px;
+		padding: 5px 20px;
+        width: 6%;
+        align-items: center;
+
+		&:hover {
+			color: #ffffff;
+			background-color: #EF8CFF;
+		}
+	}
+	.deliveryWindowContentItemAmount {
+		font-size: 24px;
+		color: #EF8CFF;
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+	}
+
+	.deliveryWindowContentItemPrice {
+		font-size: 24px;
+		color: #EF8CFF;
+		width: 10%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.deliveryWindowFooter {
+		width: 100%;
+		height: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	.deliveryWindowFooterNumber {
+		width: 100%;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.deliveryWindowFooterTotal {
+		width: 100%;
+		height: 50px;
+		display: flex;
+		flex-direction: row;
+		// align-items: center;
+		font-size: 30px;
+		margin-top: 20px;
+		color: #EF8CFF;
+	}
+
+	.deliveryWindowFooterMoney {
+		font-size: 30px;
+		color: #EF8CFF;
+	}
+
+	.deliveryWindowFooterTips {
+		width: 100%;
+		height: 50px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.deliveryWindowFooterTipsTitle {
+		font-size: 24px;
+		color: #EF8CFF;
+	}
+
+	.deliveryWindowFooterTipsContent {
+		font-size: 24px;
+		color: #EF8CFF;
+	}
+
+}
