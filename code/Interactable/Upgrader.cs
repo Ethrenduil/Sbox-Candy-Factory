@@ -10,6 +10,7 @@ public class Upgrader : AInteractable
 	[Property] private SoundEvent upgradeSound { get; set; }
 	[Property] private SoundEvent upgradedSound { get; set; }
     [Property] private FurnacePanel furnacePanel { get; set; }
+	[Property] public int UpgradeOrder { get; set; }
 	private float upgradeTimer { get; set; }
 	private Vector3 upgradedOffset { get; set; } = new( 0, -15, 80 );
 	private SoundHandle sound;

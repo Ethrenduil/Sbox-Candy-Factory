@@ -5,11 +5,12 @@ public sealed class ProductionSystem : Component
 {
 	[Property] public Factory Factory { get; set; }
 	[Property] public Dictionary<UpgradeType, int> Upgrades { get; set; } = new Dictionary<UpgradeType, int>();
-	[Property] public List<GameObject> Upgrader { get; set; }
+	[Property] public List<Upgrader> Upgrader { get; set; }
 	[Property] public int ProductionSpeed { get; set; } = 0;
 	[Property] public int StorageCapacity { get; set; } = 20;
 	[Property] public int HoldableCapacity { get; set; } = 5;
 	[Property] public float TransportCoolDownSpeed { get; set; } = 30.0f;
+	[Property] public bool IsStarted { get; set; } = false;
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -43,6 +44,14 @@ public sealed class ProductionSystem : Component
 		Upgrades[UpgradeType.Transport] = 0;
 		Upgrades[UpgradeType.Upgrader] = 0;
 		Upgrades[UpgradeType.HoldableCapacity] = 0;
+
+		// Set the Upgrader List and sort it
+		Upgrader = GameObject.Components.GetAll<Upgrader>(FindMode.EverythingInDescendants).ToList();
+		Upgrader.Sort((x, y) => x.Components.Get<Upgrader>().UpgradeOrder.CompareTo(y.Components.Get<Upgrader>().UpgradeOrder));
+
+		// Disable all the upgraders
+		for (int i = 0; i < Upgrader.Count; i++)
+			Upgrader[i].GameObject.Enabled = false;
 
 		// Set the Upgrade production system
 		foreach ( var upgrade in Upgrades)
@@ -99,7 +108,7 @@ public sealed class ProductionSystem : Component
 		}
 
 		// Enable the next upgrader
-		Upgrader[Upgrades[UpgradeType.Upgrader] - 1].Enabled = true;
+		Upgrader[Upgrades[UpgradeType.Upgrader] - 1].GameObject.Enabled = true;
 	}
 
 	public void UpgradeProduction()

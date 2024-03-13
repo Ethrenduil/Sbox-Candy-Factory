@@ -9,12 +9,14 @@
     "Components": [
       {
         "__type": "ModelCollider",
+        "Id": "18482431-6e6b-47c5-aea1-74b67e28cf49",
         "IsTrigger": false,
         "Model": "models/conveyor/transformer.vmdl",
         "Static": true
       },
       {
         "__type": "SkinnedModelRenderer",
+        "Id": "7276e855-40af-449f-afc4-6ad9304d533c",
         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
         "BodyGroups": 18446744073709551615,
         "CreateBoneObjects": true,
@@ -24,6 +26,7 @@
       },
       {
         "__type": "Conveyor",
+        "Id": "0edb8810-0cfe-46c3-bb8b-c629baca941a",
         "IsCooker": false,
         "special": true,
         "Speed": 100,
@@ -33,16 +36,19 @@
       },
       {
         "__type": "Upgrader",
+        "Id": "51324320-ce20-4b34-882c-471703d2a409",
         "conveyor": {
           "_type": "component",
-          "go": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-          "component_type": "Conveyor"
+          "component_id": "0edb8810-0cfe-46c3-bb8b-c629baca941a",
+          "go": "00000000-0000-0000-0000-000000000000",
+          "component_type": null
         },
         "Description": "This is an interactable object",
         "furnacePanel": {
           "_type": "component",
-          "go": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
-          "component_type": "FurnacePanel"
+          "component_id": "26251ea7-8c5b-4809-8a79-e39bf11390ce",
+          "go": "00000000-0000-0000-0000-000000000000",
+          "component_type": null
         },
         "IsInteracted": false,
         "Name": "Upgrader",
@@ -52,6 +58,7 @@
           "prefab": "prefabs/candy_choco_09.prefab"
         },
         "upgradedSound": "sounds/furnace/furnace_cooked.sound",
+        "UpgradeOrder": 0,
         "upgradeSound": "sounds/furnace/furnace_cooking.sound"
       }
     ],
@@ -117,6 +124,7 @@
                 "Components": [
                   {
                     "__type": "WorldPanel",
+                    "Id": "d12965f0-7163-4629-a7ce-b027a156e621",
                     "HorizontalAlign": "Center",
                     "LookAtCamera": false,
                     "PanelSize": "800,544",
@@ -125,6 +133,7 @@
                   },
                   {
                     "__type": "FurnacePanel",
+                    "Id": "26251ea7-8c5b-4809-8a79-e39bf11390ce",
                     "candy": {
                       "_type": "gameobject",
                       "prefab": "prefabs/candy_choco_09.prefab"
@@ -146,6 +155,7 @@
         "Components": [
           {
             "__type": "ParticleEffect",
+            "Id": "911926c7-f37f-4141-968b-ac643bb34d82",
             "Alpha": {
               "Type": "Curve",
               "CurveA": [
@@ -255,6 +265,7 @@
           },
           {
             "__type": "ParticleSpriteRenderer",
+            "Id": "a98edba6-1902-401d-9b3e-e708465ec0cf",
             "Additive": false,
             "BlurAmount": 0.5,
             "BlurOpacity": 0.91,
@@ -273,6 +284,7 @@
           },
           {
             "__type": "ParticleBoxEmitter",
+            "Id": "1ee33fce-2305-479f-9a6f-eeda679c08ae",
             "__enabled": false,
             "Burst": 100,
             "Delay": 0,

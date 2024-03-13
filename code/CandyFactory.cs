@@ -21,7 +21,7 @@ public class CandyFactory : Component
 	[Property] public List<GameObject> FactoryList { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	[Property] public GameObject Factory { get; set; }
-	[Property] [Sync] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
+	[Sync] public NetList<ulong> _isFactoryActive { get; set; } = new NetList<ulong> { 0, 0, 0, 0 };
 
 	protected override void OnAwake()
 	{
@@ -76,7 +76,7 @@ public class CandyFactory : Component
 		Log.Info( $"Player {connection.DisplayName} joined" );
 
 		// Network spawn the player and enable the navmesh
-		player.NetworkSpawn( connection );	
+		player.NetworkSpawn( connection );
 
 		// Spawn Factory and start it
 		var factory = Factory.Clone(FactoryList[freeFactoryIndex].Transform.World);
@@ -87,7 +87,13 @@ public class CandyFactory : Component
 	public void DeletePlayer(Connection conn)
 	{
 		Log.Info( $"Player {conn.DisplayName} disconnected" );
-		_isFactoryActive[_isFactoryActive.IndexOf(conn.SteamId)] = 0;
+		for (int i = 0; i < 4; i++)
+		{
+			if (_isFactoryActive[i] == conn.SteamId)
+			{
+				_isFactoryActive[i] = 0;
+			}
+		}
 	}
 
 	public void RefreshTaskHUD()
