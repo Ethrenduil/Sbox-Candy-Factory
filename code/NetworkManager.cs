@@ -33,7 +33,6 @@ public class NetworkManager : Component, Component.INetworkListener
 
 	void INetworkListener.OnDisconnected(Connection conn)
 	{
-        Log.Info( "Player disconnected" );
 		var cdyfac = Scene.Components.GetAll<CandyFactory>().FirstOrDefault();
         if (conn.IsHost && Networking.Connections.Count > 1)
         {

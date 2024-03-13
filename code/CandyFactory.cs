@@ -21,7 +21,7 @@ public class CandyFactory : Component
 	[Property] public List<GameObject> FactoryList { get; set; }
 	[Property] public int StartingMoney { get; set; } = 100;
 	[Property] public GameObject Factory { get; set; }
-	[Property] [Sync] public List<bool> _isFactoryActive { get; set; } = new List<bool> { false, false, false, false };
+	[Property] [Sync] public List<ulong> _isFactoryActive { get; set; } = new List<ulong> { 0, 0, 0, 0 };
 
 	protected override void OnAwake()
 	{
@@ -35,6 +35,10 @@ public class CandyFactory : Component
 	protected override void OnStart()
 	{
 		base.OnStart();
+		for (int i = 0; i < 4; i++)
+		{
+			Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
+		}
 	}
 
 	public void NewPlayer( Connection connection )
@@ -51,7 +55,8 @@ public class CandyFactory : Component
 
 		// Get Free Factory Index
 		int freeFactoryIndex = GetFreeFactoryIndex(connection);
-		_isFactoryActive[freeFactoryIndex] = true;
+		Log.Info( $"Free Factory Index: {freeFactoryIndex}" );
+		// _isFactoryActive[freeFactoryIndex] = connection.SteamId;
 
 
 		// Spawn the player
@@ -66,7 +71,7 @@ public class CandyFactory : Component
 		var playerComponent = player.Components.Get<Player>();
 		playerComponent.Name = connection.DisplayName;
 		playerComponent.SteamId = connection.SteamId;
-		playerComponent.PlayerSlot = freeFactoryIndex;
+		// playerComponent.PlayerSlot = freeFactoryIndex;
 
 		Log.Info( $"Player {connection.DisplayName} joined" );
 
@@ -82,8 +87,7 @@ public class CandyFactory : Component
 	public void DeletePlayer(Connection conn)
 	{
 		Log.Info( $"Player {conn.DisplayName} disconnected" );
-		var player = Scene.GetAllComponents<Player>().FirstOrDefault( p => p.SteamId == conn.SteamId );
-		_isFactoryActive[player.PlayerSlot] = false;
+		_isFactoryActive[_isFactoryActive.IndexOf(conn.SteamId)] = 0;
 	}
 
 	public void RefreshTaskHUD()
@@ -106,9 +110,9 @@ public class CandyFactory : Component
 	{
 		for (int i = 0; i < _isFactoryActive.Count; i++)
 		{
-			if (_isFactoryActive[i] == false)
+			if (_isFactoryActive[i] == 0)
 			{
-				_isFactoryActive[i] = true;
+				_isFactoryActive[i] = connection.SteamId;
 				return i;
 			}
 		}
