@@ -87,7 +87,8 @@ public sealed class PlayerTask : Component
 		IsComplete = false;
 		Needed = new Needed(100, new Candy("Dark Chocolate", 10), new Candy("White Chocolate Cone", 10), false);
 		CompletedMessage = "You have completed the tutorial ! Thanks for playing ! New updates are coming soon!";
-		ShowArrow = true;
+		ShowArrow = false;
+		Arrow.Enabled = false;
 		candyFactory.RefreshTaskHUD();
 	}
 

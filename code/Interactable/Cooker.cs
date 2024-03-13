@@ -117,7 +117,7 @@ public class Cooker : AInteractable
 		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
 		if ( currentTask is not null )
 		{
-			if ( currentTask.Needed.CandyCreated.Name == candy.Name && currentTask.Needed.CandyCreated.Current < currentTask.Needed.CandyCreated.Quantity) {
+			if ( !currentTask.Needed.TalkToBob && currentTask.Needed.CandyCreated.Name == candy.Name && currentTask.Needed.CandyCreated.Current < currentTask.Needed.CandyCreated.Quantity) {
 				currentTask.Needed.CandyCreated.Current++;
 				Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
 			}
