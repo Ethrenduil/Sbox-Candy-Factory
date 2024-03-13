@@ -83,7 +83,9 @@ public sealed class Delivery : Component
         var GOCar = DeliveryCarPrefab.Clone(DeliveryCarSpawn.Transform.Position, DeliveryCarSpawn.Transform.Rotation);
         GOCar.NetworkSpawn();
         DeliveryCar = GOCar.Components.Get<DeliveryCar>();
-        DeliveryCar.StartDelivery(DeliveryDestination.Transform.Position);
+        Log.Info("Name GameObject: " + GameObject.Name);
+        DeliveryDestination = GameObject.Children.Where(c => c.Name == "DeliveryDestination").FirstOrDefault();
+        DeliveryCar.StartDelivery(DeliveryDestination.Transform.World.Position);    
 
         // Set the delivery progress
         DeliveryHud.SetProgress("Delivery in progress");

@@ -66,6 +66,8 @@
 	{
 		base.OnStart();
 		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		Delivery = Scene.GetAllComponents<Delivery>().FirstOrDefault( x => !x.IsProxy );
+		Factory = Scene.GetAllComponents<Factory>().FirstOrDefault( x => !x.IsProxy );
 	}
 
 	protected override void OnUpdate()
@@ -186,6 +188,7 @@
 			return;
 		}
 		player.RemoveMoney(GetTotalNumber());
+		Log.Info($"Delivery gameobject name: {Delivery.GameObject.Name}");
 		Delivery.StartDelivery(Delivery.GetDictionaryGoodsFromString(order));
 		CloseDeliveryWindow();
 	}
