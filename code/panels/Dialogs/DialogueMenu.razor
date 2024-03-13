@@ -64,6 +64,16 @@
 		player.InDialogue = !InDialogue;
         InDialogue = !InDialogue;
         StateHasChanged();
+		
+		var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+		if (InDialogue)
+		{
+			cam.RenderExcludeTags.Add("Player");
+		}
+		else
+		{
+			cam.RenderExcludeTags.Remove("Player");
+		}
     }
 
     public void StartDialogue(string name, List<string> dialogue, string soundPath, List<GameObject> toLookAt, List<int> duration)
