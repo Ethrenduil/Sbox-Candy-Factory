@@ -150,8 +150,8 @@
         {
           "__type": "CandyFactory",
           "_isFactoryActive": [
-            true,
-            true,
+            false,
+            false,
             false,
             false
           ],
@@ -449,6 +449,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-13T14:51:23.8906908\u002B01:00",
+  "LastSaved": "2024-03-13T15:06:52.9582663\u002B01:00",
   "__references": []
 }
