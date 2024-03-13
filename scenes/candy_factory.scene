@@ -424,6 +424,27 @@
           "__type": "CinematicSystem"
         }
       ]
+    },
+    {
+      "Id": "821abc1f-a410-472d-b8c5-12335d759c4d",
+      "Name": "Arrow",
+      "Position": "4395.492,741.983,80.44997",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "WorldPanel",
+          "HorizontalAlign": "Center",
+          "LookAtCamera": true,
+          "PanelSize": "1024,1024",
+          "RenderScale": 1,
+          "VerticalAlign": "Center"
+        },
+        {
+          "__type": "FollowTask",
+          "speed": 3
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -449,6 +470,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-13T15:06:52.9582663\u002B01:00",
+  "LastSaved": "2024-03-13T17:41:46.1156205\u002B01:00",
   "__references": []
 }

@@ -1,0 +1,35 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<img src="textures/tasks/arrow.png" class="image" />
+</root>
+
+@code
+{
+	public Vector3 startPosition = new Vector3(0, 0, 0);
+    public Vector3 endPosition = new Vector3(0, 5, 0);
+	[Property]
+    private float speed = 3f;
+    private float startTime;
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+        startTime = Time.Now;
+		startPosition = GameObject.Transform.Position;
+		endPosition = GameObject.Transform.Position + new Vector3(0, 0, 20);
+    }
+
+    protected override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+
+        float t = (MathF.Sin((Time.Now - startTime) * speed) + 1.0f) / 2.0f;
+        Vector3 newPosition = Vector3.Lerp(startPosition, endPosition, t);
+
+		GameObject.Transform.Position = newPosition;
+    }
+}

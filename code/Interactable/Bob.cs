@@ -1,5 +1,6 @@
 using System;
 using Microsoft.VisualBasic;
+using Eryziac.CandyFactory;
 
 [Category( "Candy Factory - interactable")]
 public class Bob : AInteractable
@@ -29,12 +30,12 @@ public class Bob : AInteractable
 		if (factory.IsStarted)
 			StartDialogue(player);
 		else
-			IntroductionInteract(factory, dialogue);
+			IntroductionInteract(factory, dialogue, player);
 
 		IsInteracted = false;
 	}
 
-	private void IntroductionInteract(Factory factory, DialogueMenu dialogue)
+	private void IntroductionInteract(Factory factory, DialogueMenu dialogue, Player player)
 	{
 		var dialogues = new List<string>
 			{
@@ -60,6 +61,7 @@ public class Bob : AInteractable
 			9
 		};
 		dialogue.StartDialogue(Name, dialogues, "intro", toLook, duration);
+		player.CurrentTask.Needed.Talked = true;
 	}
 
 	private void StartDialogue(Player player)
