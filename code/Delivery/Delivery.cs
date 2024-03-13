@@ -18,6 +18,7 @@ public sealed class Delivery : Component
     [Property] public GameObject DeliveryCarSpawnEnd { get; set; }
     [Property] public GameObject Receiver { get; set; }
     [Property] public float DeliveryCooldown { get; set; } = 30.0f;
+    [Property] public ProductionSystem ProductionSystem { get; set; }
 
 
     protected override void OnAwake()
@@ -62,7 +63,7 @@ public sealed class Delivery : Component
         if (DeliveryCooldown <= 0)
         {
             Status = DeliveryStatus.None;
-            DeliveryCooldown = 10.0f;
+            DeliveryCooldown = ProductionSystem.TransportCoolDownSpeed;
             DeliveryHud.SetProgress("Delivery available");
         }
     }
@@ -105,6 +106,10 @@ public sealed class Delivery : Component
 
         // Set the delivery status
         Status = DeliveryStatus.Delivered;
+        
+        // Set Delivery Cooldown
+        Log.Info("Delivery Cooldown: " + ProductionSystem.TransportCoolDownSpeed);
+        DeliveryCooldown = ProductionSystem.TransportCoolDownSpeed;
     }
 
     public void SetUpGoodsPrices()

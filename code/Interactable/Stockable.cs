@@ -61,7 +61,7 @@ public class Stockable : AInteractable
         var box = Interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
         if (box == null) return;
 
-        FactoryPlayer.AddStockFromDictionary(box.Goods);
+        if (!FactoryPlayer.AddStockFromDictionary(box.Goods)) return;
 
         // Destroy the delivery box
         box.GameObject.Destroy();

@@ -31,11 +31,15 @@
         "DeliveryTime": 10,
         "Goods": {},
         "GoodsPrices": {},
+        "ProductionSystem": {
+          "_type": "component",
+          "go": "c2843f67-ba28-47a0-b7dd-012db0def17c",
+          "component_type": "ProductionSystem"
+        },
         "Status": "None"
       },
       {
         "__type": "Factory",
-        "MaxItems": 5,
         "Money": 0,
         "SteamId": 0,
         "Stock": {}
@@ -160,100 +164,6 @@
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true,
         "NetworkMode": 2
-      },
-      {
-        "Id": "d46f316e-6354-413c-96e7-f4b7261a4f7a",
-        "Name": "furnace",
-        "Position": "-610,-210.3741,-175",
-        "Rotation": "0,0,0.7071068,0.7071068",
-        "Scale": "0.8,0.8,0.8",
-        "Tags": "interactable,conveyor",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "__Prefab": "prefabs/furnace.prefab"
-      },
-      {
-        "Id": "da365d25-360f-41c7-a6a4-1b66e7931ebd",
-        "Name": "Conveyor",
-        "Position": "-610,-129.8227,-175",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Tags": "conveyor",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "Components": [
-          {
-            "__type": "Prop",
-            "Health": 0,
-            "IsStatic": true,
-            "Model": "models/conveyor/conveyor_s.vmdl",
-            "ShowCreatedComponents": true
-          },
-          {
-            "__type": "Conveyor",
-            "IsCooker": false,
-            "special": false,
-            "Speed": 100,
-            "Turn": false,
-            "Candies": [],
-            "IsMoving": true
-          }
-        ]
-      },
-      {
-        "Id": "08c8809c-be15-45d8-a2a1-6c1c568a891d",
-        "Name": "Upgrader Slot",
-        "Position": "-610,-49.20265,-175",
-        "Rotation": "0,0,0.7071068,0.7071068",
-        "Scale": "0.8,0.8,0.8",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Children": [
-          {
-            "Id": "baf85b41-81a5-4a7a-8563-966f579acdb9",
-            "Name": "Conveyor",
-            "Position": "0,0,0",
-            "Scale": "1.25,1.25,1.25",
-            "Tags": "conveyor",
-            "Enabled": true,
-            "NetworkMode": 1,
-            "Components": [
-              {
-                "__type": "Prop",
-                "Health": 0,
-                "IsStatic": true,
-                "Model": "models/conveyor/conveyor_s.vmdl",
-                "ShowCreatedComponents": true
-              },
-              {
-                "__type": "Conveyor",
-                "IsCooker": false,
-                "special": false,
-                "Speed": 100,
-                "Turn": false,
-                "Candies": [],
-                "IsMoving": true
-              }
-            ]
-          },
-          {
-            "Id": "e455f0ad-4d35-4990-9b03-69f43ebcf2a9",
-            "Name": "Upgrader",
-            "Position": "0,0,0",
-            "Tags": "interactable,conveyor",
-            "NetworkMode": 1,
-            "__Prefab": "prefabs/upgrader.prefab"
-          }
-        ]
-      },
-      {
-        "Id": "f1dd7340-3249-4cfa-9748-3dea06c5dd6d",
-        "Name": "vending_box",
-        "Position": "-609.9997,6.042275,-175",
-        "Rotation": "0,0,-0.7071067,0.7071068",
-        "Tags": "interactable",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "__Prefab": "prefabs/vending_box.prefab"
       },
       {
         "Id": "24a6d528-788f-4677-96d7-dfa0127e930a",
@@ -402,9 +312,133 @@
               "go": "4513a747-98b8-48d8-bbf9-8eab495f3447",
               "component_type": "Delivery"
             },
+            "Factory": {
+              "_type": "component",
+              "go": "4513a747-98b8-48d8-bbf9-8eab495f3447",
+              "component_type": "Factory"
+            },
             "Items": {},
             "MessageTips": "You can order items.",
             "order": {}
+          }
+        ]
+      },
+      {
+        "Id": "c2843f67-ba28-47a0-b7dd-012db0def17c",
+        "Name": "Production",
+        "Position": "-80.30933,-10.90878,26.29971",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ProductionSystem",
+            "HoldableCapacity": 5,
+            "ProductionSpeed": 0,
+            "StorageCapacity": 20,
+            "TransportCoolDownSpeed": 30,
+            "Upgrader": [
+              {
+                "_type": "gameobject",
+                "go": "e455f0ad-4d35-4990-9b03-69f43ebcf2a9"
+              }
+            ],
+            "Upgrades": {}
+          }
+        ],
+        "Children": [
+          {
+            "Id": "d46f316e-6354-413c-96e7-f4b7261a4f7a",
+            "Name": "furnace",
+            "Position": "-529.6907,-199.4653,-201.2997",
+            "Rotation": "0,0,0.7071068,0.7071068",
+            "Scale": "0.8,0.8,0.8",
+            "Tags": "interactable,conveyor",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/furnace.prefab"
+          },
+          {
+            "Id": "da365d25-360f-41c7-a6a4-1b66e7931ebd",
+            "Name": "Conveyor",
+            "Position": "-529.6907,-118.9139,-201.2997",
+            "Rotation": "0,0,0.7071067,0.7071068",
+            "Tags": "conveyor",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "Prop",
+                "Health": 0,
+                "IsStatic": true,
+                "Model": "models/conveyor/conveyor_s.vmdl",
+                "ShowCreatedComponents": true
+              },
+              {
+                "__type": "Conveyor",
+                "IsCooker": false,
+                "special": false,
+                "Speed": 100,
+                "Turn": false,
+                "Candies": [],
+                "IsMoving": true
+              }
+            ]
+          },
+          {
+            "Id": "08c8809c-be15-45d8-a2a1-6c1c568a891d",
+            "Name": "Upgrader Slot",
+            "Position": "-529.6907,-38.29387,-201.2997",
+            "Rotation": "0,0,0.7071068,0.7071068",
+            "Scale": "0.8,0.8,0.8",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Children": [
+              {
+                "Id": "baf85b41-81a5-4a7a-8563-966f579acdb9",
+                "Name": "Conveyor",
+                "Position": "0,0,0",
+                "Scale": "1.25,1.25,1.25",
+                "Tags": "conveyor",
+                "Enabled": true,
+                "NetworkMode": 1,
+                "Components": [
+                  {
+                    "__type": "Prop",
+                    "Health": 0,
+                    "IsStatic": true,
+                    "Model": "models/conveyor/conveyor_s.vmdl",
+                    "ShowCreatedComponents": true
+                  },
+                  {
+                    "__type": "Conveyor",
+                    "IsCooker": false,
+                    "special": false,
+                    "Speed": 100,
+                    "Turn": false,
+                    "Candies": [],
+                    "IsMoving": true
+                  }
+                ]
+              },
+              {
+                "Id": "e455f0ad-4d35-4990-9b03-69f43ebcf2a9",
+                "Name": "Upgrader",
+                "Position": "0,0,0",
+                "Tags": "interactable,conveyor",
+                "NetworkMode": 1,
+                "__Prefab": "prefabs/upgrader.prefab"
+              }
+            ]
+          },
+          {
+            "Id": "f1dd7340-3249-4cfa-9748-3dea06c5dd6d",
+            "Name": "vending_box",
+            "Position": "-529.6904,16.95106,-201.2997",
+            "Rotation": "0,0,-0.7071067,0.7071068",
+            "Tags": "interactable",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "__Prefab": "prefabs/vending_box.prefab"
           }
         ]
       }

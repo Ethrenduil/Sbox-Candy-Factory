@@ -13,12 +13,14 @@ public class Cooker : AInteractable
 	[Property] private SoundEvent CookingSound { get; set; }
 	[Property] private SoundEvent CookedSound { get; set; }
 	private float cookTimer { get; set; }
+	private float ReductionPercentage { get; set; } = 0.9f;
 	private Vector3 boxOffset { get; set; } = new( 0, -20, -150 );
 	private Vector3 cookedOffset { get; set; } = new( 0, -15, 80 );
 	private SoundHandle sound;
 	private FurnacePanel furnacePanel { get; set; }
 	private SkinnedModelRenderer Renderer { get; set; }
 	private ParticleBoxEmitter Smoke { get; set; }
+	private ProductionSystem ProductionSystem { get; set; }
 
 
     protected override void OnStart()
@@ -31,6 +33,7 @@ public class Cooker : AInteractable
 		furnacePanel = Components.Get<FurnacePanel>(FindMode.EnabledInSelfAndChildren);
 		Renderer = Components.Get<SkinnedModelRenderer>();
 		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
+		ProductionSystem = GameObject.Parent.Components.Get<ProductionSystem>();
     }
 	protected override void OnUpdate()
     {
@@ -107,7 +110,7 @@ public class Cooker : AInteractable
         var cooked = CookedObject.Clone( Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
         cooked.NetworkSpawn();
 		var candy = cooked.Components.Get<Candies>();
-        cookTimer = candy.CookingTime;
+        cookTimer = candy.CookingTime * (float)Math.Pow(ReductionPercentage, ProductionSystem.ProductionSpeed);
 		CookingStarted(cookTimer);
         await GameTask.DelaySeconds( cookTimer );
 		CookingFinished();

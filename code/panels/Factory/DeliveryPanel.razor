@@ -58,6 +58,7 @@
 	[Property] public Dictionary<string, int> Items { get; set; }
 	[Property] public Dictionary<string, int> order { get; set; }
 	[Property] public Delivery Delivery { get; set; }
+	[Property] public Factory Factory { get; set; }
 	private bool isDeliveryWindowOpen { get; set; }
 	private Player player;
 
@@ -178,6 +179,12 @@
 			StateHasChanged();
 			return;
 		}
+		if (!Factory.CanStore(GetTotalQuantity()))
+		{
+			MessageTips = "You don't have enough space to store the items.";
+			StateHasChanged();
+			return;
+		}
 		player.RemoveMoney(GetTotalNumber());
 		Delivery.StartDelivery(Delivery.GetDictionaryGoodsFromString(order));
 		CloseDeliveryWindow();
@@ -189,6 +196,16 @@
 		foreach (var item in order)
 		{
 			total += Items[item.Key] * item.Value;
+		}
+		return total;
+	}
+
+	public int GetTotalQuantity()
+	{
+		var total = 0;
+		foreach (var item in order)
+		{
+			total += item.Value;
 		}
 		return total;
 	}

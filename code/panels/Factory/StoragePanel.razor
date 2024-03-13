@@ -145,9 +145,9 @@
 		{
 			MessageTips = "You can't get more items than you have in storage.";
 			return true;
-		} else if (GetNumberOfItems() + sign > factory.MaxItems)
+		} else if (GetNumberOfItems() + sign > factory.GetHoldableCapacity())
 		{
-			MessageTips = "You can only get " + factory.MaxItems + " items at a time.";
+			MessageTips = "You can only get " + factory.GetHoldableCapacity() + " items at a time.";
 			return true;
 		}
 		return false;

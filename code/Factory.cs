@@ -5,7 +5,7 @@ public sealed class Factory : Component
 	[Property] [Sync] public ulong SteamId { get; set; }
 	[Property] [Sync] public string Name { get; set; }
 	[Property] [Sync] public int Money { get; set; }
-	[Property] [Sync] public int MaxItems { get; set; } = 10;
+	[Property] public ProductionSystem Production { get; set; }
 	[Property] public Dictionary<DeliveryGoods, int> Stock { get; set; } = new Dictionary<DeliveryGoods, int>();
 	public bool IsStarted { get; set; } = false;
 
@@ -41,6 +41,9 @@ public sealed class Factory : Component
 
 		GameObject.Network.AssignOwnership(owner);
 
+		// Start the production system
+		Production = GameObject.Components.Get<ProductionSystem>(FindMode.EverythingInChildren);
+		Production.StartProduction();
 	}
 
 	public string GetStockItemName(DeliveryGoods goods)
@@ -74,6 +77,16 @@ public sealed class Factory : Component
 		return Stock.TryGetValue( item, out int value ) ? value : 0;
 	}
 
+	public int GetStockCount()
+	{
+		var count = 0;
+		foreach (var item in Stock)
+		{
+			count += item.Value;
+		}
+		return count;
+	}
+
 	public bool CanGetQuantity(string goods, int quantity)
 	{
 		var item = GetStockItemNameFromString(goods);
@@ -97,6 +110,15 @@ public sealed class Factory : Component
 		}
 	}
 
+	public bool CanStore(int quantity)
+	{
+		Log.Info( $"Quantity: {quantity}" );
+		Log.Info( $"Stock Count: {GetStockCount()}" );
+		Log.Info( $"Storage Capacity: {GetStorageCapacity()}" );
+		Log.Info($"Can Store: {GetStockCount() + quantity <= GetStorageCapacity()}");
+		return GetStockCount() + quantity <= GetStorageCapacity();
+	}
+
 	public void AddStock(string goods, int quantity)
 	{
 		var item = GetStockItemNameFromString(goods);
@@ -110,12 +132,14 @@ public sealed class Factory : Component
 		}
 	}
 
-	public void AddStockFromDictionary(Dictionary<DeliveryGoods, int> stock)
+	public bool AddStockFromDictionary(Dictionary<DeliveryGoods, int> stock)
 	{
+		if(!CanStore(GetTotalQuantity(stock))) return false;
 		foreach (var item in stock)
 		{
 			AddStock(item.Key, item.Value);
 		}
+		return true;
 	}
 
 	public void AddStockFromDictionary(Dictionary<string, int> order)
@@ -173,5 +197,25 @@ public sealed class Factory : Component
 			newStock[GetStockItemNameFromString(item.Key)] = item.Value;
 		}
 		return newStock;
+	}
+
+	public int GetStorageCapacity()
+	{
+		return Production.StorageCapacity;
+	}
+
+	public int GetHoldableCapacity()
+	{
+		return Production.HoldableCapacity;
+	}
+
+	private int GetTotalQuantity(Dictionary<DeliveryGoods, int> stock)
+	{
+		var count = 0;
+		foreach (var item in stock)
+		{
+			count += item.Value;
+		}
+		return count;
 	}
 }
