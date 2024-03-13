@@ -9,7 +9,7 @@ public class Conveyor : Component, Component.ICollisionListener
     [Property] [Sync] public bool IsMoving { get; set; } = true;
     [Property] private readonly float Speed = 100; // Change this to the speed you want
 	[Property] private readonly bool Turn = false;
-	[Property] private readonly bool special = false;
+	[Property] public bool special = false;
 	[Property] private readonly bool IsCooker  = false;
 	[Property] public List<GameObject> Candies { get; set; } = new();
 	[Property]private Conveyor NextConveyor { get; set; }
@@ -33,7 +33,7 @@ public class Conveyor : Component, Component.ICollisionListener
     {
 		base.OnFixedUpdate();
 
-		if (NextConveyor is not null && !IsCooker)
+		if (NextConveyor is not null && !IsCooker && !special)
 		{
 			if (NextConveyor.IsMoving)
 				IsMoving = true;

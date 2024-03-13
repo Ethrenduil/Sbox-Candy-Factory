@@ -1,8 +1,10 @@
 using System;
+using Microsoft.VisualBasic;
 
 [Category( "Candy Factory - interactable")]
 public class Bob : AInteractable
 {
+	public DialogueMenu dialogue { get; set; }
 
     protected override void OnStart()
     {
@@ -11,11 +13,12 @@ public class Bob : AInteractable
         Description = $"Press E to talk to {Name}";
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
+		
+		dialogue = Scene.GetAllComponents<DialogueMenu>().FirstOrDefault();
     }
 
     public override void OnInteract(GameObject interactor)
     {
-		Log.Info( "Interacting with Bob" );
         if (IsInteracted)
 			return;
 
@@ -23,7 +26,6 @@ public class Bob : AInteractable
 		
 		var player = interactor.Components.Get<Player>();
 		var factory = Scene.GetAllComponents<Factory>().FirstOrDefault( x => !x.IsProxy );
-		var dialogue = Scene.GetAllComponents<DialogueMenu>().FirstOrDefault();
 		if (factory.IsStarted)
 			StartDialogue(player);
 		else
@@ -41,8 +43,23 @@ public class Bob : AInteractable
 				"Up for the challenge, sugar chum? Then slap on that hat and gloves, 'cause we're about to get this candy party started! First things first, a tour of our humble abode. You'll see the workshop, learn how the machines work their magic, and meet your one and only co-worker: the magnificent me!",
 				"Don't you worry, I'll be here to hold your wing every step of the way. Together, we'll turn this factory into the greatest candy haven the world has ever known!"
 			};
-			
-		dialogue.StartDialogue(factory, Name, dialogues);
+
+		var bob_Head = GameObject.Children.Where( x => x.Name == "Chicken_Head" ).FirstOrDefault();
+		var toLook = new List<GameObject>
+		{
+			bob_Head,
+			factory.GameObject.Children.Where( x => x.Name == "TitleFactory" ).FirstOrDefault( x => !x.Root.IsProxy),
+			bob_Head,
+			bob_Head
+		};
+		var duration = new List<int>
+		{
+			20,
+			25,
+			20,
+			9
+		};
+		dialogue.StartDialogue(Name, dialogues, "intro", toLook, duration);
 	}
 
 	private void StartDialogue(Player player)

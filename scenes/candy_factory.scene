@@ -29,8 +29,8 @@
     {
       "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Name": "Camera",
-      "Position": "2364.606,-173.0864,78.7081",
-      "Rotation": "-0.07875207,-0.1036509,0.5998253,-0.7894708",
+      "Position": "4672.642,822.5521,105.6457",
+      "Rotation": "-0.0434307,0.0355032,0.7730091,0.63191",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -94,8 +94,8 @@
     {
       "Id": "61c5b2e5-5bfc-4d9b-b4f6-8ae831d9a2f9",
       "Name": "Bob",
-      "Position": "4596.771,1178.077,48.21342",
-      "Rotation": "-0.00002130096,-0.00000368921,0.7071068,-0.7071068",
+      "Position": "4596.77,1178.077,48.1326",
+      "Rotation": "-0.00002389171,0.00001058126,0.7071068,-0.7071068",
       "Scale": "0.2,0.2,0.2",
       "Tags": "interactable",
       "Enabled": true,
@@ -110,10 +110,34 @@
         },
         {
           "__type": "Bob",
-          "Description": "This is an interactable object",
+          "Description": "Press E to talk to Bob",
           "IsInteracted": false,
           "Name": "Bob",
           "Type": "Bob"
+        }
+      ],
+      "Children": [
+        {
+          "Id": "e4f5a5bc-d3d6-42a6-ac25-2fd3131ab141",
+          "Name": "Camera Start",
+          "Position": "284.5366,7.252989,41.63533",
+          "Enabled": true,
+          "NetworkMode": 2
+        },
+        {
+          "Id": "5037297b-a89f-410b-96d1-30bdeef27d5b",
+          "Name": "Camera Waypoints",
+          "Position": "284.5366,7.252989,41.63533",
+          "Enabled": true,
+          "NetworkMode": 2
+        },
+        {
+          "Id": "b4a7d12c-1bf5-474f-8dee-22b0c1a0e86e",
+          "Name": "Chicken_Head",
+          "Position": "15.07878,0.007931399,62.55109",
+          "Rotation": "-0.0000001947074,0.000001141433,-0.00000000002965624,1",
+          "Enabled": true,
+          "NetworkMode": 2
         }
       ]
     },
@@ -126,8 +150,8 @@
         {
           "__type": "CandyFactory",
           "_isFactoryActive": [
-            false,
-            false,
+            true,
+            true,
             false,
             false
           ],
@@ -397,7 +421,7 @@
       "NetworkMode": 2,
       "Components": [
         {
-          "__type": "IntroductionSystem"
+          "__type": "CinematicSystem"
         }
       ]
     }
@@ -425,6 +449,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-12T12:09:37.7745723\u002B01:00",
+  "LastSaved": "2024-03-13T14:51:23.8906908\u002B01:00",
   "__references": []
 }

@@ -32,6 +32,7 @@ public class Player : Component
 	private bool Zoom { get; set; }
 	public bool InCinematic { get; set; }
 	public bool InMenu { get; set; } = false;
+	public bool InDialogue { get; set; } = false;
 
 
 	protected override void OnEnabled()
@@ -63,10 +64,6 @@ public class Player : Component
 
 	protected override void OnUpdate()
 	{
-		if (InCinematic)
-		{
-			return;
-		}
 		GetInput();
 		UpdateEyeInput();
 		UpdateCameraPosition();
@@ -79,6 +76,11 @@ public class Player : Component
 	{
 		if (IsProxy)
 			return;
+
+		if (InCinematic)
+		{
+			return;
+		}
 
 		if (Input.Down("attack2"))
 			Zoom = true;
@@ -150,6 +152,11 @@ public class Player : Component
 	{
 		if (!IsProxy)
 		{
+			
+			if (InCinematic)
+			{
+				return;
+			}
 			var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 
 			var lookDir = EyeAngles.ToRotation();
@@ -234,10 +241,13 @@ public class Player : Component
 
 		WishVelocity = 0;
 
-		if (Input.Down("Forward")) WishVelocity += rot.Forward;
-		if (Input.Down("Backward")) WishVelocity += rot.Backward;
-		if (Input.Down("Left")) WishVelocity += rot.Left;
-		if (Input.Down("Right")) WishVelocity += rot.Right;
+		if (!InCinematic)
+		{
+			if (Input.Down("Forward")) WishVelocity += rot.Forward;
+			if (Input.Down("Backward")) WishVelocity += rot.Backward;
+			if (Input.Down("Left")) WishVelocity += rot.Left;
+			if (Input.Down("Right")) WishVelocity += rot.Right;
+		}
 		IsRunning = Input.Down("Run");
 
 		WishVelocity = WishVelocity.WithZ(0);

@@ -67,14 +67,13 @@ public class PlayerInteract : Component
 
 	private bool ErrorChecking(AInteractable interactable)
 	{
-
-		// If the interactable is null, return
 		if (interactable == null) return false;
 
-		// // If the player is not carrying an object and the interactable is a machine, return
-		// if (interactable.Type == InteractableType.Cooker && !IsCarrying) return false;
-		
-		// if (interactable.Type == InteractableType.Resource && IsCarrying) return false;
+		if (PlayerComponent.InMenu) return false;
+
+		if (PlayerComponent.InCinematic) return false;
+
+		if (PlayerComponent.InDialogue) return false;
 
 		return true;
 	}
@@ -98,7 +97,7 @@ public class PlayerInteract : Component
 			if (interactable == null) return;
 
 			// If the interactable is not valid for the current interaction, return
-			// if (!ErrorChecking(interactable)) return;
+			if (!ErrorChecking(interactable)) return;
 
 			if(!interactable.CanInteract(GameObject)) return;
 			

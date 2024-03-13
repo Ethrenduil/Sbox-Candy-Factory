@@ -15,17 +15,14 @@
 
 @code {
     public string Value { get; set; } = null;
-    private Player player;
 
     protected override void OnStart()
     {
         base.OnAwake();
-		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
     }
 
     public void SetValue(string value)
     {
-		if (player.InMenu) return;
         Value = value;
         StateHasChanged();
     }

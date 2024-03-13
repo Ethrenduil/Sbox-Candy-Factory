@@ -1,10 +1,11 @@
 DialogueMenu {
     position: absolute;
-    bottom: 15%;
+    bottom: 5%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-items: flex-end;
     .dialogue {
         position: absolute;
         width: 80%;
@@ -29,6 +30,8 @@ DialogueMenu {
             color: white;
             justify-content: center;
             text-align: center;
+            margin-left: 5%;
+            margin-right: 5%;
         }
         .nextButton {
             width: 20%;
@@ -44,6 +47,7 @@ DialogueMenu {
             text-align: center;
             margin-bottom: 2%;
             margin-top: 2%;
+            pointer-events: all;
             &:hover {
                 color: #EF8CFF;
                 background-color: #ffffff;

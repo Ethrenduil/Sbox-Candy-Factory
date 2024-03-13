@@ -13,7 +13,7 @@
             <div class = "dialogueText">
                 @dialogueText
             </div>
-            <button class="nextButton" @onclick="NextDialogue">Suivant</button>
+            <button class="nextButton" @onclick="@NextDialogue">@ButtonText</button>
         </div>
     }
 </root>
@@ -22,21 +22,36 @@
 
     [Property]
     public bool InDialogue = false;
+
+	public SkinnedModelRenderer Renderer { get; set; }
     public string talkerName = "Talker";
     public string dialogueText = "Some text";
     public List<string> dialogueLines = new List<string>();
     public int currentDialogueIndex = 0;
     private Player player;
+	private List<GameObject> ToLookAt;
+	private List<int> Duration;
+	private SoundHandle CurrentSound;
+	private string SoundPath;
+	private CinematicSystem cinematicSystem;
+	private string ButtonText => currentDialogueIndex < dialogueLines.Count - 1 ? "Next" : "Close";
 
     protected override void OnStart()
     {
-        base.OnAwake();
+        base.OnStart();
         player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		cinematicSystem = Scene.GetAllComponents<CinematicSystem>().FirstOrDefault();
+		Renderer = Scene.GetAllComponents<Bob>().FirstOrDefault().Components.Get<SkinnedModelRenderer>();
     }
 
     protected override void OnUpdate()
     {
         base.OnUpdate();
+
+		if (CurrentSound != null && !CurrentSound.IsPlaying)
+		{
+			Renderer.Set( "talking", false );
+		}
 
         if (Input.EscapePressed && InDialogue)
         {
@@ -46,31 +61,47 @@
 
     protected void ChangeState()
     {
+		player.InDialogue = !InDialogue;
         InDialogue = !InDialogue;
         StateHasChanged();
     }
 
-    public void StartDialogue(Factory factory, string name, List<string> dialogue)
-    {
-        ChangeState();
-        talkerName = name;
-        dialogueLines = dialogue;
-        currentDialogueIndex = 0;
-        dialogueText = dialogueLines[currentDialogueIndex];
-        Scene.GetAllComponents<IntroductionSystem>().FirstOrDefault().StartGameIntroduction(player, factory);
+    public void StartDialogue(string name, List<string> dialogue, string soundPath, List<GameObject> toLookAt, List<int> duration)
+	{
+		ChangeState();
+		talkerName = name;
+		dialogueLines = dialogue;
+		currentDialogueIndex = 0;
+		dialogueText = dialogueLines[currentDialogueIndex];
+		ToLookAt = toLookAt;
+		SoundPath = soundPath;
+		Duration = duration;
+		CurrentSound = Sound.Play("/sounds/bob/" + SoundPath + ".sound");
+		Renderer.Set( "talking", true );
+		cinematicSystem.StartCinematic(player, ToLookAt[currentDialogueIndex], 20);
     }
 
-    public void NextDialogue()
+    public async void NextDialogue()
     {
+		player.InCinematic = false;
+		cinematicSystem.Next = true;
+		cinematicSystem.ShouldStop = true;
+		await Task.Delay(30);
+		CurrentSound.Stop();
         currentDialogueIndex++;
         if (currentDialogueIndex < dialogueLines.Count)
         {
+			CurrentSound = Sound.Play("/sounds/bob/" + SoundPath + "_" + (currentDialogueIndex+1) + ".sound");
+			Renderer.Set( "talking", true );
+			cinematicSystem.StartCinematic(player, ToLookAt[currentDialogueIndex], Duration[currentDialogueIndex]);
             dialogueText = dialogueLines[currentDialogueIndex];
             StateHasChanged();
         }
         else
-        {
+		{
             ChangeState();
-        }
+			player.InDialogue = false;
+			Renderer.Set( "talking", false );
+		}
     }
 }

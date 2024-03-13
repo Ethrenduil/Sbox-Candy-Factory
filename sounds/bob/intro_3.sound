@@ -1,15 +1,15 @@
 {
-  "UI": false,
+  "UI": true,
   "Volume": "1.00,1.00,0",
   "Pitch": "1.00,1.00,0",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/bob/intro/intro.vsnd"
+    "sounds/bob/intro_3.vsnd"
   ],
   "Occlusion": true,
-  "Reflections": true,
+  "Reflections": false,
   "OcclusionRadius": 64,
-  "DistanceAttenuation": true,
+  "DistanceAttenuation": false,
   "__references": []
 }
