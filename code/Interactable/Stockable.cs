@@ -4,9 +4,6 @@ using System;
 [Category("Candy Factory - interactable")]
 public class Stockable : AInteractable
 {
-
-    [Property] public GameObject Owner { get; set; }
-
     // temporary stock
     [Property] public Factory FactoryPlayer { get; set; }
     [Property] public GameObject boxPrefab { get; set; }
@@ -39,7 +36,7 @@ public class Stockable : AInteractable
         }
         else
         {
-            StoragePanel.OpenStorageWindow();
+            StoragePanel.OpenStorageWindow(this);
         }
 
         // Reset interaction state

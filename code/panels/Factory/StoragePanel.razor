@@ -68,7 +68,7 @@
 		}
 	}
 
-        public void OpenStorageWindow()
+    public void OpenStorageWindow(Stockable stockable)
 	{
 		// Open the storage window
 		isStorageWindowOpen = true;
@@ -76,12 +76,13 @@
 		storageItems.Clear();
 
 		// Set the storage window properties
-		var storageItemsTemp = stockable.FactoryPlayer.Stock;
+		this.stockable = stockable;
+		var storageItemsTemp = this.stockable.FactoryPlayer.Stock;
+		factory = this.stockable.FactoryPlayer;
 		foreach (var item in storageItemsTemp)
 		{
 			storageItems.Add(factory.GetStockItemName(item.Key), item.Value);
 		}
-		factory = stockable.FactoryPlayer;
 		player.InMenu = true;
 		StateHasChanged();
 	}
