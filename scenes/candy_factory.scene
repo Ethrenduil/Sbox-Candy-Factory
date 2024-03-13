@@ -10,11 +10,13 @@
       "Components": [
         {
           "__type": "SkyBox2D",
+          "Id": "95e8a349-9add-4ddb-b118-40988b842c85",
           "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "EnvmapProbe",
+          "Id": "2a565f56-07f6-479a-b90b-fe5bc02d8a44",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -36,6 +38,7 @@
       "Components": [
         {
           "__type": "CameraComponent",
+          "Id": "3f18ed15-2dec-4c84-8e7d-b79ce3f88063",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
           "FieldOfView": 60,
@@ -52,6 +55,7 @@
         },
         {
           "__type": "Bloom",
+          "Id": "41d39ad7-949b-4ffd-a1f6-52fbb63c23d6",
           "BloomColor": {
             "color": [
               {
@@ -80,6 +84,7 @@
         },
         {
           "__type": "Tonemapping",
+          "Id": "4dab92ad-f218-417d-b67d-e4ffb7c58cea",
           "ExposureCompensation": 0,
           "MaximumExposure": 2,
           "MinimumExposure": 1,
@@ -87,6 +92,7 @@
         },
         {
           "__type": "Sharpen",
+          "Id": "b78533eb-cdb7-4aa3-90e7-d315391e60d6",
           "Scale": 0.2
         }
       ]
@@ -103,13 +109,14 @@
       "Components": [
         {
           "__type": "Prop",
+          "Id": "ad67ccf3-b27d-4647-b284-d8d2f26ed7b0",
           "Health": 0,
           "IsStatic": false,
-          "Model": "models/bob/bob.vmdl",
-          "ShowCreatedComponents": true
+          "Model": "models/bob/bob.vmdl"
         },
         {
           "__type": "Bob",
+          "Id": "4f488892-0b7b-4dd6-a670-4b972e8b4286",
           "Description": "Press E to talk to Bob",
           "IsInteracted": false,
           "Name": "Bob",
@@ -149,6 +156,7 @@
       "Components": [
         {
           "__type": "CandyFactory",
+          "Id": "1dbb4664-3096-468c-835b-024e8cb67da1",
           "_isFactoryActive": [
             false,
             false,
@@ -193,6 +201,7 @@
       "Components": [
         {
           "__type": "ScreenPanel",
+          "Id": "c949e2f7-ee5e-4e68-9291-d88fefd9ca54",
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
@@ -207,7 +216,8 @@
           "NetworkMode": 2,
           "Components": [
             {
-              "__type": "MoneyHUD"
+              "__type": "MoneyHUD",
+              "Id": "8d90e30f-95fb-4911-9ed7-522e2624694d"
             }
           ]
         },
@@ -218,10 +228,12 @@
           "NetworkMode": 2,
           "Components": [
             {
-              "__type": "CurrentTaskHUD"
+              "__type": "CurrentTaskHUD",
+              "Id": "1f990595-3266-4573-bd0a-5e62435ef642"
             },
             {
-              "__type": "PlayerTask"
+              "__type": "PlayerTask",
+              "Id": "53534ab7-a74e-40d1-8fca-38750f93f6b1"
             }
           ]
         },
@@ -233,13 +245,15 @@
           "Components": [
             {
               "__type": "ScreenPanel",
+              "Id": "53848cd1-f2fb-4ecf-a225-c4118bcd47fa",
               "AutoScreenScale": true,
               "Opacity": 1,
               "Scale": 1,
               "ZIndex": 100
             },
             {
-              "__type": "TabMenu"
+              "__type": "TabMenu",
+              "Id": "748392cb-52c4-439d-a9b5-6061c8b95e62"
             }
           ]
         },
@@ -251,7 +265,8 @@
           "NetworkMode": 2,
           "Components": [
             {
-              "__type": "Chat"
+              "__type": "Chat",
+              "Id": "19c58a12-ed84-4952-a45f-f6623f318d9e"
             }
           ]
         },
@@ -263,6 +278,7 @@
           "Components": [
             {
               "__type": "EscapeMenu",
+              "Id": "203d248e-15c9-4533-8249-d228812bd651",
               "IsPaused": false
             }
           ]
@@ -274,7 +290,8 @@
           "NetworkMode": 2,
           "Components": [
             {
-              "__type": "Interact"
+              "__type": "Interact",
+              "Id": "9147a6bd-b3de-4cde-a0e1-685760ed1f85"
             }
           ]
         },
@@ -285,7 +302,8 @@
           "NetworkMode": 2,
           "Components": [
             {
-              "__type": "DeliveryHud"
+              "__type": "DeliveryHud",
+              "Id": "28ec1e04-f0c6-4b06-964e-9280ef46388a"
             }
           ]
         },
@@ -297,6 +315,7 @@
           "Components": [
             {
               "__type": "DialogueMenu",
+              "Id": "e0361f79-2e60-47c0-8e8b-3ae796a420bf",
               "InDialogue": false
             }
           ]
@@ -312,16 +331,19 @@
       "Components": [
         {
           "__type": "ModelRenderer",
+          "Id": "9cabe910-11a7-4c69-b2e0-f69dc635bc1b",
           "BodyGroups": 18446744073709551615,
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
         {
-          "__type": "ChangeVar"
+          "__type": "ChangeVar",
+          "Id": "454a182f-d64e-4c97-96de-2ddb82102bff"
         },
         {
           "__type": "BoxCollider",
+          "Id": "323bfa6c-bc58-4153-88a6-152b694e83dc",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
@@ -337,6 +359,7 @@
       "Components": [
         {
           "__type": "MapInstance",
+          "Id": "6aa36834-ea7a-40c6-9d29-6f39340c2061",
           "MapName": "maps/candy_factory.vmap",
           "UseMapFromLaunch": false
         }
@@ -410,7 +433,8 @@
       "NetworkMode": 2,
       "Components": [
         {
-          "__type": "NetworkManager"
+          "__type": "NetworkManager",
+          "Id": "847b98e5-7698-4a35-aa7e-e57bfdcb964d"
         }
       ]
     },
@@ -421,7 +445,8 @@
       "NetworkMode": 2,
       "Components": [
         {
-          "__type": "CinematicSystem"
+          "__type": "CinematicSystem",
+          "Id": "374f48b6-a591-45d6-b2bb-1c5a8ec17c53"
         }
       ]
     },
@@ -434,6 +459,7 @@
       "Components": [
         {
           "__type": "WorldPanel",
+          "Id": "90d1f60b-c26f-4df1-badb-3a5fedb7210b",
           "HorizontalAlign": "Center",
           "LookAtCamera": true,
           "PanelSize": "1024,1024",
@@ -442,6 +468,7 @@
         },
         {
           "__type": "FollowTask",
+          "Id": "872c1c62-a58b-4981-90be-8b877774f8bd",
           "speed": 3
         }
       ]
@@ -470,6 +497,6 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-13T17:41:46.1156205\u002B01:00",
+  "LastSaved": "2024-03-13T18:37:06.8943732\u002B01:00",
   "__references": []
 }
