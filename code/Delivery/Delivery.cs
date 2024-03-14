@@ -83,7 +83,6 @@ public sealed class Delivery : Component
         var GOCar = DeliveryCarPrefab.Clone(DeliveryCarSpawn.Transform.Position, DeliveryCarSpawn.Transform.Rotation);
         GOCar.NetworkSpawn();
         DeliveryCar = GOCar.Components.Get<DeliveryCar>();
-        Log.Info("Name GameObject: " + GameObject.Name);
         DeliveryDestination = GameObject.Children.Where(c => c.Name == "DeliveryDestination").FirstOrDefault();
         DeliveryCar.StartDelivery(DeliveryDestination.Transform.World.Position);    
 
@@ -110,7 +109,6 @@ public sealed class Delivery : Component
         Status = DeliveryStatus.Delivered;
         
         // Set Delivery Cooldown
-        Log.Info("Delivery Cooldown: " + ProductionSystem.TransportCoolDownSpeed);
         DeliveryCooldown = ProductionSystem.TransportCoolDownSpeed;
     }
 

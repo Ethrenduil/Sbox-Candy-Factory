@@ -20,24 +20,19 @@ public sealed class DeliveryGuy : Component
 	[Sync]
 	public float DesinationMargin { get; set; } = 10.0f;
 
-	public NavMeshAgent Agent { get; set; }
+	[Property] public NavMeshAgent Agent { get; set; }
+	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	public Vector3 Destination { get; set; }
 
-	private CitizenAnimationHelper AnimationHelper { get; set; }
-
-
-	[Broadcast]
 	protected override void OnAwake()
 	{
 		IsDelivering = false;
-		Agent = GameObject.Components.Get<NavMeshAgent>();
-		AnimationHelper = Components.Get<CitizenAnimationHelper>( true );
-		DressDeliveryGuy();
 	}
 
     protected override void OnUpdate()
     {
-        UpdateAnimation();
+		if (IsProxy) return;
+        UpdateAnimation(Agent.Velocity.Length, Agent.WishVelocity.Length);
     }
 	protected override void OnFixedUpdate()
 	{
@@ -61,6 +56,7 @@ public sealed class DeliveryGuy : Component
 	{
 		IsDelivering = true;
 		Destination = destination;
+		DressDeliveryGuy(FileSystem.Mounted.ReadAllText( "materials/clothes/delivery_guy.json" ));
 	}
 
 	// Stop the delivery car and return to the spawn
@@ -76,27 +72,29 @@ public sealed class DeliveryGuy : Component
 		return Transform.Position.Distance(Destination) < DesinationMargin;
 	}
 
-    private void UpdateAnimation()
+	[Broadcast]
+    private void UpdateAnimation(float velocity, float wishVelocity)
 	{
-		// Log.Info( "UpdateAnimation" );
 		float rotateDifference = 0;
 
 		if (AnimationHelper is not null)
 		{
-			AnimationHelper.WithVelocity(Agent.Velocity.Length);
-			AnimationHelper.WithWishVelocity(Agent.WishVelocity.Length);
+			AnimationHelper.WithVelocity(velocity);
+			AnimationHelper.WithWishVelocity(wishVelocity);
 			AnimationHelper.IsGrounded = true;
 			AnimationHelper.FootShuffle = rotateDifference;
+		} else 
+		{
+			AnimationHelper = GameObject.Components.Get<CitizenAnimationHelper>();
 		}
 	}
 
 	[Broadcast]
-	private void DressDeliveryGuy()
+	private void DressDeliveryGuy(string clothes)
 	{
-		// Log.Info( "DressDeliveryGuy" );
 		// Dress the delivery guy
 		var clothing = new ClothingContainer();
-		clothing.Deserialize( FileSystem.Mounted.ReadAllText( "clothes/delivery_guy.json" ) );
+		clothing.Deserialize(clothes);
 		clothing.Apply( GameObject.Components.Get<SkinnedModelRenderer>(FindMode.EverythingInChildren));
 	}
 }

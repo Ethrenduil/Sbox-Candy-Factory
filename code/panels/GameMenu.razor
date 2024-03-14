@@ -109,7 +109,6 @@
 	{
 		base.OnStart();
 		settings = GameObject.Components.Get<Settings>();
-		Log.Info(settings.Volume.ToString());
 	}
 
 
@@ -177,7 +176,6 @@
 
 	public string GetVolumeSettings()
 	{
-		Log.Info(settings.Volume.ToString());
 		return settings.Volume.ToString();
 	}
 

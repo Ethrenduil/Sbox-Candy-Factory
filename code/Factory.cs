@@ -7,6 +7,7 @@ public sealed class Factory : Component
 	[Property] [Sync] public int Money { get; set; }
 	[Property] public ProductionSystem Production { get; set; }
 	[Property] public Dictionary<DeliveryGoods, int> Stock { get; set; } = new Dictionary<DeliveryGoods, int>();
+
 	public bool IsStarted { get; set; } = false;
 
 	protected override void OnAwake()
@@ -21,7 +22,15 @@ public sealed class Factory : Component
 
 	protected override void OnUpdate()
 	{
+		if (IsProxy) return;
 		base.OnUpdate();
+
+		// Add IsStarted to the factory when the buying factory will be available
+		if (!Production.IsStarted)
+		{
+			Production.IsStarted = true;
+			Production.StartProduction();
+		}
 	}
 
 	public void StartFactory(Connection owner)
@@ -43,7 +52,6 @@ public sealed class Factory : Component
 
 		// Start the production system
 		Production = GameObject.Components.Get<ProductionSystem>(FindMode.EverythingInChildren);
-		Production.StartProduction();
 	}
 
 	public string GetStockItemName(DeliveryGoods goods)
@@ -112,10 +120,6 @@ public sealed class Factory : Component
 
 	public bool CanStore(int quantity)
 	{
-		Log.Info( $"Quantity: {quantity}" );
-		Log.Info( $"Stock Count: {GetStockCount()}" );
-		Log.Info( $"Storage Capacity: {GetStorageCapacity()}" );
-		Log.Info($"Can Store: {GetStockCount() + quantity <= GetStorageCapacity()}");
 		return GetStockCount() + quantity <= GetStorageCapacity();
 	}
 

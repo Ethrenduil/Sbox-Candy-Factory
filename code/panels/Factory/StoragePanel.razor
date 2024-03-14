@@ -48,8 +48,6 @@
 	[Property] public Dictionary<string, int> order { get; set; }
 	[Property] public Factory factory { get; set; }
 
-	[Category ("Required")]
-	[Property]
 	public Stockable stockable { get; set; }
 	private bool isStorageWindowOpen { get; set; }
 	private Player player;
@@ -62,6 +60,7 @@
 
 	protected override void OnUpdate()
 	{
+		if (IsProxy) return;
 		if (Input.EscapePressed && isStorageWindowOpen)
 		{
 			CloseStorageWindow();
@@ -77,8 +76,8 @@
 
 		// Set the storage window properties
 		this.stockable = stockable;
-		var storageItemsTemp = this.stockable.FactoryPlayer.Stock;
 		factory = this.stockable.FactoryPlayer;
+		var storageItemsTemp = this.stockable.FactoryPlayer.Stock;
 		foreach (var item in storageItemsTemp)
 		{
 			storageItems.Add(factory.GetStockItemName(item.Key), item.Value);
