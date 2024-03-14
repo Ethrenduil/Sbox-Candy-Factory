@@ -1,5 +1,5 @@
 {
-  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "__guid": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -260,7 +260,8 @@
           "Components": [
             {
               "__type": "Chat",
-              "__guid": "19c58a12-ed84-4952-a45f-f6623f318d9e"
+              "__guid": "19c58a12-ed84-4952-a45f-f6623f318d9e",
+              "MyStringValue": "Hello World!"
             }
           ]
         },
@@ -332,30 +333,40 @@
     },
     {
       "__guid": "65770da1-ee3c-4cf7-906c-fb3b001e7a43",
-      "Name": "Change Task",
+      "Name": "Quest",
       "Position": "165.1333,-822.1245,55.6918",
       "Enabled": true,
-      "NetworkMode": 2,
+      "NetworkMode": 0,
       "Components": [
         {
-          "__type": "ModelRenderer",
-          "__guid": "9cabe910-11a7-4c69-b2e0-f69dc635bc1b",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "ChangeVar",
-          "__guid": "454a182f-d64e-4c97-96de-2ddb82102bff"
-        },
-        {
-          "__type": "BoxCollider",
-          "__guid": "323bfa6c-bc58-4153-88a6-152b694e83dc",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
+          "__type": "QuestSystem",
+          "__guid": "39d08d08-34e5-4c21-854e-fa7966d9a56a",
+          "Candies": [
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_01.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_02.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_03.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_04.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_05.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_06.prefab"
+            }
+          ]
         }
       ]
     },
@@ -505,6 +516,8 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-14T11:34:52.2594883\u002B01:00",
+  "LastSaved": "2024-03-14T15:09:55.4004398\u002B01:00",
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

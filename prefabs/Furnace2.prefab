@@ -1,7 +1,7 @@
 {
   "RootObject": {
-    "__guid": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-    "Name": "upgrader",
+    "__guid": "c118b649-5a8c-434e-a350-2c6a90125411",
+    "Name": "furnace2",
     "Scale": "0.8,0.8,0.8",
     "Tags": "interactable,conveyor",
     "Enabled": true,
@@ -9,153 +9,94 @@
     "Components": [
       {
         "__type": "ModelCollider",
-        "__guid": "18482431-6e6b-47c5-aea1-74b67e28cf49",
+        "__guid": "48224c42-f020-4233-8d5c-c2ded8eafffb",
         "IsTrigger": false,
-        "Model": "models/conveyor/transformer.vmdl",
+        "Model": "models/conveyor/furnace.vmdl",
         "Static": true
       },
       {
         "__type": "SkinnedModelRenderer",
-        "__guid": "7276e855-40af-449f-afc4-6ad9304d533c",
-        "AnimationGraph": "animgraphs/upgrader.vanmgrph",
+        "__guid": "73cc51fe-73f3-49f8-a859-7bdf27d31a0f",
         "BodyGroups": 18446744073709551615,
-        "CreateBoneObjects": true,
-        "Model": "models/conveyor/transformer.vmdl",
+        "CreateBoneObjects": false,
+        "Model": "models/conveyor/furnace.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
+        "__type": "Cooker",
+        "__guid": "36b51065-ba55-4329-97df-5418f52a329a",
+        "BoxPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/box.prefab"
+        },
+        "conveyor": {
+          "_type": "component",
+          "component_id": "a785d51a-98bc-420d-9681-39d5c89dbaa6",
+          "go": "c118b649-5a8c-434e-a350-2c6a90125411",
+          "component_type": "Conveyor"
+        },
+        "CookedObject": {
+          "_type": "gameobject",
+          "prefab": "prefabs/candy_choco_02.prefab"
+        },
+        "CookedSound": "sounds/furnace/furnace_cooked.sound",
+        "CookingSound": "sounds/furnace/furnace_cooking.sound",
+        "Description": "This is an interactable object",
+        "IsInteracted": false,
+        "Name": "Furnace",
+        "Type": "Cooker"
+      },
+      {
         "__type": "Conveyor",
-        "__guid": "0edb8810-0cfe-46c3-bb8b-c629baca941a",
-        "IsCooker": false,
-        "special": true,
+        "__guid": "a785d51a-98bc-420d-9681-39d5c89dbaa6",
+        "IsCooker": true,
+        "special": false,
         "Speed": 100,
         "Turn": false,
         "Candies": [],
         "IsMoving": true
-      },
-      {
-        "__type": "Upgrader",
-        "__guid": "51324320-ce20-4b34-882c-471703d2a409",
-        "conveyor": {
-          "_type": "component",
-          "component_id": "0edb8810-0cfe-46c3-bb8b-c629baca941a",
-          "go": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-          "component_type": "Conveyor"
-        },
-        "Description": "This is an interactable object",
-        "furnacePanel": {
-          "_type": "component",
-          "component_id": "26251ea7-8c5b-4809-8a79-e39bf11390ce",
-          "go": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
-          "component_type": "FurnacePanel"
-        },
-        "IsInteracted": false,
-        "Name": "Upgrader",
-        "Type": "Upgrader",
-        "upgradedObject": {
-          "_type": "gameobject",
-          "prefab": "prefabs/candy_choco_04.prefab"
-        },
-        "upgradedSound": "sounds/furnace/furnace_cooked.sound",
-        "UpgradeOrder": 0,
-        "upgradeSound": "sounds/furnace/furnace_cooking.sound"
       }
     ],
     "Children": [
       {
-        "__guid": "1cadc133-3f4b-402f-82ea-6e4cda80dee2",
-        "Name": "Panel",
-        "Position": "0.000001194439,0.00001090264,45.72902",
-        "Rotation": "0.4999998,0.4999997,0.5,0.5000005",
-        "Scale": "0.8,0.8,0.8",
+        "__guid": "6be9b2f6-e9a3-43f2-8696-22cba13e5174",
+        "Name": "Furnace Screen",
+        "Position": "-19.05182,-29.87411,97.66831",
+        "Rotation": "0,0,-0.7071068,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
-        "Children": [
+        "Components": [
           {
-            "__guid": "9b0a42ee-21d7-407f-9a6c-fafb96d9262d",
-            "Name": "Panel_end",
-            "Position": "0.00002017575,13.68841,0.00002183861",
-            "Enabled": true,
-            "NetworkMode": 2,
-            "Children": [
-              {
-                "__guid": "5ffdeebd-5821-46ca-a01e-1376de1e9c80",
-                "Name": "Panel_end_end",
-                "Position": "0.00002385267,13.68838,0.00001952869",
-                "Enabled": true,
-                "NetworkMode": 2
-              }
-            ]
+            "__type": "WorldPanel",
+            "__guid": "c8fff693-505b-415c-aaa3-35fe886b7356",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": false,
+            "PanelSize": "1000,680",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "FurnacePanel",
+            "__guid": "1ba692e5-cc3d-4ae4-bdda-8b4c69c5e17a",
+            "candy": {
+              "_type": "gameobject",
+              "prefab": "prefabs/candy_choco_01.prefab"
+            }
           }
         ]
       },
       {
-        "__guid": "4087a1aa-4cd8-4b3e-bc15-4e2c0634600b",
-        "Name": "Upgrader",
-        "Position": "0.000002858549,0.00002609249,109.4399",
-        "Rotation": "0.4999998,0.4999997,0.5,0.5000005",
-        "Scale": "0.8,0.8,0.8",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Children": [
-          {
-            "__guid": "d1299b3d-daa5-486f-822b-49f9295eaed1",
-            "Name": "Upgrader_end",
-            "Position": "0.00004778798,35.78135,0.00005364798",
-            "Enabled": true,
-            "NetworkMode": 2,
-            "Children": [
-              {
-                "__guid": "4598f581-1c6d-4ff4-9596-42aff72381bb",
-                "Name": "Upgrader_end_end",
-                "Position": "0.0000481445,12.60994,0.00004390113",
-                "Enabled": true,
-                "NetworkMode": 2
-              },
-              {
-                "__guid": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
-                "Name": "Furnace Screen",
-                "Position": "-31.9999,-16.78134,-0.00004853187",
-                "Rotation": "0.00000005960464,0.7071068,0.7071067,-0.00000002980232",
-                "Scale": "1.25,1.25,1.25",
-                "Enabled": true,
-                "NetworkMode": 2,
-                "Components": [
-                  {
-                    "__type": "WorldPanel",
-                    "__guid": "d12965f0-7163-4629-a7ce-b027a156e621",
-                    "HorizontalAlign": "Center",
-                    "LookAtCamera": false,
-                    "PanelSize": "800,544",
-                    "RenderScale": 1,
-                    "VerticalAlign": "Center"
-                  },
-                  {
-                    "__type": "FurnacePanel",
-                    "__guid": "26251ea7-8c5b-4809-8a79-e39bf11390ce",
-                    "candy": {
-                      "_type": "gameobject",
-                      "prefab": "prefabs/candy_choco_09.prefab"
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "__guid": "abdad696-1e3c-4bfa-ad0f-84323ad5e45e",
+        "__guid": "5e54e857-4b76-4c4a-acba-62b134f315b2",
         "Name": "Smoke",
-        "Position": "-0.04322338,0.2534761,91.10779",
+        "Position": "-18.67244,0.2534761,88.87357",
         "Tags": "particles",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "ParticleEffect",
-            "__guid": "911926c7-f37f-4141-968b-ac643bb34d82",
+            "__guid": "7751ce42-19fc-4e58-872d-1e86d6a3030c",
             "Alpha": {
               "Type": "Curve",
               "CurveA": [
@@ -265,7 +206,7 @@
           },
           {
             "__type": "ParticleSpriteRenderer",
-            "__guid": "a98edba6-1902-401d-9b3e-e708465ec0cf",
+            "__guid": "31ac66e6-83b0-4565-9d9a-32c55cbe98d2",
             "Additive": false,
             "BlurAmount": 0.5,
             "BlurOpacity": 0.91,
@@ -284,13 +225,13 @@
           },
           {
             "__type": "ParticleBoxEmitter",
-            "__guid": "1ee33fce-2305-479f-9a6f-eeda679c08ae",
+            "__guid": "ef6f892e-684f-435c-9bf7-fe4ccf4c9c2e",
             "__enabled": false,
             "Burst": 100,
             "Delay": 0,
             "DestroyOnEnd": false,
             "Duration": 10,
-            "Loop": false,
+            "Loop": true,
             "OnEdge": false,
             "Rate": 1,
             "Size": "50,60,50"

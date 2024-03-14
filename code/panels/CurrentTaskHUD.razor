@@ -11,29 +11,15 @@
             <div class="description">@LocalPlayer.CurrentTask.Description</div>
         </div>
         <div class="progress">
-            @if (LocalPlayer.CurrentTask.Needed != null && !LocalPlayer.CurrentTask.IsComplete)
+            <!-- @foreach (var objective in LocalPlayer.CurrentTask.Objectives)
             {
-                @if (LocalPlayer.CurrentTask.Needed.Money > 0)
-                {
-                    <span class="category">Earned:  @("$ " + LocalPlayer.CurrentTask.Needed.CurrentMoney.ToString("N0").Replace(",", " ")) / @("$ " + LocalPlayer.CurrentTask.Needed.Money.ToString("N0").Replace(",", " "))</span>
-                }
-                @if (LocalPlayer.CurrentTask.Needed.CandyCreated != null)
-                {
-                    <span class="category">@LocalPlayer.CurrentTask.Needed.CandyCreated.Name : @LocalPlayer.CurrentTask.Needed.CandyCreated.Current / @LocalPlayer.CurrentTask.Needed.CandyCreated.Quantity</span>
-                }
-                @if (LocalPlayer.CurrentTask.Needed.CandyUpgraded != null)
-                {
-                    <span class="category">@LocalPlayer.CurrentTask.Needed.CandyUpgraded.Name : @LocalPlayer.CurrentTask.Needed.CandyUpgraded.Current / @LocalPlayer.CurrentTask.Needed.CandyUpgraded.Quantity</span>
-                }
-                @if (LocalPlayer.CurrentTask.Needed.TalkToBob)
-                {
-                    <span class="category">Talk to Bob</span>
-                }
-            }
-            else if (LocalPlayer.CurrentTask.IsComplete)
+                <span class="category">@GetObjectiveString(objective)</span>
+            } -->
+            <!-- else if (LocalPlayer.CurrentTask.IsComplete)
             {
                 <span class="completed">@LocalPlayer.CurrentTask.CompletedMessage</span>
-            }
+            } -->
+            En cours de rework ! Ne pas toucher.
         </div>
     }
 </root>
@@ -55,5 +41,10 @@
             LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
             StateHasChanged();
         }
+    }
+
+    private string GetObjectiveString(QuestObjective objective)
+    {
+        return $"{objective.Description}";
     }
 }

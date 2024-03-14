@@ -115,10 +115,10 @@ public sealed class Delivery : Component
     public void SetUpGoodsPrices()
     {
         GoodsPrices = new Dictionary<DeliveryGoods, int> {
-            { DeliveryGoods.Sugar, 3 },
-            { DeliveryGoods.Flour, 2 },
-            { DeliveryGoods.Milk, 5 },
-            { DeliveryGoods.Vanilla, 7 }
+            { DeliveryGoods.Sugar, 1 },
+            { DeliveryGoods.Cacao, 3 },
+            { DeliveryGoods.Milk, 2 },
+            { DeliveryGoods.Vanilla, 5 }
         };
     }
 
@@ -127,7 +127,7 @@ public sealed class Delivery : Component
 		return item switch
 		{
 			DeliveryGoods.Sugar => "Sugar",
-			DeliveryGoods.Flour => "Flour",
+			DeliveryGoods.Cacao => "Cacao",
 			DeliveryGoods.Milk => "Milk",
 			DeliveryGoods.Vanilla => "Vanilla",
 			_ => "Unknown",
@@ -139,7 +139,7 @@ public sealed class Delivery : Component
         return item switch
         {
             "Sugar" => DeliveryGoods.Sugar,
-            "Flour" => DeliveryGoods.Flour,
+            "Cacao" => DeliveryGoods.Cacao,
             "Milk" => DeliveryGoods.Milk,
             "Vanilla" => DeliveryGoods.Vanilla,
             _ => DeliveryGoods.None,

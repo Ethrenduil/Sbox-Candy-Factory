@@ -1,29 +1,30 @@
 {
   "RootObject": {
-    "__guid": "e8e3aeec-22be-4ab3-bb5c-017a933eacfd",
-    "Name": "candy_choco_01",
+    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "Name": "candy_choco_02",
     "Tags": "candy",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "0090fc2b-86a0-42bc-95dd-466257826a6e",
+        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
         "Health": 0,
         "IsStatic": false,
-        "Model": "models/candies/candy_choco_01.vmdl"
+        "Model": "models/candies/candy_choco_02.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "d5e11fc9-545f-44b5-aef8-c7e6a8a0f8fb",
-        "CookingTime": 3,
+        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
+        "CookingTime": 4,
         "Ingredients": {
           "Sugar": 1,
-          "Cacao": 1
+          "Cacao": 1,
+          "Milk": 1
         },
-        "Name": "Dark Chocolate",
-        "Price": 6,
-        "SellingTime": 3
+        "Name": "Milk Chocolate",
+        "Price": 12,
+        "SellingTime": 4
       }
     ],
     "Children": []

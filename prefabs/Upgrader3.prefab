@@ -1,7 +1,7 @@
 {
   "RootObject": {
     "__guid": "c1d6ef29-fd92-4c7c-8a12-ed287ffb0a0f",
-    "Name": "upgrader",
+    "Name": "upgrader3",
     "Scale": "0.8,0.8,0.8",
     "Tags": "interactable,conveyor",
     "Enabled": true,
@@ -55,7 +55,7 @@
         "Type": "Upgrader",
         "upgradedObject": {
           "_type": "gameobject",
-          "prefab": "prefabs/candy_choco_04.prefab"
+          "prefab": "prefabs/candy_choco_06.prefab"
         },
         "upgradedSound": "sounds/furnace/furnace_cooked.sound",
         "UpgradeOrder": 0,
