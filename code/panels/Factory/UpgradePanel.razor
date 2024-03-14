@@ -1,0 +1,144 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class="@(isUpgradeWindowOpen ? "upgradePanel" : "")">
+	@if (isUpgradeWindowOpen)
+	{
+		<div class="backContent">
+			<button class="backButton" onclick="@CloseUpgradeWindow">Back</button>
+		</div>
+		<div class="window">
+			<div class="upgradeWindow">
+				<div class="upgradeWindowHeader">
+					<div class="upgradeWindowHeaderTitle">Upgrade</div>
+					@* <div class="upgradeWindowHeaderButton">
+						<button class="upgradeWindowHeaderButtonConfirm" onclick="@ConfirmOrder">Confirm</button>
+					</div> *@
+				</div>
+				<div class="upgradeWindowContent">
+					@foreach (var item in Items)
+					{
+						<div class="upgradeWindowContentItem">
+							<div class="upgradeWindowContentItemIcon">
+								<img src="https://via.placeholder.com/64" alt="itemIcon" />
+							</div>
+							<div class="upgradeWindowContentItemName" value="@item.Key">@item.Key</div>
+							<div class="upgradeWindowContentItemAmount">@item.Value</div>
+							<div class="upgradeWindowContentItemUpgrade" onclick="@AdjustQuantity">purchase</div>
+							<div class="upgradeWindowContentItemPrice">$@ProductionSystem.GetUpgradeCost(ProductionSystem.GetUpgradeType(item.Key))</div>
+						</div>
+					}
+				</div>
+				<div class="upgradeWindowFooter">
+					<div class="upgradeWindowFooterNumber">
+						<div class="upgradeWindowFooterMoney">
+							<div class="upgradeWindowFooterMoneyTitle">Money: </div>
+							<div class="upgradeWindowFooterMoneyContent">$@player.GetMoney()</div>
+						</div>
+					</div>
+					<div class="upgradeWindowFooterTips">
+						<div class="upgradeWindowFooterTipsTitle">Tips: </div>
+						<div class="upgradeWindowFooterTipsContent">@MessageTips</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	[Property] public string MessageTips { get; set; } = "You can upgrade your items here.";
+	[Property] public Dictionary<string, int> Items { get; set; }
+	[Property] public ProductionSystem ProductionSystem { get; set; }
+	[Property] public Factory Factory { get; set; }
+	private bool isUpgradeWindowOpen { get; set; }
+	private Player player;
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		ProductionSystem = Scene.GetAllComponents<ProductionSystem>().FirstOrDefault( x => !x.IsProxy );
+		Factory = Scene.GetAllComponents<Factory>().FirstOrDefault( x => !x.IsProxy );
+	}
+
+	protected override void OnUpdate()
+	{
+		if (Input.EscapePressed && isUpgradeWindowOpen)
+		{
+			CloseUpgradeWindow();
+		} else if (Input.Pressed("Slot0") && !isUpgradeWindowOpen)
+		{
+			OpenUpgradeWindow();
+		}
+	}
+
+    public void OpenUpgradeWindow()
+	{
+		// Open the upgrade window
+		isUpgradeWindowOpen = true;
+
+		Items.Clear();
+
+		// Set the upgrade window properties
+		var ItemsTemp = ProductionSystem.Upgrades;
+		
+		foreach (var item in ItemsTemp)
+		{
+			Items.Add(ProductionSystem.GetItemName(item.Key), item.Value);
+		}
+		player.InMenu = true;
+		StateHasChanged();
+	}
+
+	public async void CloseUpgradeWindow()
+	{
+		// Close the upgrade window
+		isUpgradeWindowOpen = false;
+		MessageTips = "You can upgrade your items here.";
+		StateHasChanged();
+		await Task.Delay(100);
+		player.InMenu = false;
+	}
+
+	// Adjust the quantity of an item when the user clicks the + or - button
+	public void AdjustQuantity(PanelEvent e)
+	{
+		// Get element value
+		var item = e.This.Parent.Children.ToList()[1].StringValue;
+		UpgradeType type = ProductionSystem.GetUpgradeType(item);
+		int cost = ProductionSystem.GetUpgradeCost(type);
+
+
+		// Check if the player has enough money to buy the upgrade
+		if (!ErrorChecking(item, type, cost))
+		{
+			// Remove money from the player
+			player.RemoveMoney(cost);
+
+			// Upgrade the item
+			ProductionSystem.Upgrade(type);
+
+			// Upgrade the item
+			Items[item] = ProductionSystem.Upgrades[type];
+
+			// Update the UI
+			MessageTips = "You have successfully upgraded the item.";
+		}
+
+		// Update the UI
+		StateHasChanged();
+	}
+
+	public bool ErrorChecking(string item, UpgradeType type, int cost)
+	{
+		if (cost > player.GetMoney())
+		{
+			MessageTips = "You don't have enough money to buy the upgrade.";
+			return true;
+		}
+		return false;
+	}
+}
