@@ -10,9 +10,7 @@ public class Bob : AInteractable
     protected override void OnStart()
     {
         base.OnStart();
-        // Set the default description for interaction
         Description = $"Press E to talk to {Name}";
-        // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 		
 		dialogue = Scene.GetAllComponents<DialogueMenu>().FirstOrDefault();
@@ -66,12 +64,7 @@ public class Bob : AInteractable
 
 	private void StartDialogue(Player player)
 	{
-		
+		Scene.GetAllComponents<BobMenu>().FirstOrDefault().ToggleMenu();
 	}
-
-    public override bool CanInteract(GameObject interactor)
-    {
-        return true;
-    }
 
 }

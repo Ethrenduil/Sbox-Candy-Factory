@@ -46,6 +46,10 @@
 
 	protected void ChangeState()
 	{
+        if (player == null)
+        {
+            player = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+        }
 		IsPaused = !IsPaused;
 		StateHasChanged();
 	}

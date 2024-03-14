@@ -1,0 +1,68 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+<root>
+	@if (InMenu)
+	{
+		<div class="menu">
+			<button class="button" @onclick="@DeliveryMenu">Delivery</button>
+			<button class="button" @onclick="@UpgradeMenu">Upgrade</button>
+			<button class="button" @onclick="@ToggleMenu">Nothing</button>
+		</div>
+	}
+</root>
+
+@code
+{
+	[Property] public bool InMenu { get; set; } = false;
+	private DeliveryPanel deliveryPanel;
+	private UpgradePanel upgradePanel;
+
+	private Player player;
+	protected override void OnStart()
+	{
+		base.OnStart();
+		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+	}
+
+	protected override void OnUpdate()
+	{
+		if (IsProxy) return;
+		if (Input.EscapePressed && InMenu)
+		{
+			ToggleMenu();
+		}
+	}
+
+	private void DeliveryMenu()
+	{
+		if (deliveryPanel == null)
+		{
+			deliveryPanel = Scene.GetAllComponents<DeliveryPanel>().FirstOrDefault();
+		}
+		deliveryPanel.OpenDeliveryWindow();
+		ToggleMenu();
+	}
+
+	private void UpgradeMenu()
+	{
+		if (upgradePanel == null)
+		{
+			upgradePanel = Scene.GetAllComponents<UpgradePanel>().FirstOrDefault();
+		}
+		upgradePanel.OpenUpgradeWindow();
+		ToggleMenu();
+	}
+
+	public void ToggleMenu()
+	{
+		if (player == null)
+		{
+			player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		}
+		player.InMenu = !player.InMenu;
+		InMenu = !InMenu;
+		StateHasChanged();
+	}
+
+}

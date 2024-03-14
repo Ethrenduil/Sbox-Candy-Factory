@@ -10,12 +10,15 @@ public class Openable : AInteractable
     [Property][Sync] public bool IsOpen { get; set; }
     [Property] public OpenableSide Side { get; set; }
 
+    private Factory factory;
+
     protected override void OnStart()
     {
         base.OnStart();
         Description = IsOpen ? "Press E to close" : "Press E to open";
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
         Type = InteractableType.Building;
+        factory = Scene.GetAllComponents<Factory>().FirstOrDefault();
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -57,6 +60,15 @@ public class Openable : AInteractable
             await Task.Frame();
         }
         GameObject.Transform.Rotation = targetRotation;
+    }
+
+    public override bool CanInteract(GameObject interactor)
+    {
+        if (factory == null)
+        {
+            factory = Scene.GetAllComponents<Factory>().FirstOrDefault();
+        }
+        return factory.IsStarted;
     }
 }
 

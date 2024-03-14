@@ -1,0 +1,48 @@
+BobMenu
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+
+	.menu
+	{
+		position: absolute;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		font-weight: bold;
+		border-radius: 16px;
+		flex-direction: column;
+		width: 30%;
+		height: 25%;
+		padding: 2%;
+		background-color: #4444448e;
+        border: 2px solid #EF8CFF;
+	}
+
+	.button
+	{
+		width: 90%;
+		height: 33%;
+		color: #fff;
+		padding: 10px;
+		margin: 10px;
+		border-radius: 16px;
+		background-color: #4444448e;
+        border: 2px solid #EF8CFF;
+		font-family: Poppins;
+		font-size: 30px;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		pointer-events: all;
+		&:hover {
+			color: #EF8CFF;
+			background-color: #ffffff;
+		}
+	}
+}

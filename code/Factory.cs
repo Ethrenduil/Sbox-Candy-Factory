@@ -41,7 +41,7 @@ public sealed class Factory : Component
 
 		// Set the Factory Title to the owner's name
 		
-		GameObject.Components.Get<TitleFactory>(FindMode.InChildren).SetTitle(owner.DisplayName + "'s Factory");
+		GameObject.Components.Get<TitleFactory>(FindMode.InChildren).SetTitle("To Sell");
 		// For each interactable in the factory, take ownership
 		foreach (var children in GameObject.Children.Where(c => c.NetworkMode == NetworkMode.Snapshot))
 		{
