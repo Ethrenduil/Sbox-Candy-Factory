@@ -34,9 +34,9 @@ public class NetworkManager : Component, Component.INetworkListener
 	void INetworkListener.OnDisconnected(Connection conn)
 	{
 		var cdyfac = Scene.Components.GetAll<CandyFactory>().FirstOrDefault();
-        if (conn.IsHost && Networking.Connections.Count > 1)
+        if (conn.IsHost && Connection.All.Count > 1)
         {
-            cdyfac.Network.AssignOwnership( Networking.Connections[1] );
+            cdyfac.Network.AssignOwnership( Connection.All[1] );
         }
         cdyfac.DeletePlayer( conn );
 	}

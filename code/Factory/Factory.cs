@@ -26,7 +26,7 @@ public sealed class Factory : Component
 		base.OnUpdate();
 
 		// Add IsStarted to the factory when the buying factory will be available
-		if (!Production.IsStarted)
+		if (Production is not null && !Production.IsStarted)
 		{
 			Production.IsStarted = true;
 			Production.StartProduction();
@@ -222,4 +222,6 @@ public sealed class Factory : Component
 		}
 		return count;
 	}
+
+
 }

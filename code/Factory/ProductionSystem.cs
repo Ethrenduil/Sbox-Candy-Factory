@@ -6,7 +6,7 @@ public sealed class ProductionSystem : Component
 	[Property] public Factory Factory { get; set; }
 	[Property] public Dictionary<UpgradeType, int> Upgrades { get; set; } = new Dictionary<UpgradeType, int>();
 	[Property] public Dictionary<UpgradeType, int> UpgradesCost { get; set; } = new Dictionary<UpgradeType, int>();
-	[Property] public List<Upgrader> Upgrader { get; set; }
+	[Property] public List<ProductionLine> ProductionLines { get; set; } = new List<ProductionLine>();
 	[Property] public int ProductionSpeed { get; set; } = 0;
 	[Property] public int StorageCapacity { get; set; } = 20;
 	[Property] public int HoldableCapacity { get; set; } = 5;
@@ -21,57 +21,51 @@ public sealed class ProductionSystem : Component
 	{
 		if (Input.Pressed("Slot4"))
 		{
-			Upgrade(UpgradeType.Upgrader);
+			Upgrade(UpgradeType.Upgrader, true, 1);
 		} else if (Input.Pressed("Slot5"))
 		{
-			Upgrade(UpgradeType.Production);
+			Upgrade(UpgradeType.ProductionLine, true, 2);
 		} else if (Input.Pressed("Slot6"))
 		{
-			Upgrade(UpgradeType.Storage);
-		} else if (Input.Pressed("Slot7"))
-		{
-			Upgrade(UpgradeType.Transport);
-		} else if (Input.Pressed("Slot8"))
-		{
-			Upgrade(UpgradeType.HoldableCapacity);
+			Upgrade(UpgradeType.Upgrader, true, 2);
 		}
 	}
 
 	public void StartProduction()
 	{
 		// Set the Upgrade production system
-		Upgrades[UpgradeType.Production] = 0;
+		Upgrades[UpgradeType.ProductionSpeed] = 0;
+		Upgrades[UpgradeType.ProductionLine] = 1;
 		Upgrades[UpgradeType.Storage] = 0;
 		Upgrades[UpgradeType.Transport] = 0;
 		Upgrades[UpgradeType.Upgrader] = 0;
 		Upgrades[UpgradeType.HoldableCapacity] = 0;
 
 		// Set the Upgrade production system cost
-		UpgradesCost[UpgradeType.Production] = 100;
+		UpgradesCost[UpgradeType.ProductionSpeed] = 100;
+		UpgradesCost[UpgradeType.ProductionLine] = 100;
 		UpgradesCost[UpgradeType.Storage] = 100;
 		UpgradesCost[UpgradeType.Transport] = 100;
 		UpgradesCost[UpgradeType.Upgrader] = 100;
 		UpgradesCost[UpgradeType.HoldableCapacity] = 100;
 
-		// Set the Upgrader List and sort it
-		Upgrader = GameObject.Components.GetAll<Upgrader>(FindMode.EverythingInDescendants).ToList();
-		Upgrader.Sort((x, y) => x.Components.Get<Upgrader>().UpgradeOrder.CompareTo(y.Components.Get<Upgrader>().UpgradeOrder));
+		// Set the Production Lines
+		SetUpProductionLines();
 
-		// Disable all the upgraders
-		for (int i = 0; i < Upgrader.Count; i++)
-			Upgrader[i].GameObject.Enabled = false;
-
-		// Set the Upgrade production system
+		// Set the Upgrade production system already upgraded
 		foreach ( var upgrade in Upgrades)
 		{
 			for (int i = 0; i < upgrade.Value; i++)
 			{
+				if (upgrade.Key == UpgradeType.ProductionLine || upgrade.Key == UpgradeType.Upgrader)
+					Upgrade(upgrade.Key, false, i + 1);
+				else
 				Upgrade(upgrade.Key, false);
 			}
 		}
 	}
 
-	public void Upgrade(UpgradeType type, bool increase = true)
+	public void Upgrade(UpgradeType type, bool increase = true, int line = 0)
 	{
 		if (increase) Upgrades[type]++;
 		switch (type)
@@ -79,8 +73,8 @@ public sealed class ProductionSystem : Component
 			case UpgradeType.Storage:
 				UpgradeStorage();
 				break;
-			case UpgradeType.Production:
-				UpgradeProduction();
+			case UpgradeType.ProductionSpeed:
+				UpgradeProductionSpeed();
 				break;
 			case UpgradeType.Transport:
 				UpgradeTransport();
@@ -89,16 +83,39 @@ public sealed class ProductionSystem : Component
 				UpgradeDecoration();
 				break;
 			case UpgradeType.Upgrader:
-				UpgradeUpgrader();
+				UpgradeUpgrader(line);
 				break;
 			case UpgradeType.HoldableCapacity:
 				UpgradeHoldableCapacity();
+				break;
+			case UpgradeType.ProductionLine:
+				UpgradeProductionLine(line);
 				break;
 			default:
 				break;
 		}
 	}
 
+
+	public void UpgradeProductionLine(int line)
+	{
+		// Error check
+		if (ProductionLines.Count < line || ProductionLines[line - 1].IsActive)
+		{
+			// Cannot upgrade anymore
+			Log.Info("Cannot upgrade anymore");
+			return;
+		}
+		// Enable the next production line and set it to active
+		ProductionLines[line - 1].IsActive = true;
+		ProductionLines[line - 1].ProductionLineObject.Enabled = true;
+
+		// Set other parameters
+
+		// Update the production line upgrade cost
+		UpgradesCost[UpgradeType.ProductionLine] = ProductionLines[line].Price;
+	}
+	
 	public void UpgradeHoldableCapacity()
 	{
 		HoldableCapacity += 5;
@@ -108,32 +125,30 @@ public sealed class ProductionSystem : Component
 		UpgradesCost[UpgradeType.HoldableCapacity] = (int)(UpgradesCost[UpgradeType.HoldableCapacity] * 1.2);
 	}
 
-	public void UpgradeUpgrader()
+	public void UpgradeUpgrader(int line)
 	{
 		// Error check
-		if (Upgrader.Count < Upgrades[UpgradeType.Upgrader])
+		if (!ProductionLines[line - 1].CanUpgrade())
 		{
 			// Cannot upgrade anymore
-			Upgrades[UpgradeType.Upgrader] = Upgrader.Count;
 			return;
 		}
 
 		// Enable the next upgrader
-		Upgrader[Upgrades[UpgradeType.Upgrader] - 1].GameObject.Enabled = true;
-		Upgrader[Upgrades[UpgradeType.Upgrader] - 1].GameObject.Parent.Children.Where(x => x.Tags.Has("conveyor") && !x.Tags.Has("upgrader")).FirstOrDefault().Enabled = false;
+		ProductionLines[line - 1].Upgrade();
 
 
 		// Update the upgrader upgrade cost
 		UpgradesCost[UpgradeType.Upgrader] = (int)(UpgradesCost[UpgradeType.Upgrader] * 1.2);
 	}
 
-	public void UpgradeProduction()
+	public void UpgradeProductionSpeed()
 	{
 		// Increase the production speed
 		ProductionSpeed++;
 
 		// Update the production upgrade cost
-		UpgradesCost[UpgradeType.Production] = (int)(UpgradesCost[UpgradeType.Production] * 1.2);
+		UpgradesCost[UpgradeType.ProductionSpeed] = (int)(UpgradesCost[UpgradeType.ProductionSpeed] * 1.2);
 	}
 
 	public void UpgradeStorage()
@@ -164,7 +179,8 @@ public sealed class ProductionSystem : Component
 		return type switch
 		{
 			UpgradeType.Storage => "Storage",
-			UpgradeType.Production => "Production",
+			UpgradeType.ProductionSpeed => "Production Speed",
+			UpgradeType.ProductionLine => "Production Line",
 			UpgradeType.Transport => "Transport",
 			UpgradeType.Decoration => "Decoration",
 			UpgradeType.Upgrader => "Upgrader",
@@ -178,7 +194,8 @@ public sealed class ProductionSystem : Component
 		return name switch
 		{
 			"Storage" => UpgradeType.Storage,
-			"Production" => UpgradeType.Production,
+			"Production Speed" => UpgradeType.ProductionSpeed,
+			"Production Line" => UpgradeType.ProductionLine,
 			"Transport" => UpgradeType.Transport,
 			"Decoration" => UpgradeType.Decoration,
 			"Upgrader" => UpgradeType.Upgrader,
@@ -191,14 +208,23 @@ public sealed class ProductionSystem : Component
 	{
 		return UpgradesCost[type];
 	}
+
+	public void SetUpProductionLines()
+	{
+		// Set the production lines
+		ProductionLines = GameObject.Components.GetAll<ProductionLine>(FindMode.EverythingInDescendants).ToList();
+		// Sort the production lines by ProductionLine Order
+		ProductionLines.Sort((x, y) => x.Order.CompareTo(y.Order));
+	}
 }
 
 public enum UpgradeType
 {
 	Storage,
-	Production,
+	ProductionSpeed,
 	Transport,
 	Decoration,
+	ProductionLine,
 	Upgrader,
 	HoldableCapacity,
 	Other
