@@ -72,11 +72,13 @@
 
 	protected override void OnUpdate()
 	{
+		if (IsProxy) return;
 		if (Input.EscapePressed && isDeliveryWindowOpen)
 		{
 			CloseDeliveryWindow();
 		} else if (Input.Pressed("Slot3") && !isDeliveryWindowOpen)
 		{
+			Log.Info("Open delivery window");
 			OpenDeliveryWindow();
 		}
 	}

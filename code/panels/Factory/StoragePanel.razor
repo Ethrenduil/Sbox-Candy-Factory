@@ -60,6 +60,7 @@
 
 	protected override void OnUpdate()
 	{
+		if (IsProxy) return;
 		if (Input.EscapePressed && isStorageWindowOpen)
 		{
 			CloseStorageWindow();

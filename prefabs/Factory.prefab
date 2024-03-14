@@ -1,20 +1,20 @@
 {
   "RootObject": {
-    "__guid": "edd58406-a6aa-4070-b12a-12057b0d1804",
+    "__guid": "2f7c2b56-678e-4c40-8e4d-54b66e5a85d8",
     "Name": "factory",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "eabe15f3-0c20-429c-801a-2bdadce7668c",
+        "__guid": "a144985d-3023-40a9-9d4f-11bf26fa3f01",
         "Health": 0,
         "IsStatic": true,
         "Model": "models/factory/factory.vmdl"
       },
       {
         "__type": "Delivery",
-        "__guid": "93b2b8ce-0da7-4700-bba5-2d8b44cfa652",
+        "__guid": "61a735cc-78f1-4622-8e40-d6c787d73da0",
         "DeliveryBoxPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/box.prefab"
@@ -26,7 +26,7 @@
         "DeliveryCooldown": 30,
         "DeliveryDestination": {
           "_type": "gameobject",
-          "go": "6c1a193a-0b48-497b-babe-ff4ad0bba372"
+          "go": "272bff12-bbd9-4566-90bc-736a25fb87c2"
         },
         "DeliveryProgress": 0,
         "DeliveryTime": 10,
@@ -34,15 +34,15 @@
         "GoodsPrices": {},
         "ProductionSystem": {
           "_type": "component",
-          "component_id": "438256ca-10ad-4ecf-bc38-d78896de6739",
-          "go": "6ec2a583-4aac-4183-b7c1-15c35880495c",
+          "component_id": "878b99a8-8395-4996-8090-fe07ddb77bec",
+          "go": "14f74d06-5b8a-4a39-9731-1510325c7553",
           "component_type": "ProductionSystem"
         },
         "Status": "None"
       },
       {
         "__type": "Factory",
-        "__guid": "c5efdbe2-1219-424c-8a88-6b8ac3676e72",
+        "__guid": "f7f0c5e3-9174-4938-8351-cf5e0b23e2d8",
         "Money": 0,
         "SteamId": 0,
         "Stock": {}
@@ -50,7 +50,7 @@
     ],
     "Children": [
       {
-        "__guid": "80d19ed3-35ed-4b1f-92cc-6b35bd55f683",
+        "__guid": "8e15f0b2-6c49-4e56-ad33-a4d74c2085c8",
         "Name": "Door Frame",
         "Position": "-20.55298,-255.506,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -59,7 +59,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "c3a7b36d-7d40-47ab-b54f-4d27d6653544",
+            "__guid": "e409a7df-be05-4e4f-9c1d-9311a3a8ebab",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
             "RenderType": "On",
@@ -67,7 +67,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "37c965c7-02fa-445d-9ece-ce0999481c80",
+            "__guid": "ecc7cfa5-b09a-4c69-95b6-96f4144dd96c",
             "IsTrigger": false,
             "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
             "Static": false,
@@ -76,7 +76,7 @@
         ]
       },
       {
-        "__guid": "d611158c-a7f3-443f-a96c-c89800667d6a",
+        "__guid": "fb97a032-9884-45aa-be93-d7935ae8361d",
         "Name": "DoorRight",
         "Position": "26.48352,-255.5,-175",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -86,7 +86,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "0318e5c6-756d-489b-98a8-c08221dfc643",
+            "__guid": "fec9c96a-e12c-4403-9d88-382e936b272e",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "RenderType": "On",
@@ -94,7 +94,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "b9dae455-7c58-4633-8a7f-2dcb661e4f9b",
+            "__guid": "0e5ee6bc-1dd5-44b2-af78-fa43453721b4",
             "IsTrigger": false,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "Static": false,
@@ -102,7 +102,7 @@
           },
           {
             "__type": "Openable",
-            "__guid": "4996d26c-ef8d-4e71-a461-e9654211d91d",
+            "__guid": "f32c284c-f9c9-4625-ab0b-ba48b17d66e3",
             "Description": "Press E to close",
             "IsInteracted": false,
             "IsOpen": false,
@@ -114,7 +114,7 @@
         ]
       },
       {
-        "__guid": "063af8e0-4dd5-4f72-8ce9-ff645a2451a7",
+        "__guid": "de09a43b-b0c0-4450-8d83-e77bb130faa2",
         "Name": "DoorLeft",
         "Position": "-68,-255.5004,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -124,7 +124,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "b70ee627-2f4f-4fcd-a432-30c2f1d5e072",
+            "__guid": "9121c1d4-f6df-4997-973c-a1aecd831a74",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "RenderType": "On",
@@ -132,7 +132,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "00e565a2-6a93-4d22-9610-e594516800b2",
+            "__guid": "f02bff00-773b-460a-9e5e-c70c31208f6c",
             "IsTrigger": false,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "Static": false,
@@ -140,7 +140,7 @@
           },
           {
             "__type": "Openable",
-            "__guid": "0c9000c7-fc1c-4cc6-acf2-0a78077b4746",
+            "__guid": "0a5d9aa7-52fc-4814-a85e-e279525b3c9d",
             "Description": "Press E to open",
             "IsInteracted": false,
             "IsOpen": false,
@@ -152,7 +152,7 @@
         ]
       },
       {
-        "__guid": "eb7ba559-8ba0-40d5-b70d-6863085200ec",
+        "__guid": "f37cdf43-ad57-4ac9-9437-9078b00d0a5f",
         "Name": "Wooden Desk",
         "Position": "558.6235,-221.2169,-175.0005",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -162,7 +162,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "__guid": "d4ba2cc7-e5ec-4f77-abd1-d8534ffa8cb3",
+            "__guid": "804d4925-3794-475d-a71a-97733d88f71f",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_01.vmdl"
@@ -170,14 +170,14 @@
         ]
       },
       {
-        "__guid": "6c1a193a-0b48-497b-babe-ff4ad0bba372",
+        "__guid": "272bff12-bbd9-4566-90bc-736a25fb87c2",
         "Name": "DeliveryDestination",
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "277c50c5-eae9-4a0a-85f9-0ab857a3b0b6",
+        "__guid": "f140b9d9-36d1-4cd2-8c17-dca550fbf773",
         "Name": "Spot Light",
         "Position": "-477.588,-129.9128,17.1936",
         "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -187,7 +187,7 @@
         "Components": [
           {
             "__type": "SpotLight",
-            "__guid": "2e97f186-0b0f-476a-a66d-a2809bee006c",
+            "__guid": "a8f99d4e-3443-4390-83f2-8e13cb486524",
             "Attenuation": 0,
             "ConeInner": 40.6,
             "ConeOuter": 78.09,
@@ -200,7 +200,7 @@
         ]
       },
       {
-        "__guid": "f6c64400-ca67-4278-9c80-09fdb797ed57",
+        "__guid": "7eaa07ca-e720-41b0-9b32-ba22c08baa69",
         "Name": "Shelving",
         "Position": "589.447,-15.99995,-175",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -210,7 +210,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "2d53d0e1-65fd-44eb-8f48-8af0723fcc89",
+            "__guid": "5391ee01-e9ab-4680-809e-c93c5c8d7dd2",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/trim_sheets/shelving/industrial_ shelving/industrial_ shelving_01.vmdl",
             "RenderType": "On",
@@ -218,7 +218,7 @@
           },
           {
             "__type": "Stockable",
-            "__guid": "fe02ff8e-696a-42c2-a575-80fd4160531e",
+            "__guid": "9848ac3f-07b9-43d3-ab7f-5b4767e354da",
             "boxPrefab": {
               "_type": "gameobject",
               "prefab": "prefabs/box.prefab"
@@ -230,7 +230,7 @@
           },
           {
             "__type": "BoxCollider",
-            "__guid": "7e47924e-cb4e-48e6-acf0-127fba9e0215",
+            "__guid": "f0aefbe9-7e96-4575-abe8-b17bcdbc5007",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "30.86666,64.53333,177.8667",
@@ -239,7 +239,7 @@
         ]
       },
       {
-        "__guid": "a51b93d6-4166-4549-a4e2-fd562adf793d",
+        "__guid": "3e9e7c11-f9a3-46f5-ba63-5c51d4a6f9e2",
         "Name": "TitleFactory",
         "Position": "-20.70431,-259.6282,-49.60486",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -248,7 +248,7 @@
         "Components": [
           {
             "__type": "WorldPanel",
-            "__guid": "1b789002-b4ad-402c-a0b7-29ca00c23161",
+            "__guid": "cc39279f-b5e7-4cf7-baa7-b89e74389c49",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "2048,512",
@@ -257,35 +257,35 @@
           },
           {
             "__type": "TitleFactory",
-            "__guid": "73202689-695b-43e7-aae9-4003be39c40b",
+            "__guid": "be6f553e-5937-4534-bd1c-4bcd42eabab1",
             "MyStringValue": "Factory to sell"
           }
         ]
       },
       {
-        "__guid": "fe4869fb-60ca-4070-92d1-30fa8d21ff35",
+        "__guid": "a14f3170-91c3-46b5-a44e-757138e4848a",
         "Name": "Camera Start",
         "Position": "446.4409,-733.8622,155.2563",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "c36450b0-4ecb-4e9c-bdf9-9b3c6d52c6c0",
+        "__guid": "17ab6cc4-bce3-44f5-bd41-f7187c0ad687",
         "Name": "Camera Waypoints",
         "Position": "-550.4506,-733.8622,155.2563",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "ba1948e4-1882-4d1f-814e-98b94f978e99",
+        "__guid": "a8038ecd-8cf9-44dd-aadb-8164e76b4d9e",
         "Name": "StoragePanel",
         "Position": "592,-32,-157.5449",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "ScreenPanel",
-            "__guid": "53cbf660-9418-49cb-b38d-59b4ba09ee3f",
+            "__guid": "097a4e6b-7a30-4147-82e2-83bce0cf4164",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
@@ -293,11 +293,11 @@
           },
           {
             "__type": "StoragePanel",
-            "__guid": "a21196f5-295a-497c-9a39-58bcfd873714",
+            "__guid": "63536645-daf3-4d17-b6b8-c1f8f52a78e0",
             "factory": {
               "_type": "component",
-              "component_id": "c5efdbe2-1219-424c-8a88-6b8ac3676e72",
-              "go": "edd58406-a6aa-4070-b12a-12057b0d1804",
+              "component_id": "f7f0c5e3-9174-4938-8351-cf5e0b23e2d8",
+              "go": "2f7c2b56-678e-4c40-8e4d-54b66e5a85d8",
               "component_type": "Factory"
             },
             "MessageTips": "You can retrieve items from storage.",
@@ -307,15 +307,15 @@
         ]
       },
       {
-        "__guid": "06200e2e-9199-474e-b970-910408e199f4",
+        "__guid": "bf937598-5660-4988-b937-f766c2134112",
         "Name": "DeliveryPanel",
         "Position": "600.22,124.0358,-160.8286",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "ScreenPanel",
-            "__guid": "10a158b4-bf67-4dac-9aa8-b65e5230b96e",
+            "__guid": "41af4e1a-2d17-4275-a3a0-4e0e6ed96542",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
@@ -323,17 +323,17 @@
           },
           {
             "__type": "DeliveryPanel",
-            "__guid": "71d85f9f-d9ab-4605-a703-f2c0df38ef77",
+            "__guid": "dcc4024a-847c-4e24-9cb2-70e180e7ccf7",
             "Delivery": {
               "_type": "component",
-              "component_id": "93b2b8ce-0da7-4700-bba5-2d8b44cfa652",
-              "go": "edd58406-a6aa-4070-b12a-12057b0d1804",
+              "component_id": "61a735cc-78f1-4622-8e40-d6c787d73da0",
+              "go": "2f7c2b56-678e-4c40-8e4d-54b66e5a85d8",
               "component_type": "Delivery"
             },
             "Factory": {
               "_type": "component",
-              "component_id": "c5efdbe2-1219-424c-8a88-6b8ac3676e72",
-              "go": "edd58406-a6aa-4070-b12a-12057b0d1804",
+              "component_id": "f7f0c5e3-9174-4938-8351-cf5e0b23e2d8",
+              "go": "2f7c2b56-678e-4c40-8e4d-54b66e5a85d8",
               "component_type": "Factory"
             },
             "Items": {},
@@ -343,15 +343,15 @@
         ]
       },
       {
-        "__guid": "9b4a02e1-c04b-41ba-884b-526fca798ef0",
+        "__guid": "18830e73-e7a4-4a1c-b406-0a65c071528d",
         "Name": "UpgradePanel",
         "Position": "1478.666,-1447.414,7.986343",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "ScreenPanel",
-            "__guid": "e9eaf922-1832-49a8-9a0b-58bb53b04fb6",
+            "__guid": "15867b40-5b7a-4fa1-898a-28916688d7d0",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
@@ -359,14 +359,14 @@
           },
           {
             "__type": "UpgradePanel",
-            "__guid": "d8ba5643-275e-47d4-a899-eaee614f5dff",
+            "__guid": "bc1928ba-bade-4606-b969-cda8c5d73af6",
             "Items": {},
             "MessageTips": "You can upgrade your items here."
           }
         ]
       },
       {
-        "__guid": "6ec2a583-4aac-4183-b7c1-15c35880495c",
+        "__guid": "14f74d06-5b8a-4a39-9731-1510325c7553",
         "Name": "Production",
         "Position": "-80.30933,-10.90878,26.29971",
         "Enabled": true,
@@ -374,7 +374,7 @@
         "Components": [
           {
             "__type": "ProductionSystem",
-            "__guid": "438256ca-10ad-4ecf-bc38-d78896de6739",
+            "__guid": "878b99a8-8395-4996-8090-fe07ddb77bec",
             "HoldableCapacity": 5,
             "IsStarted": false,
             "ProductionSpeed": 0,
@@ -387,7 +387,7 @@
         ],
         "Children": [
           {
-            "__guid": "517c6810-997c-4cd3-a9a8-8c9b639ff1ec",
+            "__guid": "0ac4fe43-ff61-4aba-bda9-14cfadf796c3",
             "Name": "furnace",
             "Position": "-529.6907,-199.4653,-201.2997",
             "Rotation": "0,0,0.7071068,0.7071068",
@@ -398,7 +398,7 @@
             "__Prefab": "prefabs/furnace.prefab"
           },
           {
-            "__guid": "e60a1c98-ba3e-4253-bc03-0a4b740f868b",
+            "__guid": "d37cce71-190c-49d4-90ae-6dc0594f0c98",
             "Name": "Conveyor",
             "Position": "-529.6907,-118.9139,-201.2997",
             "Rotation": "0,0,0.7071067,0.7071068",
@@ -408,14 +408,14 @@
             "Components": [
               {
                 "__type": "Prop",
-                "__guid": "70951718-8e74-4603-9f91-063f104e683d",
+                "__guid": "c27a002f-d922-48dd-a464-d9ae95898cc6",
                 "Health": 0,
                 "IsStatic": true,
                 "Model": "models/conveyor/conveyor_s.vmdl"
               },
               {
                 "__type": "Conveyor",
-                "__guid": "64ff190d-3ea3-4827-92c8-8625b921ce6e",
+                "__guid": "822c4a4d-3a47-4824-899f-d6d42effea90",
                 "IsCooker": false,
                 "special": false,
                 "Speed": 100,
@@ -426,7 +426,7 @@
             ]
           },
           {
-            "__guid": "a6f2cd88-e0c5-4cb0-8803-dc51e33bffb4",
+            "__guid": "e02022a4-762d-41c2-8d8d-8daf9f21b8fa",
             "Name": "Upgrader Slot",
             "Position": "-529.6907,-38.29387,-201.2997",
             "Rotation": "0,0,0.7071068,0.7071068",
@@ -435,7 +435,7 @@
             "NetworkMode": 2,
             "Children": [
               {
-                "__guid": "1e7938ff-5af7-4c55-b8a7-aec69c7adda5",
+                "__guid": "7db5ab06-1f70-48b1-8821-752559dc726b",
                 "Name": "Conveyor",
                 "Position": "0,0,0",
                 "Scale": "1.25,1.25,1.25",
@@ -445,14 +445,14 @@
                 "Components": [
                   {
                     "__type": "Prop",
-                    "__guid": "402c0ef5-9dec-469b-8c48-e45124e9fda4",
+                    "__guid": "1df28b09-9f1e-4ed2-b148-d4674882ff1a",
                     "Health": 0,
                     "IsStatic": true,
                     "Model": "models/conveyor/conveyor_s.vmdl"
                   },
                   {
                     "__type": "Conveyor",
-                    "__guid": "64fbc220-f6d6-460d-926c-6928d37768c6",
+                    "__guid": "1689e6bb-ca2d-4833-8dd2-dd2c910e61d6",
                     "IsCooker": false,
                     "special": false,
                     "Speed": 100,
@@ -463,7 +463,7 @@
                 ]
               },
               {
-                "__guid": "947880d9-0b7a-44a8-bc81-84b87b60c63b",
+                "__guid": "c3fa618a-2f8c-4888-b4e5-eb49a28b127e",
                 "Name": "Upgrader",
                 "Position": "0,0,0",
                 "Tags": "interactable,conveyor,upgrader",
@@ -474,7 +474,7 @@
             ]
           },
           {
-            "__guid": "37eabc4e-ccb8-4b97-969e-75c0815068a4",
+            "__guid": "6463e9b7-8a20-4690-8ce7-3ae6f37ee473",
             "Name": "vending_box",
             "Position": "-529.6904,16.95106,-201.2997",
             "Rotation": "0,0,-0.7071067,0.7071068",
