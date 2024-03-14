@@ -61,10 +61,13 @@
 
     protected void ChangeState()
     {
+		if (player == null)
+		{
+			player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		}
 		player.InDialogue = !InDialogue;
         InDialogue = !InDialogue;
         StateHasChanged();
-		
 		var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 		if (InDialogue)
 		{

@@ -47,9 +47,6 @@
 									<p>@lobby.Name</p>
 								</div>
 								<div class="meta">
-									<div class="map">
-										<p>@lobby.Map</p>
-									</div>
 									<div class="count">
 										<p>@lobby.Members/4</p>
 									</div>
@@ -125,6 +122,7 @@
 
 	void DisplayJoinRoom()
 	{
+		RefreshLobbyList();
 		PlaySound();
 		_isContentVisible = false;
 		_isJoinRoomVisible = true;

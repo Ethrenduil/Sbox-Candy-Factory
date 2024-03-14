@@ -7,7 +7,7 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": null,
+  "Resources": "\ntextures/ui/*\ntextures/tasks/arrow.png\nmusic/*",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
