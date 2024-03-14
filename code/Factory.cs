@@ -120,10 +120,6 @@ public sealed class Factory : Component
 
 	public bool CanStore(int quantity)
 	{
-		Log.Info( $"Quantity: {quantity}" );
-		Log.Info( $"Stock Count: {GetStockCount()}" );
-		Log.Info( $"Storage Capacity: {GetStorageCapacity()}" );
-		Log.Info($"Can Store: {GetStockCount() + quantity <= GetStorageCapacity()}");
 		return GetStockCount() + quantity <= GetStorageCapacity();
 	}
 

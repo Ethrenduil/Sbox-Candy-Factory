@@ -127,8 +127,6 @@ public class Upgrader : AInteractable
 				Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
 			}
 		}
-		Log.Info( $"Upgraded {candyNumber} {candyName}" );
 		conveyor.IsMoving = true;
-		Log.Info("conveyor is moving again: " + conveyor.IsMoving);
     }
 }

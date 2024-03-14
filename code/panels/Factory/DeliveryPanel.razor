@@ -78,7 +78,6 @@
 			CloseDeliveryWindow();
 		} else if (Input.Pressed("Slot3") && !isDeliveryWindowOpen)
 		{
-			Log.Info("Open delivery window");
 			OpenDeliveryWindow();
 		}
 	}
@@ -190,7 +189,6 @@
 			return;
 		}
 		player.RemoveMoney(GetTotalNumber());
-		Log.Info($"Delivery gameobject name: {Delivery.GameObject.Name}");
 		Delivery.StartDelivery(Delivery.GetDictionaryGoodsFromString(order));
 		CloseDeliveryWindow();
 	}
