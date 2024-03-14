@@ -1,113 +1,97 @@
-﻿@using System
-@using Sandbox;
+﻿@using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
 @implements Component.INetworkListener
-@namespace Facepunch.BombRoyale
 
-<root class=@(IsOpen ? "open" : "closed")>
-	<div @ref="EntryCanvas" class="entries"></div>
+<root>
+
+	<div class="output">
+		@foreach (var entry in Entries)
+		{
+			<div class="chat_entry">
+				<div class="author">@entry.author</div>
+				<div class="message">@entry.message</div>
+			</div>
+		}
+	</div>
 
 	<div class="input">
-		<textentry @onblur=@OnEntryBlur @onsubmit=@OnEntrySubmit @ref="Entry"></textentry>
+		<TextEntry @ref="InputBox" onsubmit="@ChatFinished"></TextEntry>
 	</div>
+	
 </root>
 
 @code
 {
-	private TextEntry Entry { get; set; }
-	private Panel EntryCanvas { get; set; }
-	private bool IsOpen { get; set; }
-	
-	public void AddNamedMessage( string name, Color color, string message, string className = null )
-	{
-		var entry = new ChatboxEntry()
-		{
-			Name = name,
-			Color = color,
-			Message = message
-		};
 
-		if ( !string.IsNullOrEmpty( className ) )
-		{
-			entry.AddClass( className );
-		}
+	[Property] public string MyStringValue { get; set; } = "Hello World!";
 
-		if ( string.IsNullOrEmpty( name ) )
-		{
-			entry.AddClass( "no-name" );
-		}
+	TextEntry InputBox;
 
-		EntryCanvas.AddChild( entry );
-	}
+	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
+	List<Entry> Entries = new();
 
-	public void AddMessage( string message, string className = null )
-	{
-		var entry = new ChatboxEntry()
-		{
-			Message = message
-		};
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
 
-		if ( !string.IsNullOrEmpty( className ) )
-		{
-			entry.AddClass( className );
-		}
-
-		entry.AddClass( "no-name" );
-
-		EntryCanvas.AddChild( entry );
-	}
-	
 	protected override void OnUpdate()
 	{
-		if ( !Entry.IsValid() ) return;
+		if (InputBox is null)
+			return;
 
-		Entry.PreferScrollToBottom = true;
 		Panel.AcceptsFocus = false;
 
-		if ( !IsOpen && Input.Pressed( "Chat" ) )
+		if ( Input.Pressed( "chat" ) )
 		{
-			Entry.Focus();
-			IsOpen = true;
+			InputBox.Focus();
 		}
-	}
-	
-	private void OnEntrySubmit()
-	{
-		if ( !string.IsNullOrWhiteSpace( Entry.Text ) )
+
+		if ( Entries.RemoveAll( x => x.timeSinceAdded > 30.0f ) > 0 )
 		{
-			SendText( Sandbox.Utility.Steam.PersonaName, Entry.Text.Trim() );
+			StateHasChanged();
 		}
+
+		SetClass( "open", InputBox.HasFocus );
 	}
-	
-	private void OnEntryBlur()
+
+	void ChatFinished()
 	{
-		Entry.Text = string.Empty;
-		IsOpen = false;
+		var text = InputBox.Text;
+		InputBox.Text = "";
+
+		if (string.IsNullOrWhiteSpace(text))
+			return;
+
+		AddText( Sandbox.Utility.Steam.PersonaName, text );
 	}
 
 	[Broadcast]
-	private void SendText( string author, string message )
+	public void AddText( string author, string message )
 	{
-		AddNamedMessage( author, Color.Cyan, message );
+		message = message.Truncate( 300 );
+
+		if (string.IsNullOrWhiteSpace(message))
+			return;
+
+		Log.Info($"{author}: {message}");
+
+		Entries.Add(new Entry( author, message, 0.0f ));
+		StateHasChanged();
 	}
 
-	void INetworkListener.OnConnected( Connection channel )
+	void Component.INetworkListener.OnConnected( Connection channel )
 	{
 		if ( IsProxy ) return;
 
-		SendText( "🛎️", $"{channel.DisplayName} has joined the game" );
+		AddText( "🛎️", $"{channel.DisplayName} has joined the game" );
 	}
 
-	void INetworkListener.OnDisconnected( Connection channel )
+	void Component.INetworkListener.OnDisconnected( Connection channel )
 	{
 		if ( IsProxy ) return;
 
-		SendText(  "💨", $"{channel.DisplayName} has left the game" );
-	}
-	
-	protected override int BuildHash()
-	{
-		return HashCode.Combine( IsOpen );
+		AddText(  "💨", $"{channel.DisplayName} has left the game" );
 	}
 }
