@@ -38,6 +38,10 @@ public class Cooker : AInteractable
     }
 	protected override void OnUpdate()
     {
+		furnacePanel ??= Components.Get<FurnacePanel>(FindMode.EnabledInSelfAndChildren);
+		Renderer ??= Components.Get<SkinnedModelRenderer>();
+		Smoke ??= Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
+		ProductionSystem ??= GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -117,12 +121,15 @@ public class Cooker : AInteractable
         await GameTask.DelaySeconds( cookTimer );
 		CookingFinished();
 		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+		if (questSystem.CurrentQuest is not null)
 		{
-		    if (objective.Type == ObjectiveType.Creation && cooked.Name.Contains(objective.ObjectTarget.Name))
-		    {	
-		        questSystem.Cooked(objective, cooked);
-		    }
+			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+			{
+			    if (objective.Type == ObjectiveType.Creation && cooked.Name.Contains(objective.ObjectTarget.Name))
+			    {	
+			        questSystem.Cooked(objective, cooked);
+			    }
+			}
 		}
 		conveyor.IsMoving = true;
         await GameTask.DelaySeconds( 2 );

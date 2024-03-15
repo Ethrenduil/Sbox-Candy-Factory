@@ -64,10 +64,7 @@ public class Openable : AInteractable
 
     public override bool CanInteract(GameObject interactor)
     {
-        if (factory == null)
-        {
-            factory = Scene.GetAllComponents<Factory>().FirstOrDefault();
-        }
+        factory ??= Scene.GetAllComponents<Factory>().FirstOrDefault();
         return factory.IsStarted;
     }
 }

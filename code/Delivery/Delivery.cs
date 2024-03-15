@@ -111,11 +111,14 @@ public sealed class Delivery : Component
         Status = DeliveryStatus.Delivered;
 
 		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+		if (questSystem.CurrentQuest is not null)
 		{
-			if (objective.Type == ObjectiveType.WaitDelivery)
+			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 			{
-			    questSystem.CompleteObjective(objective);
+				if (objective.Type == ObjectiveType.WaitDelivery)
+				{
+				    questSystem.CompleteObjective(objective);
+				}
 			}
 		}
         

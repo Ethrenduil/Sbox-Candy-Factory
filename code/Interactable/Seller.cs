@@ -72,12 +72,15 @@ public class Seller : AInteractable, Component.ICollisionListener
 			candy.GameObject.Destroy();
 			RemoveCandy();
 			questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+			if (questSystem.CurrentQuest is not null)
 			{
-			    if (objective.Type == ObjectiveType.EarnMoney)
-			    {
-			        questSystem.EarnedMoney(objective, moneyEarning);
-			    }
+				foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+				{
+				    if (objective.Type == ObjectiveType.EarnMoney)
+				    {
+				        questSystem.EarnedMoney(objective, moneyEarning);
+				    }
+				}
 			}
 		}
         IsInteracted = false; 

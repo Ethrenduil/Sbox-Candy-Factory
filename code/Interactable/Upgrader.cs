@@ -114,13 +114,17 @@ public class Upgrader : AInteractable
         await GameTask.DelaySeconds( upgradeTimer );
 		UpgradeFinished();
 		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+		if (questSystem.CurrentQuest is not null)
 		{
-		    if (objective.Type == ObjectiveType.Creation && objective.ObjectTarget == upgraded)
-		    {
-		        questSystem.Cooked(objective, upgraded);
-		    }
+			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+			{
+			    if (objective.Type == ObjectiveType.Creation && objective.ObjectTarget == upgraded)
+			    {
+			        questSystem.Cooked(objective, upgraded);
+			    }
+			}
 		}
+		
     	upgraded.Tags.Add("Upgraded");
 		conveyor.IsMoving = true;
     }

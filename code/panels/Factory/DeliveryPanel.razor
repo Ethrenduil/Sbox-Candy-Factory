@@ -189,11 +189,14 @@
 		player.RemoveMoney(GetTotalNumber());
 		Delivery.StartDelivery(Delivery.GetDictionaryGoodsFromString(order));
 		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+		if (questSystem.CurrentQuest is not null)
 		{
-			if (objective.Type == ObjectiveType.ResourceOrdering)
+			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 			{
-			    questSystem.CompleteObjective(objective);
+				if (objective.Type == ObjectiveType.ResourceOrdering)
+				{
+				    questSystem.CompleteObjective(objective);
+				}
 			}
 		}
 		CloseDeliveryWindow();
