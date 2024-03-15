@@ -106,9 +106,85 @@ UpgradePanel
 		}
 	}
 
-	.upgradeWindowHeaderButtonConfirm {
-		padding: 5%;
+	.upgradeWindowProductionLineArea {
+		width: 100%;
+		height: 45%;
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
 	}
+
+	.upgradeWindowProductionLineAreaTitle {
+		font-size: 40px;
+		color: #EF8CFF;
+		margin: 2% 0;
+	}
+
+	.upgradeWindowProductionLineAreaContent {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		// align-items: center;
+		// justify-content: space-between;
+		gap: 30px;
+		background-color: #ffffff;
+		border-radius: 15px;
+	}
+
+	.upgradeWindowProductionLineAreaContentLine {
+		// width: 100%;
+		height: 100%;
+		min-height: 80%;
+		display: flex;
+		flex-direction: row;
+		// justify-content: center;
+		align-items: center;
+		margin-left: 10px;
+		border-radius: 15px;
+	}
+
+	.upgradeWindowProductionLineAreaContentLineItem {
+		width: 28%;
+		height: 80%;
+		padding: 2% 0;
+		margin: 2%;
+		display: flex;
+		flex-direction: column;
+		background-color: #EF8CFF;
+		border-radius: 15px;
+		align-items: center;
+		gap: 30px;
+		font-size: 35px;
+		
+		&:hover {
+			cursor: pointer;
+			color: #000000;
+			background-color: #ffa9fb;
+		}
+	}
+
+	
+	.locked {
+		// color locked
+		background-color: #616161;
+
+		&:hover {
+			cursor: not-allowed;
+			background-color: #616161;
+		}
+	}
+
+	.upgraded {
+		// color upgraded
+		background-color: #9effa4;
+
+		&:hover {
+			cursor: not-allowed;
+			background-color: #9effa4;
+		}
+	}
+	
 
 	.upgradeWindowContent {
 		width: 80%;

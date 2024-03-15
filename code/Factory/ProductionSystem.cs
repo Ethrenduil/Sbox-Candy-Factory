@@ -216,6 +216,69 @@ public sealed class ProductionSystem : Component
 		// Sort the production lines by ProductionLine Order
 		ProductionLines.Sort((x, y) => x.Order.CompareTo(y.Order));
 	}
+
+	public UpgradeType GetProductionLineUpgradeType(string lineStr)
+	{
+		var line = int.Parse(lineStr.Split(' ')[1]);
+
+		if (!ProductionLines[line - 1].IsActive) return UpgradeType.ProductionLine;
+		
+		return UpgradeType.Upgrader;
+	}
+
+	public Dictionary<string, int> GetProdList()
+	{
+		var result = new Dictionary<string, int>();
+		var i = 0;
+		foreach (var line in ProductionLines)
+		{
+			i++;
+			if (line.IsActive)
+			{
+				foreach (var upgrade in line.Upgrader)
+				{
+					if (!upgrade.Value)
+					{
+						result.Add($"Line {i}", upgrade.Key.UpgradePrice);
+						break;
+					}
+				}
+				result.Add($"Line {i}", -1);
+			} else
+			{
+				result.Add($"Line {i}", line.Price);
+			}
+		}
+		return result;
+	}
+
+	public bool IsProductionLineLocked(string lineStr)
+	{
+		var line = int.Parse(lineStr.Split(' ')[1]);
+		
+		if (ProductionLines[line - 1].IsActive) return false;
+
+		if (line > 1 && !ProductionLines[line - 2].FullUpgraded()) return true;
+
+		return false;
+	}
+
+	public bool IsProductionLineFullUpgraded(string lineStr)
+	{
+		var line = int.Parse(lineStr.Split(' ')[1]);
+		return ProductionLines[line - 1].FullUpgraded();
+	}
+
+	public Dictionary<string, int> GetFacList()
+	{
+		var result = new Dictionary<string, int>();
+		foreach (var upgrade in Upgrades)
+		{
+			if (upgrade.Key == UpgradeType.ProductionLine || upgrade.Key == UpgradeType.Upgrader) continue;
+			result.Add(GetItemName(upgrade.Key), UpgradesCost[upgrade.Key]);
+		}
+		return result;
+	}
 }
 
 public enum UpgradeType

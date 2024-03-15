@@ -12,23 +12,44 @@
 			<div class="upgradeWindow">
 				<div class="upgradeWindowHeader">
 					<div class="upgradeWindowHeaderTitle">Upgrade</div>
-					@* <div class="upgradeWindowHeaderButton">
-						<button class="upgradeWindowHeaderButtonConfirm" onclick="@ConfirmOrder">Confirm</button>
-					</div> *@
 				</div>
-				<div class="upgradeWindowContent">
-					@foreach (var item in Items)
-					{
-						<div class="upgradeWindowContentItem">
-							<div class="upgradeWindowContentItemIcon">
-								<img src="https://via.placeholder.com/64" alt="itemIcon" />
-							</div>
-							<div class="upgradeWindowContentItemName" value="@item.Key">@item.Key</div>
-							<div class="upgradeWindowContentItemAmount">@item.Value</div>
-							<div class="upgradeWindowContentItemUpgrade" onclick="@AdjustQuantity">purchase</div>
-							<div class="upgradeWindowContentItemPrice">$@ProductionSystem.GetUpgradeCost(ProductionSystem.GetUpgradeType(item.Key))</div>
+				<div class="upgradeWindowProductionLineArea">
+					<div class="upgradeWindowProductionLineAreaTitle">Production Line</div>
+					<div class="upgradeWindowProductionLineAreaContent">
+						<div class="upgradeWindowProductionLineAreaContentLine">
+							@* For each production line that production system got *@
+							@foreach (var item in ItemsProd)
+							{
+								<div class="upgradeWindowProductionLineAreaContentLineItem @(ProductionSystem.IsProductionLineLocked(item.Key) ? "locked" : "") @(ProductionSystem.IsProductionLineFullUpgraded(item.Key) ? "upgraded" : "")" onclick="@AdjustProductionLine">
+									<div class="upgradeWindowProductionLineAreaContentLineItemName" value="@item.Key">@item.Key</div>
+									<div class="upgradeWindowProductionLineAreaContentLineItemIcon"><img src="https://via.placeholder.com/64" alt="itemIcon" /></div>
+									<div class="upgradeWindowProductionLineAreaContentItemPrice" value="@item.Value">@item.Value</div>
+								</div>
+							}
+							@* End for each *@
+							
 						</div>
-					}
+					</div>
+				</div>
+				<div class="upgradeWindowProductionLineArea">
+					<div class="upgradeWindowProductionLineAreaTitle">Factory</div>
+					<div class="upgradeWindowProductionLineAreaContent">
+					@* For each production line that production system got *@
+						<div class="upgradeWindowProductionLineAreaContentLine">
+							@foreach (var item in ItemsFac)
+							{
+								<div class="upgradeWindowProductionLineAreaContentLineItem" onclick="@AdjustQuantity">
+									@* For each furnace and upgrader in the production line *@
+									@* need to add a class if its lock (1->2->3->4) *@
+									<div class="upgradeWindowProductionLineAreaContentLineItemName" value="@item.Key">@item.Key</div>
+									<div class="upgradeWindowProductionLineAreaContentLineItemIcon"><img src="https://via.placeholder.com/64" alt="itemIcon" /></div>
+									<div class="upgradeWindowProductionLineAreaContentItemPrice" value="@item.Value">@item.Value</div>
+									@* End for each *@
+								</div>
+							}
+						</div>
+					@* End for each *@
+					</div>
 				</div>
 				<div class="upgradeWindowFooter">
 					<div class="upgradeWindowFooterNumber">
@@ -50,7 +71,8 @@
 @code
 {
 	[Property] public string MessageTips { get; set; } = "You can upgrade your items here.";
-	[Property] public Dictionary<string, int> Items { get; set; }
+	[Property] public Dictionary<string, int> ItemsProd { get; set; } = new Dictionary<string, int>();
+	[Property] public Dictionary<string, int> ItemsFac { get; set; } = new Dictionary<string, int>();
 	[Property] public ProductionSystem ProductionSystem { get; set; }
 	[Property] public Factory Factory { get; set; }
 	private bool isUpgradeWindowOpen { get; set; }
@@ -78,15 +100,15 @@
 		// Open the upgrade window
 		isUpgradeWindowOpen = true;
 
-		Items.Clear();
+		ItemsProd.Clear();
+		ItemsFac.Clear();
 
-		// Set the upgrade window properties
+		// Set the production line items
 		var ItemsTemp = ProductionSystem.Upgrades;
 		
-		foreach (var item in ItemsTemp)
-		{
-			Items.Add(ProductionSystem.GetItemName(item.Key), item.Value);
-		}
+		ItemsProd = ProductionSystem.GetProdList();
+		ItemsFac = ProductionSystem.GetFacList();
+
 		player.InMenu = true;
 		StateHasChanged();
 	}
@@ -101,11 +123,22 @@
 		player.InMenu = false;
 	}
 
+	public void UpgradeProductionLine(PanelEvent e)
+	{
+		// Get element value
+		var item = e.This.Parent.Children.ToList()[1].StringValue;
+		UpgradeType type = ProductionSystem.GetUpgradeType(item);
+		int cost = ProductionSystem.GetUpgradeCost(type);
+
+		// Update the UI
+		StateHasChanged();
+	}
+
 	// Adjust the quantity of an item when the user clicks the + or - button
 	public void AdjustQuantity(PanelEvent e)
 	{
 		// Get element value
-		var item = e.This.Parent.Children.ToList()[1].StringValue;
+		var item = e.This.Children.ToList()[0].StringValue;
 		UpgradeType type = ProductionSystem.GetUpgradeType(item);
 		int cost = ProductionSystem.GetUpgradeCost(type);
 
@@ -120,7 +153,7 @@
 			ProductionSystem.Upgrade(type);
 
 			// Upgrade the item
-			Items[item] = ProductionSystem.Upgrades[type];
+			ItemsFac[item] = ProductionSystem.GetUpgradeCost(type);
 
 			// Update the UI
 			MessageTips = "You have successfully upgraded the item.";
@@ -128,6 +161,34 @@
 
 		// Update the UI
 		StateHasChanged();
+	}
+
+	public void AdjustProductionLine(PanelEvent e)
+	{
+		// Get element value
+		var item = e.This.Children.ToList()[0].StringValue;
+		UpgradeType type = ProductionSystem.GetProductionLineUpgradeType(item);
+		int cost = int.Parse(e.This.Children.ToList()[2].StringValue);
+
+		// Check if the player has enough money to buy the upgrade
+		if (!ErrorChecking(item, type, cost))
+		{
+			// Remove money from the player
+			player.RemoveMoney(cost);
+
+			// Upgrade the item
+			ProductionSystem.Upgrade(type, true, int.Parse(item.Split(' ')[1]));
+
+			// Upgrade the item
+			ItemsProd = ProductionSystem.GetProdList();
+
+			// Update the UI
+			MessageTips = "You have successfully upgraded the item.";
+		}
+
+		// Update the UI
+		StateHasChanged();
+	
 	}
 
 	public bool ErrorChecking(string item, UpgradeType type, int cost)
@@ -138,5 +199,10 @@
 			return true;
 		}
 		return false;
+	}
+
+	public string GetItemName(string item)
+	{
+		return "tamere";
 	}
 }

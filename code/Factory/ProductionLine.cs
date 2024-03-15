@@ -74,4 +74,21 @@ public class ProductionLine : Component
             }
         }
     }
+
+    public bool FullUpgraded()
+    {
+        // If the production line is not active, return false
+        if (!IsActive) return false;
+
+        // If there is at least one upgrader that is not upgraded, return false
+        foreach (var upgrader in Upgrader)
+        {
+            if (!upgrader.Value)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
