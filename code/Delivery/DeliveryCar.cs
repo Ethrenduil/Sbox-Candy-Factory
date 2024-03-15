@@ -75,6 +75,7 @@ public sealed class DeliveryCar : Component
 		if (IsDelivering && IsCarArrived() && !IsGuyDelivering)
 		{
 			StartDeliveryGuy();
+			Sound.Play("beep_beep", Transform.Position);
 		}
 
 		// If the delivery guy has finished delivering and has arrived at the spawn, destroy the delivery guy
