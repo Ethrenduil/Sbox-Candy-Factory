@@ -63,8 +63,8 @@
       top: 60%;
       left: 50%;
     }
-    
-    &.settings {
+
+    &.credits {
       top: 70%;
       left: 50%;
     }
@@ -107,6 +107,33 @@
         color: rgb(108, 4, 84);
       }
     }
+  }
+
+  .creditsPage {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    height: 50%;
+    font-size: 34px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .creditsPage h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .creditsPage p {
+    margin-bottom: 10px;
+  }
+
+  .creditsPage a {
+    color: #007bff;
+		pointer-events: all;
   }
 
   // .btn-lobby {

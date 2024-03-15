@@ -26,7 +26,6 @@ public class Conveyor : Component, Component.ICollisionListener
     [Property] private readonly float Speed = 100; // Change this to the speed you want
 	[Property] private readonly bool Turn = false;
 	[Property] public bool special = false;
-	[Property] private readonly bool IsCooker  = false;
 	[Property] public List<GameObject> Candies { get; set; } = new();
 	[Property]private Conveyor NextConveyor { get; set; }
 

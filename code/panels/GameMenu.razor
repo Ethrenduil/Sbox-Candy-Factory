@@ -24,13 +24,27 @@
 			<a class="btn join" onclick="@DisplayJoinRoom">
 				<h1 class="btn-txt">Join a Room</h1>
 			</a>
-			<a class="btn settings" onclick="@DisplaySettings">
-				<h1 class="btn-txt">Settings</h1>
-			</a>
+			<a class="btn credits" onclick="@DisplayCredits">
+                <h1 class="btn-txt">Credits</h1>
+            </a>
 			<a class="btn quit" onclick="@QuitGame">
 				<h1 class="btn-txt">Quit</h1>
 			</a>
-		} else if ( _isJoinRoomVisible ) {
+		} else if ( _isCreditsVisible ) {
+            <div class="creditsPage">
+                <h1>Credits</h1>
+                <p><a href="https://www.freepik.com/free-vector/3d-cartoon-style-stack-of-money-and-gold-coins-icon-coins-with-dollar-sign-money-bundle-flat-vector-illustration-wealth-investment-success-saving-profit-concept_12884267.htm#page=1&query=3d%20cartoon%20style%20stack%20of%20money%20and%20gold%20coins%20icon.%20coins%20with%20dollar%20sign,%20money%20bundle,%20flat%20vector%20illustration.%20wealth,%20investment,%20success,%20saving,%20profit%20concept&position=0"> Image from pch.vector</a> on Freepik</p>
+                <p>Delivery Car : <a href="https://sketchfab.com/3d-models/delivery-truck-1d53f7fa474849db812102dfa5d070d0">Sketchfab</a></p>
+                <p>Button sound : <a href="https://pixabay.com/sound-effects/button-124476/">Pixabay</a></p>
+                <p><a href="https://fr.freepik.com/photos-gratuite/cent-dollars-billets-fond-blanc_1012620.htm#query=billets%20dollars&position=25&from_view=keyword&track=ais&uuid=151c4aa3-801c-4ab6-8539-9b48a7506713"> Image from jannoon028</a> on Freepik</p>
+                <p>Selling sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=87313">Pixabay</a></p>
+                <p>Car sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6188">Pixabay</a></p>
+				<p>The project use AI for the voice. Check <a href="https://elevenlabs.io">ElevenLabs</a></p>
+			</div>
+            <a class="btn back">
+                <h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
+            </a>
+        } else if ( _isJoinRoomVisible ) {
 			<div class="display-list lobby-list">
 				<div class="header">
 					<div class="title">Server List</div>
@@ -62,36 +76,6 @@
 			<a class="btn back">
 				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
 			</a>
-		} else if ( _isSettingsVisible ) {
-			<div class="display-list settings">
-			<div class="header">
-				<div class="title">Settings</div>
-			</div>
-			<div class="setting-section">
-				<div class="setting-title">Display</div>
-				<div class="setting-option">
-					<span class="option-title">Resolution</span>
-					<select class="option-content resolution-dropdown" onselect="">
-						<option value="1920x1080">1920x1080</option>
-						<option value="1280x720">1280x720</option>
-					</select>
-				</div>
-			</div>
-			<div class="setting-section">
-				<div class="setting-title">Audio</div>
-				<div class="setting-option">
-					<span class="option-title">Volume</span>
-					<div class="option-volume">
-						<span class="option-operator" onclick="@AdjustVolume" value="-">-</span>
-						<span class="option-content" value="@settings.Volume">@settings.GetStringVolume()</span>
-						<span class="option-operator" onclick="@AdjustVolume" value="+">+</span>
-					</div>
-				</div>
-			</div>
-			</div>
-			<a class="btn back">
-				<h1 class="btn-txt" onclick="@DisplayContent">Back</h1>
-			</a>
 		}
 	</div>
 </root>
@@ -99,7 +83,7 @@
 @code {
 	private bool _isContentVisible = true;
 	private bool _isJoinRoomVisible = false;
-	private bool _isSettingsVisible = false;
+    private bool _isCreditsVisible = false;
 	bool refreshing;
 	List<LobbyInformation> list = new();
 	[Property] public SoundEvent buttonClickSound { get; set; }
@@ -119,21 +103,20 @@
 		_isJoinRoomVisible = false;
 	}
 
+	void DisplayCredits()
+    {
+        PlaySound();
+        _isContentVisible = false;
+        _isCreditsVisible = true;
+        StateHasChanged();
+    }
+
 	void DisplayJoinRoom()
 	{
 		RefreshLobbyList();
 		PlaySound();
 		_isContentVisible = false;
 		_isJoinRoomVisible = true;
-	}
-
-	void DisplaySettings()
-	{
-		PlaySound();
-		_isContentVisible = false;
-		_isJoinRoomVisible = false;
-		_isSettingsVisible = true;
-		StateHasChanged();
 	}
 
 	void CreateRoom()

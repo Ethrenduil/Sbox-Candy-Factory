@@ -105,7 +105,7 @@
       "Scale": "0.2,0.2,0.2",
       "Tags": "interactable",
       "Enabled": true,
-      "NetworkMode": 0,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Prop",
@@ -512,7 +512,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-14T23:26:38.0035186\u002B01:00",
+  "LastSaved": "2024-03-15T13:51:37.0760488\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
