@@ -69,16 +69,35 @@ public class Holdable : AInteractable
 
         Vector3 dropPosition = Interactor.Transform.Position + Interactor.Components.Get<Player>().Camera.Transform.Rotation.Forward * ForwardOffset;
         dropPosition.z = Math.Max(dropPosition.z, 40);
+
+        if (CheckCollision(dropPosition))
+        {
+            dropPosition = FindAlternativeDropPosition(dropPosition);
+        }
+
         GameObject.Transform.Position = dropPosition;
         
-        // Reset interactor and relative object
         Interactor = null;
         HoldRelative = null;
 
-        // Detach from the parent, drop ownership, and set the drop position
         GameObject.SetParent(null, true);
-        // GameObject.Network.DropOwnership();
     }
+
+    private bool CheckCollision(Vector3 position)
+    {
+        SceneTraceResult collisionResult = Scene.Trace
+				.Ray(Interactor.Transform.Position, position)
+				.Run();
+        return collisionResult.Hit;
+}
+
+    private Vector3 FindAlternativeDropPosition(Vector3 originalPosition)
+    {
+        Vector3 alternativePosition = originalPosition;
+        alternativePosition += Vector3.Up * 50;
+
+        return alternativePosition;
+}
 
     private void PickUpHoldable(GameObject interactor)
     {

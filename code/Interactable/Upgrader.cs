@@ -101,16 +101,26 @@ public class Upgrader : AInteractable
 
 	private async Task Upgrade()
     {
+		var candyName = "";
+		var candyNumber = 0;
 		upgradeTimer = 0;
-        var candy = conveyor.Candies[0];
-		conveyor.IsCooking = true;
-    	candy.Destroy();
-    	conveyor.RemoveCandy();
-    	var upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
-    	upgraded.NetworkSpawn();
-		var temp = upgraded.Components.Get<Candies>();
-		ProductionSystem ??= GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
-        upgradeTimer = temp.CookingTime* (float)Math.Pow(ReductionPercentage, ProductionSystem.ProductionSpeed);
+		GameObject upgraded = null;
+        foreach (var candy in conveyor.Candies.ToList())
+    	{
+			if ( candy.Name.Contains(upgradedObject.Name) )
+				continue;
+    	    candy.Destroy();
+    	    conveyor.RemoveCandy(candy);
+    	    upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
+    	    upgraded.NetworkSpawn();
+			var temp = upgraded.Components.Get<Candies>();
+        	upgradeTimer += temp.CookingTime;
+			candyNumber++;
+			if ( candyName == "" )
+				candyName = temp.Name;
+		}
+		if ( upgradeTimer == 0 )
+			return;
 		UpgradeStarted(upgradeTimer);
         await GameTask.DelaySeconds( upgradeTimer );
 		UpgradeFinished();
@@ -121,7 +131,7 @@ public class Upgrader : AInteractable
 			{
 			    if (objective.Type == ObjectiveType.Creation && objective.ObjectTarget == upgraded)
 			    {
-			        questSystem.Cooked(objective, upgraded);
+			        questSystem.Cooked(objective, upgraded, candyNumber);
 			    }
 			}
 		}

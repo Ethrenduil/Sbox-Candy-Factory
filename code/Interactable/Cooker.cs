@@ -128,7 +128,7 @@ public class Cooker : AInteractable
 			{
 			    if (objective.Type == ObjectiveType.Creation && cooked.Name.Contains(objective.ObjectTarget.Name))
 			    {	
-			        questSystem.Cooked(objective, cooked);
+			        questSystem.Cooked(objective, cooked, 1);
 			    }
 			}
 		}

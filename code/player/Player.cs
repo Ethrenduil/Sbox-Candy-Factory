@@ -84,11 +84,6 @@ public class Player : Component
 			Zoom = true;
 		else
 			Zoom = false;
-
-		if (Input.Pressed("Slot1"))
-			Save();
-		else if (Input.Pressed("Slot2"))
-			Load();
 	}
 
 	protected override void OnFixedUpdate()

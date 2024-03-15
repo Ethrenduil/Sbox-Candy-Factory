@@ -123,7 +123,7 @@ public sealed class QuestSystem : Component
 		}
 	}
 
-	public void Cooked(QuestObjective objective, GameObject cooked)
+	public void Cooked(QuestObjective objective, GameObject cooked, int amount = 1)
 	{
 		if (cooked.Name.Contains(objective.ObjectTarget.Name))
 		{
