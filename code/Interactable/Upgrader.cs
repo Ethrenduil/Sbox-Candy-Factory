@@ -103,6 +103,7 @@ public class Upgrader : AInteractable
     {
 		upgradeTimer = 0;
         var candy = conveyor.Candies[0];
+		conveyor.IsCooking = true;
     	candy.Destroy();
     	conveyor.RemoveCandy();
     	var upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
@@ -126,6 +127,7 @@ public class Upgrader : AInteractable
 		}
 		
     	upgraded.Tags.Add("Upgraded");
+		conveyor.IsCooking = false;
 		conveyor.IsMoving = true;
     }
 }

@@ -112,6 +112,7 @@ public class Cooker : AInteractable
 
 	private async Task Cook()
     {
+		conveyor.IsCooking = true;
         var cooked = CookedObject.Clone( Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
         cooked.NetworkSpawn();
 		var candy = cooked.Components.Get<Candies>();
@@ -131,6 +132,8 @@ public class Cooker : AInteractable
 			    }
 			}
 		}
+		candy.GameObject.Tags.Add("cooked");
+		conveyor.IsCooking = false;
 		conveyor.IsMoving = true;
         await GameTask.DelaySeconds( 2 );
 		CloseOven();

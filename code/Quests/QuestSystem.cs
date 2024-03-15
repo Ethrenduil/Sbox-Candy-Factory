@@ -14,7 +14,7 @@ public sealed class QuestSystem : Component
     protected async override void OnStart()
     {
         base.OnStart();
-        await GameTask.DelaySeconds(2);
+        await GameTask.DelaySeconds(1);
         Quest quest1 = new Quest("Introduction", "Welcome to Candy Factory!");
         var bob = Scene.GetAllComponents<Bob>().FirstOrDefault().GameObject;
         quest1.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Talk to Bob", bob));

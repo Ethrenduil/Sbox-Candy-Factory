@@ -6,13 +6,31 @@ using System.Numerics;
 [Category( "Candy Factory - Factory" )]
 public class Conveyor : Component, Component.ICollisionListener
 {
-    [Property] [Sync] public bool IsMoving { get; set; } = true;
+	public delegate void ConveyorMovementChangedHandler(Conveyor conveyor, bool isMoving);
+    public event ConveyorMovementChangedHandler OnConveyorMovementChanged;
+    private bool _isMoving = true;
+    [Property] [Sync] 
+    public bool IsMoving 
+    { 
+        get { return _isMoving; } 
+        set 
+        { 
+            if (_isMoving != value)
+            {
+                _isMoving = value;
+                OnConveyorMovementChanged?.Invoke(this, _isMoving);
+            }
+        } 
+    }
+
     [Property] private readonly float Speed = 100; // Change this to the speed you want
 	[Property] private readonly bool Turn = false;
 	[Property] public bool special = false;
 	[Property] private readonly bool IsCooker  = false;
 	[Property] public List<GameObject> Candies { get; set; } = new();
 	[Property]private Conveyor NextConveyor { get; set; }
+
+	public bool IsCooking = false;
 
 	protected override void OnStart()
 	{
@@ -24,24 +42,52 @@ public class Conveyor : Component, Component.ICollisionListener
 				.Run();
 
 		if (collisionResult.Hit)
+        {
+            NextConveyor = collisionResult.GameObject.Components.Get<Conveyor>();
+            NextConveyor.OnConveyorMovementChanged += HandleNextConveyorMovementChanged;
+        }
+	}
+
+	 private void HandleNextConveyorMovementChanged(Conveyor conveyor, bool isMoving)
+    {
+        if (!isMoving)
+        {
+            // Le convoyeur suivant s'est arrêté, donc ce convoyeur doit également s'arrêter
+            IsMoving = false;
+        }
+        else
+        {
+            // Le convoyeur suivant a commencé à bouger, donc ce convoyeur peut également commencer à bouger
+            IsMoving = true;
+        }
+    }
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+		if (NextConveyor is not null)
 		{
-			NextConveyor = collisionResult.GameObject.Components.Get<Conveyor>();
+			if (NextConveyor.GameObject.Enabled == false)
+			{
+				SceneTraceResult collisionResult = Scene.Trace
+				.Box( Transform.Scale / 2 , Transform.Position, Transform.Position + Transform.Rotation.Forward * 100 )
+				.WithTag("conveyor")
+				.IgnoreGameObject(GameObject)
+				.Run();
+
+				if (collisionResult.Hit)
+				{
+					NextConveyor = collisionResult.GameObject.Components.Get<Conveyor>();
+				}
+			}
+
 		}
 	}
 
-    protected override void OnFixedUpdate()
+	protected override void OnFixedUpdate()
     {
 		base.OnFixedUpdate();
-
-		if (NextConveyor is not null && !IsCooker && !special)
-		{
-			if (NextConveyor.IsMoving)
-				IsMoving = true;
-			else
-				IsMoving = false;
-		}
-
-		if (!IsMoving)
+		if (!IsMoving || IsCooking)
     	{
     	    return;
     	}
@@ -74,16 +120,17 @@ public class Conveyor : Component, Component.ICollisionListener
     	    rigidbodyCandy.Velocity = newVelocity;
 
 			if (special  && !candy.Tags.Has("Upgraded"))
-        	{
-            	var centerPosition = this.GameObject.Transform.Position;
+			{
+				var centerPosition = this.GameObject.Transform.Position;
 				centerPosition.z += 64;
 
-            	var distanceToCenter = candy.Transform.Position.Distance(centerPosition);
-            	if (distanceToCenter < 20f)
-            	{
-            	    IsMoving = false;
-            	}
-        	}
+				var distanceToCenter = candy.Transform.Position.Distance(centerPosition);
+				if (distanceToCenter < 20f)
+				{
+					IsMoving = false;
+					rigidbodyCandy.Velocity = Vector3.Zero; // Stop the candy's movement
+				}
+			}
     	}
     }
 
@@ -114,6 +161,10 @@ public class Conveyor : Component, Component.ICollisionListener
 		Candies.Remove(o.Other.GameObject.Root);
 
 		o.Other.GameObject.Root.Tags.Remove("Upgraded");
+		var rigidbodyCandy = o.Other.GameObject.Root.Components.Get<Rigidbody>();
+    	var centerDirection = (this.GameObject.Transform.Position - o.Other.GameObject.Root.Transform.Position).Normal;
+    	var forwardForce = centerDirection * 500;
+    	rigidbodyCandy.ApplyForce(forwardForce);
     }
 
     public void OnCollisionUpdate(Collision o)
