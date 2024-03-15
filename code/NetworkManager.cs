@@ -22,11 +22,12 @@ public class NetworkManager : Component, Component.INetworkListener
 
 	void INetworkListener.OnActive( Connection connection )
 	{
-        Log.Info( "Player connected" );
+        Log.Info( $"Player connected: {connection.SteamId}" );
         var cdyfac = Scene.Components.GetAll<CandyFactory>().FirstOrDefault();
         if (connection.IsHost)
         {
             cdyfac.Network.AssignOwnership( connection );
+            cdyfac.Network.SetOrphanedMode( NetworkOrphaned.Random );
         }
         cdyfac.NewPlayer( connection );
 	}
@@ -34,10 +35,6 @@ public class NetworkManager : Component, Component.INetworkListener
 	void INetworkListener.OnDisconnected(Connection conn)
 	{
 		var cdyfac = Scene.Components.GetAll<CandyFactory>().FirstOrDefault();
-        if (conn.IsHost && Connection.All.Count > 1)
-        {
-            cdyfac.Network.AssignOwnership( Connection.All[1] );
-        }
         cdyfac.DeletePlayer( conn );
 	}
 }
