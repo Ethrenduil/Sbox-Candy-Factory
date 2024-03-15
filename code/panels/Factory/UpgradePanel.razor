@@ -108,6 +108,7 @@
 		
 		ItemsProd = ProductionSystem.GetProdList();
 		ItemsFac = ProductionSystem.GetFacList();
+		Log.Info(ItemsProd.Count);
 
 		player.InMenu = true;
 		StateHasChanged();
@@ -169,7 +170,21 @@
 		var item = e.This.Children.ToList()[0].StringValue;
 		UpgradeType type = ProductionSystem.GetProductionLineUpgradeType(item);
 		int cost = int.Parse(e.This.Children.ToList()[2].StringValue);
+		bool locked = e.This.Classes.Split(' ').Contains("locked");
+		bool upgraded = e.This.Classes.Split(' ').Contains("upgraded");
 
+		// Check if the production line is locked or already fully upgraded
+		if (locked)
+		{
+			MessageTips = "This production line is locked.";
+			return;
+		}
+		if (upgraded)
+		{
+			MessageTips = "This production line is already fully upgraded.";
+			return;
+		}
+		
 		// Check if the player has enough money to buy the upgrade
 		if (!ErrorChecking(item, type, cost))
 		{

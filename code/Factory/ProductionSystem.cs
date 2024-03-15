@@ -240,10 +240,11 @@ public sealed class ProductionSystem : Component
 					if (!upgrade.Value)
 					{
 						result.Add($"Line {i}", upgrade.Key.UpgradePrice);
+						Log.Info("Line " + i + " " + upgrade.Key.UpgradePrice);
 						break;
 					}
 				}
-				result.Add($"Line {i}", -1);
+				if(!result.ContainsKey($"Line {i}")) result.Add($"Line {i}", -1);
 			} else
 			{
 				result.Add($"Line {i}", line.Price);

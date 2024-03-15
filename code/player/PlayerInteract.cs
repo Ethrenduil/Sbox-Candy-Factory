@@ -102,7 +102,7 @@ public class PlayerInteract : Component
 			// If the interactable is not valid for the current interaction, return
 			if (!ErrorChecking(interactable)) return;
 
-			if(!interactable.CanInteract(GameObject)) return;
+			if(!interactable.CanInteract(GameObject) || (!IsOwner(interactable.GameObject) && interactable.Type != InteractableType.Bob)) return;
 			
 			// Set the interact HUD value to the interactable description
 			interactHud.SetValue(interactable.Description);
@@ -116,6 +116,7 @@ public class PlayerInteract : Component
 				interactable?.OnInteract(GameObject);
 				interactHud.SetValue(null);
 				questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+				if (questSystem.CurrentQuest == null) return;
 				foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 				{
 				    if (objective.Type == ObjectiveType.Interaction && objective.ObjectTarget == interactable.GameObject)
