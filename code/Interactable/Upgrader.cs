@@ -105,12 +105,13 @@ public class Upgrader : AInteractable
 		var candyNumber = 0;
 		upgradeTimer = 0;
 		GameObject upgraded = null;
+		int index = 0;
         foreach (var candy in conveyor.Candies.ToList())
     	{
 			if ( candy.Name.Contains(upgradedObject.Name) )
 				continue;
     	    candy.Destroy();
-    	    conveyor.RemoveCandy(candy);
+    	    conveyor.RemoveCandy(index);
     	    upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
     	    upgraded.NetworkSpawn();
 			var temp = upgraded.Components.Get<Candies>();
@@ -118,6 +119,7 @@ public class Upgrader : AInteractable
 			candyNumber++;
 			if ( candyName == "" )
 				candyName = temp.Name;
+			index++;
 		}
 		if ( upgradeTimer == 0 )
 			return;

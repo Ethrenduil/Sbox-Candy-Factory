@@ -72,7 +72,7 @@ public class Holdable : AInteractable
 
         if (CheckCollision(dropPosition))
         {
-            dropPosition = FindAlternativeDropPosition(dropPosition);
+            dropPosition = FindAlternativeDropPosition(Interactor.Transform.Position);
         }
 
         GameObject.Transform.Position = dropPosition;
@@ -95,7 +95,6 @@ public class Holdable : AInteractable
     {
         Vector3 alternativePosition = originalPosition;
         alternativePosition += Vector3.Up * 50;
-
         return alternativePosition;
 }
 

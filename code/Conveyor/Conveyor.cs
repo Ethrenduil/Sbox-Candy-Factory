@@ -99,7 +99,7 @@ public class Conveyor : Component, Component.ICollisionListener
     		conveyorDirection = Vector3.Lerp(conveyorDirection, targetDirection, 0.5f);
 		}
 
-    	foreach (var candy in Candies)
+    	foreach (var candy in Candies.ToList())
     	{
 			if (!candy.IsValid())
 			{
@@ -134,14 +134,9 @@ public class Conveyor : Component, Component.ICollisionListener
     }
 
 	[Broadcast]
-	public void RemoveCandy(GameObject candy)
+	public void RemoveCandy(int candyIndex)
 	{
-		if (Candies.Count == 0)
-		{
-			return;
-		}
-		
-		Candies.Remove(candy);
+		Candies.RemoveAt(candyIndex);
 	}
 
     public virtual void OnCollisionStart(Collision o)

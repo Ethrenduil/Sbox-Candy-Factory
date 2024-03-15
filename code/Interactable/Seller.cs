@@ -6,7 +6,6 @@ using Eryziac.CandyFactory;
 public class Seller : AInteractable, Component.ICollisionListener
 {
 	[Property] public SoundEvent sellSound { get; set; }
-    [Property] private SellerPanel sellerPanel { get; set; }
 	private SoundHandle sound;
 	private ParticleBoxEmitter Money { get; set; }
 	[Property]public List<Candies> Candies { get; set; } = new();
@@ -28,12 +27,6 @@ public class Seller : AInteractable, Component.ICollisionListener
     }
 
 	[Broadcast]
-	private void SellStarted(float time)
-	{
-		sellerPanel.StartSelling(time);
-	}
-
-	[Broadcast]
 	private void SellFinished()
 	{
 		if ( sellSound is not null )
@@ -48,7 +41,7 @@ public class Seller : AInteractable, Component.ICollisionListener
 		Candies.RemoveAt(0);
 	}
 
-    public async override void OnInteract(GameObject interactor)
+    public override void OnInteract(GameObject interactor)
     {
 		if (IsInteracted)
 			return;
@@ -60,29 +53,29 @@ public class Seller : AInteractable, Component.ICollisionListener
 			return;
 		}
 		var player = interactor.Components.Get<Player>();
-		var moneyEarning = 0;
-		var candy = Candies[0];
-		if (candy is not null)
+		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+
+		foreach (var candy in Candies)
 		{
-			moneyEarning += candy.Price;
-			SellStarted(candy.SellingTime);
-			await GameTask.DelaySeconds(candy.SellingTime);
-			SellFinished();
-			player.AddMoney(candy.Price);
-			candy.GameObject.Destroy();
-			RemoveCandy();
-			questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-			if (questSystem.CurrentQuest is not null)
+			if (candy is not null)
 			{
-				foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+				player.AddMoney(candy.Price);
+				candy.GameObject.Destroy();
+				RemoveCandy();
+
+				if (questSystem.CurrentQuest is not null)
 				{
-				    if (objective.Type == ObjectiveType.EarnMoney)
-				    {
-				        questSystem.EarnedMoney(objective, moneyEarning);
-				    }
+					foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+					{
+						if (objective.Type == ObjectiveType.EarnMoney)
+						{
+							questSystem.EarnedMoney(objective, candy.Price);
+						}
+					}
 				}
 			}
 		}
+		SellFinished();
         IsInteracted = false; 
     }
 

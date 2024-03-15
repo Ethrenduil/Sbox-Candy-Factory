@@ -80,10 +80,10 @@ public class Player : Component
 			return;
 		}
 
-		if (Input.Down("attack2"))
-			Zoom = true;
-		else
-			Zoom = false;
+		if (Input.Pressed("FirstPerson"))
+		{
+			Zoom = !Zoom;
+		}
 	}
 
 	protected override void OnFixedUpdate()

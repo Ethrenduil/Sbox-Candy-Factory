@@ -53,6 +53,7 @@ public class Cooker : AInteractable
 		// Remove the ingredients from the box
 		box.RemoveGoods(furnacePanel.GetIngredients());
 		if (box.IsEmpty()) box.GameObject.Destroy();
+		else box.Enabled = false;
 		
 		// Create a new box, animate, and place it in the cooker to be cooked
 		var boxGo = BoxPrefab.Clone();
@@ -67,6 +68,10 @@ public class Cooker : AInteractable
 
 		await Cook();
 
+		if (box != null)
+		{
+			box.Enabled = true;
+		}
         IsInteracted = false;
     }
 
@@ -79,6 +84,7 @@ public class Cooker : AInteractable
 		if (!interactor.Components.Get<PlayerInteract>().IsCarrying) return false;
 
 		var box = interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
+		if (!box.FromStock) return false;
 		if (furnacePanel.CanCook(box.Goods)) return true;
 		
 		return false;

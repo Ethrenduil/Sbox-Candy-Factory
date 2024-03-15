@@ -5,6 +5,7 @@ using Sandbox;
 public sealed class DeliveryGood : Component
 {
     [Property] public Dictionary<DeliveryGoods, int> Goods { get; set; } = new Dictionary<DeliveryGoods, int>();
+	public bool FromStock { get; set; } = false;
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();

@@ -70,6 +70,7 @@ public class Stockable : AInteractable
         var delivery = box.Components.Get<DeliveryGood>();
         if (!FactoryPlayer.RemoveStockFromDictionary(goods)) return false;
         delivery.AddGoods(goods);
+		delivery.FromStock = true;
         box.Components.Get<Holdable>().OnInteract(Interactor);
         box.NetworkSpawn();
         box.Network.TakeOwnership();
