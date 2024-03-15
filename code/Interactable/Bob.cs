@@ -59,7 +59,6 @@ public class Bob : AInteractable
 			9
 		};
 		dialogue.StartDialogue(Name, dialogues, "intro", toLook, duration);
-		player.CurrentTask.Needed.Talked = true;
 	}
 
 	private void StartDialogue(Player player)

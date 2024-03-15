@@ -22,7 +22,6 @@ public class Player : Component
 	[Sync] public bool IsCrouching { get; set; }
 	public Ray AimRay => new(Camera.Transform.Position + Camera.Transform.Rotation.Forward * 25f, Camera.Transform.Rotation.Forward);
 	[Sync] private int Money { get; set; } = 0;
-	[Property] public PlayerTask CurrentTask { get; set; }
 	public Connection Connection { get; set; }
 	[Property] [Sync] public ulong SteamId { get; set; }
 	[Sync] public string Name { get; set; }
@@ -351,7 +350,6 @@ public class Player : Component
 
 	public void SetupPlayer()
     {
-        CurrentTask = Scene.GetAllComponents<PlayerTask>().FirstOrDefault();
         var candyFactory = Scene.GetAllComponents<CandyFactory>().FirstOrDefault();
 
         if (candyFactory is not null)
@@ -388,11 +386,6 @@ public class Player : Component
 		if (data is not null)
 		{
 			Money = data.Money;
-			var playerTask = this.Components.GetAll<PlayerTask>().FirstOrDefault();
-			if (playerTask is not null)
-			{
-				playerTask.Name = data.CurrentTask;
-			}
 			Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshMoneyHUD();
 		}
 		IsLoading = false;

@@ -59,7 +59,7 @@ public sealed class Factory : Component
 		return goods switch
 		{
 			DeliveryGoods.Sugar => "Sugar",
-			DeliveryGoods.Flour => "Flour",
+			DeliveryGoods.Cacao => "Cacao",
 			DeliveryGoods.Milk => "Milk",
 			DeliveryGoods.Vanilla => "Vanilla",
 			_ => "Unknown",
@@ -71,7 +71,7 @@ public sealed class Factory : Component
 		return goods switch
 		{
 			"Sugar" => DeliveryGoods.Sugar,
-			"Flour" => DeliveryGoods.Flour,
+			"Cacao" => DeliveryGoods.Cacao,
 			"Milk" => DeliveryGoods.Milk,
 			"Vanilla" => DeliveryGoods.Vanilla,
 			_ => DeliveryGoods.None,

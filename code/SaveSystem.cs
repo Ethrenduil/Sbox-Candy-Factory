@@ -21,8 +21,7 @@ public static class SaveSystem {
         var fs = FileSystem.Data;
         PlayerData data = new()
 		{
-            Money = player.GetMoney(),
-            CurrentTask = player.CurrentTask.Name
+            Money = player.GetMoney()
         };
 
         string jsonString = JsonSerializer.Serialize<PlayerData>(data);

@@ -6,7 +6,8 @@ public enum ObjectiveType
     Creation,
     ResourceOrdering,
     FactoryUpgrade,
-    EarnMoney
+    EarnMoney,
+	WaitDelivery
 }
 
 [Category( "Candy Factory - Quests")]
@@ -18,11 +19,13 @@ public class QuestObjective
     public int TargetAmount { get; set; }
     public int CurrentAmount { get; set; }
     public GameObject ObjectTarget { get; set; }
+	public bool ShowArrow { get; set; } = false;
 
     public QuestObjective(ObjectiveType type, string description)
     {
         Type = type;
         Description = description;
+		ShowArrow = false;
         IsCompleted = false;
     }
 
@@ -31,6 +34,7 @@ public class QuestObjective
         Type = type;
         Description = description;
         ObjectTarget = gameObject;
+		ShowArrow = true;
         IsCompleted = false;
     }
 
@@ -41,6 +45,7 @@ public class QuestObjective
         TargetAmount = targetAmount;
         CurrentAmount = 0;
         ObjectTarget = gameObject;
+		ShowArrow = false;
         IsCompleted = false;
     }
 
@@ -50,8 +55,8 @@ public class QuestObjective
         Description = description;
         TargetAmount = targetAmount;
         CurrentAmount = 0;
+		ShowArrow = false;
         IsCompleted = false;
     }
-
 }
 

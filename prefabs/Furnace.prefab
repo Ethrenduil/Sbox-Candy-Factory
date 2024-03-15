@@ -1,20 +1,22 @@
 {
   "RootObject": {
-    "Id": "c118b649-5a8c-434e-a350-2c6a90125411",
+    "__guid": "c118b649-5a8c-434e-a350-2c6a90125411",
     "Name": "furnace",
     "Scale": "0.8,0.8,0.8",
     "Tags": "interactable,conveyor",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "ModelCollider",
+        "__guid": "36be068e-4f5e-49a3-8b30-80fbb80ab432",
         "IsTrigger": false,
         "Model": "models/conveyor/furnace.vmdl",
         "Static": true
       },
       {
         "__type": "SkinnedModelRenderer",
+        "__guid": "5830dd62-943e-4de5-9cba-c5f4ff915292",
         "BodyGroups": 18446744073709551615,
         "CreateBoneObjects": false,
         "Model": "models/conveyor/furnace.vmdl",
@@ -23,12 +25,14 @@
       },
       {
         "__type": "Cooker",
+        "__guid": "1a45a1fe-b9c0-48b9-8b7a-22d311d561fe",
         "BoxPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/box.prefab"
         },
         "conveyor": {
           "_type": "component",
+          "component_id": "363e733a-72db-4a0b-83db-640ac7c63df7",
           "go": "c118b649-5a8c-434e-a350-2c6a90125411",
           "component_type": "Conveyor"
         },
@@ -45,6 +49,7 @@
       },
       {
         "__type": "Conveyor",
+        "__guid": "363e733a-72db-4a0b-83db-640ac7c63df7",
         "IsCooker": true,
         "special": false,
         "Speed": 100,
@@ -55,14 +60,16 @@
     ],
     "Children": [
       {
-        "Id": "6be9b2f6-e9a3-43f2-8696-22cba13e5174",
+        "__guid": "6be9b2f6-e9a3-43f2-8696-22cba13e5174",
         "Name": "Furnace Screen",
         "Position": "-19.05182,-29.87411,97.66831",
         "Rotation": "0,0,-0.7071068,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "WorldPanel",
+            "__guid": "01bb38ec-6e2e-489c-8745-d40274432651",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "1000,680",
@@ -71,6 +78,7 @@
           },
           {
             "__type": "FurnacePanel",
+            "__guid": "a896d236-3e01-41fe-a1c3-3859e463f6d2",
             "candy": {
               "_type": "gameobject",
               "prefab": "prefabs/candy_choco_01.prefab"
@@ -79,14 +87,16 @@
         ]
       },
       {
-        "Id": "5e54e857-4b76-4c4a-acba-62b134f315b2",
+        "__guid": "5e54e857-4b76-4c4a-acba-62b134f315b2",
         "Name": "Smoke",
         "Position": "-18.67244,0.2534761,88.87357",
         "Tags": "particles",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "ParticleEffect",
+            "__guid": "b5689de6-1e45-43d2-8687-288d7e14f2fd",
             "Alpha": {
               "Type": "Curve",
               "CurveA": [
@@ -196,6 +206,7 @@
           },
           {
             "__type": "ParticleSpriteRenderer",
+            "__guid": "46a82433-cbc9-40ef-93b1-d21b53240f46",
             "Additive": false,
             "BlurAmount": 0.5,
             "BlurOpacity": 0.91,
@@ -214,6 +225,7 @@
           },
           {
             "__type": "ParticleBoxEmitter",
+            "__guid": "cc40843b-0524-4ae2-a144-ff4771bc6249",
             "__enabled": false,
             "Burst": 100,
             "Delay": 0,
@@ -231,5 +243,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

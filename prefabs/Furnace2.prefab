@@ -81,7 +81,7 @@
             "__guid": "1ba692e5-cc3d-4ae4-bdda-8b4c69c5e17a",
             "candy": {
               "_type": "gameobject",
-              "prefab": "prefabs/candy_choco_01.prefab"
+              "prefab": "prefabs/candy_choco_02.prefab"
             }
           }
         ]

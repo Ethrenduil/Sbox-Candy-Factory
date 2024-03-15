@@ -113,34 +113,34 @@
                 "Position": "0.0000481445,12.60994,0.00004390113",
                 "Enabled": true,
                 "NetworkMode": 2
+              }
+            ]
+          },
+          {
+            "__guid": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
+            "Name": "Furnace Screen",
+            "Position": "-31.99985,19.00001,0.000005930071",
+            "Rotation": "0,0.7071068,0.7071068,-0.00000005960464",
+            "Scale": "1.25,1.25,1.25",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "WorldPanel",
+                "__guid": "d12965f0-7163-4629-a7ce-b027a156e621",
+                "HorizontalAlign": "Center",
+                "LookAtCamera": false,
+                "PanelSize": "800,544",
+                "RenderScale": 1,
+                "VerticalAlign": "Center"
               },
               {
-                "__guid": "c315ffb7-80a0-479f-8d72-0f1b77a4b355",
-                "Name": "Furnace Screen",
-                "Position": "-31.9999,-16.78134,-0.00004853187",
-                "Rotation": "0.00000005960464,0.7071068,0.7071067,-0.00000002980232",
-                "Scale": "1.25,1.25,1.25",
-                "Enabled": true,
-                "NetworkMode": 2,
-                "Components": [
-                  {
-                    "__type": "WorldPanel",
-                    "__guid": "d12965f0-7163-4629-a7ce-b027a156e621",
-                    "HorizontalAlign": "Center",
-                    "LookAtCamera": false,
-                    "PanelSize": "800,544",
-                    "RenderScale": 1,
-                    "VerticalAlign": "Center"
-                  },
-                  {
-                    "__type": "FurnacePanel",
-                    "__guid": "26251ea7-8c5b-4809-8a79-e39bf11390ce",
-                    "candy": {
-                      "_type": "gameobject",
-                      "prefab": "prefabs/candy_choco_04.prefab"
-                    }
-                  }
-                ]
+                "__type": "FurnacePanel",
+                "__guid": "26251ea7-8c5b-4809-8a79-e39bf11390ce",
+                "candy": {
+                  "_type": "gameobject",
+                  "prefab": "prefabs/candy_choco_04.prefab"
+                }
               }
             ]
           }

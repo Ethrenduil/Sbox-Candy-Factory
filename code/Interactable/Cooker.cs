@@ -21,6 +21,7 @@ public class Cooker : AInteractable
 	private SkinnedModelRenderer Renderer { get; set; }
 	private ParticleBoxEmitter Smoke { get; set; }
 	private ProductionSystem ProductionSystem { get; set; }
+	private QuestSystem questSystem;
 
 
     protected override void OnStart()
@@ -33,7 +34,7 @@ public class Cooker : AInteractable
 		furnacePanel = Components.Get<FurnacePanel>(FindMode.EnabledInSelfAndChildren);
 		Renderer = Components.Get<SkinnedModelRenderer>();
 		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
-		ProductionSystem = GameObject.Parent.Components.Get<ProductionSystem>();
+		ProductionSystem = GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
     }
 	protected override void OnUpdate()
     {
@@ -110,17 +111,18 @@ public class Cooker : AInteractable
         var cooked = CookedObject.Clone( Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
         cooked.NetworkSpawn();
 		var candy = cooked.Components.Get<Candies>();
+		ProductionSystem ??= GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
         cookTimer = candy.CookingTime * (float)Math.Pow(ReductionPercentage, ProductionSystem.ProductionSpeed);
 		CookingStarted(cookTimer);
         await GameTask.DelaySeconds( cookTimer );
 		CookingFinished();
-		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
-		if ( currentTask is not null )
+		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 		{
-			if ( !currentTask.Needed.TalkToBob && currentTask.Needed.CandyCreated.Name == candy.Name && currentTask.Needed.CandyCreated.Current < currentTask.Needed.CandyCreated.Quantity) {
-				currentTask.Needed.CandyCreated.Current++;
-				Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
-			}
+		    if (objective.Type == ObjectiveType.Creation && cooked.Name.Contains(objective.ObjectTarget.Name))
+		    {	
+		        questSystem.Cooked(objective, cooked);
+		    }
 		}
 		conveyor.IsMoving = true;
         await GameTask.DelaySeconds( 2 );

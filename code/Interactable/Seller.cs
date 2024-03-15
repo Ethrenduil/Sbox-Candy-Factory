@@ -10,6 +10,7 @@ public class Seller : AInteractable, Component.ICollisionListener
 	private SoundHandle sound;
 	private ParticleBoxEmitter Money { get; set; }
 	[Property]public List<Candies> Candies { get; set; } = new();
+	private QuestSystem questSystem;
 
 
 
@@ -70,14 +71,13 @@ public class Seller : AInteractable, Component.ICollisionListener
 			player.AddMoney(candy.Price);
 			candy.GameObject.Destroy();
 			RemoveCandy();
-			var currentTask = player.CurrentTask;
-			if ( currentTask is not null )
+			questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 			{
-				if ( currentTask.Needed.CurrentMoney < currentTask.Needed.Money) {
-					currentTask.Needed.CurrentMoney += moneyEarning;
-					currentTask.Needed.CurrentMoney = Math.Min(currentTask.Needed.CurrentMoney, currentTask.Needed.Money);
-					Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
-				}
+			    if (objective.Type == ObjectiveType.EarnMoney)
+			    {
+			        questSystem.EarnedMoney(objective, moneyEarning);
+			    }
 			}
 		}
         IsInteracted = false; 

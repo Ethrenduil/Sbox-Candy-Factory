@@ -224,10 +224,6 @@
             {
               "__type": "CurrentTaskHUD",
               "__guid": "1f990595-3266-4573-bd0a-5e62435ef642"
-            },
-            {
-              "__type": "PlayerTask",
-              "__guid": "53534ab7-a74e-40d1-8fca-38750f93f6b1"
             }
           ]
         },
@@ -516,7 +512,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-14T15:09:55.4004398\u002B01:00",
+  "LastSaved": "2024-03-14T23:26:38.0035186\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

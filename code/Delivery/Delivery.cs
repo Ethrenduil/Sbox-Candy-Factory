@@ -19,6 +19,7 @@ public sealed class Delivery : Component
     [Property] public GameObject Receiver { get; set; }
     [Property] public float DeliveryCooldown { get; set; } = 30.0f;
     [Property] public ProductionSystem ProductionSystem { get; set; }
+	private QuestSystem questSystem;
 
 
     protected override void OnAwake()
@@ -88,6 +89,7 @@ public sealed class Delivery : Component
 
         // Set the delivery progress
         DeliveryHud.SetProgress("Delivery in progress");
+		ProductionSystem = GameObject.Components.Get<ProductionSystem>(FindMode.EverythingInChildren);
     }
 
     // Spawn a delivery object at the delivery destination
@@ -107,6 +109,15 @@ public sealed class Delivery : Component
 
         // Set the delivery status
         Status = DeliveryStatus.Delivered;
+
+		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+		{
+			if (objective.Type == ObjectiveType.WaitDelivery)
+			{
+			    questSystem.CompleteObjective(objective);
+			}
+		}
         
         // Set Delivery Cooldown
         DeliveryCooldown = ProductionSystem.TransportCoolDownSpeed;

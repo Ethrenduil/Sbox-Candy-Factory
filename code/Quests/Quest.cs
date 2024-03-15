@@ -7,6 +7,9 @@ public sealed class Quest : Component
     public string Description { get; set; }
     public List<QuestObjective> Objectives { get; set; }
     public bool IsCompleted { get; set; }
+	public bool ShowArrow { get; set; } = false;
+	public GameObject Arrow { get; set; }
+	public GameObject ArrowTarget { get; set; }
 
     public Quest(string name, string description)
     {
@@ -15,4 +18,5 @@ public sealed class Quest : Component
         Objectives = new List<QuestObjective>();
         IsCompleted = false;
     }
+	
 }

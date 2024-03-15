@@ -14,9 +14,12 @@ public class Upgrader : AInteractable
 	[Property] public int UpgradePrice { get; set; }
 	private float upgradeTimer { get; set; }
 	private Vector3 upgradedOffset { get; set; } = new( 0, -15, 80 );
+	private float ReductionPercentage { get; set; } = 0.9f;
+	private ProductionSystem ProductionSystem { get; set; }
 	private SoundHandle sound;
 	private SkinnedModelRenderer Renderer { get; set; }
 	private ParticleBoxEmitter Smoke { get; set; }
+	private QuestSystem questSystem;
 
 
     protected override void OnStart()
@@ -28,6 +31,7 @@ public class Upgrader : AInteractable
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 		Renderer = Components.Get<SkinnedModelRenderer>();
 		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
+		ProductionSystem = GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
     }
 	protected override void OnUpdate()
     {
@@ -97,37 +101,27 @@ public class Upgrader : AInteractable
 
 	private async Task Upgrade()
     {
-		var candyName = "";
-		var candyNumber = 0;
 		upgradeTimer = 0;
-        foreach (var candy in conveyor.Candies.ToList()) // ToList to avoid collection modified exception
-    	{
-			if ( candy.Tags.Has("Upgraded") )
-				continue;
-    	    candy.Destroy();
-    	    conveyor.RemoveCandy();
-    	    var upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
-    	    upgraded.Tags.Add("Upgraded");
-    	    upgraded.NetworkSpawn();
-			var temp = upgraded.Components.Get<Candies>();
-        	upgradeTimer += temp.CookingTime;
-			candyNumber++;
-			if ( candyName == "" )
-				candyName = temp.Name;
-		}
-		if ( upgradeTimer == 0 )
-			return;
+        var candy = conveyor.Candies[0];
+    	candy.Destroy();
+    	conveyor.RemoveCandy();
+    	var upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
+    	upgraded.NetworkSpawn();
+		var temp = upgraded.Components.Get<Candies>();
+		ProductionSystem ??= GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
+        upgradeTimer = temp.CookingTime* (float)Math.Pow(ReductionPercentage, ProductionSystem.ProductionSpeed);
 		UpgradeStarted(upgradeTimer);
         await GameTask.DelaySeconds( upgradeTimer );
 		UpgradeFinished();
-		var currentTask = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy ).CurrentTask;
-		if ( currentTask is not null )
+		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 		{
-			if ( currentTask.Needed.CandyUpgraded.Name == candyName && currentTask.Needed.CandyUpgraded.Current < currentTask.Needed.CandyUpgraded.Quantity) {
-				currentTask.Needed.CandyUpgraded.Current = Math.Min( currentTask.Needed.CandyUpgraded.Quantity, currentTask.Needed.CandyUpgraded.Current + candyNumber );
-				Scene.GetAllComponents<CandyFactory>().FirstOrDefault().RefreshTaskHUD();
-			}
+		    if (objective.Type == ObjectiveType.Creation && objective.ObjectTarget == upgraded)
+		    {
+		        questSystem.Cooked(objective, upgraded);
+		    }
 		}
+    	upgraded.Tags.Add("Upgraded");
 		conveyor.IsMoving = true;
     }
 }

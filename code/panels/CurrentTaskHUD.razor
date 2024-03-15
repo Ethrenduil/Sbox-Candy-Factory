@@ -4,47 +4,52 @@
 @inherits PanelComponent
 
 <root>
-    @if (LocalPlayer != null && LocalPlayer.CurrentTask != null)
-    {
-        <div class="header">
-            <div class="title">@LocalPlayer.CurrentTask.Name :</div>
-            <div class="description">@LocalPlayer.CurrentTask.Description</div>
-        </div>
-        <div class="progress">
-            <!-- @foreach (var objective in LocalPlayer.CurrentTask.Objectives)
+    @if (Quests != null && Quests.CurrentQuest != null)
+	{
+		var CurrentQuest = Quests.CurrentQuest;
+		<div class="header">
+			<div class="title">@CurrentQuest.Name :</div>
+			<div class="description">@CurrentQuest.Description</div>
+		</div>
+		<div class="progress">
+    		@if (!CurrentQuest.IsCompleted)
+			{
+            	@foreach (var objective in CurrentQuest.Objectives)
+            	{
+            	    <span class="category">@GetObjectiveString(objective)</span>
+            	}
+			}
+            else
             {
-                <span class="category">@GetObjectiveString(objective)</span>
-            } -->
-            <!-- else if (LocalPlayer.CurrentTask.IsComplete)
-            {
-                <span class="completed">@LocalPlayer.CurrentTask.CompletedMessage</span>
-            } -->
-            En cours de rework ! Ne pas toucher.
+                <span class="completed">You completed all quests!</span>
+            }
         </div>
+			
     }
 </root>
 
 @code
 {
-    public Player LocalPlayer;
+    public QuestSystem Quests { get; set; }
 
-    protected override void OnStart()
+    protected async override void OnStart()
     {
-        LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+		await Task.Delay(1000);
+        Quests = Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
 		StateHasChanged();
     }
 
     protected override void OnUpdate()
     {
-        if (LocalPlayer == null)
+        if (Quests == null)
         {
-            LocalPlayer = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+            Quests = Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
             StateHasChanged();
         }
     }
 
     private string GetObjectiveString(QuestObjective objective)
     {
-        return $"{objective.Description}";
+        return $"- {objective.Description}";
     }
 }

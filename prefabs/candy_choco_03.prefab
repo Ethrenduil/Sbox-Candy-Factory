@@ -16,15 +16,15 @@
       {
         "__type": "Candies",
         "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 6,
+        "CookingTime": 8,
         "Ingredients": {
           "Sugar": 1,
           "Cacao": 1,
           "Milk": 2
         },
         "Name": "White Chocolate",
-        "Price": 24,
-        "SellingTime": 6
+        "Price": 20,
+        "SellingTime": 5
       }
     ],
     "Children": []

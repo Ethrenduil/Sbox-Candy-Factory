@@ -60,6 +60,7 @@
 	[Property] public Delivery Delivery { get; set; }
 	[Property] public Factory Factory { get; set; }
 	private bool isDeliveryWindowOpen { get; set; }
+	private QuestSystem questSystem;
 	private Player player;
 
 	protected override void OnStart()
@@ -187,6 +188,14 @@
 		}
 		player.RemoveMoney(GetTotalNumber());
 		Delivery.StartDelivery(Delivery.GetDictionaryGoodsFromString(order));
+		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+		foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+		{
+			if (objective.Type == ObjectiveType.ResourceOrdering)
+			{
+			    questSystem.CompleteObjective(objective);
+			}
+		}
 		CloseDeliveryWindow();
 	}
 

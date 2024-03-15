@@ -19,11 +19,14 @@ public class PlayerInteract : Component
 	protected float InteractionTime = 0.0f;
     protected const float InteractionCooldown = 0.5f;
 
+	private QuestSystem questSystem;
+
 	protected override void OnStart()
 	{
 		base.OnStart();
 		PlayerComponent = GameObject.Components.Get<Player>(FindMode.EnabledInSelf);
 		interactHud = Scene.GetAllComponents<Interact>().FirstOrDefault();
+		questSystem = Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
 		IsCarrying = false;
 	}
 
@@ -112,6 +115,14 @@ public class PlayerInteract : Component
 				StartInteract();
 				interactable?.OnInteract(GameObject);
 				interactHud.SetValue(null);
+				questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
+				foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
+				{
+				    if (objective.Type == ObjectiveType.Interaction && objective.ObjectTarget == interactable.GameObject)
+				    {
+				        questSystem.CompleteObjective(objective);
+				    }
+				}
 			}
 		} else
 		{

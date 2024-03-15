@@ -73,7 +73,7 @@ public class Conveyor : Component, Component.ICollisionListener
 
     	    rigidbodyCandy.Velocity = newVelocity;
 
-			if (special && !candy.Tags.Has("Upgraded"))
+			if (special  && !candy.Tags.Has("Upgraded"))
         	{
             	var centerPosition = this.GameObject.Transform.Position;
 				centerPosition.z += 64;
@@ -113,10 +113,7 @@ public class Conveyor : Component, Component.ICollisionListener
     {
 		Candies.Remove(o.Other.GameObject.Root);
 
-		var rigidbodyCandy = o.Other.GameObject.Root.Components.Get<Rigidbody>();
-    	var centerDirection = (this.GameObject.Transform.Position - o.Other.GameObject.Root.Transform.Position).Normal;
-    	var forwardForce = centerDirection * 500;
-    	rigidbodyCandy.ApplyForce(forwardForce);
+		o.Other.GameObject.Root.Tags.Remove("Upgraded");
     }
 
     public void OnCollisionUpdate(Collision o)
