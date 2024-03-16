@@ -9,14 +9,43 @@
     {
         <div class="pause">
             <h2>Paused</h2>
-            <div class="options">
-                <div class="btn" @onclick="@ChangeState">
-                    <p>Resume</p>
+            @if (!IsSettings)
+            {
+                <div class="options">
+                    <div class="btn" @onclick="@ChangeState">
+                        <p>Resume</p>
+                    </div>
+                    <div class="btn" @onclick="@SettingsState">
+                        <p>Settings</p>
+                    </div>
+                    <div class="btn"@onclick="@Quit">
+                        <p>Quit</p>
+                    </div>
                 </div>
-                <div class="btn"@onclick="@Quit">
-                    <p>Quit</p>
+            } else
+            {
+                <div class="options">
+                    <div class="volumeOption">
+                        <h3>Volume Music</h3>
+                        <div class="volumeContent">
+                            <div class="volumeBtn" onclick="@AdjustVolumeMusic" value="-">-</div>
+                            <div class="volume">@settings.GetStringVolume(VolumeType.Music)</div>
+                            <div class="volumeBtn" onclick="@AdjustVolumeMusic" value="+">+</div>                            
+                        </div>
+                    </div>
+                    <div class="volumeOption">
+                        <h3>Volume Sound</h3>
+                        <div class="volumeContent">
+                            <div class="volumeBtn" onclick="@AdjustVolumeSound" value="-">-</div>
+                            <div class="volume">@settings.GetStringVolume(VolumeType.Sound)</div>
+                            <div class="volumeBtn" onclick="@AdjustVolumeSound" value="+">+</div>
+                        </div>
+                    </div>
+                    <div class="btn" @onclick="@SettingsState">
+                        <p>Back</p>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     }
 </root>
@@ -26,12 +55,15 @@
     [Property]
     public bool IsPaused = false;
 	private Player player;
+    public bool IsSettings = false;
+    private Settings settings = new Settings();
 
-        protected override void OnStart()
-        {
-            base.OnAwake();
-			player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
-        }
+    protected override void OnStart()
+    {
+        base.OnAwake();
+        player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+        settings = player.GameObject.Components.Get<Settings>();
+    }
 
         protected override void OnUpdate()
     {
@@ -49,14 +81,60 @@
         if (player == null)
         {
             player = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+            settings = player.GameObject.Components.Get<Settings>();
         }
 		IsPaused = !IsPaused;
+        if (!IsPaused) IsSettings = false;
 		StateHasChanged();
 	}
+
+    private void SettingsState()
+    {
+        if (player == null)
+        {
+            player = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+            settings = player.GameObject.Components.Get<Settings>();
+        }
+        IsSettings = !IsSettings;
+        StateHasChanged();
+    }
 
     private void Quit()
     {
         GameNetworkSystem.Disconnect();
         Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+    }
+
+	public void AdjustVolumeMusic(PanelEvent e)
+	{
+		// Get element value
+		var sign = e.This.StringValue == "-" ? -1 : 1;
+		var wishQuantity = settings.VolumeMusic + sign * 5;
+
+		// Check if the quantity is valid
+		if (wishQuantity <= 0) wishQuantity = 0;
+		if (wishQuantity >= 100) wishQuantity = 100;
+
+
+		// Set the new value
+		settings.SetVolume(VolumeType.Music, wishQuantity);
+		// Update the UI
+		StateHasChanged();
+	}
+
+    public void AdjustVolumeSound(PanelEvent e)
+    {
+        // Get element value
+        var sign = e.This.StringValue == "-" ? -1 : 1;
+        var wishQuantity = settings.VolumeSound + sign * 5;
+
+        // Check if the quantity is valid
+        if (wishQuantity <= 0) wishQuantity = 0;
+        if (wishQuantity >= 100) wishQuantity = 100;
+
+        // Set the new value
+        settings.SetVolume(VolumeType.Sound, wishQuantity);
+        // Update the UI
+        StateHasChanged();
     }
 }

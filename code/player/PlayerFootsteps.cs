@@ -1,6 +1,7 @@
 public sealed class PlayerFootsteps : Component
 {
 	[Property] SkinnedModelRenderer Source { get; set; }
+	private Settings Settings { get; set; }
 
 	protected override void OnEnabled()
 	{
@@ -8,6 +9,7 @@ public sealed class PlayerFootsteps : Component
 			return;
 
 		Source.OnFootstepEvent += OnEvent;
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
 	}
 
 	protected override void OnDisabled()
@@ -22,6 +24,7 @@ public sealed class PlayerFootsteps : Component
 
 	private void OnEvent( SceneModel.FootstepEvent e )
 	{
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
 		if ( timeSinceStep < 0.2f )
 			return;
 
@@ -41,6 +44,6 @@ public sealed class PlayerFootsteps : Component
 		if ( sound is null ) return;
 
 		var handle = Sound.Play( sound, tr.HitPosition + tr.Normal * 5 );
-		handle.Volume *= e.Volume;
+		handle.Volume *= e.Volume * Settings.VolumeSound;
 	}
 }

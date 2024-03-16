@@ -10,6 +10,7 @@ public class Seller : AInteractable, Component.ICollisionListener
 	private ParticleBoxEmitter Money { get; set; }
 	[Property]public List<Candies> Candies { get; set; } = new();
 	private QuestSystem questSystem;
+	private Settings Settings;
 
 
 
@@ -21,9 +22,11 @@ public class Seller : AInteractable, Component.ICollisionListener
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 		Money = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
+		Settings = Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
     }
 	protected override void OnUpdate()
     {
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
     }
 
 	[Broadcast]
@@ -31,6 +34,7 @@ public class Seller : AInteractable, Component.ICollisionListener
 	{
 		if ( sellSound is not null )
 		{
+			sellSound.Volume = Settings.VolumeSound;
 			sound = Sound.Play( sellSound, Transform.Position );
 		}
 	}

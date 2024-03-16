@@ -1,3 +1,4 @@
 public class SettingsData {
-    public float Volume { get; set; }
+    public float VolumeMusic { get; set; }
+    public float VolumeSound { get; set; }
 }

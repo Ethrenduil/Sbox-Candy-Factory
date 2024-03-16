@@ -22,6 +22,7 @@ public class Cooker : AInteractable
 	private ParticleBoxEmitter Smoke { get; set; }
 	private ProductionSystem ProductionSystem { get; set; }
 	private QuestSystem questSystem;
+	private Settings Settings;
 
 
     protected override void OnStart()
@@ -35,6 +36,7 @@ public class Cooker : AInteractable
 		Renderer = Components.Get<SkinnedModelRenderer>();
 		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
 		ProductionSystem = GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
+		Settings = Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
     }
 	protected override void OnUpdate()
     {
@@ -42,6 +44,7 @@ public class Cooker : AInteractable
 		Renderer ??= Components.Get<SkinnedModelRenderer>();
 		Smoke ??= Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
 		ProductionSystem ??= GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -94,7 +97,10 @@ public class Cooker : AInteractable
 	private void CookingStarted(float time)
 	{
 		if ( CookingSound is not null )
+		{
+			CookingSound.Volume = Settings.VolumeSound;
         	sound = Sound.Play( CookingSound, Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80) );
+		}
 		furnacePanel.StartCooking(time);
 		if ( Smoke is not null )
 			Smoke.Enabled = true;
@@ -106,7 +112,10 @@ public class Cooker : AInteractable
 		Renderer.Set( "Opening", true );
 		sound?.Stop();
 		if ( CookedSound is not null )
+		{
+			CookedSound.Volume = Settings.VolumeSound;
         	Sound.Play( CookedSound, Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
+		}
 	}
 
 	[Broadcast]

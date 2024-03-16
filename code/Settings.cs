@@ -4,12 +4,14 @@ using Sandbox;
 [Category( "Candy Factory" )]
 public sealed class Settings : Component
 {
-    [Property] public float Volume { get; set; }
+    [Property] public float VolumeMusic { get; set; }
+    [Property] public float VolumeSound { get; set; }
 
 	protected override void OnStart()
 	{
 		base.OnStart();
-        Volume = 0.5f;
+        VolumeMusic = 0.5f;
+        VolumeSound = 0.5f;
         SetUpSettings();
 	}
 	protected override void OnUpdate()
@@ -26,7 +28,8 @@ public sealed class Settings : Component
     {
         var fs = FileSystem.Data;
         var data = new SettingsData();
-        data.Volume = Volume;
+        data.VolumeMusic = VolumeMusic;
+        data.VolumeSound = VolumeSound;
 
         // Load settings
         if(fs.FileExists("settings.json"))
@@ -35,7 +38,8 @@ public sealed class Settings : Component
             data = fs.ReadJson<SettingsData>("settings.json");
 
             // Load all settings
-            Volume = data.Volume;
+            VolumeMusic = data.VolumeMusic;
+            VolumeSound = data.VolumeSound;
         }
         else
         {
@@ -45,9 +49,12 @@ public sealed class Settings : Component
         return;
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume(VolumeType type, float volume)
     {
-        Volume = volume;
+        if(type == VolumeType.Music)
+            VolumeMusic = volume;
+        else
+            VolumeSound = volume;
         SaveSettings();
     }
 
@@ -55,13 +62,24 @@ public sealed class Settings : Component
     {
         var fs = FileSystem.Data;
         var data = new SettingsData();
-        data.Volume = Volume;
+        data.VolumeMusic = VolumeMusic;
+        data.VolumeSound = VolumeSound;
 
         fs.WriteJson("settings.json", data);
     }
 
-    public string GetStringVolume()
+    public string GetStringVolume(VolumeType type)
     {
-        return Volume.ToString("0") + "%";
+        if(type == VolumeType.Music)
+            return VolumeMusic.ToString("0") + "%";
+        else
+            return VolumeSound.ToString("0") + "%";
     }
+}
+
+
+public enum VolumeType
+{
+    Music,
+    Sound
 }

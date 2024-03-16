@@ -20,6 +20,7 @@ public class Upgrader : AInteractable
 	private SkinnedModelRenderer Renderer { get; set; }
 	private ParticleBoxEmitter Smoke { get; set; }
 	private QuestSystem questSystem;
+	private Settings Settings;
 
 
     protected override void OnStart()
@@ -32,9 +33,11 @@ public class Upgrader : AInteractable
 		Renderer = Components.Get<SkinnedModelRenderer>();
 		Smoke = Components.Get<ParticleBoxEmitter>(FindMode.EverythingInSelfAndChildren);
 		ProductionSystem = GameObject.Root.Components.Get<ProductionSystem>(FindMode.EverythingInSelfAndChildren);
+		Settings = Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
     }
 	protected override void OnUpdate()
     {
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -75,7 +78,10 @@ public class Upgrader : AInteractable
 	private void UpgradeStarted(float time)
 	{
 		if ( upgradeSound is not null )
+		{
+			upgradeSound.Volume = Settings.VolumeSound;
         	sound = Sound.Play( upgradeSound, Transform.Position + upgradedOffset );
+		}
 		furnacePanel.StartCooking(time);
 		if ( Smoke is not null )
 			Smoke.Enabled = true;
@@ -87,7 +93,10 @@ public class Upgrader : AInteractable
 		Renderer.Set( "Closing", false );
 		sound?.Stop();
 		if ( upgradedSound is not null )
+		{
+			upgradedSound.Volume = Settings.VolumeSound;
         	Sound.Play( upgradedSound, Transform.Position + upgradedOffset);
+		}
 		
 		if ( Smoke is not null )
 			Smoke.Enabled = false;
