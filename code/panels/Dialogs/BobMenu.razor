@@ -40,8 +40,8 @@
 		{
 			deliveryPanel = Scene.GetAllComponents<DeliveryPanel>().FirstOrDefault();
 		}
-		deliveryPanel.OpenDeliveryWindow();
 		ToggleMenu();
+		deliveryPanel.OpenDeliveryWindow();
 	}
 
 	private void UpgradeMenu()
@@ -50,8 +50,8 @@
 		{
 			upgradePanel = Scene.GetAllComponents<UpgradePanel>().FirstOrDefault();
 		}
-		upgradePanel.OpenUpgradeWindow();
 		ToggleMenu();
+		upgradePanel.OpenUpgradeWindow();
 	}
 
 	public void ToggleMenu()
