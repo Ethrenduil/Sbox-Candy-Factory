@@ -42,6 +42,7 @@ public sealed class DeliveryCar : Component
 
 	private Rigidbody rigidbodyCar { get; set; }
 	[Property] public float Speed { get; set; } = 100.0f;
+	private Settings Settings { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -50,6 +51,7 @@ public sealed class DeliveryCar : Component
 		Renderer = Components.Get<SkinnedModelRenderer>( true );
 		SpawnPositionGuy = GameObject.Children.Where(x => x.Name == "SpawnGuy").FirstOrDefault();
 		rigidbodyCar = GameObject.Components.Get<Rigidbody>();
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
 
 		Renderer.Set("Riding", true);
 	}
@@ -74,8 +76,10 @@ public sealed class DeliveryCar : Component
 		// if the car has arrived near the delivery destination, stop the car and spawn the delivery guy
 		if (IsDelivering && IsCarArrived() && !IsGuyDelivering)
 		{
+			Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
 			StartDeliveryGuy();
-			Sound.Play("beep_beep", Transform.Position);
+			var tempSound = Sound.Play("beep_beep", Transform.Position);
+			tempSound.Volume = Settings.GetVolume(VolumeType.Sound);
 		}
 
 		// If the delivery guy has finished delivering and has arrived at the spawn, destroy the delivery guy
