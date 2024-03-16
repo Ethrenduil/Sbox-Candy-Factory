@@ -54,10 +54,10 @@
 			Renderer.Set( "talking", false );
 		}
 
-        if (Input.EscapePressed && InDialogue)
+        @* if (Input.EscapePressed && InDialogue)
         {
-               ChangeState();
-        }
+				ChangeState();
+        } *@
 
 		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
 	
