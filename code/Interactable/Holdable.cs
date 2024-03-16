@@ -6,6 +6,7 @@ public class Holdable : AInteractable
     private GameObject HoldRelative { get; set; }
     private const float ForwardOffset = 70f;
     private const float VerticalOffset = 40f;
+    private BoxPanel BoxPanel { get; set; }
 
     protected override void OnStart()
     {
@@ -15,6 +16,7 @@ public class Holdable : AInteractable
         // Ensure proper network ownership transfer
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
         Type = InteractableType.Resource;
+        BoxPanel ??= Components.Get<BoxPanel>(FindMode.EverythingInChildren);
     }
 
 	protected override void OnUpdate()
@@ -81,6 +83,11 @@ public class Holdable : AInteractable
         HoldRelative = null;
 
         GameObject.SetParent(null, true);
+
+        // Enable the BoxPanel
+        BoxPanel ??= Components.Get<BoxPanel>(FindMode.EverythingInChildren);
+        BoxPanel.Enabled = true;
+        BoxPanel.Interaction();
     }
 
     private bool CheckCollision(Vector3 position)
@@ -114,6 +121,10 @@ public class Holdable : AInteractable
         
         // Set the interaction state
         IsInteracted = true;
+
+        // Disable the BoxPanel
+        BoxPanel ??= Components.Get<BoxPanel>(FindMode.EverythingInChildren);
+        BoxPanel.Enabled = false;
     }
 
 	[Broadcast]

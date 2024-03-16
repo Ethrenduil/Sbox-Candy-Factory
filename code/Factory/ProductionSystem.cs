@@ -19,16 +19,7 @@ public sealed class ProductionSystem : Component
 	}
 	protected override void OnUpdate()
 	{
-		if (Input.Pressed("Slot4"))
-		{
-			Upgrade(UpgradeType.Upgrader, true, 1);
-		} else if (Input.Pressed("Slot5"))
-		{
-			Upgrade(UpgradeType.ProductionLine, true, 2);
-		} else if (Input.Pressed("Slot6"))
-		{
-			Upgrade(UpgradeType.Upgrader, true, 2);
-		}
+		base.OnUpdate();
 	}
 
 	public void StartProduction()

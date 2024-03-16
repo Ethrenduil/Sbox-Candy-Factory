@@ -1,0 +1,62 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	@if (!holdable.IsInteracted)
+	{
+		<div class="boxWindow">
+			@* // title from holdable from parameter *@
+			<div class="boxTitle">@GetItemName()</div>
+			<div class="boxContent">
+				@* // For each goods in holdable *@
+				@foreach (var item in DeliveryGood.Goods)
+				{
+					<div class="boxItem">
+						<div class="boxItemTitle">@Delivery.GetItemName(item.Key): </div>
+						<div class="boxItemContent">@item.Value</div>
+					</div>
+				}
+			</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	private Holdable holdable;
+	private DeliveryGood DeliveryGood;
+	private bool isInteracted;
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+		holdable ??= GameObject.Parent.Components.Get<Holdable>();
+		DeliveryGood ??= GameObject.Parent.Components.Get<DeliveryGood>();
+    }
+
+    protected override void OnFixedUpdate()
+    {
+		holdable ??= GameObject.Parent.Components.Get<Holdable>();
+		DeliveryGood ??= GameObject.Parent.Components.Get<DeliveryGood>();
+        base.OnFixedUpdate();
+    }
+
+	public void Interaction()
+	{
+		StateHasChanged();
+	}
+
+	private string GetItemName()
+	{
+		if (DeliveryGood.FromStock)
+		{
+			return "From Stock";
+		}
+		else
+		{
+			return "From Delivery";
+		}
+	}
+}

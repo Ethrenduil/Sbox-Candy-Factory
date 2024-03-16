@@ -1,22 +1,21 @@
 {
   "RootObject": {
-    "Id": "30f79f6e-5d65-4481-b186-2cd64379a0c7",
+    "__guid": "e6e6a9e2-92d2-4d33-bbea-acc5436c7f62",
     "Name": "box",
     "Tags": "interactable",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "Prop",
+        "__guid": "eb5af836-0729-4ca3-93ec-26497ed18728",
         "Health": 50,
         "IsStatic": false,
-        "Model": "models/cardboard/cardboard.vmdl",
-        "OnPropBreak": null,
-        "OnPropTakeDamage": null,
-        "ShowCreatedComponents": false
+        "Model": "models/cardboard/cardboard.vmdl"
       },
       {
         "__type": "Holdable",
+        "__guid": "4717daab-5998-4eef-8220-81c269343d51",
         "Description": "Press E to pick up Delivery Box",
         "IsInteracted": false,
         "Name": "Delivery",
@@ -24,28 +23,57 @@
       },
       {
         "__type": "DeliveryGood",
+        "__guid": "d1a1b800-d745-422b-a4a2-5d45ac95e264",
         "Goods": {}
       }
     ],
     "Children": [
       {
-        "Id": "5e4be162-4f0e-4bcb-8311-21476739f6f7",
+        "__guid": "8d9718af-5c56-4d77-9c54-c7d57ad2b572",
         "Name": "RightHandSlot",
         "Position": "0,-15.9391,16.77539",
         "Rotation": "0.6830126,-0.6830127,0.1830127,0.1830127",
-        "Enabled": true
+        "Enabled": true,
+        "NetworkMode": 2
       },
       {
-        "Id": "7ff72df6-d8ab-4d62-85d3-25bdc06981da",
+        "__guid": "4e857eab-95e1-414f-b338-99527ff7276a",
         "Name": "LeftHandSlot",
         "Position": "0,15.74985,16.77539",
         "Rotation": "0.1830127,-0.1830127,0.6830127,0.6830126",
-        "Enabled": true
+        "Enabled": true,
+        "NetworkMode": 2
+      },
+      {
+        "__guid": "2e4a247d-a402-41ef-8995-5ab7ddbdc69c",
+        "Name": "World",
+        "Position": "-3.167221,0,64",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "__guid": "51d8fbf7-bd5b-4b7d-98e9-a2d543df82c3",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": true,
+            "PanelSize": "512,512",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "BoxPanel",
+            "__guid": "01f715fd-f822-4822-b665-99d5d876554d",
+            "speed": 3,
+            "MyStringValue": "Hello World!"
+          }
+        ]
       }
     ]
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

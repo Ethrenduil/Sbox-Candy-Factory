@@ -1,0 +1,62 @@
+BoxPanel
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #444;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+
+	.boxWindow
+	{
+		width: 75%;
+		height: 75%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		// justify-content: center;
+		background-color: #3b3b3b;
+	}
+
+	.boxTitle
+	{
+		color: white;
+		font-size: 30px;
+		font-weight: bolder;
+		font-style: italic;
+		margin: 3% 0;
+	}
+
+	.boxContent
+	{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		font-size: 20px;
+		color: white;
+
+		// .boxItem
+		// {
+		// 	background-color: #934caf;
+		// 	border: none;
+		// 	color: white;
+		// 	padding: 15px 30px;
+		// 	text-align: center;
+		// 	margin: 2% 3%;
+		// 	cursor: pointer;
+		// 	border-radius: 12px;
+		// 	justify-content: center;
+
+		// 	&:hover
+		// 	{
+		// 		background-color: #af77bc;
+		// 	}
+		// }
+	}
+}
