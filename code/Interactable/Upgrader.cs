@@ -119,8 +119,8 @@ public class Upgrader : AInteractable
     	{
 			if ( candy.Name.Contains(upgradedObject.Name) )
 				continue;
+    	    conveyor.RemoveCandy(0);
     	    candy.Destroy();
-    	    conveyor.RemoveCandy(index);
     	    upgraded = upgradedObject.Clone(Transform.Position + upgradedOffset);
     	    upgraded.NetworkSpawn();
 			var temp = upgraded.Components.Get<Candies>();

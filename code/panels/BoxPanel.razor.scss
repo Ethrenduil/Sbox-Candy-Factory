@@ -18,7 +18,6 @@ BoxPanel
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		// justify-content: center;
 		background-color: #3b3b3b;
 	}
 
@@ -40,23 +39,5 @@ BoxPanel
 		width: 100%;
 		font-size: 20px;
 		color: white;
-
-		// .boxItem
-		// {
-		// 	background-color: #934caf;
-		// 	border: none;
-		// 	color: white;
-		// 	padding: 15px 30px;
-		// 	text-align: center;
-		// 	margin: 2% 3%;
-		// 	cursor: pointer;
-		// 	border-radius: 12px;
-		// 	justify-content: center;
-
-		// 	&:hover
-		// 	{
-		// 		background-color: #af77bc;
-		// 	}
-		// }
 	}
 }

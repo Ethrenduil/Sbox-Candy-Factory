@@ -162,6 +162,12 @@
 			MessageTips = "You don't have enough money to buy more.";
 			return true;
 		}
+
+		if (!Factory.CanStore(GetTotalQuantity()))
+		{
+			MessageTips = "You don't have enough space to store the items.";
+			return true;
+		}
 		return false;
 	}
 
@@ -180,12 +186,6 @@
 		if (!Delivery.CanDeliver()) 
 		{
 			MessageTips = "Delivery is not available.";
-			StateHasChanged();
-			return;
-		}
-		if (!Factory.CanStore(GetTotalQuantity()))
-		{
-			MessageTips = "You don't have enough space to store the items.";
 			StateHasChanged();
 			return;
 		}
