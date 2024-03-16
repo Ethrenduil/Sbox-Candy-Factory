@@ -21,7 +21,7 @@
 					{
 						<div class="deliveryWindowContentItem">
 							<div class="deliveryWindowContentItemIcon">
-								<img src="https://via.placeholder.com/64" alt="itemIcon" />
+								<img src="@GetImage(item.Key)" alt="itemIcon" />
 							</div>
 							<div class="deliveryWindowContentItemName" value="@item.Key">@item.Key</div>
 							<button class="deliveryWindowContentItemQuantityButton minus" onclick="@AdjustQuantity" value="-">-</button>
@@ -99,6 +99,11 @@
 		}
 		player.InMenu = true;
 		StateHasChanged();
+	}
+
+	public string GetImage(string item)
+	{
+		return $"textures/ui/goods/{item}.png";
 	}
 
 	public async void CloseDeliveryWindow()

@@ -60,7 +60,7 @@
 
     protected override void OnStart()
     {
-        base.OnAwake();
+        base.OnStart();
         player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
         settings = player.GameObject.Components.Get<Settings>();
     }
@@ -68,6 +68,9 @@
         protected override void OnUpdate()
     {
         base.OnUpdate();
+
+		player ??= Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+		settings ??= player.GameObject.Components.Get<Settings>();
 
         if (Input.EscapePressed)
         {

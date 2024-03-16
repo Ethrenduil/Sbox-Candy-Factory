@@ -81,6 +81,11 @@
 	protected override void OnStart()
 	{
 		base.OnStart();
+	}
+
+	protected override void OnEnabled()
+	{
+		base.OnEnabled();
 		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
 		ProductionSystem = Scene.GetAllComponents<ProductionSystem>().FirstOrDefault( x => !x.IsProxy );
 		Factory = Scene.GetAllComponents<Factory>().FirstOrDefault( x => !x.IsProxy );
@@ -89,6 +94,7 @@
 	protected override void OnUpdate()
 	{
 		if (IsProxy) return;
+
 		if (Input.EscapePressed && isUpgradeWindowOpen)
 		{
 			CloseUpgradeWindow();
@@ -104,11 +110,11 @@
 		ItemsFac.Clear();
 
 		// Set the production line items
+		ProductionSystem ??= Scene.GetAllComponents<ProductionSystem>().FirstOrDefault( x => !x.IsProxy );
 		var ItemsTemp = ProductionSystem.Upgrades;
 		
 		ItemsProd = ProductionSystem.GetProdList();
 		ItemsFac = ProductionSystem.GetFacList();
-		Log.Info(ItemsProd.Count);
 
 		player.InMenu = true;
 		StateHasChanged();
@@ -128,6 +134,7 @@
 	{
 		// Get element value
 		var item = e.This.Parent.Children.ToList()[1].StringValue;
+		ProductionSystem ??= Scene.GetAllComponents<ProductionSystem>().FirstOrDefault( x => !x.IsProxy );
 		UpgradeType type = ProductionSystem.GetUpgradeType(item);
 		int cost = ProductionSystem.GetUpgradeCost(type);
 

@@ -22,9 +22,10 @@ public sealed class QuestSystem : Component
         Quests.Add(quest1);
 
         Quest quest2 = new Quest("Tutorial", "Buy the Candy Factory");
-        var vendingPanel = Scene.GetAllComponents<Buyable>().FirstOrDefault().GameObject;
+        var vendingPanel = Scene.GetAllComponents<Buyable>().FirstOrDefault(x => !x.IsProxy).GameObject;
         quest2.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Interact with the vending panel", vendingPanel));
         Quests.Add(quest2);
+
 
         Quest quest3 = new Quest("Tutorial", "Meet Bob at the Candy Factory");
         quest3.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Talk to Bob", bob));
@@ -39,12 +40,12 @@ public sealed class QuestSystem : Component
         Quests.Add(quest5);
 
         Quest quest6 = new Quest("Tutorial", "Deliver the order to the Candy Factory");
-        var stockarea = Scene.GetAllComponents<Stockable>().FirstOrDefault().GameObject;
+        var stockarea = Scene.GetAllComponents<Stockable>().FirstOrDefault(x => !x.IsProxy).GameObject;
         quest6.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Deliver the order to the Candy Factory", stockarea));
         Quests.Add(quest6);
 
         Quest quest7 = new Quest("Tutorial", "Put the ingredients in the oven");
-		var oven = Scene.GetAllComponents<Cooker>().FirstOrDefault().GameObject;
+		var oven = Scene.GetAllComponents<Cooker>().FirstOrDefault(x => x.GameObject.Enabled && !x.IsProxy).GameObject;
         quest7.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Put the ingredients in the oven", oven));
         Quests.Add(quest7);
 
@@ -101,9 +102,11 @@ public sealed class QuestSystem : Component
             }
 			CurrentQuestIndex++;
 			sound?.Stop();
-			SoundEvent soundEvent = new SoundEvent( "/sounds/bob/tuto_" + CurrentQuestIndex + ".sound" );
-			soundEvent.UI = true;
-			soundEvent.Volume = Settings.GetVolume(VolumeType.Sound);
+			SoundEvent soundEvent = new( "/sounds/bob/tuto_" + CurrentQuestIndex + ".sound" )
+			{
+				UI = true,
+				Volume = Settings.GetVolume( VolumeType.Sound )
+			};
 			sound = Sound.Play(soundEvent);
 			if (CurrentQuestIndex < Quests.Count)
 			{

@@ -231,7 +231,6 @@ public sealed class ProductionSystem : Component
 					if (!upgrade.Value)
 					{
 						result.Add($"Line {i}", upgrade.Key.UpgradePrice);
-						Log.Info("Line " + i + " " + upgrade.Key.UpgradePrice);
 						break;
 					}
 				}

@@ -252,7 +252,7 @@
           "Name": "Chat",
           "Position": "0.0003662109,0,-0.00001525879",
           "Enabled": true,
-          "NetworkMode": 2,
+          "NetworkMode": 1,
           "Components": [
             {
               "__type": "Chat",
@@ -332,7 +332,7 @@
       "Name": "Quest",
       "Position": "165.1333,-822.1245,55.6918",
       "Enabled": true,
-      "NetworkMode": 0,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "QuestSystem",
@@ -512,7 +512,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-15T13:51:37.0760488\u002B01:00",
+  "LastSaved": "2024-03-16T23:19:26.5546441\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

@@ -1,20 +1,20 @@
 {
   "RootObject": {
-    "__guid": "e774802d-2823-480a-aabc-532f7b9446d4",
+    "__guid": "ddd3ebc4-6ca4-402d-a839-5f25fe9e18cd",
     "Name": "factory",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "518358cb-f49c-4eed-a341-3322bacc049d",
+        "__guid": "7cf848a8-7bcf-4a6a-95fe-160cfec4258c",
         "Health": 0,
         "IsStatic": true,
         "Model": "models/factory/factory.vmdl"
       },
       {
         "__type": "Delivery",
-        "__guid": "b22fb766-f53d-4111-ba27-d280aff89bc4",
+        "__guid": "904c44f1-7ab1-47ff-b07d-a4a8f0f4febc",
         "DeliveryBoxPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/box.prefab"
@@ -26,7 +26,7 @@
         "DeliveryCooldown": 30,
         "DeliveryDestination": {
           "_type": "gameobject",
-          "go": "1c1daf1a-bb05-49df-8e8e-4ca521f688fc"
+          "go": "587c93a3-0213-45fc-aa8b-49ea0866a73b"
         },
         "DeliveryProgress": 0,
         "DeliveryTime": 10,
@@ -36,12 +36,12 @@
       },
       {
         "__type": "Factory",
-        "__guid": "f35ebcb4-dab9-471a-8445-46190bf6d8ab",
+        "__guid": "261b71bb-a848-4831-9cbd-75ddea09728b",
         "Money": 0,
         "Production": {
           "_type": "component",
-          "component_id": "c5d2c4e0-420f-43bf-8d6a-138088e65b0a",
-          "go": "136e81fa-f869-4c24-b83e-f9d595fab345",
+          "component_id": "bd3d83d5-119c-4383-b8f3-260ac3ea19e2",
+          "go": "67359350-e303-4794-9ead-3b99802e4a54",
           "component_type": "ProductionSystem"
         },
         "SteamId": 0,
@@ -50,7 +50,7 @@
     ],
     "Children": [
       {
-        "__guid": "b62ed107-6ef1-43f0-b426-866499f68656",
+        "__guid": "9500cd7d-2fbd-4a92-adb6-88b95a6fdfda",
         "Name": "Door Frame",
         "Position": "-20.55298,-255.506,-175",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -59,7 +59,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "2ec868cf-f606-4fc1-8799-42cc3db40ad5",
+            "__guid": "e7025e76-9eab-4bc1-809d-9a9231e0342e",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
             "RenderType": "On",
@@ -67,7 +67,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "acf67b42-c37a-4085-b025-92087d9375b7",
+            "__guid": "84f1ccb8-e2a7-4eae-8fa9-7157e9d533bd",
             "IsTrigger": false,
             "Model": "models/props/frames/doorframe_double_metal_a.vmdl",
             "Static": false,
@@ -76,7 +76,7 @@
         ]
       },
       {
-        "__guid": "30ab6205-a466-4ebe-99d7-5d6a68ed7066",
+        "__guid": "a6a36ef8-54fb-4526-beab-5a2738ed264b",
         "Name": "DoorRight",
         "Position": "26.48352,-255.5,-175",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -86,7 +86,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "34cf2c27-1b58-4f4e-9b17-810081d64b54",
+            "__guid": "0d29a5f8-573e-42e4-bcbd-c18efdab769b",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "RenderType": "On",
@@ -94,7 +94,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "adc84b30-c8e8-49a8-9a1a-03d01872d06d",
+            "__guid": "a0f0c02b-d58c-4f33-811d-07a18bfe2b74",
             "IsTrigger": false,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "Static": false,
@@ -102,7 +102,7 @@
           },
           {
             "__type": "Openable",
-            "__guid": "c541aef2-cfd0-4e29-9444-0f913b507a83",
+            "__guid": "a248d20b-f9c6-4282-bf9b-d8e9cca9186e",
             "Description": "Press E to close",
             "IsInteracted": false,
             "IsOpen": false,
@@ -114,7 +114,7 @@
         ]
       },
       {
-        "__guid": "4cfab13c-2e8b-4e68-b378-569b4e45c75a",
+        "__guid": "2e292b9d-c0d1-4a11-8ed3-a7bc96fe8849",
         "Name": "DoorLeft",
         "Position": "-68,-255.5004,-175",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -124,7 +124,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "3f82dbc8-4355-4fd6-9371-05b00c2c491a",
+            "__guid": "183bde11-c414-437d-b50b-b6e361cfe94c",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "RenderType": "On",
@@ -132,7 +132,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "3e52ecda-4eef-462d-860f-001245e239ec",
+            "__guid": "21a88628-d15a-4867-b219-64e92a3c9a4c",
             "IsTrigger": false,
             "Model": "models/props/trim_sheets/doors/metal_doors/metal_door_01a.vmdl",
             "Static": false,
@@ -140,7 +140,7 @@
           },
           {
             "__type": "Openable",
-            "__guid": "38181812-d3a0-42ce-baf6-831dbbbca714",
+            "__guid": "50758c80-5396-4536-9235-35c5bb6d0cec",
             "Description": "Press E to open",
             "IsInteracted": false,
             "IsOpen": false,
@@ -152,7 +152,7 @@
         ]
       },
       {
-        "__guid": "b1bcde2d-7fc7-4ad5-86df-4d0acd3b1aa6",
+        "__guid": "43011b85-40aa-4e79-8c91-c05f19e2eb78",
         "Name": "Wooden Desk",
         "Position": "558.6235,-221.2169,-175.0005",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -162,7 +162,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "__guid": "e131fea8-97d8-461e-b6de-18c8fec5dd51",
+            "__guid": "dc00d3a3-ba79-415d-8ffc-949df040b4ed",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_01.vmdl"
@@ -170,7 +170,7 @@
         ]
       },
       {
-        "__guid": "5c1e5c09-59ba-4aeb-a602-8a896a6d23c8",
+        "__guid": "c558ad3f-f9e0-44e7-aeb0-07b7c5ad2958",
         "Name": "BobPlace",
         "Position": "532.2925,-214.1797,-136.0049",
         "Rotation": "0,0,0.7677239,0.6407809",
@@ -178,14 +178,14 @@
         "NetworkMode": 2
       },
       {
-        "__guid": "1c1daf1a-bb05-49df-8e8e-4ca521f688fc",
+        "__guid": "587c93a3-0213-45fc-aa8b-49ea0866a73b",
         "Name": "DeliveryDestination",
         "Position": "241.3923,-332.9185,-150.0428",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "c0ef1531-c7e1-4e73-b0ff-bb8aaf02422c",
+        "__guid": "c204553c-1243-44d7-93dc-1b6db1feb0e6",
         "Name": "Shelving",
         "Position": "589.447,-15.99995,-175",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -195,7 +195,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "3c35aedb-35f1-43f2-9d1f-103e51b93ed5",
+            "__guid": "06be1f17-4432-4fe5-bd22-07536e631bc8",
             "BodyGroups": 18446744073709551615,
             "Model": "models/props/trim_sheets/shelving/industrial_ shelving/industrial_ shelving_01.vmdl",
             "RenderType": "On",
@@ -203,7 +203,7 @@
           },
           {
             "__type": "Stockable",
-            "__guid": "6fc201a3-3aeb-4675-a10b-7c6eb7ed4e11",
+            "__guid": "6c386d0d-f0a7-452b-804e-3c4f94373df1",
             "boxPrefab": {
               "_type": "gameobject",
               "prefab": "prefabs/box.prefab"
@@ -215,7 +215,7 @@
           },
           {
             "__type": "BoxCollider",
-            "__guid": "01e8e6e3-439d-4159-90b3-07c56d2befb8",
+            "__guid": "83fa62a7-c7ad-4ad4-844c-acd83acd1c64",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "30.86666,64.53333,177.8667",
@@ -224,7 +224,7 @@
         ]
       },
       {
-        "__guid": "82f47ea7-b01d-4584-a348-84b7d81f6fdc",
+        "__guid": "4ed003f2-361c-45d7-b8dc-0f16c5613792",
         "Name": "TitleFactory",
         "Position": "-20.70431,-259.6282,-49.60486",
         "Rotation": "0,0,-0.7071068,0.7071068",
@@ -233,7 +233,7 @@
         "Components": [
           {
             "__type": "WorldPanel",
-            "__guid": "61b0a220-7028-4545-8df4-381b4e3b2195",
+            "__guid": "a6220fb4-4ec5-4cb6-b059-15999acf17a7",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "2048,512",
@@ -242,27 +242,27 @@
           },
           {
             "__type": "TitleFactory",
-            "__guid": "7be2c17b-11ba-4220-800c-f8b6260177e8",
+            "__guid": "210052f9-bfd1-4c1a-b0ad-b8e10217cbfc",
             "MyStringValue": "Factory to sell"
           }
         ]
       },
       {
-        "__guid": "2bb148b4-3c85-4ace-b51d-5f321931266c",
+        "__guid": "3528746f-448a-4047-91e4-e51e73540b1a",
         "Name": "Camera Start",
         "Position": "446.4409,-733.8622,155.2563",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "670bf854-934e-4c53-a8f0-3be235907cb2",
+        "__guid": "88229c43-970c-4306-80aa-a5fe29cdb62e",
         "Name": "Camera Waypoints",
         "Position": "-550.4506,-733.8622,155.2563",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "b397fe76-5b63-4754-bcf0-8d2ce10c86a7",
+        "__guid": "742b3716-2583-4906-9b6c-89803e5297ab",
         "Name": "StoragePanel",
         "Position": "592,-32,-157.5449",
         "Enabled": true,
@@ -270,7 +270,7 @@
         "Components": [
           {
             "__type": "ScreenPanel",
-            "__guid": "8b44155b-9d44-4e5a-9e75-87243733dce4",
+            "__guid": "6e463161-c522-4a33-8410-36f3804b08c8",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
@@ -278,11 +278,11 @@
           },
           {
             "__type": "StoragePanel",
-            "__guid": "8109c602-9d20-4473-bbcf-3d90f55bc6f4",
+            "__guid": "05077804-3ab2-4ad6-ba92-59e0462303f5",
             "factory": {
               "_type": "component",
-              "component_id": "f35ebcb4-dab9-471a-8445-46190bf6d8ab",
-              "go": "e774802d-2823-480a-aabc-532f7b9446d4",
+              "component_id": "261b71bb-a848-4831-9cbd-75ddea09728b",
+              "go": "ddd3ebc4-6ca4-402d-a839-5f25fe9e18cd",
               "component_type": "Factory"
             },
             "MessageTips": "You can retrieve items from storage.",
@@ -292,7 +292,7 @@
         ]
       },
       {
-        "__guid": "b56cc2d6-9b78-429e-ae23-05708e4990ac",
+        "__guid": "477037af-8f08-4217-841b-17027fc0781b",
         "Name": "DeliveryPanel",
         "Position": "600.22,124.0358,-160.8286",
         "Enabled": true,
@@ -300,7 +300,7 @@
         "Components": [
           {
             "__type": "ScreenPanel",
-            "__guid": "efaaa1d5-1c3a-4f3f-9cb4-c2f2fe775867",
+            "__guid": "188dc6cb-8ea5-4691-9801-0e4d0f01cfb6",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
@@ -308,17 +308,17 @@
           },
           {
             "__type": "DeliveryPanel",
-            "__guid": "38f1795b-bcdc-4879-9479-41c4e56c3892",
+            "__guid": "cd414418-294a-4d97-b7c2-706570faf520",
             "Delivery": {
               "_type": "component",
-              "component_id": "b22fb766-f53d-4111-ba27-d280aff89bc4",
-              "go": "e774802d-2823-480a-aabc-532f7b9446d4",
+              "component_id": "904c44f1-7ab1-47ff-b07d-a4a8f0f4febc",
+              "go": "ddd3ebc4-6ca4-402d-a839-5f25fe9e18cd",
               "component_type": "Delivery"
             },
             "Factory": {
               "_type": "component",
-              "component_id": "f35ebcb4-dab9-471a-8445-46190bf6d8ab",
-              "go": "e774802d-2823-480a-aabc-532f7b9446d4",
+              "component_id": "261b71bb-a848-4831-9cbd-75ddea09728b",
+              "go": "ddd3ebc4-6ca4-402d-a839-5f25fe9e18cd",
               "component_type": "Factory"
             },
             "Items": {},
@@ -328,7 +328,7 @@
         ]
       },
       {
-        "__guid": "077b02f8-995c-4e4b-ac65-9cf7b54c4cff",
+        "__guid": "c27e063a-2910-4599-a69e-0f1db47c42c2",
         "Name": "UpgradePanel",
         "Position": "1478.666,-1447.414,7.986343",
         "Enabled": true,
@@ -336,7 +336,7 @@
         "Components": [
           {
             "__type": "ScreenPanel",
-            "__guid": "aebd8acf-0825-41a9-8319-f456ea9c8f05",
+            "__guid": "5663ceb9-e927-41ec-ae1d-12857d85919d",
             "AutoScreenScale": true,
             "Opacity": 1,
             "Scale": 1,
@@ -344,7 +344,7 @@
           },
           {
             "__type": "UpgradePanel",
-            "__guid": "d88004a4-9d62-4e39-aa5e-5a00ee40ce09",
+            "__guid": "bcd2cb21-56da-406c-98b0-f42adb39fc06",
             "ItemsFac": {},
             "ItemsProd": {},
             "MessageTips": "You can upgrade your items here."
@@ -352,7 +352,7 @@
         ]
       },
       {
-        "__guid": "136e81fa-f869-4c24-b83e-f9d595fab345",
+        "__guid": "67359350-e303-4794-9ead-3b99802e4a54",
         "Name": "Production",
         "Position": "-80.30933,-10.90878,26.29971",
         "Enabled": true,
@@ -360,7 +360,7 @@
         "Components": [
           {
             "__type": "ProductionSystem",
-            "__guid": "c5d2c4e0-420f-43bf-8d6a-138088e65b0a",
+            "__guid": "bd3d83d5-119c-4383-b8f3-260ac3ea19e2",
             "HoldableCapacity": 5,
             "IsStarted": false,
             "ProductionLines": [],
@@ -373,7 +373,7 @@
         ],
         "Children": [
           {
-            "__guid": "14d36fc9-810c-4427-8a62-fd3427e256cd",
+            "__guid": "3a497973-17bd-44b1-9a5e-813ee865aded",
             "Name": "Line1",
             "Position": "0,0,0",
             "Enabled": true,
@@ -381,7 +381,7 @@
             "Components": [
               {
                 "__type": "ProductionLine",
-                "__guid": "b4285375-b561-48e8-89b9-3f139a1321b8",
+                "__guid": "95297fe6-edd8-412a-9a87-31c84f17589f",
                 "IsActive": false,
                 "Order": 0,
                 "Price": 0,
@@ -390,7 +390,7 @@
             ],
             "Children": [
               {
-                "__guid": "c3360bda-45bc-4238-bc7a-62d732471c16",
+                "__guid": "e67d7090-a73f-4635-97aa-7cd8a1f605ac",
                 "Name": "furnace",
                 "Position": "-115.1078,-199.4654,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -401,7 +401,7 @@
                 "__Prefab": "prefabs/furnace.prefab"
               },
               {
-                "__guid": "8550cc9e-67b2-417d-b591-28bf04f3f184",
+                "__guid": "aa4fe26f-cf08-46ec-8be6-bb5d73de16bb",
                 "Name": "Upgrader Slot",
                 "Position": "-115.1079,-118.6246,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -410,7 +410,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "d83652ca-d74f-4baf-8ff6-e3355ad9ee35",
+                    "__guid": "1563ec52-6b02-435a-a078-ce4a936f081f",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -420,14 +420,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "19375014-4385-42df-b88d-731b54479dbb",
+                        "__guid": "89850d5e-acad-405c-a261-aa52ebb089e8",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "36fafaf2-89ee-49aa-9fa4-eabb9b4c0597",
+                        "__guid": "dd8a4134-2ec4-472e-a52a-d86980a43ee4",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -437,7 +437,7 @@
                     ]
                   },
                   {
-                    "__guid": "ef159b41-0df0-4ad4-bc8b-07dbff651d76",
+                    "__guid": "3570ab0d-8ca8-4777-9cc8-0fd680ec9392",
                     "Name": "Upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor,upgrader",
@@ -448,7 +448,7 @@
                 ]
               },
               {
-                "__guid": "9b1de71a-476b-4f9a-960c-1fc0a5988984",
+                "__guid": "02324ac5-551e-4e94-a84c-53e9de6daab8",
                 "Name": "Upgrader Slot",
                 "Position": "-115.1079,-37.82723,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -457,7 +457,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "326f1bae-fd9f-432f-8a4f-53b402ccfd6c",
+                    "__guid": "68ccb387-4233-4832-938a-1ea2c3c112be",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -467,14 +467,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "0f4e6fe3-acb2-4d7f-b965-5527d9602fa9",
+                        "__guid": "01246390-93df-4587-9f51-3238a5f797be",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "937e5262-e5b2-4905-b190-d465b58a917c",
+                        "__guid": "21d76640-a350-4164-b625-f84440f5d1dc",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -484,7 +484,7 @@
                     ]
                   },
                   {
-                    "__guid": "f379402c-1e7c-4b54-80c3-78125c634ac8",
+                    "__guid": "1e1d81fc-2094-4921-bb7d-c68d42ac7d4c",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -493,14 +493,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "f5a89190-da44-4770-8942-448c9c827348",
+                        "__guid": "fc2d86f7-a1c5-42e0-8a06-1738cc88b96a",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "ad19e546-7da2-4842-8882-46bc3a5b61b2",
+                        "__guid": "e682aff5-3c5d-420d-9127-7ec60a74708d",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -510,7 +510,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "c648e0ee-4d5c-4606-8225-cde94ee5573e",
+                        "__guid": "1d54ec42-6261-49fe-88fe-ce02a6b59ee2",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -519,18 +519,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "0803833a-49b2-4fea-80ba-5c576c700f33",
+                        "__guid": "028044d9-ec19-4940-b564-4e467a644b21",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "c648e0ee-4d5c-4606-8225-cde94ee5573e",
-                          "go": "f379402c-1e7c-4b54-80c3-78125c634ac8",
+                          "component_id": "1d54ec42-6261-49fe-88fe-ce02a6b59ee2",
+                          "go": "1e1d81fc-2094-4921-bb7d-c68d42ac7d4c",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "5f083751-6a55-43fa-a6da-de58ecef452a",
-                          "go": "dcfb8a4f-ca42-4468-ab70-3fbd63f8c932",
+                          "component_id": "71105e28-1397-4733-8f12-6dc9b9827fb6",
+                          "go": "79fe8391-a42b-4cc7-9f49-a6365dad4829",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -548,7 +548,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "9cd79f5e-a113-4b22-96c6-7d0e6b5471ec",
+                        "__guid": "2c6436f5-5427-4e45-b7cb-b7bb78740366",
                         "Name": "Panel",
                         "Position": "-0.000000000001136868,0.00001907348,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -556,14 +556,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "47c067a2-0c5d-4164-ab02-38bb654c0f39",
+                            "__guid": "f607456b-f025-4022-a1e7-906644f0812d",
                             "Name": "Panel_end",
                             "Position": "0.00001215041,13.68841,0.00002108622",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "5f80790c-16e2-4af0-a2b0-cc7c446e7eb1",
+                                "__guid": "88c48efd-2fa8-4ce0-8417-8793016d2410",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00002585455",
                                 "Enabled": true,
@@ -574,7 +574,7 @@
                         ]
                       },
                       {
-                        "__guid": "ef21cf6e-51ab-488a-9342-39734352c494",
+                        "__guid": "7e66459e-1f51-46db-aaf4-a0f0c982a563",
                         "Name": "Upgrader",
                         "Position": "0.000004768369,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -582,14 +582,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "81a98c4d-4def-4808-839b-7f28e405385d",
+                            "__guid": "96d9a5c2-3f7d-40d4-b98e-c351cc95c065",
                             "Name": "Upgrader_end",
                             "Position": "0.00005819709,35.78135,0.00005219141",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "649f4a79-1712-46f8-b583-eac36e80948b",
+                                "__guid": "472790bf-2aaf-4435-b3d2-a480f026d50f",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00005084284,12.60994,0.00004841079",
                                 "Enabled": true,
@@ -600,7 +600,7 @@
                         ]
                       },
                       {
-                        "__guid": "704d0b57-e04e-455d-a732-7e92a6399707",
+                        "__guid": "b380c43e-555e-4214-a822-0ec9b9b32922",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -609,7 +609,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "be7afafb-7335-4d5b-bd96-ae185f8297ea",
+                            "__guid": "99990167-f9c8-45a9-80e6-afb5caab1336",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -719,7 +719,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "afb055bc-6bb7-4be3-adc6-95c6ad8d62b7",
+                            "__guid": "f7d0e218-c0f1-40d3-b44e-001bc96eb7b8",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -738,7 +738,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "07bbf37f-67e8-41fe-a35d-f0c8d1b5d5d8",
+                            "__guid": "d4bde321-3533-434c-a478-cdc067d54b4e",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -752,7 +752,7 @@
                         ]
                       },
                       {
-                        "__guid": "dcfb8a4f-ca42-4468-ab70-3fbd63f8c932",
+                        "__guid": "79fe8391-a42b-4cc7-9f49-a6365dad4829",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.9998,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -762,7 +762,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "12d76a71-e793-4346-92f0-afd51ca12a0d",
+                            "__guid": "6b78b957-a984-4fbe-83e5-7807c87632fb",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -771,7 +771,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "5f083751-6a55-43fa-a6da-de58ecef452a",
+                            "__guid": "71105e28-1397-4733-8f12-6dc9b9827fb6",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_07.prefab"
@@ -784,7 +784,7 @@
                 ]
               },
               {
-                "__guid": "10be5369-9338-4187-a057-4c299719cd00",
+                "__guid": "5ecfb7d4-a274-4d6e-8c35-d61873e8d376",
                 "Name": "Upgrader Slot",
                 "Position": "-115.1079,42.90869,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -793,7 +793,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "10787fa7-a6a8-4b7e-9f8c-0d4c300d7355",
+                    "__guid": "06a1bfc5-df7c-4a31-bf0e-1ae26b765492",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -803,14 +803,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "88ae22ed-e264-43c1-abb8-059d9b8ee956",
+                        "__guid": "70d44353-9f05-4c30-838a-22397103937b",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "7a128c66-bb88-4298-a62c-907bacc961fa",
+                        "__guid": "f2cfd82b-d9fa-4560-a72c-509b21c6a3fe",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -820,7 +820,7 @@
                     ]
                   },
                   {
-                    "__guid": "8d225185-d8e3-4fa9-831e-0135865e83d8",
+                    "__guid": "fc13f847-c3c7-43a8-ae53-98929cdfc03d",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -829,14 +829,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "ce829cd1-5a9b-4d9f-9ad7-de5c44757fa2",
+                        "__guid": "7b04c239-5233-49fe-82f4-4a278317c89c",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "9831606f-a132-4a44-80dc-3a4582c9d652",
+                        "__guid": "acbbe38b-8c92-438b-b338-26fa60cc7e2e",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -846,7 +846,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "9bc733d6-0507-4896-8659-47492e09d6dd",
+                        "__guid": "328c834f-5bc3-43ad-bb10-234c44fcf9be",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -855,18 +855,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "54d5894b-c433-40e3-8b5a-247e2136ef01",
+                        "__guid": "33635744-8b74-4135-a5a6-8b1aa1875b7d",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "9bc733d6-0507-4896-8659-47492e09d6dd",
-                          "go": "8d225185-d8e3-4fa9-831e-0135865e83d8",
+                          "component_id": "328c834f-5bc3-43ad-bb10-234c44fcf9be",
+                          "go": "fc13f847-c3c7-43a8-ae53-98929cdfc03d",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "13ca9b08-f734-4bce-9bd6-50a578c581da",
-                          "go": "42b37f4f-3f6b-477c-b0a2-f3dd8f13529c",
+                          "component_id": "7074b5ec-edda-460a-bf60-96d8d255a61b",
+                          "go": "0ffbc21e-c830-49de-9153-06549fb8a0d2",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -884,7 +884,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "86abe55d-9849-403d-86f3-353afe4a3f9c",
+                        "__guid": "31d395a8-2d3c-4a75-bc39-c9fa61fbaf98",
                         "Name": "Panel",
                         "Position": "0.000002384184,0.00001907348,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -892,14 +892,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "d701716e-fbc7-446f-8ba9-3bf66ea5d875",
+                            "__guid": "83dbf166-a5d0-4960-ac11-02e6f596ddf4",
                             "Name": "Panel_end",
                             "Position": "0.00001215041,13.68841,0.00002108622",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "d48de203-830e-481c-8fa1-40beaa310235",
+                                "__guid": "89bd44db-cb8a-4584-a094-f6190b47b442",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00002585455",
                                 "Enabled": true,
@@ -910,7 +910,7 @@
                         ]
                       },
                       {
-                        "__guid": "4b332a63-5537-4c2b-9461-c8711802f791",
+                        "__guid": "d6fffd4b-a1b6-44ed-bdff-e4971375a4e0",
                         "Name": "Upgrader",
                         "Position": "0.000002384183,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -918,14 +918,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "9d9faeaf-8ea9-4489-b294-e33e0dbe139a",
+                            "__guid": "ef068797-e56d-475e-acfe-10c1713ec89a",
                             "Name": "Upgrader_end",
                             "Position": "0.0000581971,35.78135,0.00005457559",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "d93ca243-6841-4073-a9b9-bdf275192d2a",
+                                "__guid": "ab57d80e-6dd0-4fe7-9c0d-d00efe29a97b",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00005084284,12.60994,0.00004841079",
                                 "Enabled": true,
@@ -936,7 +936,7 @@
                         ]
                       },
                       {
-                        "__guid": "d514aee3-4d31-49a6-9efa-f8538430d124",
+                        "__guid": "88c1b7d0-14d0-4611-8562-2165acd6af9f",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -945,7 +945,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "35c6d034-54a6-4bdf-8ad8-90a797e681de",
+                            "__guid": "3fb93299-e3cf-411e-89e5-c3d380ee9eda",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -1055,7 +1055,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "2ac4c35c-6274-4e62-9d3d-b68a1876dac4",
+                            "__guid": "baf9f1aa-69d1-4408-bfda-813e4701023b",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -1074,7 +1074,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "44634e14-2e0c-4ca8-bd6d-78e6c2d393e9",
+                            "__guid": "b36bd3b2-5220-4d7f-91b9-ca023610d3b5",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -1088,7 +1088,7 @@
                         ]
                       },
                       {
-                        "__guid": "42b37f4f-3f6b-477c-b0a2-f3dd8f13529c",
+                        "__guid": "0ffbc21e-c830-49de-9153-06549fb8a0d2",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.9998,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -1098,7 +1098,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "c6a2a7bf-1708-4734-8e36-f92f1f4198f4",
+                            "__guid": "bcaba6d2-e1a8-4010-8064-5fd6ed2bde6f",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -1107,7 +1107,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "13ca9b08-f734-4bce-9bd6-50a578c581da",
+                            "__guid": "7074b5ec-edda-460a-bf60-96d8d255a61b",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_10.prefab"
@@ -1120,7 +1120,7 @@
                 ]
               },
               {
-                "__guid": "362aa405-98e0-4ad9-9542-11557f394b05",
+                "__guid": "63512537-6602-4c41-ba8c-1d35076c5bd4",
                 "Name": "Upgrader Slot",
                 "Position": "-115.1079,122.9087,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -1129,7 +1129,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "b8a3c4ec-8ee4-440f-802f-aea10cc75a39",
+                    "__guid": "313706f8-4dfc-49cf-abb3-b1131fe68e86",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -1139,14 +1139,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "3d2f7360-0a00-4158-be18-75b51dc0a359",
+                        "__guid": "3ec38337-ca16-419c-b079-ef91fa440b61",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "ec10b217-c6be-4d2d-97eb-f0178986bce1",
+                        "__guid": "2eb471ae-fa07-4d5b-91d8-f019e7e3d7b2",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -1156,7 +1156,7 @@
                     ]
                   },
                   {
-                    "__guid": "14c68bd5-1787-49ae-8007-4a7d836bdfd8",
+                    "__guid": "2faa4e2f-990a-40cb-8578-33ab0574ed76",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -1165,14 +1165,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "ce561172-1324-43a0-9edb-e748bfb490d6",
+                        "__guid": "3f212d77-1403-41d5-bc6c-5885a920df69",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "3ebb7947-fba2-4523-9c65-0e0e7cdcff04",
+                        "__guid": "165bc91d-e3e7-49e1-9d9b-194d0eeb4f2d",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -1182,7 +1182,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "02d8b01f-f630-4dae-944c-05ae6aa86e64",
+                        "__guid": "953e8203-aa76-4a60-8949-dc401d6c7bbc",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -1191,18 +1191,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "9f7b16dc-1757-4a5e-8c3d-09d300502b17",
+                        "__guid": "eab62ec0-ca7d-41b2-88c7-61541eb2f87f",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "02d8b01f-f630-4dae-944c-05ae6aa86e64",
-                          "go": "14c68bd5-1787-49ae-8007-4a7d836bdfd8",
+                          "component_id": "953e8203-aa76-4a60-8949-dc401d6c7bbc",
+                          "go": "2faa4e2f-990a-40cb-8578-33ab0574ed76",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "40d13090-6b2b-41ee-96f1-4f3d4f2686af",
-                          "go": "1f28d8a5-f5de-40a0-a880-978e3fd70495",
+                          "component_id": "73bb29ab-fea8-42fd-9f92-79b1fcc7fad0",
+                          "go": "154d3b73-7354-4579-8040-411773986d00",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -1220,7 +1220,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "f8aeb86c-3ff4-4e69-975c-21a98efba1d6",
+                        "__guid": "e20e6ceb-1cca-4ac2-a4ad-f80e857030bf",
                         "Name": "Panel",
                         "Position": "-0.000000000001136868,0.00001907348,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -1228,14 +1228,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "f46ade6e-5ade-40a6-afe4-2832bd651894",
+                            "__guid": "17baeb14-981f-443a-a8a9-397dc6edf62b",
                             "Name": "Panel_end",
                             "Position": "0.00001215041,13.68841,0.00002585459",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "e109c6b1-4ef6-40be-a648-5d0653cfd154",
+                                "__guid": "3cefcf6e-b1fc-4aa6-acc8-2edc57ae1e48",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00002585455",
                                 "Enabled": true,
@@ -1246,7 +1246,7 @@
                         ]
                       },
                       {
-                        "__guid": "abb4a6c3-8c40-4b60-b0f2-6cd1f0a82a4e",
+                        "__guid": "29d34c53-513b-4418-b287-e9cd87175c5d",
                         "Name": "Upgrader",
                         "Position": "-0.000000000002273737,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -1254,14 +1254,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "b798c425-dcd6-415f-b908-984c97415e58",
+                            "__guid": "b39b454f-209c-442a-9fec-db8821f0eee9",
                             "Name": "Upgrader_end",
                             "Position": "0.00005819709,35.78135,0.00005219141",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "0b4b78a7-10de-405a-bd96-4e5b30d62633",
+                                "__guid": "46f8b720-44db-462b-a064-2f4e5d04cbbd",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00005084285,12.60994,0.00005317916",
                                 "Enabled": true,
@@ -1272,7 +1272,7 @@
                         ]
                       },
                       {
-                        "__guid": "c71f4119-9ab7-46e6-a567-986f2d798f08",
+                        "__guid": "de71498c-95d4-43f5-bd77-9c192e75b1dc",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -1281,7 +1281,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "c5df957d-ec45-4e1c-8d97-f98a187ffd5b",
+                            "__guid": "22906ab7-35d7-43d2-84f3-3668a61480df",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -1391,7 +1391,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "15257079-1bfa-4884-93f1-f737d8ea5f53",
+                            "__guid": "1eaf3d45-1b03-41a5-87d6-7b054c1a65cf",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -1410,7 +1410,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "26abc246-f9c4-42db-9962-772478429087",
+                            "__guid": "ace162d0-dab9-4e1b-a59e-c4656828b541",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -1424,7 +1424,7 @@
                         ]
                       },
                       {
-                        "__guid": "1f28d8a5-f5de-40a0-a880-978e3fd70495",
+                        "__guid": "154d3b73-7354-4579-8040-411773986d00",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.9998,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -1434,7 +1434,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "78653e6f-49b7-423b-a33c-231a354ba7b4",
+                            "__guid": "3202d17b-b1c0-4034-bac3-1571b2490299",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -1443,7 +1443,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "40d13090-6b2b-41ee-96f1-4f3d4f2686af",
+                            "__guid": "73bb29ab-fea8-42fd-9f92-79b1fcc7fad0",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_13.prefab"
@@ -1456,7 +1456,7 @@
                 ]
               },
               {
-                "__guid": "0d689a90-b4dc-4a3b-a076-12f0b0eb2077",
+                "__guid": "8cc551fe-2102-458b-ab16-f5897c012b84",
                 "Name": "vending_box",
                 "Position": "-115.1074,186.9087,-201.2997",
                 "Rotation": "0,0,-0.7071067,0.7071068",
@@ -1466,7 +1466,7 @@
                 "__Prefab": "prefabs/vending_box.prefab"
               },
               {
-                "__guid": "e4b28f7c-42c6-4d18-93ea-3817f190bec5",
+                "__guid": "9d106796-385e-4fb2-8155-7a2434ec1d71",
                 "Name": "Spot Light",
                 "Position": "17.30411,-119.004,-9.10611",
                 "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -1476,7 +1476,7 @@
                 "Components": [
                   {
                     "__type": "SpotLight",
-                    "__guid": "d8562d83-b8ff-46bb-86bc-e9d2520b1744",
+                    "__guid": "44be0830-787b-495c-8204-ecdcd3c70fe7",
                     "Attenuation": 0,
                     "ConeInner": 40.6,
                     "ConeOuter": 78.09,
@@ -1491,7 +1491,7 @@
             ]
           },
           {
-            "__guid": "2b717db6-6166-4764-95db-c323a37681d0",
+            "__guid": "2712f42b-014b-43cd-8675-3e0848657e6a",
             "Name": "Line2",
             "Position": "207,0,0",
             "Enabled": true,
@@ -1499,7 +1499,7 @@
             "Components": [
               {
                 "__type": "ProductionLine",
-                "__guid": "8e88f63a-47b0-422f-8b54-41206bd70a5e",
+                "__guid": "0a541ba0-9694-4425-b010-4d6c44a5e3cb",
                 "IsActive": false,
                 "Order": 1,
                 "Price": 150,
@@ -1508,7 +1508,7 @@
             ],
             "Children": [
               {
-                "__guid": "17f8fea0-f525-465b-83bf-6606e24c6871",
+                "__guid": "6d862585-db9f-469c-a657-4f76c77ce8aa",
                 "Name": "furnace",
                 "Position": "-529.691,-199.465,-201.3",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -1519,14 +1519,14 @@
                 "Components": [
                   {
                     "__type": "ModelCollider",
-                    "__guid": "926ca0fa-eaba-4d67-8d7b-28a66742ab16",
+                    "__guid": "2b85972b-719f-4a0b-a989-b1fe0e5fef52",
                     "IsTrigger": false,
                     "Model": "models/conveyor/furnace.vmdl",
                     "Static": true
                   },
                   {
                     "__type": "SkinnedModelRenderer",
-                    "__guid": "accecc45-1586-4a9a-b16f-fde759bc40b8",
+                    "__guid": "e8b87131-f605-4909-b85d-b6539a72227c",
                     "BodyGroups": 18446744073709551615,
                     "CreateBoneObjects": false,
                     "Model": "models/conveyor/furnace.vmdl",
@@ -1535,15 +1535,15 @@
                   },
                   {
                     "__type": "Cooker",
-                    "__guid": "aafb1841-22ae-4463-85d3-ff0b735c9c0a",
+                    "__guid": "e9cf9fc0-5c76-4a82-85c0-433135cadc2f",
                     "BoxPrefab": {
                       "_type": "gameobject",
                       "prefab": "prefabs/box.prefab"
                     },
                     "conveyor": {
                       "_type": "component",
-                      "component_id": "d039fea3-9be3-4e31-80af-fa189b642f79",
-                      "go": "17f8fea0-f525-465b-83bf-6606e24c6871",
+                      "component_id": "75c2f6d1-3459-484e-b52f-44f5831bbc7c",
+                      "go": "6d862585-db9f-469c-a657-4f76c77ce8aa",
                       "component_type": "Conveyor"
                     },
                     "CookedObject": {
@@ -1559,7 +1559,7 @@
                   },
                   {
                     "__type": "Conveyor",
-                    "__guid": "d039fea3-9be3-4e31-80af-fa189b642f79",
+                    "__guid": "75c2f6d1-3459-484e-b52f-44f5831bbc7c",
                     "special": false,
                     "Speed": 100,
                     "Turn": false,
@@ -1569,7 +1569,7 @@
                 ],
                 "Children": [
                   {
-                    "__guid": "9224c662-2219-4850-9d4a-0453a7977588",
+                    "__guid": "73f2ba27-7a14-476f-97d1-b8bb0db709e0",
                     "Name": "Furnace Screen",
                     "Position": "-19.05182,-29.87411,97.66831",
                     "Rotation": "0,0,-0.7071068,0.7071068",
@@ -1578,7 +1578,7 @@
                     "Components": [
                       {
                         "__type": "WorldPanel",
-                        "__guid": "8edb07a8-d9fc-483b-835c-0a60c040a89c",
+                        "__guid": "24b6a2a4-a186-44b2-87b0-48e4092a1835",
                         "HorizontalAlign": "Center",
                         "LookAtCamera": false,
                         "PanelSize": "1000,680",
@@ -1587,7 +1587,7 @@
                       },
                       {
                         "__type": "FurnacePanel",
-                        "__guid": "b8721a64-46b7-4169-8e5a-83b91cc1a013",
+                        "__guid": "53b36f70-47cf-4023-b059-f974a21711f2",
                         "candy": {
                           "_type": "gameobject",
                           "prefab": "prefabs/candy_choco_02.prefab"
@@ -1596,7 +1596,7 @@
                     ]
                   },
                   {
-                    "__guid": "932c8df9-9a1b-4a7e-996f-b9fdf250426f",
+                    "__guid": "23786048-f000-4894-9120-83619bf89efe",
                     "Name": "Smoke",
                     "Position": "-18.67244,0.2534761,88.87357",
                     "Tags": "particles",
@@ -1605,7 +1605,7 @@
                     "Components": [
                       {
                         "__type": "ParticleEffect",
-                        "__guid": "cecf0d16-77b4-4059-b4c9-0a74d38551e4",
+                        "__guid": "85a6cdf3-68d3-4834-a900-434589d03df7",
                         "Alpha": {
                           "Type": "Curve",
                           "CurveA": [
@@ -1715,7 +1715,7 @@
                       },
                       {
                         "__type": "ParticleSpriteRenderer",
-                        "__guid": "df29a421-eb47-46b5-8e6e-c4f4ee93c1fb",
+                        "__guid": "e009d031-b4ad-459c-9024-20752d4feb4b",
                         "Additive": false,
                         "BlurAmount": 0.5,
                         "BlurOpacity": 0.91,
@@ -1734,7 +1734,7 @@
                       },
                       {
                         "__type": "ParticleBoxEmitter",
-                        "__guid": "2be508e0-e266-436f-907c-c406a64ca781",
+                        "__guid": "a54e4bb0-9b9a-4aaf-a05d-ec56c67dc248",
                         "__enabled": false,
                         "Burst": 100,
                         "Delay": 0,
@@ -1750,7 +1750,7 @@
                 ]
               },
               {
-                "__guid": "94ec0dc7-ee98-4b04-83e5-e13f43f74f9f",
+                "__guid": "14999b4d-215e-42fc-96bc-caffdf977f57",
                 "Name": "Upgrader Slot",
                 "Position": "-529.6907,-118.6113,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -1759,7 +1759,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "d8798f0a-5160-4433-9e58-10827a4d0c77",
+                    "__guid": "7f279ad2-7756-4597-b201-75cec1e961ef",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -1769,14 +1769,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "62f97141-81fa-41fe-8e19-bed9da05cb11",
+                        "__guid": "f41f8956-6125-4af1-95b7-98c00c5ce542",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "e796b299-b599-4b85-b9e8-b661cb6b0444",
+                        "__guid": "9db0ffb6-4865-4bdf-9869-54802ddae2ee",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -1786,7 +1786,7 @@
                     ]
                   },
                   {
-                    "__guid": "89260b10-e889-4c47-bf07-16d794128a0a",
+                    "__guid": "2fdfd92a-690e-414d-a824-c7a290538fe3",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -1795,14 +1795,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "816ad698-db1d-4331-b320-4f5861e206fe",
+                        "__guid": "a275f54e-9be9-4f88-a0ed-eb0835078f0e",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "4f376b64-685c-4da4-b10c-007b7be7a6b5",
+                        "__guid": "36849e00-2b51-44a1-bd3e-883b7bb1fef4",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -1812,7 +1812,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "957fca8c-4ed2-4b48-b327-07a52acfda02",
+                        "__guid": "aab9a603-3ee6-4b47-97f1-3bcb31db1483",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -1821,18 +1821,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "c68abb99-6eda-4e9c-b39f-409af002809a",
+                        "__guid": "48e502e7-0b8c-431f-934c-f981a665165d",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "957fca8c-4ed2-4b48-b327-07a52acfda02",
-                          "go": "89260b10-e889-4c47-bf07-16d794128a0a",
+                          "component_id": "aab9a603-3ee6-4b47-97f1-3bcb31db1483",
+                          "go": "2fdfd92a-690e-414d-a824-c7a290538fe3",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "838effb5-7ff1-4f4b-86e9-69454c1084c2",
-                          "go": "c63d9971-28ae-47ca-a41c-e7fdbcf40c5a",
+                          "component_id": "270d0358-7a0c-4ad3-9bc7-886f12c404e2",
+                          "go": "3bb7eef1-db57-46d6-9b82-1ee3321edd9e",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -1850,7 +1850,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "893ce332-5564-4d65-b6a6-542a3af68efe",
+                        "__guid": "23f777df-6ee8-4f9b-b42a-93afbfa90e3a",
                         "Name": "Panel",
                         "Position": "0,0,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -1858,14 +1858,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "6c6f1636-eaec-46f0-ac34-04e9a4b4d644",
+                            "__guid": "600776c8-f2de-408d-9712-79a5f58a5b11",
                             "Name": "Panel_end",
                             "Position": "0.00003122389,13.68841,0.00001631784",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "7728242c-aac9-4f16-8a36-6c7344c7e5d0",
+                                "__guid": "3bbcf816-afb7-4ade-8559-18c3a2a73afe",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00001631781",
                                 "Enabled": true,
@@ -1876,7 +1876,7 @@
                         ]
                       },
                       {
-                        "__guid": "bb712041-d52d-4eb3-af37-c20468790b17",
+                        "__guid": "83ebecba-dbde-4617-bc2a-ee9bf16c6b01",
                         "Name": "Upgrader",
                         "Position": "-0.000000000002273737,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -1884,14 +1884,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "15d56b42-7d71-4dfe-a4dc-9d8bdb72317d",
+                            "__guid": "808d4071-9d92-459d-ab50-ca7ee8794086",
                             "Name": "Upgrader_end",
                             "Position": "0.0000581971,35.78135,0.00006172815",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "f6da7690-f8dc-4b40-a25c-aa2dcc28e779",
+                                "__guid": "7c3cdf75-ab58-4360-967a-22a523fbd7d7",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00003176936,12.60994,0.00005317917",
                                 "Enabled": true,
@@ -1902,7 +1902,7 @@
                         ]
                       },
                       {
-                        "__guid": "01b8f601-8644-4ab6-a2d5-7bf20e10667d",
+                        "__guid": "5d84a8d2-5f93-4dcb-bc9b-dadadcb7ec32",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -1911,7 +1911,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "14d27079-a565-430f-9afe-c3e703df9d39",
+                            "__guid": "1ce9cb04-4b35-47d4-9af1-017aaad492e6",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -2021,7 +2021,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "f327b6e3-453f-44c9-9228-60a21b205efb",
+                            "__guid": "6c3ae2aa-431b-4ab6-bf0a-d0b7118d5617",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -2040,7 +2040,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "6a585db5-d90b-40de-86b2-6283c0c5b8eb",
+                            "__guid": "8519a8ad-a958-434d-ab67-cefbbd869053",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -2054,7 +2054,7 @@
                         ]
                       },
                       {
-                        "__guid": "c63d9971-28ae-47ca-a41c-e7fdbcf40c5a",
+                        "__guid": "3bb7eef1-db57-46d6-9b82-1ee3321edd9e",
                         "Name": "Furnace Screen",
                         "Position": "-0.00001716615,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -2064,7 +2064,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "13b5689f-8fcf-445b-98d4-81a1a881f49c",
+                            "__guid": "34766e99-4eaf-4e83-8f2e-b406c1deef77",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -2073,7 +2073,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "838effb5-7ff1-4f4b-86e9-69454c1084c2",
+                            "__guid": "270d0358-7a0c-4ad3-9bc7-886f12c404e2",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_05.prefab"
@@ -2086,7 +2086,7 @@
                 ]
               },
               {
-                "__guid": "fe17e9b8-f78b-41be-b433-15460682c153",
+                "__guid": "e754fb4c-954c-4d1a-a8fb-60bfa292bb1e",
                 "Name": "Upgrader Slot",
                 "Position": "-529.6907,-38.29387,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -2095,7 +2095,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "bec7e716-9c0c-4302-b7ce-a0a7f678fe9f",
+                    "__guid": "abc9e501-5afa-4a88-9810-69d56c0c68fb",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -2105,14 +2105,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "55c3728d-d9b0-4bcc-ab01-a19cd5ee6716",
+                        "__guid": "29860077-b342-48d9-8a3b-2a718c641850",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "81bb85cc-0252-445f-b34e-0618179e9d40",
+                        "__guid": "0c5f748e-e8df-4553-be17-29f4c963c935",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -2122,7 +2122,7 @@
                     ]
                   },
                   {
-                    "__guid": "ae74f1d1-695e-4f85-af3e-a4d97bf6ba0b",
+                    "__guid": "c2087fae-9d4b-424c-b3c4-b89acc3bd045",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -2131,14 +2131,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "be1657c5-46ab-4b84-b133-2b181163ea8c",
+                        "__guid": "c0490af2-4d51-4a96-b9ae-dafc1f2bdae2",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "fa913dda-d096-4205-a2a3-32e961c6324e",
+                        "__guid": "49fbda44-0f98-4146-83b0-cb7015a7723a",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -2148,7 +2148,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "17df9602-7a1c-427e-97ff-f6125bf435f0",
+                        "__guid": "94482f1c-0069-4d44-835c-04cf661fc859",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -2157,18 +2157,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "cdc8c17d-3e40-4e86-a324-e31c0ee2c99c",
+                        "__guid": "4eb84f01-e75e-4c0d-8974-6cf60cbf2b94",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "17df9602-7a1c-427e-97ff-f6125bf435f0",
-                          "go": "ae74f1d1-695e-4f85-af3e-a4d97bf6ba0b",
+                          "component_id": "94482f1c-0069-4d44-835c-04cf661fc859",
+                          "go": "c2087fae-9d4b-424c-b3c4-b89acc3bd045",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "f1fd9dac-94d0-432b-b9dd-b70fe3473227",
-                          "go": "72ada40f-5909-43e2-a963-c607ddd570fd",
+                          "component_id": "2d99724c-de4b-4f2b-a817-ba881491d058",
+                          "go": "298928f3-71d9-4df8-953c-9f1a1aa890b0",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -2186,7 +2186,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "0b929d0e-a9a6-4bf6-9ffa-19c6ea8a643e",
+                        "__guid": "f8610169-8b6d-49dc-af1d-e1fa6a181202",
                         "Name": "Panel",
                         "Position": "0,0,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -2194,14 +2194,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "ab078c1c-afa2-4f34-a99a-58f8bbff7c48",
+                            "__guid": "c5b0d3fd-5925-4c75-af10-eddcf9385437",
                             "Name": "Panel_end",
                             "Position": "0.00003122389,13.68841,0.00002108621",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "1019ad83-6256-4acd-a229-d8da0231212b",
+                                "__guid": "a0f6c7d8-7d07-45b6-a75f-719a9d65b8ce",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00002585455",
                                 "Enabled": true,
@@ -2212,7 +2212,7 @@
                         ]
                       },
                       {
-                        "__guid": "f165a76f-1001-4995-9941-932022aa1e8a",
+                        "__guid": "59d87347-7586-43a8-ab6a-fd813b343023",
                         "Name": "Upgrader",
                         "Position": "0.000004768369,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -2220,14 +2220,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "ebbd85fb-aa8f-438f-8ffd-c7f52521968a",
+                            "__guid": "5c523055-8b97-417e-af8c-9f558f37ae22",
                             "Name": "Upgrader_end",
                             "Position": "0.00005819709,35.78135,0.00005219141",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "e13c3e35-93f5-4720-96a6-f140d00d5821",
+                                "__guid": "1c653f2b-d46d-43e4-abbc-5a593300e98e",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00003176936,12.60994,0.0000484108",
                                 "Enabled": true,
@@ -2238,7 +2238,7 @@
                         ]
                       },
                       {
-                        "__guid": "9c709886-c9bc-4617-823e-d21e29bd6e85",
+                        "__guid": "b6f34890-0069-4915-927a-b0e8e27815d8",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -2247,7 +2247,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "10f0c882-cfbf-4812-88e9-3910e52f13bb",
+                            "__guid": "7a9329fb-804a-4832-8322-ed141ae93358",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -2357,7 +2357,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "80610dfc-b74f-4e9c-ad96-925efe1591a8",
+                            "__guid": "5ecbb324-7c37-416b-bbb7-9d57e4a8cdc4",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -2376,7 +2376,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "fb71d893-59f5-48ef-b9e1-8b0a3632e3b6",
+                            "__guid": "94584e0d-12a5-4aed-a8d5-321bcec44aa7",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -2390,7 +2390,7 @@
                         ]
                       },
                       {
-                        "__guid": "72ada40f-5909-43e2-a963-c607ddd570fd",
+                        "__guid": "298928f3-71d9-4df8-953c-9f1a1aa890b0",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -2400,7 +2400,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "d7d11cd8-0ef8-41ad-b5c2-ef08f20d4266",
+                            "__guid": "5c98abb4-99aa-43d9-85e7-610d2e6c2742",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -2409,7 +2409,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "f1fd9dac-94d0-432b-b9dd-b70fe3473227",
+                            "__guid": "2d99724c-de4b-4f2b-a817-ba881491d058",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_08.prefab"
@@ -2422,7 +2422,7 @@
                 ]
               },
               {
-                "__guid": "d69e3a22-da9b-4e48-b2d4-8a8b816a2020",
+                "__guid": "9c1aaffe-b098-4dec-9cd9-caa5b99d6810",
                 "Name": "Upgrader Slot",
                 "Position": "-529.6907,42.50874,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -2431,7 +2431,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "117c6732-fbdc-4d4a-9630-51ae198aeb9b",
+                    "__guid": "1b86ffbe-48a3-4ae0-b165-64d3807cd78a",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -2441,14 +2441,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "b3ba4293-5bf7-450a-8db1-f19a73dd53c3",
+                        "__guid": "5024b281-3725-4e78-8c1c-21f0c7bdbf43",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "63a35c88-1249-45b2-a46f-f2dafa137536",
+                        "__guid": "3a947d1f-180b-4eba-addf-1b79ded87d05",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -2458,7 +2458,7 @@
                     ]
                   },
                   {
-                    "__guid": "172fa389-1a34-422e-9c88-009cfcfdfcca",
+                    "__guid": "01193457-1649-49f0-b439-ff8de21ff46b",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -2467,14 +2467,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "db847c61-cad8-4a92-8401-2012effcfbcc",
+                        "__guid": "90d96314-400a-4fa5-832e-a13a269ed85d",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "f33ee88d-c76b-4d1c-bae2-272c0f0eab45",
+                        "__guid": "7d6af922-01f5-4625-9ce5-d678434a9a09",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -2484,7 +2484,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "32d800cb-610b-46b4-99c3-27ba8564ff61",
+                        "__guid": "62b6b711-17e0-4c3d-8f1f-b82e7921fbe9",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -2493,18 +2493,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "64dfcfd5-bfc3-4409-95df-a672f32e8248",
+                        "__guid": "90721abb-4b87-46e9-b76c-5ee73eb35337",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "32d800cb-610b-46b4-99c3-27ba8564ff61",
-                          "go": "172fa389-1a34-422e-9c88-009cfcfdfcca",
+                          "component_id": "62b6b711-17e0-4c3d-8f1f-b82e7921fbe9",
+                          "go": "01193457-1649-49f0-b439-ff8de21ff46b",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "11d9c027-8873-4260-9445-61d8cca7d9ba",
-                          "go": "471b4455-bf8f-4290-ab90-5a22fa98bd0b",
+                          "component_id": "07790e1d-5eec-467d-b1df-a8192b77b15d",
+                          "go": "1f30ccd8-8548-44cd-be37-657b34af2882",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -2522,7 +2522,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "b3d2e7a5-426d-4ea0-953d-471555429839",
+                        "__guid": "97b58806-82a6-47ad-8faa-d65b6bcb39ac",
                         "Name": "Panel",
                         "Position": "0.000002384186,0.0000000000001421085,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -2530,14 +2530,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "dcd1a25a-956c-4fd8-87e3-a7bf35f3dea7",
+                            "__guid": "ee23a71c-4314-4440-95f5-300890e0a386",
                             "Name": "Panel_end",
                             "Position": "0.00003122389,13.68841,0.00002108621",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "a5e6b936-207e-4ab5-aa79-f4882837ce9c",
+                                "__guid": "a49232d8-56b2-428a-ac3b-e64c310bd209",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00002585455",
                                 "Enabled": true,
@@ -2548,7 +2548,7 @@
                         ]
                       },
                       {
-                        "__guid": "170300c8-6551-42d2-bb88-00a6b3a4e766",
+                        "__guid": "23b3bcca-b73c-424c-a94f-a38bd7a83568",
                         "Name": "Upgrader",
                         "Position": "0.000002384183,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -2556,14 +2556,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "0add6803-bf1c-482e-920d-d8a834ca8e63",
+                            "__guid": "e1f133b4-15e7-4387-a84d-af6692cd23c6",
                             "Name": "Upgrader_end",
                             "Position": "0.0000581971,35.78135,0.00005457559",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "fd31e603-833d-457f-90c5-62b6e2e2b54d",
+                                "__guid": "2d333046-971b-4eba-b058-49e62d93523a",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00003176936,12.60994,0.0000484108",
                                 "Enabled": true,
@@ -2574,7 +2574,7 @@
                         ]
                       },
                       {
-                        "__guid": "dc9aad3c-cc78-4f45-b3ec-be898bcc3801",
+                        "__guid": "91863159-62bd-4bcc-9d1d-ac55a89253fb",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -2583,7 +2583,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "97d78fdb-e0af-4bea-8405-dc5d6ebf63fc",
+                            "__guid": "33903b6d-1480-41c7-a476-4a6ba8157bc5",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -2693,7 +2693,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "0096d058-2276-4caa-b207-07267506c8ed",
+                            "__guid": "417ec96c-2d85-452a-9d75-fad2d9100e8f",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -2712,7 +2712,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "2e6de327-47b0-43cb-968d-184101d5c0b2",
+                            "__guid": "5e68bf21-b972-423f-9bd9-600cbb9d2656",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -2726,7 +2726,7 @@
                         ]
                       },
                       {
-                        "__guid": "471b4455-bf8f-4290-ab90-5a22fa98bd0b",
+                        "__guid": "1f30ccd8-8548-44cd-be37-657b34af2882",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -2736,7 +2736,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "b8be90ec-b391-400b-991d-bc2de9830edf",
+                            "__guid": "51d90fdf-6b22-4e58-809e-25ad5375f170",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -2745,7 +2745,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "11d9c027-8873-4260-9445-61d8cca7d9ba",
+                            "__guid": "07790e1d-5eec-467d-b1df-a8192b77b15d",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_11.prefab"
@@ -2758,7 +2758,7 @@
                 ]
               },
               {
-                "__guid": "72deb999-23de-4ec1-b0aa-0740b336eb67",
+                "__guid": "bb9916f2-8107-4660-8388-89f8bbb8b3dc",
                 "Name": "Upgrader Slot",
                 "Position": "-529.6907,122.9088,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -2767,7 +2767,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "adf46fb2-9e36-4445-a0f9-c7a5a35eedc9",
+                    "__guid": "a36343b8-c96e-4c9e-9a9e-3745ba299a9e",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -2777,14 +2777,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "6c75f3fd-435d-4247-8ae4-32e58a74ec64",
+                        "__guid": "5f6c41af-5414-4fcd-963b-63387a07ac3e",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "ac2c5157-84ad-4f26-98d9-cd56b2d6a7f2",
+                        "__guid": "fdd947cc-148c-4387-8f63-26a71ae0eae5",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -2794,7 +2794,7 @@
                     ]
                   },
                   {
-                    "__guid": "5d197555-c201-4388-8a6e-c93d5f829fdc",
+                    "__guid": "0ce32f28-716e-4e4d-b1e2-4b6699ae3766",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -2803,14 +2803,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "e7d6cf1e-6f2e-4e28-8971-5df2a451ab9f",
+                        "__guid": "046dfe28-fa14-41db-a9d8-8eccd5fb9ba1",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "e7d3bc3c-2aa9-437c-8dfb-71dc2b0274c3",
+                        "__guid": "42464ae1-e17f-42ab-b5bb-2a553188dd56",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -2820,7 +2820,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "8a36fadb-4564-409a-b01c-de2a10a1b3a8",
+                        "__guid": "45f363c0-2b59-4af4-90e3-aae366963aca",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -2829,18 +2829,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "61e8b902-e349-44e4-a11b-1c75b8980660",
+                        "__guid": "f631f19d-b88e-483f-a2d1-2d367dc9f846",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "8a36fadb-4564-409a-b01c-de2a10a1b3a8",
-                          "go": "5d197555-c201-4388-8a6e-c93d5f829fdc",
+                          "component_id": "45f363c0-2b59-4af4-90e3-aae366963aca",
+                          "go": "0ce32f28-716e-4e4d-b1e2-4b6699ae3766",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "3e6b21d3-3d12-48fe-886d-68104f61e6c8",
-                          "go": "9b5930cd-c971-41b1-a9b2-a3f744e113de",
+                          "component_id": "039e88b7-a84e-4925-bae2-7c58b2b5dacc",
+                          "go": "67462eca-8577-4ff1-bcfe-399d59dd5a0a",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -2858,7 +2858,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "7b820a5d-4b64-4a15-9037-54f5540ae6c6",
+                        "__guid": "312a1d48-4825-4947-8995-5416977d0bc4",
                         "Name": "Panel",
                         "Position": "0,0,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -2866,14 +2866,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "e06b149b-7045-419f-baa7-cd72cac085cd",
+                            "__guid": "9efa0f5c-ccbe-4700-9eb8-28b44eae6c82",
                             "Name": "Panel_end",
                             "Position": "0.0000312239,13.68841,0.00002585458",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "ed70f2f1-3e48-4c63-a16b-e93d07997cdb",
+                                "__guid": "0439fcbb-3b1e-4cd3-bd2d-d665d91d23aa",
                                 "Name": "Panel_end_end",
                                 "Position": "0.00003122391,13.68838,0.00002585455",
                                 "Enabled": true,
@@ -2884,7 +2884,7 @@
                         ]
                       },
                       {
-                        "__guid": "bbf62573-8669-44ce-9243-dc3b50ef00ad",
+                        "__guid": "2348afed-b593-4cc6-aa70-75863d8991dd",
                         "Name": "Upgrader",
                         "Position": "-0.000000000002273737,0.00003814697,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -2892,14 +2892,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "1e1466af-3a65-4318-96fd-51e862231bbb",
+                            "__guid": "67a8265f-5fef-4272-94bd-df51ec0cb12e",
                             "Name": "Upgrader_end",
                             "Position": "0.00005819709,35.78135,0.00005219141",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "a30bfa6e-d39b-4eda-8f56-6f58ffa64597",
+                                "__guid": "8713efed-e5b0-43d4-b93f-daffebddbf3d",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00003176936,12.60994,0.00005317917",
                                 "Enabled": true,
@@ -2910,7 +2910,7 @@
                         ]
                       },
                       {
-                        "__guid": "6b49f874-71b5-47f3-b705-b9099586740e",
+                        "__guid": "018185e8-4800-4d65-80e9-2ccdfe02e27f",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -2919,7 +2919,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "10b3c219-edbd-4ef0-906f-ef29e6a3dca1",
+                            "__guid": "8ca0339e-3f4f-4d68-b667-a998f3bd57bc",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -3029,7 +3029,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "1ab63111-e52b-491b-bb00-b1813089b516",
+                            "__guid": "0273d868-7aeb-4fc3-bf5f-aa00f3ca7caf",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -3048,7 +3048,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "3cf569f4-e646-4b1b-a278-a559a5cee57d",
+                            "__guid": "33d27948-f9cc-4a6c-a6d1-8559453fcbed",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -3062,7 +3062,7 @@
                         ]
                       },
                       {
-                        "__guid": "9b5930cd-c971-41b1-a9b2-a3f744e113de",
+                        "__guid": "67462eca-8577-4ff1-bcfe-399d59dd5a0a",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -3072,7 +3072,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "7c41f0ee-2561-4ba4-8eb6-3d83f4e64882",
+                            "__guid": "5c730c84-85c7-42d7-b7f2-fcb995a216eb",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -3081,7 +3081,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "3e6b21d3-3d12-48fe-886d-68104f61e6c8",
+                            "__guid": "039e88b7-a84e-4925-bae2-7c58b2b5dacc",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_14.prefab"
@@ -3094,7 +3094,7 @@
                 ]
               },
               {
-                "__guid": "acc3e208-aa1b-45db-be42-ec193d0f71f9",
+                "__guid": "ee88bd88-c694-47e8-9aba-bc101ab502a7",
                 "Name": "vending_box",
                 "Position": "-529.6903,186.9087,-201.2997",
                 "Rotation": "0,0,-0.7071067,0.7071068",
@@ -3104,7 +3104,7 @@
                 "__Prefab": "prefabs/vending_box.prefab"
               },
               {
-                "__guid": "d97ddbc5-d4b2-4cac-9277-bcc8d39c500d",
+                "__guid": "b35a1b5b-35e0-4d41-b784-cbd0e58a1ec5",
                 "Name": "Spot Light",
                 "Position": "-397.5879,-119.004,7.64143",
                 "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -3114,7 +3114,7 @@
                 "Components": [
                   {
                     "__type": "SpotLight",
-                    "__guid": "0830ed39-b2b2-43a1-a5b6-8680b2e0e455",
+                    "__guid": "bec401cb-cf83-42e7-b4c3-2b2e331ef632",
                     "Attenuation": 0,
                     "ConeInner": 40.6,
                     "ConeOuter": 78.09,
@@ -3129,7 +3129,7 @@
             ]
           },
           {
-            "__guid": "8125ddb4-ec54-499b-b289-b26d65e66d7c",
+            "__guid": "0c0f4466-4663-483c-bc79-983f92cb5891",
             "Name": "Line3",
             "Position": "415,0,0",
             "Enabled": true,
@@ -3137,7 +3137,7 @@
             "Components": [
               {
                 "__type": "ProductionLine",
-                "__guid": "470646b1-bf8c-49d5-8d79-b7422c55dbd9",
+                "__guid": "fe7f3cd6-b102-4fcb-90d6-33fdd4105f66",
                 "IsActive": false,
                 "Order": 2,
                 "Price": 400,
@@ -3146,7 +3146,7 @@
             ],
             "Children": [
               {
-                "__guid": "26857bad-bd7c-485e-a4b6-060fb4076175",
+                "__guid": "3d594562-5547-476b-b106-32a43a5fd72c",
                 "Name": "furnace",
                 "Position": "-948.2039,-199.465,-201.3",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -3157,14 +3157,14 @@
                 "Components": [
                   {
                     "__type": "ModelCollider",
-                    "__guid": "7563b488-a2e8-436a-9ba3-a65834571305",
+                    "__guid": "24af04c6-5558-4b73-a9f7-a7c282f670f7",
                     "IsTrigger": false,
                     "Model": "models/conveyor/furnace.vmdl",
                     "Static": true
                   },
                   {
                     "__type": "SkinnedModelRenderer",
-                    "__guid": "8349a695-05b7-4754-ae36-bb06c6177980",
+                    "__guid": "dfcc7000-1192-43cb-98a9-c216c9f1fc0d",
                     "BodyGroups": 18446744073709551615,
                     "CreateBoneObjects": false,
                     "Model": "models/conveyor/furnace.vmdl",
@@ -3173,15 +3173,15 @@
                   },
                   {
                     "__type": "Cooker",
-                    "__guid": "d48517e2-4c04-48f5-9090-affaa3458be0",
+                    "__guid": "4127e40f-3e81-472a-8c4d-314fcffb0423",
                     "BoxPrefab": {
                       "_type": "gameobject",
                       "prefab": "prefabs/box.prefab"
                     },
                     "conveyor": {
                       "_type": "component",
-                      "component_id": "ec0f9b8e-487c-4db4-8951-f3c22b017f75",
-                      "go": "26857bad-bd7c-485e-a4b6-060fb4076175",
+                      "component_id": "67242388-c237-4548-a143-52ef973588d0",
+                      "go": "3d594562-5547-476b-b106-32a43a5fd72c",
                       "component_type": "Conveyor"
                     },
                     "CookedObject": {
@@ -3197,7 +3197,7 @@
                   },
                   {
                     "__type": "Conveyor",
-                    "__guid": "ec0f9b8e-487c-4db4-8951-f3c22b017f75",
+                    "__guid": "67242388-c237-4548-a143-52ef973588d0",
                     "special": false,
                     "Speed": 100,
                     "Turn": false,
@@ -3207,7 +3207,7 @@
                 ],
                 "Children": [
                   {
-                    "__guid": "b4eb08f9-abaa-46d6-9a03-bb6097ecb18d",
+                    "__guid": "b859a256-ae31-4204-9fa5-4b11c4e7235a",
                     "Name": "Furnace Screen",
                     "Position": "-19.05182,-29.87411,97.66831",
                     "Rotation": "0,0,-0.7071068,0.7071068",
@@ -3216,7 +3216,7 @@
                     "Components": [
                       {
                         "__type": "WorldPanel",
-                        "__guid": "9c0e30ec-ca72-4f3b-b864-32001ed432ab",
+                        "__guid": "4fa68446-86f2-4d4f-be80-83b4479153df",
                         "HorizontalAlign": "Center",
                         "LookAtCamera": false,
                         "PanelSize": "1000,680",
@@ -3225,7 +3225,7 @@
                       },
                       {
                         "__type": "FurnacePanel",
-                        "__guid": "7c5fc152-432e-4e66-9100-360c9d16de81",
+                        "__guid": "5f22ff2f-0590-46d9-b0ed-695d5dc58f68",
                         "candy": {
                           "_type": "gameobject",
                           "prefab": "prefabs/candy_choco_02.prefab"
@@ -3234,7 +3234,7 @@
                     ]
                   },
                   {
-                    "__guid": "d6e9b5fc-94cb-48db-ad79-d506c378af1b",
+                    "__guid": "ff102860-a8f3-456b-8bf2-33841f011400",
                     "Name": "Smoke",
                     "Position": "-18.67244,0.2534761,88.87357",
                     "Tags": "particles",
@@ -3243,7 +3243,7 @@
                     "Components": [
                       {
                         "__type": "ParticleEffect",
-                        "__guid": "58bb225b-b5b9-4231-b28e-410f52d85008",
+                        "__guid": "43dd565e-d1bc-420c-b7a7-e38d3572edc4",
                         "Alpha": {
                           "Type": "Curve",
                           "CurveA": [
@@ -3353,7 +3353,7 @@
                       },
                       {
                         "__type": "ParticleSpriteRenderer",
-                        "__guid": "685f3f29-6224-4cdf-bec0-7763019503be",
+                        "__guid": "9c46f0bd-8806-48f7-89ed-10837cad2389",
                         "Additive": false,
                         "BlurAmount": 0.5,
                         "BlurOpacity": 0.91,
@@ -3372,7 +3372,7 @@
                       },
                       {
                         "__type": "ParticleBoxEmitter",
-                        "__guid": "db915797-20e2-4aa9-b43f-8eba17dc067b",
+                        "__guid": "376d6725-efef-4096-b414-b39985c15ad2",
                         "__enabled": false,
                         "Burst": 100,
                         "Delay": 0,
@@ -3388,7 +3388,7 @@
                 ]
               },
               {
-                "__guid": "010123e0-bafc-4caa-82c5-1414664c6897",
+                "__guid": "41a7d60f-02de-46f5-aa80-183b3745b1fa",
                 "Name": "Upgrader Slot",
                 "Position": "-948.2036,-118.8246,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -3397,7 +3397,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "cf3f5b75-7cb6-4d14-83a4-440302531321",
+                    "__guid": "fa7332da-f648-4200-8cf3-5eb4c6a3f23b",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -3407,14 +3407,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "99f5ea5e-d27b-4d0b-a75d-323455718882",
+                        "__guid": "e692c5ca-bb5e-4077-8320-dc92f601f393",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "877bb2b2-32f7-4ef2-9171-9c48844398d8",
+                        "__guid": "f0d032ec-84e7-4855-b2ed-63667d42e1f5",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -3424,7 +3424,7 @@
                     ]
                   },
                   {
-                    "__guid": "06254063-bf9b-44ed-a4a0-e092e1332e1f",
+                    "__guid": "acd4d2e1-7723-4476-975a-bf1b529f76c5",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -3433,14 +3433,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "559bfaa6-44e0-4f35-bb64-3742da719af3",
+                        "__guid": "29933dbb-a798-48f3-b5ce-28273e325207",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "2f023960-9336-40b1-b988-9950a0342f26",
+                        "__guid": "69ed2038-e001-4de9-a1b5-2070c89a7803",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -3450,7 +3450,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "365b5a44-c98c-444a-bb6b-00726d33c99d",
+                        "__guid": "ae603fa3-2412-4010-b791-2ab0a26be0b5",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -3459,18 +3459,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "7a16437b-85c9-4e29-9503-4fbf27f29dc7",
+                        "__guid": "4df4b3c6-abd2-4fc1-a73f-61fd48cc4a7b",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "365b5a44-c98c-444a-bb6b-00726d33c99d",
-                          "go": "06254063-bf9b-44ed-a4a0-e092e1332e1f",
+                          "component_id": "ae603fa3-2412-4010-b791-2ab0a26be0b5",
+                          "go": "acd4d2e1-7723-4476-975a-bf1b529f76c5",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "146143bf-8b34-445d-b3a9-bf38c5fdf53a",
-                          "go": "c9e0726f-b5d6-4baa-8603-b36425685809",
+                          "component_id": "0068403a-d341-4dd2-88f7-2158c147554a",
+                          "go": "55a1d118-b6a8-4fe8-ae49-bb28b2d7472d",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -3488,7 +3488,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "f7406405-2867-43d5-a296-bbb47d6faf3e",
+                        "__guid": "0a9301f9-8cb6-4e42-a72a-e33eed713394",
                         "Name": "Panel",
                         "Position": "0,0,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -3496,14 +3496,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "bc1d6d0e-1917-4add-9c78-7c2f289aec98",
+                            "__guid": "2f6779d9-eb4f-4e91-8731-0a2f6304b672",
                             "Name": "Panel_end",
                             "Position": "-0.000006923076,13.68841,0.00001631786",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "cb468e93-965c-4108-9b32-f2eda70b3bdb",
+                                "__guid": "90bc7d8d-3a4a-4790-b464-5222647acfe6",
                                 "Name": "Panel_end_end",
                                 "Position": "-0.000006923061,13.68838,0.00001631782",
                                 "Enabled": true,
@@ -3514,7 +3514,7 @@
                         ]
                       },
                       {
-                        "__guid": "b395409b-5b3c-4d89-b5d6-74bda8dcd67f",
+                        "__guid": "a054f437-477c-4411-a00c-dfacc36773df",
                         "Name": "Upgrader",
                         "Position": "0,0,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -3522,14 +3522,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "99657589-02ff-47cb-86de-9dde1e6aba1d",
+                            "__guid": "e3cf0c06-22c8-484d-b31b-2f9acce926a5",
                             "Name": "Upgrader_end",
                             "Position": "0.0000581971,35.78135,0.00006172815",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "6c10eda8-4a42-4ece-8a2f-164611d0cffa",
+                                "__guid": "fdff8289-5aad-453a-aaf6-231eaa16fc1f",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00006991633,12.60994,0.00005317915",
                                 "Enabled": true,
@@ -3540,7 +3540,7 @@
                         ]
                       },
                       {
-                        "__guid": "b37c4b89-155b-4f16-8c02-af6e398865d3",
+                        "__guid": "0f8069b5-bc83-4546-9f09-7f4b2498a68b",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -3549,7 +3549,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "0d9ceeea-f678-43f4-bef4-18fbe3fd8574",
+                            "__guid": "338e1248-7252-433e-b9f0-0030d04d16b2",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -3659,7 +3659,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "e0a564a9-01b6-4327-8d20-0a1e39c86fa6",
+                            "__guid": "5b4e894d-c190-4201-8b6c-0aa9998184dc",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -3678,7 +3678,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "6df48562-da3d-4e22-bb3c-dc05f83f0077",
+                            "__guid": "7c2254ee-1f7e-40aa-9c07-9c6551ba48db",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -3692,7 +3692,7 @@
                         ]
                       },
                       {
-                        "__guid": "c9e0726f-b5d6-4baa-8603-b36425685809",
+                        "__guid": "55a1d118-b6a8-4fe8-ae49-bb28b2d7472d",
                         "Name": "Furnace Screen",
                         "Position": "-0.00001716615,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -3702,7 +3702,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "598c324f-6a2f-49d5-bfc2-136d102953dc",
+                            "__guid": "c0f8d617-7406-458c-a525-ebc9ddbbce41",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -3711,7 +3711,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "146143bf-8b34-445d-b3a9-bf38c5fdf53a",
+                            "__guid": "0068403a-d341-4dd2-88f7-2158c147554a",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_06.prefab"
@@ -3724,7 +3724,7 @@
                 ]
               },
               {
-                "__guid": "a550763d-a980-4596-831f-43a2f0016026",
+                "__guid": "e51d8de8-5ced-4b82-b208-ae6063b56fa4",
                 "Name": "Upgrader Slot",
                 "Position": "-948.2036,-38.29392,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -3733,7 +3733,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "a7aba7e9-2a0c-4712-b9ef-cc528516964d",
+                    "__guid": "afd8098e-37ec-4618-9ca0-0d6f46f66c4b",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -3743,14 +3743,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "ec767d83-a948-4874-a765-3dccdc135702",
+                        "__guid": "f584deee-0f08-4e24-ad7f-ecc245f920cc",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "6c0847cb-de2b-48b2-99f9-43e52d65280f",
+                        "__guid": "0fdf6aa2-0361-4f53-83fe-baa3932b8e89",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -3760,7 +3760,7 @@
                     ]
                   },
                   {
-                    "__guid": "60ae3b0d-2b67-4758-b060-aeb1656a0544",
+                    "__guid": "cb0d4589-93e8-4bb9-aa21-8d3c336f7b3c",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -3769,14 +3769,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "74694597-8624-4adb-8e76-c21a4c284e11",
+                        "__guid": "78f96f34-5ac7-4401-9617-982c673d304a",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "8c64b0a0-6b67-408f-beaa-3a80f5fa6a46",
+                        "__guid": "82f5261d-d7b0-45a1-92b2-35f3b690940d",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -3786,7 +3786,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "e39e3342-a314-4eee-bd74-736591eb9115",
+                        "__guid": "fc15ea58-e27d-4a2b-9302-937e80c2cd2e",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -3795,18 +3795,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "c63c746c-1fea-43fb-bbb7-a599bd004b96",
+                        "__guid": "70c48a21-5683-4f73-8848-6dcd87ee0b90",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "e39e3342-a314-4eee-bd74-736591eb9115",
-                          "go": "60ae3b0d-2b67-4758-b060-aeb1656a0544",
+                          "component_id": "fc15ea58-e27d-4a2b-9302-937e80c2cd2e",
+                          "go": "cb0d4589-93e8-4bb9-aa21-8d3c336f7b3c",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "595c4f52-24c4-43d2-ac31-feb01f6723b8",
-                          "go": "1beb85dd-73a6-43d7-bffd-75ad145bbacc",
+                          "component_id": "76763609-6949-407f-9d42-e9514787cb43",
+                          "go": "820ffd3e-9ef6-4e1c-abea-eae6b67b88dd",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -3824,7 +3824,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "6c4a536d-1a26-4c9e-a9fb-69851a87ccfb",
+                        "__guid": "0325a21d-4ec5-4edc-8915-a1650fafbb43",
                         "Name": "Panel",
                         "Position": "0,0,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -3832,14 +3832,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "d1e3c975-aa91-4199-8518-ae096528db6d",
+                            "__guid": "73e6c893-5563-4fbd-8b71-dd2fc694e90d",
                             "Name": "Panel_end",
                             "Position": "-0.000006923074,13.68841,0.00002108623",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "007cbd25-c2e3-44a3-8257-b8d8ce4b914a",
+                                "__guid": "21cc8e68-bcbf-406b-bec5-6e7a5b30f46e",
                                 "Name": "Panel_end_end",
                                 "Position": "-0.000006923057,13.68838,0.00002585456",
                                 "Enabled": true,
@@ -3850,7 +3850,7 @@
                         ]
                       },
                       {
-                        "__guid": "a27c980b-0345-466a-8f98-8e9d1ad3dd8f",
+                        "__guid": "9fadfce0-40da-4c63-80dd-78ad1bb04a94",
                         "Name": "Upgrader",
                         "Position": "0.000004768371,0.0000000000002842171,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -3858,14 +3858,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "18380b8a-3d9f-4d7e-a550-21b2e2df23d5",
+                            "__guid": "18886c5d-9994-45d5-ad48-2c6ecf3248ac",
                             "Name": "Upgrader_end",
                             "Position": "0.00005819709,35.78135,0.00005219141",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "778e09f4-0f55-4bdf-8f17-a02fda731007",
+                                "__guid": "7f99a05e-3866-4370-91ae-6eea7da57672",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00006991633,12.60994,0.00004841078",
                                 "Enabled": true,
@@ -3876,7 +3876,7 @@
                         ]
                       },
                       {
-                        "__guid": "eba588b7-234a-49d8-801d-73fa84c007a3",
+                        "__guid": "8cbb63cb-4979-4422-9441-35ac52590fbf",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -3885,7 +3885,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "d95b1eaa-3508-4566-8e82-d755cbf1c9b0",
+                            "__guid": "b5a71bc4-d417-45dd-af1d-c4e0d06582e0",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -3995,7 +3995,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "acee46c7-36fb-4cb9-b21b-866fe7296d8f",
+                            "__guid": "979e5bd9-d811-480d-8774-7bdba65c17f4",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -4014,7 +4014,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "6e67873a-1996-4ba1-b20d-7683f04ed335",
+                            "__guid": "c3368bb5-aeae-40e7-ba33-e8911db89d3b",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -4028,7 +4028,7 @@
                         ]
                       },
                       {
-                        "__guid": "1beb85dd-73a6-43d7-bffd-75ad145bbacc",
+                        "__guid": "820ffd3e-9ef6-4e1c-abea-eae6b67b88dd",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -4038,7 +4038,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "c7fc5677-a8d4-4bd8-893f-07031c4f1e8b",
+                            "__guid": "65048b37-f244-4eaa-8dbd-d335e21fe57e",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -4047,7 +4047,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "595c4f52-24c4-43d2-ac31-feb01f6723b8",
+                            "__guid": "76763609-6949-407f-9d42-e9514787cb43",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_09.prefab"
@@ -4060,7 +4060,7 @@
                 ]
               },
               {
-                "__guid": "43ec6e70-cca5-45dc-bd56-0fd50391e571",
+                "__guid": "0fcd5775-c3de-4d5d-a06d-37681d390b7d",
                 "Name": "Upgrader Slot",
                 "Position": "-948.2036,42.90867,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -4069,7 +4069,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "fc7ff2a8-1b2f-4580-8138-d8a05af4b65a",
+                    "__guid": "9ab95c47-5c3b-4514-9f4a-a42799ff949a",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -4079,14 +4079,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "77c63de3-6425-4c1b-8851-0c13bdf59f54",
+                        "__guid": "afcc16b9-310f-4a48-983a-e8557cf2f22a",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "3d974547-9d10-4bda-ac08-60fb8ff67646",
+                        "__guid": "853c1d26-a396-4025-b047-a92b51589bc5",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -4096,7 +4096,7 @@
                     ]
                   },
                   {
-                    "__guid": "ec9e7d24-648b-47cd-bddd-7e0eb79b3053",
+                    "__guid": "bce4ea03-c742-4c7d-98b8-399f36027841",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -4105,14 +4105,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "2281d70c-c52e-4ec4-af59-368fa037ee02",
+                        "__guid": "644437af-8d9b-40bc-bdf2-0c15c9a7f858",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "a1ce8338-b0d0-4b28-b9d8-3e9d83e7eb70",
+                        "__guid": "0f132304-2a89-4014-a9f8-dad256cbc453",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -4122,7 +4122,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "caae3eff-5874-4776-b58b-77fde7c96e79",
+                        "__guid": "d44e9935-186d-4919-a966-af4efd27a4eb",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -4131,18 +4131,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "5d444794-13af-49f3-9f1f-b4d2b87807b0",
+                        "__guid": "67ad08a8-5f8c-495f-8d86-364689f132f3",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "caae3eff-5874-4776-b58b-77fde7c96e79",
-                          "go": "ec9e7d24-648b-47cd-bddd-7e0eb79b3053",
+                          "component_id": "d44e9935-186d-4919-a966-af4efd27a4eb",
+                          "go": "bce4ea03-c742-4c7d-98b8-399f36027841",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "92ac368f-f2b9-43a9-af39-d27dab3126c8",
-                          "go": "48330e68-8f75-47d9-a964-3503380d076c",
+                          "component_id": "87847f1c-8f1a-4c93-b572-5bfc9a323a65",
+                          "go": "49a23cbb-844c-4684-b610-ff12cb953efe",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -4160,7 +4160,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "612c6c7d-1f5c-4ed2-87ff-6cd0074b0dd1",
+                        "__guid": "b44742eb-d76e-47bb-b48a-05ee301e9958",
                         "Name": "Panel",
                         "Position": "0.000002384186,0.0000000000001421085,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -4168,14 +4168,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "56c31cce-956d-4fd9-a6bb-ffa15ed60ad0",
+                            "__guid": "e3267cf3-24db-4497-a833-acc727eeaabb",
                             "Name": "Panel_end",
                             "Position": "-0.000006923074,13.68841,0.00002108623",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "1fcf24b4-cd77-4669-959f-d8337c3715fc",
+                                "__guid": "539300db-bcf2-4769-91e0-906c29517301",
                                 "Name": "Panel_end_end",
                                 "Position": "-0.000006923057,13.68838,0.00002585456",
                                 "Enabled": true,
@@ -4186,7 +4186,7 @@
                         ]
                       },
                       {
-                        "__guid": "e2ce11ae-908d-4669-856a-1e723feed413",
+                        "__guid": "29b8dbeb-44d8-4822-a999-3a80d69c5c25",
                         "Name": "Upgrader",
                         "Position": "0.000002384186,0.0000000000001421085,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -4194,14 +4194,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "9723860b-e773-42e3-8ebb-177b9d0570fd",
+                            "__guid": "a8ce5251-26ae-4f52-b050-75c91727f372",
                             "Name": "Upgrader_end",
                             "Position": "0.0000581971,35.78135,0.00005457559",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "c13640a3-8956-4263-94b5-dc014315eb5d",
+                                "__guid": "cc95588a-42ae-4e4e-9c5e-a5623df217dd",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00006991633,12.60994,0.00004841078",
                                 "Enabled": true,
@@ -4212,7 +4212,7 @@
                         ]
                       },
                       {
-                        "__guid": "44e57795-f51a-4701-916c-63bf990a9a2e",
+                        "__guid": "af71f464-62cd-45db-baa7-0680db540bed",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -4221,7 +4221,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "5cc55e53-d72b-4832-b761-2e90494eb97c",
+                            "__guid": "741df9f7-a5b3-4c6b-87cc-72c59a9b7d07",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -4331,7 +4331,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "b284b7bb-ab9b-49ed-ab79-1d56226bbabe",
+                            "__guid": "cfe224f4-6e41-462e-ad80-80beae2f86df",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -4350,7 +4350,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "f45a3d17-dd48-407d-8eb7-3331e846c441",
+                            "__guid": "d5833b1f-f0f8-4a8d-94a0-396e6df7d70f",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -4364,7 +4364,7 @@
                         ]
                       },
                       {
-                        "__guid": "48330e68-8f75-47d9-a964-3503380d076c",
+                        "__guid": "49a23cbb-844c-4684-b610-ff12cb953efe",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -4374,7 +4374,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "c7554c1b-26ec-4c61-821c-a9ebbbbe9bc4",
+                            "__guid": "3e3c76c3-c263-4315-b4d9-5b756349a0f0",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -4383,7 +4383,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "92ac368f-f2b9-43a9-af39-d27dab3126c8",
+                            "__guid": "87847f1c-8f1a-4c93-b572-5bfc9a323a65",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_12.prefab"
@@ -4396,7 +4396,7 @@
                 ]
               },
               {
-                "__guid": "e4d3db44-c93f-4a34-8c54-354778aef6e2",
+                "__guid": "d80d1c40-2a40-4d0b-9369-940c2922b7d1",
                 "Name": "Upgrader Slot",
                 "Position": "-948.2036,123.5087,-201.2997",
                 "Rotation": "0,0,0.7071068,0.7071068",
@@ -4405,7 +4405,7 @@
                 "NetworkMode": 2,
                 "Children": [
                   {
-                    "__guid": "5e6c8f8b-2d0c-454a-9bf3-de18891ca21c",
+                    "__guid": "07c634f2-11db-4040-81b0-c1c124fff568",
                     "Name": "Conveyor",
                     "Position": "0,0,0",
                     "Scale": "1.25,1.25,1.25",
@@ -4415,14 +4415,14 @@
                     "Components": [
                       {
                         "__type": "Prop",
-                        "__guid": "8fe55209-7041-4db6-b8b3-2995743db9e4",
+                        "__guid": "4e9704a4-931a-4487-a3c8-9660da762abd",
                         "Health": 0,
                         "IsStatic": true,
                         "Model": "models/conveyor/conveyor_s.vmdl"
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "891223b9-2bde-4ea4-8ee9-04bc91b16198",
+                        "__guid": "f8604a48-0499-4728-a265-4e6032acc3eb",
                         "special": false,
                         "Speed": 100,
                         "Turn": false,
@@ -4432,7 +4432,7 @@
                     ]
                   },
                   {
-                    "__guid": "22636279-7c57-44eb-9fe3-cc5e0dd200fb",
+                    "__guid": "2b28a656-98b4-4865-8d91-048f8567a0ff",
                     "Name": "upgrader",
                     "Position": "0,0,0",
                     "Tags": "interactable,conveyor",
@@ -4441,14 +4441,14 @@
                     "Components": [
                       {
                         "__type": "ModelCollider",
-                        "__guid": "72c8ea4c-5420-414f-a9cd-855028095e4a",
+                        "__guid": "8d9241b6-a124-4ecf-8cbe-12c4a6c4fc9c",
                         "IsTrigger": false,
                         "Model": "models/conveyor/transformer.vmdl",
                         "Static": true
                       },
                       {
                         "__type": "SkinnedModelRenderer",
-                        "__guid": "b96e7430-7b66-4093-90af-e712301d4102",
+                        "__guid": "1f8bd0dc-5cc3-4dc4-a1a8-663878dd2b2a",
                         "AnimationGraph": "animgraphs/upgrader.vanmgrph",
                         "BodyGroups": 18446744073709551615,
                         "CreateBoneObjects": true,
@@ -4458,7 +4458,7 @@
                       },
                       {
                         "__type": "Conveyor",
-                        "__guid": "fe0cb9f4-c2e5-428c-99f6-46e081dd4ff4",
+                        "__guid": "91b05d13-5508-42c2-8f75-c163b878fbc0",
                         "special": true,
                         "Speed": 100,
                         "Turn": false,
@@ -4467,18 +4467,18 @@
                       },
                       {
                         "__type": "Upgrader",
-                        "__guid": "cca4641c-9969-42ab-8e78-bfb3d3432f4e",
+                        "__guid": "d519c64d-9649-4d9c-84af-d727eb499d3f",
                         "conveyor": {
                           "_type": "component",
-                          "component_id": "fe0cb9f4-c2e5-428c-99f6-46e081dd4ff4",
-                          "go": "22636279-7c57-44eb-9fe3-cc5e0dd200fb",
+                          "component_id": "91b05d13-5508-42c2-8f75-c163b878fbc0",
+                          "go": "2b28a656-98b4-4865-8d91-048f8567a0ff",
                           "component_type": "Conveyor"
                         },
                         "Description": "This is an interactable object",
                         "furnacePanel": {
                           "_type": "component",
-                          "component_id": "452babb2-e883-4616-97fc-c989d2a283d0",
-                          "go": "8cf58fde-c99d-4fb0-aeb9-682e1051343c",
+                          "component_id": "39a8c7ce-36ac-4c8a-bf1a-e111fa2ba9f8",
+                          "go": "38a81ca1-b7f6-4398-ba6b-c035e67adcc0",
                           "component_type": "FurnacePanel"
                         },
                         "IsInteracted": false,
@@ -4496,7 +4496,7 @@
                     ],
                     "Children": [
                       {
-                        "__guid": "5fcb6e95-5950-46b8-a6d1-4fef04ea164f",
+                        "__guid": "4c7925b9-a2a5-49ad-957d-53395ebe4a79",
                         "Name": "Panel",
                         "Position": "0,0,57.16129",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -4504,14 +4504,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "48009b82-4184-4dc6-9009-fafb1a87442a",
+                            "__guid": "825db203-3aa4-4d91-a58f-09e6a6430567",
                             "Name": "Panel_end",
                             "Position": "-0.000006923073,13.68841,0.0000258546",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "314098d4-e604-43c0-97f9-fcabb99ecd29",
+                                "__guid": "25d71f74-f47a-4633-9292-ef57ccef1376",
                                 "Name": "Panel_end_end",
                                 "Position": "-0.000006923057,13.68838,0.00002585456",
                                 "Enabled": true,
@@ -4522,7 +4522,7 @@
                         ]
                       },
                       {
-                        "__guid": "d22ece36-56d6-49b9-892e-9aa2d441ed41",
+                        "__guid": "17b693e7-01fa-4966-bdf5-e33dad47e652",
                         "Name": "Upgrader",
                         "Position": "0,0,136.7999",
                         "Rotation": "0.4999997,0.4999997,0.5000001,0.5000005",
@@ -4530,14 +4530,14 @@
                         "NetworkMode": 2,
                         "Children": [
                           {
-                            "__guid": "2ca0fbfd-a998-4341-b117-777a2c669308",
+                            "__guid": "d76b34f1-c0c2-46c6-b328-6120204a96f5",
                             "Name": "Upgrader_end",
                             "Position": "0.00005819709,35.78135,0.00005219141",
                             "Enabled": true,
                             "NetworkMode": 2,
                             "Children": [
                               {
-                                "__guid": "6e2dee6d-7119-422f-ad39-3d750186b45d",
+                                "__guid": "dd4a10a7-779d-45c6-9964-6e3130950ee6",
                                 "Name": "Upgrader_end_end",
                                 "Position": "0.00006991633,12.60994,0.00005317915",
                                 "Enabled": true,
@@ -4548,7 +4548,7 @@
                         ]
                       },
                       {
-                        "__guid": "c9dc7364-3a80-4e5c-a4e4-300b13335f55",
+                        "__guid": "2adcb487-6add-4347-83c0-4b1c295f6ef9",
                         "Name": "Smoke",
                         "Position": "-0.04322338,0.2534761,91.10779",
                         "Tags": "particles",
@@ -4557,7 +4557,7 @@
                         "Components": [
                           {
                             "__type": "ParticleEffect",
-                            "__guid": "2a50fef9-5238-40dd-bbf2-dc8f611f5afb",
+                            "__guid": "903355cc-99eb-4828-a2fb-ff3a8759b8fd",
                             "Alpha": {
                               "Type": "Curve",
                               "CurveA": [
@@ -4667,7 +4667,7 @@
                           },
                           {
                             "__type": "ParticleSpriteRenderer",
-                            "__guid": "31243fcc-4f79-41da-915c-cb419e5a65e5",
+                            "__guid": "f7c6c835-4664-492d-a7f9-d29690925be8",
                             "Additive": false,
                             "BlurAmount": 0.5,
                             "BlurOpacity": 0.91,
@@ -4686,7 +4686,7 @@
                           },
                           {
                             "__type": "ParticleBoxEmitter",
-                            "__guid": "900d0b9c-8e7e-4ad3-9fb0-3e78f5121636",
+                            "__guid": "8336fc37-7e01-4532-a685-9c5fa2e8380b",
                             "__enabled": false,
                             "Burst": 100,
                             "Delay": 0,
@@ -4700,7 +4700,7 @@
                         ]
                       },
                       {
-                        "__guid": "8cf58fde-c99d-4fb0-aeb9-682e1051343c",
+                        "__guid": "38a81ca1-b7f6-4398-ba6b-c035e67adcc0",
                         "Name": "Furnace Screen",
                         "Position": "-0.00002670289,-31.99981,155.7999",
                         "Rotation": "-0.0000002699002,0.0000006573304,0.7071069,-0.7071066",
@@ -4710,7 +4710,7 @@
                         "Components": [
                           {
                             "__type": "WorldPanel",
-                            "__guid": "fa8e4d67-6dfe-4b98-a0fc-fd6d02f1758e",
+                            "__guid": "8271885e-0967-4449-b42b-59e0e303d950",
                             "HorizontalAlign": "Center",
                             "LookAtCamera": false,
                             "PanelSize": "800,544",
@@ -4719,7 +4719,7 @@
                           },
                           {
                             "__type": "FurnacePanel",
-                            "__guid": "452babb2-e883-4616-97fc-c989d2a283d0",
+                            "__guid": "39a8c7ce-36ac-4c8a-bf1a-e111fa2ba9f8",
                             "candy": {
                               "_type": "gameobject",
                               "prefab": "prefabs/candy_choco_15.prefab"
@@ -4732,7 +4732,7 @@
                 ]
               },
               {
-                "__guid": "51656076-1e84-4bb4-bcc4-cbf5612a5214",
+                "__guid": "f0a6c9bb-ab77-4cfb-8220-bb5c24e593cd",
                 "Name": "vending_box",
                 "Position": "-948.2033,186.9085,-201.2997",
                 "Rotation": "0,0,-0.7071067,0.7071068",
@@ -4742,7 +4742,7 @@
                 "__Prefab": "prefabs/vending_box.prefab"
               },
               {
-                "__guid": "ee857d02-0bed-4006-80ce-48ef66cb17af",
+                "__guid": "394f3681-2819-44c1-b119-da63ced2dd96",
                 "Name": "Spot Light",
                 "Position": "-821.9037,-119.004,0.2963753",
                 "Rotation": "-0.3826834,-0.00000001672762,0.9238796,-0.00000004038406",
@@ -4752,7 +4752,7 @@
                 "Components": [
                   {
                     "__type": "SpotLight",
-                    "__guid": "4135cb42-50e4-4c54-8eb3-9865671ac264",
+                    "__guid": "c5f42eee-fd78-4143-b7b2-772b5e3b1287",
                     "Attenuation": 0,
                     "ConeInner": 40.6,
                     "ConeOuter": 78.09,
@@ -4769,7 +4769,7 @@
         ]
       },
       {
-        "__guid": "a993302a-0368-4afd-bcf6-8112ca7e8f1a",
+        "__guid": "e298f6b6-949b-44f2-81c7-79318270a631",
         "Name": "selling_panel",
         "Position": "-136.623,-291.8556,-177.5807",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -4779,14 +4779,14 @@
         "Components": [
           {
             "__type": "Prop",
-            "__guid": "d09e7f1c-28d7-492e-9b71-5e8759432f27",
+            "__guid": "7570c70f-d28a-493f-99c3-e0bae7c97204",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/selling_panel/selling_panel.vmdl"
           },
           {
             "__type": "Buyable",
-            "__guid": "899dbb1b-f92c-483b-8210-32073e36cb89",
+            "__guid": "68fcf267-bbd0-4f74-8283-e23bb2b4acb3",
             "Description": "This is an interactable object",
             "IsInteracted": false,
             "Name": "Interactable",
