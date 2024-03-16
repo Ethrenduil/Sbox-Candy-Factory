@@ -109,7 +109,7 @@
 	{
 		// Get element value
 		var sign = e.This.StringValue == "-" ? -1 : 1;
-		var wishQuantity = settings.VolumeMusic + sign * 5;
+		var wishQuantity = settings.GetVolume(VolumeType.Music) + sign * 5;
 
 		// Check if the quantity is valid
 		if (wishQuantity <= 0) wishQuantity = 0;

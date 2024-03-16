@@ -79,7 +79,7 @@ public class Upgrader : AInteractable
 	{
 		if ( upgradeSound is not null )
 		{
-			upgradeSound.Volume = Settings.VolumeSound;
+			upgradeSound.Volume = Settings.GetVolume(VolumeType.Sound);
         	sound = Sound.Play( upgradeSound, Transform.Position + upgradedOffset );
 		}
 		furnacePanel.StartCooking(time);
@@ -94,7 +94,7 @@ public class Upgrader : AInteractable
 		sound?.Stop();
 		if ( upgradedSound is not null )
 		{
-			upgradedSound.Volume = Settings.VolumeSound;
+			upgradedSound.Volume = Settings.GetVolume(VolumeType.Sound);
         	Sound.Play( upgradedSound, Transform.Position + upgradedOffset);
 		}
 		

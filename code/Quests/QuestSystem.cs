@@ -10,6 +10,7 @@ public sealed class QuestSystem : Component
 	private CurrentTaskHUD currentTaskHUD;
 	public GameObject Arrow { get; set; }
 	private SoundHandle sound;
+	private Settings Settings { get; set; }
 
     protected async override void OnStart()
     {
@@ -89,6 +90,7 @@ public sealed class QuestSystem : Component
 
 	public async void CompleteObjective(QuestObjective objective)
 	{
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
 		objective.IsCompleted = true;
 		if (CurrentQuest.Objectives.All( X => X.IsCompleted))
 		{
@@ -99,7 +101,10 @@ public sealed class QuestSystem : Component
             }
 			CurrentQuestIndex++;
 			sound?.Stop();
-			sound = Sound.Play( "tuto_" + CurrentQuestIndex );
+			SoundEvent soundEvent = new SoundEvent( "/sounds/bob/tuto_" + CurrentQuestIndex + ".sound" );
+			soundEvent.UI = true;
+			soundEvent.Volume = Settings.GetVolume(VolumeType.Sound);
+			sound = Sound.Play(soundEvent);
 			if (CurrentQuestIndex < Quests.Count)
 			{
 				CurrentQuest = Quests[CurrentQuestIndex];

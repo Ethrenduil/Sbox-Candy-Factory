@@ -97,7 +97,7 @@ public class Cooker : AInteractable
 	{
 		if ( CookingSound is not null )
 		{
-			CookingSound.Volume = Settings.VolumeSound;
+			CookingSound.Volume = Settings.GetVolume(VolumeType.Sound);
         	sound = Sound.Play( CookingSound, Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80) );
 		}
 		furnacePanel.StartCooking(time);
@@ -112,7 +112,7 @@ public class Cooker : AInteractable
 		sound?.Stop();
 		if ( CookedSound is not null )
 		{
-			CookedSound.Volume = Settings.VolumeSound;
+			CookedSound.Volume = Settings.GetVolume(VolumeType.Sound);
         	Sound.Play( CookedSound, Transform.Position + Transform.Rotation.Forward * cookedOffset + new Vector3(0,0,80));
 		}
 	}

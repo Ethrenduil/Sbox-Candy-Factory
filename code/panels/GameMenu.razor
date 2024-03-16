@@ -152,14 +152,14 @@
 
 	void PlaySound()
 	{
-		buttonClickSound.Volume = settings.VolumeSound / 1000;
+		buttonClickSound.Volume = settings.GetVolume(VolumeType.Sound) / 1000;
 		buttonClickSound.UI = true;
 		Sound.Play(buttonClickSound);
 	}
 
 	public string GetVolumeSettings()
 	{
-		return settings.VolumeMusic.ToString();
+		return settings.GetVolume(VolumeType.Music).ToString();
 	}
 
 	public void AdjustVolume(PanelEvent e)
@@ -167,8 +167,7 @@
 		PlaySound();
 		// Get element value
 		var sign = e.This.StringValue == "-" ? -1 : 1;
-		var wishQuantity = settings.VolumeMusic + sign * 5;
-
+		var wishQuantity = settings.GetVolume(VolumeType.Music) + sign * 5;
 		// Check if the quantity is valid
 		if (wishQuantity <= 0) wishQuantity = 0;
 		if (wishQuantity >= 100) wishQuantity = 100;

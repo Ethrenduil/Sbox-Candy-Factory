@@ -11,7 +11,7 @@ public sealed class Music : Component
 	{
 		MP = MusicPlayer.Play(FileSystem.Mounted , "music/menu.mp3");
 		MP.Repeat = true;
-        MP.Volume = Settings.VolumeMusic;
+        MP.Volume = Settings.GetVolume(VolumeType.Music);
 	}
 
 	protected override void OnDestroy()
@@ -23,7 +23,7 @@ public sealed class Music : Component
 	{
 		if (MP != null && !MP.Paused)
 		{
-			MP.Volume = Settings.VolumeMusic;
+			MP.Volume = Settings.GetVolume(VolumeType.Music);
 		}
 	}
 }

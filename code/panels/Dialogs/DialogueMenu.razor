@@ -48,7 +48,9 @@
     protected override void OnUpdate()
     {
         base.OnUpdate();
-		if (CurrentSound != null) CurrentSound.Volume = Settings.VolumeSound * 0.2f;
+		if (CurrentSound != null){
+			CurrentSound.Volume = Settings.GetVolume(VolumeType.Sound);
+		}
 		if (CurrentSound != null && !CurrentSound.IsPlaying)
 		{
 			Renderer.Set( "talking", false );
@@ -93,8 +95,10 @@
 		ToLookAt = toLookAt;
 		SoundPath = soundPath;
 		Duration = duration;
-		CurrentSound = Sound.Play("/sounds/bob/" + SoundPath + ".sound");
-		CurrentSound.Volume = Settings.VolumeSound;
+		SoundEvent soundEvent = new SoundEvent("/sounds/bob/" + SoundPath + ".sound");
+		soundEvent.UI = true;
+		soundEvent.Volume = Settings.GetVolume(VolumeType.Sound);
+		CurrentSound = Sound.Play(soundEvent);
 		Renderer ??= Scene.GetAllComponents<Bob>().FirstOrDefault().Components.Get<SkinnedModelRenderer>();
 		Renderer.Set( "talking", true );
 		cinematicSystem.StartCinematic(player, ToLookAt[currentDialogueIndex], 20);
@@ -110,8 +114,10 @@
         currentDialogueIndex++;
         if (currentDialogueIndex < dialogueLines.Count)
         {
-			CurrentSound = Sound.Play("/sounds/bob/" + SoundPath + "_" + (currentDialogueIndex+1) + ".sound");
-			CurrentSound.Volume = Settings.VolumeSound * 0.2f;
+			SoundEvent soundEvent = new SoundEvent("/sounds/bob/" + SoundPath + "_" + (currentDialogueIndex+1) + ".sound");
+			soundEvent.UI = true;
+			soundEvent.Volume = Settings.GetVolume(VolumeType.Sound);
+			CurrentSound = Sound.Play(soundEvent);
 			Renderer.Set( "talking", true );
 			cinematicSystem.StartCinematic(player, ToLookAt[currentDialogueIndex], Duration[currentDialogueIndex]);
             dialogueText = dialogueLines[currentDialogueIndex];

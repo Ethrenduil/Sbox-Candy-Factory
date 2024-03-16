@@ -34,7 +34,7 @@ public class Seller : AInteractable, Component.ICollisionListener
 	{
 		if ( sellSound is not null )
 		{
-			sellSound.Volume = Settings.VolumeSound;
+			sellSound.Volume = Settings.GetVolume(VolumeType.Sound);
 			sound = Sound.Play( sellSound, Transform.Position );
 		}
 	}

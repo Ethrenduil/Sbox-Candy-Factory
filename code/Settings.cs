@@ -75,6 +75,14 @@ public sealed class Settings : Component
         else
             return VolumeSound.ToString("0") + "%";
     }
+
+    public float GetVolume(VolumeType type)
+    {
+        if(type == VolumeType.Music)
+            return VolumeMusic / 100;
+        else
+            return VolumeSound / 100;
+    }
 }
 
 
