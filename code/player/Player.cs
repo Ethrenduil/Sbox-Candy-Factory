@@ -234,7 +234,7 @@ public class Player : Component
 
 		WishVelocity = 0;
 
-		if (!InCinematic)
+		if (!InCinematic && !InMenu && !InDialogue)
 		{
 			if (Input.Down("Forward")) WishVelocity += rot.Forward;
 			if (Input.Down("Backward")) WishVelocity += rot.Backward;
