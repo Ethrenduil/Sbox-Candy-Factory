@@ -58,8 +58,11 @@ public class Stockable : AInteractable
         var box = Interactor.Components.Get<DeliveryGood>(FindMode.EverythingInSelfAndChildren);
         if (box == null) return;
 
-        if (!FactoryPlayer.AddStockFromDictionary(box.Goods)) return;
-
+        var overflow = FactoryPlayer.AddStockFromDictionary(box.Goods);
+        if (overflow != null)
+        {
+            SpawnOverflowBox(overflow);
+        }
         // Destroy the delivery box
         box.GameObject.Destroy();
     }
@@ -76,4 +79,14 @@ public class Stockable : AInteractable
         box.Network.TakeOwnership();
         return true;
     }
+
+    private void SpawnOverflowBox(Dictionary<DeliveryGoods, int> stock)
+	{
+		var box = boxPrefab.Clone(GameObject.Transform.Position + new Vector3(0, -100, 20));
+		var delivery = box.Components.Get<DeliveryGood>();
+		delivery.AddGoods(stock);
+		delivery.FromStock = true;
+		box.NetworkSpawn();
+		box.Network.TakeOwnership();
+	}
 }

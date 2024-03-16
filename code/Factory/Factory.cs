@@ -85,6 +85,7 @@ public sealed class Factory : Component
 		return Stock.TryGetValue( item, out int value ) ? value : 0;
 	}
 
+	// Get the count of all items in stock
 	public int GetStockCount()
 	{
 		var count = 0;
@@ -136,22 +137,64 @@ public sealed class Factory : Component
 		}
 	}
 
-	public bool AddStockFromDictionary(Dictionary<DeliveryGoods, int> stock)
+	public void AddSingleStock(string goods)
 	{
-		if(!CanStore(GetTotalQuantity(stock))) return false;
+		var item = GetStockItemNameFromString(goods);
+		if (Stock.TryGetValue( item, out int value ))
+		{
+			Stock[item] = value + 1;
+		}
+		else
+		{
+			Stock[item] = 1;
+		}
+	}
+
+	public void AddSingleStock(DeliveryGoods goods)
+	{
+		if (Stock.TryGetValue( goods, out int value ))
+		{
+			Stock[goods] = value + 1;
+		}
+		else
+		{
+			Stock[goods] = 1;
+		}
+	}
+
+	public Dictionary<DeliveryGoods, int> AddStockFromDictionary(Dictionary<DeliveryGoods, int> stock)
+	{
+		// If the stock is too large to store, stock the maximum amount and spawn the rest
+		var overflow = (GetStorageCapacity() - GetStockCount() - GetTotalQuantity(stock)) * -1;
+		if(!CanStore(GetTotalQuantity(stock)) &&  GetTotalQuantity(stock) != 0 && overflow > 0)
+		{
+			var overflowStock = new Dictionary<DeliveryGoods, int>();
+			var i = 0;
+			foreach (var item in stock)
+			{
+				for (var j = 0; j < item.Value; j++)
+				{
+					if (i < overflow)
+					{
+						if (overflowStock.ContainsKey(item.Key)) overflowStock[item.Key] += 1;
+						else overflowStock[item.Key] = 1;
+					}
+					else
+					{
+						AddSingleStock(item.Key);
+					}
+					i++;
+				}
+			}
+			return overflowStock;
+		}
+
+		// If the stock is small enough to store, add it all
 		foreach (var item in stock)
 		{
 			AddStock(item.Key, item.Value);
 		}
-		return true;
-	}
-
-	public void AddStockFromDictionary(Dictionary<string, int> order)
-	{
-		foreach (var item in order)
-		{
-			AddStock(item.Key, item.Value);
-		}
+		return null;
 	}
 
 	public bool RemoveStock(DeliveryGoods goods, int quantity)
@@ -202,7 +245,6 @@ public sealed class Factory : Component
 		}
 		return newStock;
 	}
-
 	public int GetStorageCapacity()
 	{
 		return Production.StorageCapacity;
@@ -222,6 +264,4 @@ public sealed class Factory : Component
 		}
 		return count;
 	}
-
-
 }
