@@ -2,7 +2,7 @@
 "Candy Factory" is a 3D factory game on Source 2 made on S&box. This game provides a playful management experience where players can create and upgrade their candy factory while managing a shop to sell their delightful creations.
 
 
-Credits:
+# Credits:
 - [Image from pch.vector](https://fr.freepik.com/vecteurs-libre/icone-style-dessin-anime-3d-pile-argent-pieces-or-pieces-signe-dollar-liasse-argent-illustration-vectorielle-plate-monnaie-richesse-investissement-succes-epargne-economie-concept-profit_29119378.htm#query=money&position=2&from_view=search&track=sph&uuid=f907e7ab-6333-4de5-a0a0-a7cf0f8fe7b9) on Freepik
 - [Delivery Car](https://sketchfab.com/3d-models/delivery-truck-1d53f7fa474849db812102dfa5d070d0)
 - [Button](https://pixabay.com/sound-effects/button-124476/)
