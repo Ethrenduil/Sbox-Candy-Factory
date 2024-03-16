@@ -21,7 +21,7 @@
 					{
 						<div class="storageWindowContentItem">
 							<div class="storageWindowContentItemIcon">
-								<img src="https://via.placeholder.com/64" alt="itemIcon" />
+								<img src="@GetImage(item.Key)" alt="itemIcon" />
 							</div>
 							<div class="storageWindowContentItemName" value="@item.Key">@item.Key</div>
 							<button class="storageWindowContentItemQuantityButton minus" onclick="@AdjustQuantity" value="-">-</button>
@@ -65,6 +65,11 @@
 		{
 			CloseStorageWindow();
 		}
+	}
+
+	public string GetImage(string item)
+	{
+		return $"textures/ui/goods/{item}.png";
 	}
 
     public void OpenStorageWindow(Stockable stockable)

@@ -22,7 +22,7 @@
 							{
 								<div class="upgradeWindowProductionLineAreaContentLineItem @(ProductionSystem.IsProductionLineLocked(item.Key) ? "locked" : "") @(ProductionSystem.IsProductionLineFullUpgraded(item.Key) ? "upgraded" : "")" onclick="@AdjustProductionLine">
 									<div class="upgradeWindowProductionLineAreaContentLineItemName" value="@item.Key">@item.Key</div>
-									<div class="upgradeWindowProductionLineAreaContentLineItemIcon"><img src="https://via.placeholder.com/64" alt="itemIcon" /></div>
+									<div class="upgradeWindowContentItemIcon"><img src="@GetUpgradeIcon(item.Key)" alt="itemIcon" /></div>
 									<div class="upgradeWindowProductionLineAreaContentItemPrice" value="@item.Value">@item.Value</div>
 								</div>
 							}
@@ -42,7 +42,7 @@
 									@* For each furnace and upgrader in the production line *@
 									@* need to add a class if its lock (1->2->3->4) *@
 									<div class="upgradeWindowProductionLineAreaContentLineItemName" value="@item.Key">@item.Key</div>
-									<div class="upgradeWindowProductionLineAreaContentLineItemIcon"><img src="https://via.placeholder.com/64" alt="itemIcon" /></div>
+									<div class="upgradeWindowContentItemIcon"><img src="@GetUpgradeIcon(item.Key)" alt="itemIcon" /></div>
 									<div class="upgradeWindowProductionLineAreaContentItemPrice" value="@item.Value">@item.Value</div>
 									@* End for each *@
 								</div>
@@ -99,6 +99,12 @@
 		{
 			CloseUpgradeWindow();
 		}
+	}
+
+	public string GetUpgradeIcon(string item)
+	{
+		var temp = item.Split(' ')[0].ToLower();
+		return $"textures/ui/upgrade/{temp}.png";
 	}
 
     public void OpenUpgradeWindow()
@@ -221,10 +227,5 @@
 			return true;
 		}
 		return false;
-	}
-
-	public string GetItemName(string item)
-	{
-		return "tamere";
 	}
 }

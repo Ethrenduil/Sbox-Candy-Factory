@@ -110,9 +110,9 @@ public sealed class ProductionSystem : Component
 	public void UpgradeHoldableCapacity()
 	{
 		HoldableCapacity += 5;
-		// Increase the holdable capacity
+		// Increase the Box Capacity
 
-		// Update the holdable capacity upgrade cost
+		// Update the Box Capacity upgrade cost
 		UpgradesCost[UpgradeType.HoldableCapacity] = (int)(UpgradesCost[UpgradeType.HoldableCapacity] * 1.2);
 	}
 
@@ -175,7 +175,7 @@ public sealed class ProductionSystem : Component
 			UpgradeType.Transport => "Transport",
 			UpgradeType.Decoration => "Decoration",
 			UpgradeType.Upgrader => "Upgrader",
-			UpgradeType.HoldableCapacity => "Holdable Capacity",
+			UpgradeType.HoldableCapacity => "Box Capacity",
 			_ => "Other",
 		};
 	}
@@ -190,7 +190,7 @@ public sealed class ProductionSystem : Component
 			"Transport" => UpgradeType.Transport,
 			"Decoration" => UpgradeType.Decoration,
 			"Upgrader" => UpgradeType.Upgrader,
-			"Holdable Capacity" => UpgradeType.HoldableCapacity,
+			"Box Capacity" => UpgradeType.HoldableCapacity,
 			_ => UpgradeType.Other,
 		};
 	}
