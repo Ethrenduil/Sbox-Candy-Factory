@@ -35,11 +35,11 @@
 		DeliveryGood ??= GameObject.Parent.Components.Get<DeliveryGood>();
     }
 
-    protected override void OnFixedUpdate()
+    protected override void OnEnabled()
     {
-		holdable ??= GameObject.Parent.Components.Get<Holdable>();
-		DeliveryGood ??= GameObject.Parent.Components.Get<DeliveryGood>();
-        base.OnFixedUpdate();
+        base.OnEnabled();
+		holdable ??= GameObject.Parent.Components.Get<Holdable>(FindMode.EverythingInSelf);
+		DeliveryGood ??= GameObject.Parent.Components.Get<DeliveryGood>(FindMode.EverythingInSelf);
     }
 
 	public async void Interaction()
