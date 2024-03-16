@@ -18,7 +18,6 @@ public class Openable : AInteractable
         Description = IsOpen ? "Press E to close" : "Press E to open";
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
         Type = InteractableType.Building;
-        factory = Scene.GetAllComponents<Factory>().FirstOrDefault();
     }
 
     public override async void OnInteract(GameObject interactor)
@@ -64,7 +63,7 @@ public class Openable : AInteractable
 
     public override bool CanInteract(GameObject interactor)
     {
-        factory ??= Scene.GetAllComponents<Factory>().FirstOrDefault();
+        factory ??= GameObject.Parent.Components.Get<Factory>();
         return factory.IsStarted;
     }
 }

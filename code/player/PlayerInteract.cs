@@ -116,7 +116,7 @@ public class PlayerInteract : Component
 				interactable?.OnInteract(GameObject);
 				interactHud.SetValue(null);
 				questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-				if (questSystem.CurrentQuest == null) return;
+				if (questSystem is null || questSystem.CurrentQuest == null) return;
 				foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 				{
 				    if (objective.Type == ObjectiveType.Interaction && objective.ObjectTarget == interactable.GameObject)
