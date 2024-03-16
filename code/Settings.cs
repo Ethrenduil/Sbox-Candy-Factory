@@ -10,8 +10,8 @@ public sealed class Settings : Component
 	protected override void OnStart()
 	{
 		base.OnStart();
-        VolumeMusic = 0.5f;
-        VolumeSound = 0.5f;
+        VolumeMusic = 50;
+        VolumeSound = 50;
         SetUpSettings();
 	}
 	protected override void OnUpdate()
