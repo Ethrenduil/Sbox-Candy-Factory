@@ -69,7 +69,7 @@ public class Seller : AInteractable, Component.ICollisionListener
 				candy.GameObject.Destroy();
 				RemoveCandy();
 
-				if (questSystem.CurrentQuest is not null)
+				if (questSystem is not null && questSystem.CurrentQuest is not null)
 				{
 					foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 					{

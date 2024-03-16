@@ -136,7 +136,7 @@ public class Cooker : AInteractable
         await GameTask.DelaySeconds( cookTimer );
 		CookingFinished();
 		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-		if (questSystem.CurrentQuest is not null)
+		if (questSystem is not null && questSystem.CurrentQuest is not null)
 		{
 			foreach (QuestObjective objective in questSystem.CurrentQuest.Objectives)
 			{
