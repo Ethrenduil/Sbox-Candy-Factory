@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "e42192bf-d950-43fe-94f5-530d8e31d63f",
     "Name": "candy_choco_11",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "d3ff3363-5804-468b-be0c-e3cd4cc94b8d",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_11.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
+        "__guid": "13e29efc-3b35-415f-ad2b-c0e0bce51815",
         "CookingTime": 4,
         "Ingredients": {},
         "Name": "Milk Chocolate Bar",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 69
       }
     ],
     "Children": []

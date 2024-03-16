@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "e6e6a9e2-92d2-4d33-bbea-acc5436c7f62",
+    "__guid": "3ee806d8-5243-4921-8af0-b83975eaf08f",
     "Name": "box",
     "Tags": "interactable",
     "Enabled": true,
@@ -8,14 +8,14 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "eb5af836-0729-4ca3-93ec-26497ed18728",
+        "__guid": "760a046f-520f-4c82-87ed-c7ec98c510dd",
         "Health": 50,
         "IsStatic": false,
         "Model": "models/cardboard/cardboard.vmdl"
       },
       {
         "__type": "Holdable",
-        "__guid": "4717daab-5998-4eef-8220-81c269343d51",
+        "__guid": "d2638ffc-420a-4987-aff1-d86e4103a7f2",
         "Description": "Press E to pick up Delivery Box",
         "IsInteracted": false,
         "Name": "Delivery",
@@ -23,13 +23,13 @@
       },
       {
         "__type": "DeliveryGood",
-        "__guid": "d1a1b800-d745-422b-a4a2-5d45ac95e264",
+        "__guid": "9db8afeb-f851-4da9-97f2-0db9484f8792",
         "Goods": {}
       }
     ],
     "Children": [
       {
-        "__guid": "8d9718af-5c56-4d77-9c54-c7d57ad2b572",
+        "__guid": "92085753-6b43-438f-9f1f-b43f20acfd07",
         "Name": "RightHandSlot",
         "Position": "0,-15.9391,16.77539",
         "Rotation": "0.6830126,-0.6830127,0.1830127,0.1830127",
@@ -37,7 +37,7 @@
         "NetworkMode": 2
       },
       {
-        "__guid": "4e857eab-95e1-414f-b338-99527ff7276a",
+        "__guid": "0f61a001-c18a-4873-b65f-8177cbc25421",
         "Name": "LeftHandSlot",
         "Position": "0,15.74985,16.77539",
         "Rotation": "0.1830127,-0.1830127,0.6830127,0.6830126",
@@ -45,15 +45,15 @@
         "NetworkMode": 2
       },
       {
-        "__guid": "2e4a247d-a402-41ef-8995-5ab7ddbdc69c",
-        "Name": "World",
+        "__guid": "a236d759-7e4a-4930-b1d7-5a4807e203d8",
+        "Name": "BoxPanel",
         "Position": "-3.167221,0,64",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "WorldPanel",
-            "__guid": "51d8fbf7-bd5b-4b7d-98e9-a2d543df82c3",
+            "__guid": "53fe375f-c5dd-4311-a371-cfb1c54a52c0",
             "HorizontalAlign": "Center",
             "LookAtCamera": true,
             "PanelSize": "512,512",
@@ -62,9 +62,7 @@
           },
           {
             "__type": "BoxPanel",
-            "__guid": "01f715fd-f822-4822-b665-99d5d876554d",
-            "speed": 3,
-            "MyStringValue": "Hello World!"
+            "__guid": "1d19d12c-e285-4266-83d0-565f87b832f6"
           }
         ]
       }

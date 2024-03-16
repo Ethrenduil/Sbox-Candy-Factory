@@ -27,7 +27,6 @@
 {
 	private Holdable holdable;
 	private DeliveryGood DeliveryGood;
-	private bool isInteracted;
 
     protected override void OnStart()
     {
@@ -43,8 +42,9 @@
         base.OnFixedUpdate();
     }
 
-	public void Interaction()
+	public async void Interaction()
 	{
+		await Task.Delay(1000);
 		StateHasChanged();
 	}
 

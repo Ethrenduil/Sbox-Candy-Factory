@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "a4f279d8-6e78-499f-b904-38246925bcb6",
     "Name": "candy_choco_10",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "7f6c7959-e043-4637-80e8-30dc407d9db6",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_10.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 4,
+        "__guid": "e6e9f759-718d-4319-be22-60e10fdeef18",
+        "CookingTime": 2,
         "Ingredients": {},
         "Name": "Dark Chocolate Bar",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 22
       }
     ],
     "Children": []

@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "1d583eb6-96d4-48f0-b29d-ee307a3b46b8",
     "Name": "candy_choco_08",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "250f8f66-9e38-4af7-857e-e413c788bd9d",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_08.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
+        "__guid": "d1210b1c-2c7d-4b65-b965-f6bc59fb27d0",
         "CookingTime": 4,
         "Ingredients": {},
         "Name": "Milk Chocolate Cone",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 46
       }
     ],
     "Children": []

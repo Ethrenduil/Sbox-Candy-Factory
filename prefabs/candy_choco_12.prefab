@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "351bedd1-fe4a-4c1b-a074-40290e2e5d27",
     "Name": "candy_choco_12",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "8894f06f-ff58-4120-8a0c-0c2d0813292f",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_12.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 4,
+        "__guid": "77af6e26-1bcf-443c-85ef-fdd4b76a184a",
+        "CookingTime": 5,
         "Ingredients": {},
         "Name": "White Chocolate Bar",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 180
       }
     ],
     "Children": []

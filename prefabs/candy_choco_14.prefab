@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "549c27c2-88b7-453d-b415-76682740b6bd",
     "Name": "candy_choco_14",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "adc6327c-9e97-4f28-8cee-c2be81335b4d",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_14.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
+        "__guid": "219e8b28-0d99-4164-ae5e-91e5afc30d76",
         "CookingTime": 4,
         "Ingredients": {},
         "Name": "Milk Chocolate Crack",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 96
       }
     ],
     "Children": []

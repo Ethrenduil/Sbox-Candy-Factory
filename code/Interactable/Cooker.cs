@@ -56,7 +56,6 @@ public class Cooker : AInteractable
 		// Remove the ingredients from the box
 		box.RemoveGoods(furnacePanel.GetIngredients());
 		if (box.IsEmpty()) box.GameObject.Destroy();
-		else box.Enabled = false;
 		
 		// Create a new box, animate, and place it in the cooker to be cooked
 		var boxGo = BoxPrefab.Clone();

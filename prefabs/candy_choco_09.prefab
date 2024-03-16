@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "83de98df-969e-44b5-b0bb-53266ad032c7",
     "Name": "candy_choco_09",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "11694df8-f7ab-4ff2-a053-1af7b30e61a9",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_09.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 10,
+        "__guid": "3fd4ce26-3d80-40ce-969b-6550298bb5e5",
+        "CookingTime": 5,
         "Ingredients": {},
         "Name": "White Chocolate Cone",
-        "Price": 40,
-        "SellingTime": 10
+        "Price": 122
       }
     ],
     "Children": []

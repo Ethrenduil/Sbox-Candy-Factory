@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "bf36ec95-3f32-467f-87ff-5cc382d25e6a",
     "Name": "candy_choco_15",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "8d24210b-aa6f-4a44-b2ba-60e75af1dcfa",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_15.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 4,
+        "__guid": "8dc768bd-879c-40eb-b432-05970b410672",
+        "CookingTime": 5,
         "Ingredients": {},
         "Name": "White Chocolate Crack",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 260
       }
     ],
     "Children": []

@@ -6,7 +6,7 @@ public class Holdable : AInteractable
     private GameObject HoldRelative { get; set; }
     private const float ForwardOffset = 70f;
     private const float VerticalOffset = 40f;
-    private BoxPanel BoxPanel { get; set; }
+    public BoxPanel BoxPanel { get; set; }
 
     protected override void OnStart()
     {

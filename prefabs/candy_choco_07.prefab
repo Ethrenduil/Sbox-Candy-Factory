@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "117912e5-f1ef-46ed-b80b-d7e34f2edf99",
     "Name": "candy_choco_07",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "ee9dd44a-7233-4a87-bbe9-d7113fb721fa",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_07.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 4,
+        "__guid": "8affe6d4-47ba-478b-b6ad-668c6525d8a2",
+        "CookingTime": 2,
         "Ingredients": {},
         "Name": "Dark Chocolate Cone",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 16
       }
     ],
     "Children": []

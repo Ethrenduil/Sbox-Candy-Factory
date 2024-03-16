@@ -58,8 +58,10 @@ public class Seller : AInteractable, Component.ICollisionListener
 		}
 		var player = interactor.Components.Get<Player>();
 		questSystem ??= Scene.GetAllComponents<QuestSystem>().FirstOrDefault();
-
-		foreach (var candy in Candies)
+		
+		// Sell the candies and add the money to the player
+		var tempCandies = new List<Candies>(Candies);
+		foreach (var candy in tempCandies)
 		{
 			if (candy is not null)
 			{

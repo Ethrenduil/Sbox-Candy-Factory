@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "c7c1d025-daff-4e59-903d-05ab705911f3",
     "Name": "candy_choco_05",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "609dfc25-287b-4f5b-bb71-d2eba59a88f7",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_05.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 6,
+        "__guid": "195cab89-8449-4e10-99e6-56fae523880c",
+        "CookingTime": 3,
         "Ingredients": {},
         "Name": "Milk Chocolate Praline",
-        "Price": 18,
-        "SellingTime": 6
+        "Price": 27
       }
     ],
     "Children": []

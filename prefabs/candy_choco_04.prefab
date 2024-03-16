@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0bac1c93-88b4-4562-972c-af749d3fa847",
+    "__guid": "548e545b-f491-4032-9b02-b2affb03329f",
     "Name": "candy_choco_04",
     "Tags": "candy",
     "Enabled": true,
@@ -8,19 +8,18 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "633a0300-02b9-4a6a-8420-d18f4f5247f6",
+        "__guid": "fb272940-7180-46e9-9825-f9660732741f",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_04.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "18fa952e-0d58-48f7-9062-6d291818d55b",
-        "CookingTime": 4,
+        "__guid": "75502551-acd5-45c7-bb82-7f68b03c9062",
+        "CookingTime": 2,
         "Ingredients": {},
         "Name": "Dark Chocolate Praline",
-        "Price": 8,
-        "SellingTime": 4
+        "Price": 10
       }
     ],
     "Children": []

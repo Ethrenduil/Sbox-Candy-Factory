@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "71d1a095-cea6-4c1f-9f51-4ec96032838d",
+    "__guid": "a3cb2f8b-2f80-45ed-b363-13cee8dd324f",
     "Name": "candy_choco_01",
     "Tags": "candy",
     "Enabled": true,
@@ -8,22 +8,21 @@
     "Components": [
       {
         "__type": "Prop",
-        "__guid": "80c39a31-a9eb-4501-82d1-07e393f7c646",
+        "__guid": "8fe684d9-ae7b-4aca-91de-728d812493a5",
         "Health": 0,
         "IsStatic": false,
         "Model": "models/candies/candy_choco_01.vmdl"
       },
       {
         "__type": "Candies",
-        "__guid": "06a66958-c37a-4b4a-8d33-f42ea13a94d3",
-        "CookingTime": 3,
+        "__guid": "ad7f88df-3db3-44ad-bcf5-23e0974d8aca",
+        "CookingTime": 2,
         "Ingredients": {
           "Sugar": 1,
           "Cacao": 1
         },
         "Name": "Dark Chocolate",
-        "Price": 6,
-        "SellingTime": 3
+        "Price": 6
       }
     ],
     "Children": []
