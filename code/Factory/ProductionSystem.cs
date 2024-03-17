@@ -49,7 +49,9 @@ public sealed class ProductionSystem : Component
 			for (int i = 0; i < upgrade.Value; i++)
 			{
 				if (upgrade.Key == UpgradeType.ProductionLine || upgrade.Key == UpgradeType.Upgrader)
+				{
 					Upgrade(upgrade.Key, false, i + 1);
+				}
 				else
 				Upgrade(upgrade.Key, false);
 			}

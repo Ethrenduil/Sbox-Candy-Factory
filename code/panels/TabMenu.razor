@@ -37,8 +37,8 @@
         base.OnStart();
         IsVisible = false;
         StateHasChanged();
-        escapeMenu = Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
-		player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+        escapeMenu ??= Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
+		player ??= Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
     }
 
     protected override void OnUpdate()
@@ -49,6 +49,7 @@
 
     void UpdateVisibility()
     {
+        escapeMenu ??= Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
         if (Input.Down("Score") && !escapeMenu.IsPaused)
         {
 			player.InMenu = true;
@@ -70,6 +71,7 @@
 
     void UpdatePlayers()
     {
+		player ??= Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
         players = Scene.GetAllComponents<Player>().ToList();
     }
 

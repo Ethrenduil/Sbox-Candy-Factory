@@ -108,6 +108,7 @@ public class Cooker : AInteractable
 	[Broadcast]
 	private void CookingFinished()
 	{
+		Renderer ??= Components.Get<SkinnedModelRenderer>();
 		Renderer.Set( "Opening", true );
 		sound?.Stop();
 		if ( CookedSound is not null )
@@ -120,8 +121,9 @@ public class Cooker : AInteractable
 	[Broadcast]
 	private void CloseOven()
 	{
+		Renderer ??= Components.Get<SkinnedModelRenderer>();
 		Renderer.Set( "Opening", false );
-		Smoke.Enabled = false;
+		if ( Smoke is not null ) Smoke.Enabled = false;
 	}
 
 	private async Task Cook()

@@ -44,6 +44,7 @@ public sealed class PlayerFootsteps : Component
 		if ( sound is null ) return;
 
 		var handle = Sound.Play( sound, tr.HitPosition + tr.Normal * 5 );
+		if ( handle is null || Settings is null) return;
 		handle.Volume *= e.Volume * Settings.GetVolume(VolumeType.Sound) * 10;
 	}
 }

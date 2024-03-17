@@ -168,7 +168,7 @@
 			return true;
 		}
 
-		if (!Factory.CanStore(GetTotalQuantity()))
+		if (sign < 0 && !Factory.CanStore(GetTotalQuantity()) )
 		{
 			MessageTips = "You don't have enough space to store the items.";
 			return true;

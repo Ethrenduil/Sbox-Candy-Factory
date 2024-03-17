@@ -54,21 +54,21 @@
 
     [Property]
     public bool IsPaused = false;
-	private Player player;
+	private Player player { get; set; }
     public bool IsSettings = false;
-    private Settings settings = new Settings();
+    private Settings settings { get; set; }
 
     protected override void OnStart()
     {
         base.OnStart();
-        player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
-        settings = player.GameObject.Components.Get<Settings>();
+        player ??= Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+        settings ??= player.GameObject.Components.Get<Settings>();
     }
 
-        protected override void OnUpdate()
+    protected override void OnUpdate()
     {
+        if(IsProxy) return;
         base.OnUpdate();
-
 		player ??= Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
 		settings ??= player.GameObject.Components.Get<Settings>();
 
