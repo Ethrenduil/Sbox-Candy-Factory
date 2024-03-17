@@ -40,7 +40,6 @@
         escapeMenu ??= Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
 		player ??= Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
     }
-
     protected override void OnUpdate()
     {
         base.OnUpdate();
@@ -50,6 +49,7 @@
     void UpdateVisibility()
     {
         escapeMenu ??= Scene.GetAllComponents<EscapeMenu>().FirstOrDefault();
+		player ??= Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
         if (Input.Down("Score") && !escapeMenu.IsPaused)
         {
 			player.InMenu = true;

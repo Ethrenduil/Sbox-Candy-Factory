@@ -39,7 +39,7 @@ public sealed class QuestSystem : Component
         quest5.Objectives.Add(new QuestObjective(ObjectiveType.WaitDelivery, "Take the ingredients"));
         Quests.Add(quest5);
 
-        Quest quest6 = new Quest("Tutorial", "Deliver the order to the Candy Factory");
+        Quest quest6 = new Quest("Tutorial", "Deliver the order to shelving in the Candy Factory");
         var stockarea = Scene.GetAllComponents<Stockable>().FirstOrDefault(x => !x.IsProxy).GameObject;
         quest6.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Deliver the order to the Candy Factory", stockarea));
         Quests.Add(quest6);
