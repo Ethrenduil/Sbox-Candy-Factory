@@ -22,6 +22,9 @@ public class CandyFactory : Component
 	[Property] public int StartingMoney { get; set; } = 100;
 	[Property] public GameObject Factory { get; set; }
 	[Sync] public NetList<ulong> _isFactoryActive { get; set; } = new NetList<ulong> { 0, 0, 0, 0 };
+	private Settings Settings { get; set; }
+	[Property] public SoundEvent GameMusic { get; set; }
+	private SoundHandle CurrentMusic { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -31,6 +34,12 @@ public class CandyFactory : Component
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
+
+		if (CurrentMusic != null)
+		{
+			Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
+			CurrentMusic.Volume = Settings.GetVolume(VolumeType.Music) / 3;
+		}
 	}
 	protected override void OnStart()
 	{
@@ -39,6 +48,13 @@ public class CandyFactory : Component
 		// {
 		// 	Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
 		// }
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+		if (CurrentMusic != null)
+			CurrentMusic.Stop();
 	}
 
 	public void NewPlayer( Connection connection )
@@ -82,6 +98,12 @@ public class CandyFactory : Component
 		var factory = Factory.Clone(FactoryList[freeFactoryIndex].Transform.World);
 		factory.Components.Get<Factory>().StartFactory( connection);
 		factory.NetworkSpawn(connection);
+
+		// Start the music
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
+		GameMusic.UI = true;
+		GameMusic.Volume = Settings.GetVolume(VolumeType.Music) / 3;
+		CurrentMusic = Sound.Play( GameMusic );
 	}
 
 	public void DeletePlayer(Connection conn)

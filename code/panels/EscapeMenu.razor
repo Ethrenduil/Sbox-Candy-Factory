@@ -104,6 +104,8 @@
 
     private void Quit()
     {
+		player ??= Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
+        player.Save();
         GameNetworkSystem.Disconnect();
         Game.ActiveScene.LoadFromFile("scenes/menu.scene");
     }

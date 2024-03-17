@@ -179,6 +179,7 @@
               "go": "c1e9c0b7-886b-481d-b456-c189605a1ddf"
             }
           ],
+          "GameMusic": "music/gamemusic.sound",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
@@ -512,7 +513,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-17T00:11:28.8529851-04:00",
+  "LastSaved": "2024-03-17T01:11:10.5289871-04:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
