@@ -91,4 +91,13 @@ public class ProductionLine : Component
 
         return true;
     }
+
+    public int GetActualLevel()
+    {
+        // If the production line is not active, return 0
+        if (!IsActive) return 0;
+
+        // Return the number of upgraders that are upgraded
+        return Upgrader.Where(x => x.Value).Count() + 1;
+    }
 }

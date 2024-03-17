@@ -148,4 +148,20 @@ public sealed class QuestSystem : Component
 		};
 		sound = Sound.Play(soundEvent);
 	}
+
+	public void SetQuestData(Player player, QuestData data)
+	{
+		// Set the quest index except if the tuto is finished
+		if (data.CurrentQuestIndex != -1)
+			SkipQuestTo(data.CurrentQuestIndex);
+
+		// Buy the factory if the quest is more or equal to 2
+		if (data.CurrentQuestIndex >= 2)
+		{
+			var vendingPanel = Scene.GetAllComponents<Buyable>().FirstOrDefault(x => !x.IsProxy);
+			vendingPanel.OnInteract(player.GameObject);
+		}
+		currentTaskHUD.StateHasChanged();
+	}
+
 }

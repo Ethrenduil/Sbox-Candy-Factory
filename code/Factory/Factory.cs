@@ -4,7 +4,6 @@ public sealed class Factory : Component
 {
 	[Property] [Sync] public ulong SteamId { get; set; }
 	[Property] [Sync] public string Name { get; set; }
-	[Property] [Sync] public int Money { get; set; }
 	[Property] public ProductionSystem Production { get; set; }
 	[Property] public Dictionary<DeliveryGoods, int> Stock { get; set; } = new Dictionary<DeliveryGoods, int>();
 
@@ -263,5 +262,10 @@ public sealed class Factory : Component
 			count += item.Value;
 		}
 		return count;
+	}
+
+	public void SetStock(Dictionary<DeliveryGoods, int> stock)
+	{
+		Stock = stock;
 	}
 }

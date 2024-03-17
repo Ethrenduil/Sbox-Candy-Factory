@@ -3,12 +3,11 @@ using System.Text.Json;
 using System.Text;
 using System;
 
-public static class SaveSystem {
-
+public static class SaveSystem 
+{
     public static void SetupSaveFolder()
     {
         var fs = FileSystem.Data;
-        Log.Info(fs.FindDirectory("cdySaves"));
         if (fs.DirectoryExists("cdySaves"))
             return;
         fs.CreateDirectory("cdySaves");
@@ -21,11 +20,13 @@ public static class SaveSystem {
         var fs = FileSystem.Data;
         PlayerData data = new()
 		{
-            Money = player.GetMoney()
+            Money = player.GetMoney(),
+            QuestData = player.GetQuestData(),
+            UpgradeData = player.GetUpgradeData(),
+            StockData = player.GetStockData()
         };
 
         string jsonString = JsonSerializer.Serialize<PlayerData>(data);
-        Log.Info(jsonString);
         fs.WriteAllText("cdySaves/player.json", jsonString);
         Log.Info("Player saved");
         return;
@@ -39,7 +40,6 @@ public static class SaveSystem {
         {
             Log.Info("Loading player data");
             var info = fs.ReadAllText(path);
-            Log.Info(info);
             PlayerData data = JsonSerializer.Deserialize<PlayerData>(info);
             return data;
         }

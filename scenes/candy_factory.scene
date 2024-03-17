@@ -183,7 +183,7 @@
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
           },
-          "StartingMoney": 30
+          "StartingMoney": 30000
         }
       ]
     },
@@ -512,7 +512,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-16T20:33:21.3316324-04:00",
+  "LastSaved": "2024-03-17T00:11:28.8529851-04:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

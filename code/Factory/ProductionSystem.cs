@@ -22,6 +22,29 @@ public sealed class ProductionSystem : Component
 		base.OnUpdate();
 	}
 
+	public void SetUpProduction()
+	{
+		// Set the Production Lines
+		SetUpProductionLines();
+
+		// Set the Upgrade production system already upgraded
+		foreach ( var upgrade in Upgrades)
+		{
+			for (int i = 0; i < upgrade.Value; i++)
+			{
+				if (upgrade.Key == UpgradeType.ProductionLine)
+				{
+					Upgrade(upgrade.Key, false, i + 1);
+				} else if (upgrade.Key == UpgradeType.Upgrader)
+				{
+					continue;
+				}
+				else
+				Upgrade(upgrade.Key, false);
+			}
+		}
+	}
+
 	public void StartProduction()
 	{
 		// Set the Upgrade production system
@@ -40,22 +63,9 @@ public sealed class ProductionSystem : Component
 		UpgradesCost[UpgradeType.Upgrader] = 100;
 		UpgradesCost[UpgradeType.HoldableCapacity] = 100;
 
-		// Set the Production Lines
-		SetUpProductionLines();
 
-		// Set the Upgrade production system already upgraded
-		foreach ( var upgrade in Upgrades)
-		{
-			for (int i = 0; i < upgrade.Value; i++)
-			{
-				if (upgrade.Key == UpgradeType.ProductionLine || upgrade.Key == UpgradeType.Upgrader)
-				{
-					Upgrade(upgrade.Key, false, i + 1);
-				}
-				else
-				Upgrade(upgrade.Key, false);
-			}
-		}
+		// Set the Production
+		SetUpProduction();
 	}
 
 	public void Upgrade(UpgradeType type, bool increase = true, int line = 0)
@@ -275,6 +285,43 @@ public sealed class ProductionSystem : Component
 			result.Add(GetItemName(upgrade.Key), UpgradesCost[upgrade.Key]);
 		}
 		return result;
+	}
+
+	public void SetProductionUpgrade(UpgradeData data)
+	{
+		Upgrades = data.UpgradeLevels;
+		SetUpProduction();
+		var i = 0;
+		var upgrader = 0;
+
+		foreach (var prodLine in ProductionLines)
+		{
+			if (data.UpgradeProductionLines[i] != 0)
+			{
+				if (data.UpgradeProductionLines[i] >= 1)
+				{
+					prodLine.IsActive = true;
+					prodLine.ProductionLineObject.Enabled = true;
+				}
+				upgrader = data.UpgradeProductionLines[i] - 1;
+				foreach (var up in prodLine.Upgrader)
+				{
+					if (upgrader > 0)
+					{
+						prodLine.Upgrade();
+						upgrader--;
+					} else
+					{
+						break;
+					}
+				}
+			} else
+			{
+				prodLine.IsActive = false;
+				prodLine.ProductionLineObject.Enabled = false;
+			}
+			i++;
+		}
 	}
 }
 
