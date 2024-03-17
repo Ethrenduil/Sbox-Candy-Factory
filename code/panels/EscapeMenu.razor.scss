@@ -7,7 +7,7 @@ EscapeMenu {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        font-family: Arial, Helvetica, sans-serif;
+		font-family: Poppins;
 
         .options {
             display: flex;
@@ -32,7 +32,7 @@ EscapeMenu {
             margin: 2% 10%;
             cursor: pointer;
             border-radius: 12px;
-            width: 17%;
+            width: 20%;
             justify-content: center;
 
             &:hover {

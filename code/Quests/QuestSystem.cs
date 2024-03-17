@@ -64,6 +64,8 @@ public sealed class QuestSystem : Component
 		var arrowComponent = Scene.GetAllComponents<FollowTask>().FirstOrDefault();	
 		Arrow = Scene.GetAllComponents<FollowTask>().FirstOrDefault().GameObject;
 		SetArrow();
+
+		Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy).Load();
     }
 
 	public void SetArrow()

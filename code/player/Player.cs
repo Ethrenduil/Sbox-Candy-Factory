@@ -32,6 +32,7 @@ public class Player : Component
 	public bool InCinematic { get; set; }
 	public bool InMenu { get; set; } = false;
 	public bool InDialogue { get; set; } = false;
+	private TimeSince TimeSinceLastSave { get; set; } = 0;
 
 
 	protected override void OnEnabled()
@@ -68,7 +69,21 @@ public class Player : Component
 		UpdateCameraPosition();
 		UpdateBodyRotation();
 		UpdateCrouch();
-		UpdateAnimation();	
+		UpdateAnimation();
+		AutomaticUpdate();
+	}
+
+	private void AutomaticUpdate()
+	{
+		if (IsProxy)
+			return;
+
+		if (TimeSinceLastSave > 180)
+		{
+			Save();
+			TimeSinceLastSave = 0;
+			Scene.GetAllComponents<SavingPanel>().FirstOrDefault().ChangeState();
+		}
 	}
 
 	private void GetInput()
@@ -84,14 +99,6 @@ public class Player : Component
 		if (Input.Pressed("FirstPerson"))
 		{
 			Zoom = !Zoom;
-		}
-
-		if (Input.Pressed("Slot1"))
-		{
-			Save();
-		} else if (Input.Pressed("Slot2"))
-		{
-			Load();
 		}
 	}
 

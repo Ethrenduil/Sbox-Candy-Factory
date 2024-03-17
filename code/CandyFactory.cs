@@ -89,8 +89,6 @@ public class CandyFactory : Component
 		playerComponent.SteamId = connection.SteamId;
 		// playerComponent.PlayerSlot = freeFactoryIndex;
 
-		Log.Info( $"Player {connection.DisplayName} joined" );
-
 		// Network spawn the player and enable the navmesh
 		player.NetworkSpawn( connection );
 
@@ -108,7 +106,6 @@ public class CandyFactory : Component
 
 	public void DeletePlayer(Connection conn)
 	{
-		Log.Info( $"Player {conn.DisplayName} disconnected" );
 		for (int i = 0; i < 4; i++)
 		{
 			if (_isFactoryActive[i] == conn.SteamId)

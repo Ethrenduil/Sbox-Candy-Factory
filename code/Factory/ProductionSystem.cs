@@ -57,10 +57,10 @@ public sealed class ProductionSystem : Component
 
 		// Set the Upgrade production system cost
 		UpgradesCost[UpgradeType.ProductionSpeed] = 100;
-		UpgradesCost[UpgradeType.ProductionLine] = 100;
+		UpgradesCost[UpgradeType.ProductionLine] = 150;
 		UpgradesCost[UpgradeType.Storage] = 100;
 		UpgradesCost[UpgradeType.Transport] = 100;
-		UpgradesCost[UpgradeType.Upgrader] = 100;
+		UpgradesCost[UpgradeType.Upgrader] = 200;
 		UpgradesCost[UpgradeType.HoldableCapacity] = 100;
 
 
@@ -117,9 +117,12 @@ public sealed class ProductionSystem : Component
 		// Set other parameters
 
 		// Update the production line upgrade cost
-		if (ProductionLines.Count > line)
-			UpgradesCost[UpgradeType.ProductionLine] = ProductionLines[line].Price;
-		else
+			if (ProductionLines.Count > line)
+    		{
+    		    // Increase the price for the next line
+    		    double upgradeFactor = 7; // Change this to your desired factor
+    		    UpgradesCost[UpgradeType.ProductionLine] = (int)(ProductionLines[line].Price * upgradeFactor);
+    		}
 			UpgradesCost[UpgradeType.ProductionLine] = -1;
 	}
 	
@@ -146,7 +149,7 @@ public sealed class ProductionSystem : Component
 
 
 		// Update the upgrader upgrade cost
-		UpgradesCost[UpgradeType.Upgrader] = (int)(UpgradesCost[UpgradeType.Upgrader] * 1.2);
+		UpgradesCost[UpgradeType.Upgrader] = (int)(UpgradesCost[UpgradeType.Upgrader] * 1.2) * line;
 	}
 
 	public void UpgradeProductionSpeed()

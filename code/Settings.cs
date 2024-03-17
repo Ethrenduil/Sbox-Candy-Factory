@@ -28,8 +28,8 @@ public sealed class Settings : Component
     {
         var fs = FileSystem.Data;
         var data = new SettingsData();
-        data.VolumeMusic = VolumeMusic;
-        data.VolumeSound = VolumeSound;
+        data.VolumeMusic = 50;
+        data.VolumeSound = 50;
 
         // Load settings
         if(fs.FileExists("settings.json"))

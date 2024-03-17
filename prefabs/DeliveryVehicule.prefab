@@ -1,13 +1,13 @@
 {
   "RootObject": {
-    "Id": "08ede5f7-b05f-4411-b703-41831c94857e",
+    "__guid": "08ede5f7-b05f-4411-b703-41831c94857e",
     "Name": "deliveryvehicule",
-    "Position": "0,0,16",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "SkinnedModelRenderer",
+        "__guid": "05706a8c-e355-4a4b-9377-fb0fb70e81f8",
         "AnimationGraph": "animgraphs/delivery_truck.vanmgrph",
         "BodyGroups": 18446744073709551615,
         "CreateBoneObjects": false,
@@ -17,6 +17,7 @@
       },
       {
         "__type": "ModelCollider",
+        "__guid": "3c87d07b-4681-4514-b1d2-dac1050bb369",
         "IsTrigger": false,
         "Model": "models/delivery_truck/delivery_truck.vmdl",
         "Static": false,
@@ -24,6 +25,7 @@
       },
       {
         "__type": "DeliveryCar",
+        "__guid": "8ad87157-ac76-41ca-8f08-fb0509598b67",
         "DeliveryGuyPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/deliveryguy.prefab"
@@ -33,10 +35,11 @@
         "IsGuyDelivering": false,
         "IsReturning": false,
         "IsWaiting": false,
-        "Speed": 1000
+        "Speed": 500
       },
       {
         "__type": "NavMeshAgent",
+        "__guid": "60d9594b-e424-478a-9933-e812fe134741",
         "__enabled": false,
         "Acceleration": 100,
         "Height": 64,
@@ -48,26 +51,31 @@
       },
       {
         "__type": "Rigidbody",
+        "__guid": "ebe5f911-4f37-4e4e-81f2-c30100973ce2",
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
         "Locking": {},
         "MassOverride": 0,
+        "MotionEnabled": true,
         "RigidbodyFlags": 0,
         "StartAsleep": false
       }
     ],
     "Children": [
       {
-        "Id": "c3f4d614-9aeb-4355-9bb1-16db8670d96f",
+        "__guid": "c3f4d614-9aeb-4355-9bb1-16db8670d96f",
         "Name": "SpawnGuy",
         "Position": "-256,0,0",
-        "Enabled": true
+        "Enabled": true,
+        "NetworkMode": 2
       }
     ]
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

@@ -1,0 +1,30 @@
+SavingPanel
+{
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: Poppins;
+	font-weight: bold;
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #4444448e;
+      }
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+}

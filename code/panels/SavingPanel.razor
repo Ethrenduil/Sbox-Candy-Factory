@@ -1,0 +1,38 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if (IsSaving)
+	{
+		<div class="background">
+			<div class="title">Saving...</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	public bool IsSaving { get; set; } = false;
+	private TimeSince timeSinceShowed = 2;
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (IsSaving)
+		{
+			if (timeSinceShowed > 3)
+			{
+				ChangeState();
+			}
+		}
+	}
+
+	public void ChangeState()
+	{
+        IsSaving = !IsSaving;
+		timeSinceShowed = 0;
+		StateHasChanged();
+	}
+}

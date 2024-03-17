@@ -325,6 +325,18 @@
               "InMenu": false
             }
           ]
+        },
+        {
+          "__guid": "cc1a46eb-9732-4d5e-bb87-07b313ea62b3",
+          "Name": "SavingPanel",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "SavingPanel",
+              "__guid": "625efed4-62c3-42ee-abfb-2bc982535ae9"
+            }
+          ]
         }
       ]
     },
@@ -513,7 +525,7 @@
   },
   "Title": "candy_factory",
   "Description": "",
-  "LastSaved": "2024-03-17T01:18:46.9421807-04:00",
+  "LastSaved": "2024-03-17T12:57:34.1740669\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
