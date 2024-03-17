@@ -35,10 +35,10 @@ public class CandyFactory : Component
 	protected override void OnStart()
 	{
 		base.OnStart();
-		for (int i = 0; i < 4; i++)
-		{
-			Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
-		}
+		// for (int i = 0; i < 4; i++)
+		// {
+		// 	Log.Info( $"Factory {i} is active: {_isFactoryActive[i]}" );
+		// }
 	}
 
 	public void NewPlayer( Connection connection )
@@ -55,7 +55,7 @@ public class CandyFactory : Component
 
 		// Get Free Factory Index
 		int freeFactoryIndex = GetFreeFactoryIndex(connection);
-		Log.Info( $"Free Factory Index: {freeFactoryIndex}" );
+		// Log.Info( $"Free Factory Index: {freeFactoryIndex}" );
 		// _isFactoryActive[freeFactoryIndex] = connection.SteamId;
 
 

@@ -26,7 +26,6 @@ public sealed class QuestSystem : Component
         quest2.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Interact with the vending panel", vendingPanel));
         Quests.Add(quest2);
 
-
         Quest quest3 = new Quest("Tutorial", "Meet Bob at the Candy Factory");
         quest3.Objectives.Add(new QuestObjective(ObjectiveType.Interaction, "Talk to Bob", bob));
         Quests.Add(quest3);
@@ -66,11 +65,6 @@ public sealed class QuestSystem : Component
 		Arrow = Scene.GetAllComponents<FollowTask>().FirstOrDefault().GameObject;
 		SetArrow();
     }
-
-	protected override void OnUpdate()
-	{
-		
-	}
 
 	public void SetArrow()
 	{
@@ -137,5 +131,21 @@ public sealed class QuestSystem : Component
 		{
 			CompleteObjective(objective);
 		}
+	}
+
+	public void SkipQuestTo(int index)
+	{
+		Settings ??= Scene.GetAllComponents<Settings>().FirstOrDefault(x => !x.IsProxy);
+		CurrentQuestIndex = index;
+		CurrentQuest = Quests[CurrentQuestIndex];
+		SetArrow();
+
+		sound?.Stop();
+		SoundEvent soundEvent = new( "/sounds/bob/tuto_" + CurrentQuestIndex + ".sound" )
+		{
+			UI = true,
+			Volume = Settings.GetVolume( VolumeType.Sound )
+		};
+		sound = Sound.Play(soundEvent);
 	}
 }

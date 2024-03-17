@@ -12,7 +12,7 @@ public class Bob : AInteractable
         base.OnStart();
         Description = $"Press E to talk to {Name}";
         GameObject.Network.SetOwnerTransfer(OwnerTransfer.Takeover);
-		
+		Transform.Position = new Vector3(4596.77f, 1178.077f, 48.133f);
 		dialogue = Scene.GetAllComponents<DialogueMenu>().FirstOrDefault();
     }
 

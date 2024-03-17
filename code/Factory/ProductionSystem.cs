@@ -99,6 +99,7 @@ public sealed class ProductionSystem : Component
 			Log.Info("Cannot upgrade anymore");
 			return;
 		}
+
 		// Enable the next production line and set it to active
 		ProductionLines[line - 1].IsActive = true;
 		ProductionLines[line - 1].ProductionLineObject.Enabled = true;
@@ -106,7 +107,10 @@ public sealed class ProductionSystem : Component
 		// Set other parameters
 
 		// Update the production line upgrade cost
-		UpgradesCost[UpgradeType.ProductionLine] = ProductionLines[line].Price;
+		if (ProductionLines.Count > line)
+			UpgradesCost[UpgradeType.ProductionLine] = ProductionLines[line].Price;
+		else
+			UpgradesCost[UpgradeType.ProductionLine] = -1;
 	}
 	
 	public void UpgradeHoldableCapacity()

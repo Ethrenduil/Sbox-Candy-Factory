@@ -29,6 +29,7 @@ public class Buyable : AInteractable
 		bob.Transform.Position = bob_dest.Transform.Position;
 		bob.Transform.Rotation = bob_dest.Transform.Rotation;
 		GameObject.Destroy();
+        Scene.Components.Get<QuestSystem>(FindMode.EverythingInSelfAndDescendants).SkipQuestTo(2);
 	}
 
     public override bool CanInteract(GameObject interactor)
