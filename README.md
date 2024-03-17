@@ -19,4 +19,5 @@
 - Sound Effect from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=87313)
 - Sound Effect from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6188)
 - The voice acting is made with [Elevenlabs](https://elevenlabs.io/)
+- [Main Scene Music composed by AIVA - Artificial Intelligence Virtual Artist](https://www.aiva.ai)
 - Some pictures are made with AI.
